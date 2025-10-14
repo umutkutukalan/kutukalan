@@ -1,6 +1,7 @@
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div className="w-15 bg-[#421d1e] m-5 text-white rounded-lg">
+    </div>
   )
 }
 

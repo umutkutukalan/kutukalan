@@ -4,14 +4,14 @@ import "./index.css";
 import Home from "./pages/Home";
 function App() {
   return (
-    <>
-      <Navbar />
-      <div>
+    <div className="w-full flex bg-[#2f1411]">
+      <Navbar/>
+      <div className="w-full">
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
-    </>
+    </div>
   );
 }
 
