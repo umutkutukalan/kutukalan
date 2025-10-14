@@ -1,10 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import "./index.css";
+import Home from "./pages/Home";
 function App() {
   return (
-    <div className="w-full min-h-screen bg-gray-300 flex items-center justify-center flex-col gap-2">
-      <h1 className="text-4xl font-bold">My Portfolio</h1>
-      <p className="text-lg">Welcome to my portfolio website!</p>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
