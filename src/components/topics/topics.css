@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+.topicsBox {
+  @apply p-4 rounded-lg w-50 h-50 flex flex-col items-start justify-between cursor-pointer bg-[#2c1314];
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.topicsBox {
+  transition: background-color 150ms ease, color 150ms ease,
+    transform 150ms ease;
+}
+
+.topicsBox:hover {
+  transform: translateY(-4px);
+}
+
+.topicsBox.active {
+  background-color: #4a6d88; /* aktif arka plan rengini buradan ayarlayabilirsiniz */
+  color: #fff; /* aktif durumda metin ve ikon beyaz olsun */
+}

@@ -4,7 +4,7 @@ import "./index.css";
 import Home from "./pages/Home";
 function App() {
   return (
-    <div className="w-full flex bg-[#2f1411]">
+    <div className="w-full flex bg-[#1f0e0e]">
       <Navbar/>
       <div className="w-full">
         <Routes>
