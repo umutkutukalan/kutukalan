@@ -25,7 +25,7 @@ const Topics = () => {
               className={`topicsBox ${activeId === topic.id ? "active" : ""}`}
             >
               <Icon className="text-xl" />
-              <h3 className="text-3xl">{topic.name}</h3>
+              <h3 className="text-2xl">{topic.name}</h3>
             </div>
           );
         })}

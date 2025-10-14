@@ -1,0 +1,6 @@
+@import "tailwindcss";
+ 
+
+.playButton{
+    @apply px-4 py-1 bg-[#2c1314] text-white rounded-xl hover:bg-orange-800 transition text-xs;
+}
