@@ -1,7 +1,7 @@
 import { FaArrowUp } from "react-icons/fa";
 const UpgradePremium = () => {
   return (
-    <div className="flex items-center justify-between p-4 bg-[#1c0c0c] rounded-2xl">
+    <div className="flex items-center justify-between p-4 bg-white/10 rounded-2xl">
       <div className="flex flex-col gap-1">
         <h3 className="font-semibold">Upgrade To Premium</h3>
         <p className="text-xs">

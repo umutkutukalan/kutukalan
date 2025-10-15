@@ -32,17 +32,17 @@ const MusicList = () => {
   return (
     <div className="flex flex-col gap-4 text-white">
       <div className="w-full flex items-center justify-between">
-        <h2 className="">MY QUEUE</h2>
-        <button className="text-xs">View Alls</button>
+        <h2 className="">MUZIKLER</h2>
+        <button className="text-xs cursor-pointer">Tümünü Gör</button>
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col">
         {musics.map((music) => (
           <div
             key={music.id}
-            className="musicItem flex items-center justify-between"
+            className="musicItem flex items-center justify-between hover:bg-white/10 p-2 rounded-lg cursor-pointer"
           >
             <div className="flex items-center gap-2">
-              <div className="w-12 h-12 rounded-lg overflow-hidden">
+              <div className="w-10 h-10 rounded-lg overflow-hidden">
                 <img
                   src={music.image}
                   alt=""

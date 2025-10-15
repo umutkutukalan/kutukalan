@@ -1,4 +1,4 @@
-import profileImg from "../assets/images/profile.jpeg";
+import profileImg from "../assets/images/profile.png";
 
 import nikegreen from "../assets/images/nikegreen.jpeg";
 import oakley from "../assets/images/oakley.jpeg";

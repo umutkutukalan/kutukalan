@@ -1,7 +1,9 @@
+
+
 const HomeTables = () => {
   return (
-    <div className="xl:w-4/7 w-5/7 h-full">
-      <div className="h-full w-full overflow-hidden border border-white/20 rounded-lg"></div>
+    <div className="w-full flex-1 overflow-hidden relative p-4">
+      <h1 className="text-4xl">kutukalan</h1>
     </div>
   );
 };
