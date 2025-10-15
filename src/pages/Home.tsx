@@ -1,6 +1,5 @@
 import HomeBorder from "../components/HomeBorder";
 import HomeTables from "../components/HomeTables";
-import Topics from "../components/topics/Topics";
 
 const Home = () => {
   return (
