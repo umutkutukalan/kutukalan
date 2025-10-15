@@ -1,7 +1,36 @@
+import { contactList, navbarList } from "../constants";
+
 const Navbar = () => {
   return (
-    <div className="w-15 bg-[#1c0c0c] m-5 text-white rounded-lg border border-white/10 p-2">
-      <div className="flex flex-col items-center gap-2"></div>
+    <div className="w-15 bg-[#1c0c0c] m-5 text-white rounded-lg flex flex-col items-center justify-between border border-white/10 p-2">
+      <div className="flex flex-col items-center gap-1">
+        {navbarList.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.id}
+              className="w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer hover:bg-white/10"
+              title={item.title}
+            >
+              <Icon className="text-lg" />
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex flex-col items-center gap-1">
+        {contactList.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.id}
+              className="w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer hover:bg-white/10"
+              title={item.title}
+            >
+              <Icon className="text-lg" />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
