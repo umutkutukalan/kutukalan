@@ -6,7 +6,7 @@ import { FaVolumeDown } from "react-icons/fa";
 
 const MusicBar = () => {
   return (
-    <div className="w-full h-full bg-[#4a6d88] rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
+    <div className="w-full bg-[#4a6d88] rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
       <div className="absolute inset-0">
         <img
           src={blue}

@@ -4,7 +4,7 @@ import { BsChevronRight } from "react-icons/bs";
 
 const HomeBorder = () => {
   return (
-    <div className="w-full h-full overflow-hidden relative flex flex-col gap-1">
+    <div className="w-full h-1/2 overflow-hidden relative flex flex-col gap-1">
       <div className="w-full flex items-center justify-between">
         <h2 className="text-lg">SPECIAL SHOW</h2>
         <div className="flex items-center gap-1">

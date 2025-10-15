@@ -31,7 +31,10 @@ const MusicList = () => {
   ];
   return (
     <div className="flex flex-col gap-4 text-white">
-      <h2 className="">MY QUEUE</h2>
+      <div className="w-full flex items-center justify-between">
+        <h2 className="">MY QUEUE</h2>
+        <button className="text-xs">View Alls</button>
+      </div>
       <div className="flex flex-col gap-4">
         {musics.map((music) => (
           <div
@@ -48,9 +51,7 @@ const MusicList = () => {
               </div>
               <div className="text-sm flex flex-col gap-1">
                 <h3 className="font-medium">{music.title}</h3>
-                <div
-                  className="flex items-center gap-1 text-gray-400 text-xs"
-                >
+                <div className="flex items-center gap-1 text-gray-400 text-xs">
                   <FaClock />
                   <p>{music.duration}</p>
                 </div>
