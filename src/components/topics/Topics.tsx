@@ -24,8 +24,8 @@ const Topics = () => {
               onClick={() => setActiveId(topic.id)}
               className={`topicsBox ${activeId === topic.id ? "active" : ""}`}
             >
-              <Icon className="text-xl" />
-              <h3 className="text-2xl">{topic.name}</h3>
+              <Icon className="text-lg" />
+              <h3 className="text-xl">{topic.name}</h3>
             </div>
           );
         })}
