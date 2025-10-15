@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .topicsBox {
-  @apply p-4 rounded-lg w-40 h-40 flex flex-col items-start justify-between cursor-pointer bg-[#2c1314];
+  @apply p-4 rounded-lg w-50 h-50 flex flex-col items-start justify-between cursor-pointer bg-[#2c1314];
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 

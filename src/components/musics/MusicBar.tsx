@@ -1,7 +1,6 @@
 import { oakley } from "../../utils";
 import { BsList } from "react-icons/bs";
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
 import { FaVolumeDown } from "react-icons/fa";
 
