@@ -6,5 +6,7 @@ import naturerun from "../assets/images/naturerun.jpeg";
 import blue from "../assets/images/blue.jpeg";
 import mor from "../assets/images/mor.jpeg";
 import sahnesen from "../assets/images/sahnesen.png";
+import homeImg from "../assets/images/homeImg.jpeg";
 
 export { nikegreen, oakley, redw, runwoman, naturerun, blue, mor, sahnesen };
+export { homeImg };

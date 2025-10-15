@@ -1,4 +1,4 @@
-import { blue, mor, nikegreen, oakley, runwoman } from "../../utils";
+import { blue, oakley } from "../../utils";
 import { BsList } from "react-icons/bs";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
@@ -11,7 +11,7 @@ const MusicBar = () => {
         <img
           src={blue}
           alt=""
-          className="w-full h-full object-cover brightness-30 "
+          className="w-full h-full object-cover brightness-30"
         />
       </div>
       <div className="w-full h-full flex flex-col justify-between z-100">
