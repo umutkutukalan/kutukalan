@@ -39,7 +39,7 @@ const MusicList = () => {
             className="musicItem flex items-center justify-between"
           >
             <div className="flex items-center gap-2">
-              <div className="w-12 h-12 rounded-lg overflow-hidden border border-white/40">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
                 <img
                   src={music.image}
                   alt=""
