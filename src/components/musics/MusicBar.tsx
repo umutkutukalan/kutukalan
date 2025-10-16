@@ -16,7 +16,7 @@ const MusicBar = () => {
       </div>
       <div className="w-full h-full flex flex-col justify-between z-100">
         <div className="flex flex-col gap-3">
-          <div className="w-1/2 h-50 rounded-lg bg-gray-200 overflow-hidden">
+          <div className="2xl:w-2/3 w-1/2 2xl:h-80 h-50 rounded-lg bg-gray-200 overflow-hidden">
             <img
               src={oakley}
               alt=""
