@@ -1,5 +1,5 @@
-import { technologies } from "../constants";
-import { abstract1, abstract2, mor } from "../utils";
+import { technologies } from "../../constants";
+import { abstract1, abstract2, mor } from "../../utils";
 
 const HomeTables = () => {
   return (
