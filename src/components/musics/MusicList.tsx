@@ -1,65 +1,161 @@
-import { nikegreen, oakley, redw, runwoman } from "../../utils";
-import "./musicList.css";
-import { FaClock } from "react-icons/fa";
+import React from "react";
+import { nikegreen, oakley } from "../../utils";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaPause, FaPlay } from "react-icons/fa";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 const MusicList = () => {
+  const isPlaying = false;
+  const user = {
+    role: "USER", // or "USER"
+  };
   const musics = [
     {
       id: 1,
-      title: "Sehzade : Born from Absence",
-      duration: "3:45",
-      image: nikegreen,
+      name: "Song One",
+      artist: "kutukalan",
     },
     {
       id: 2,
-      title: "Balqis ft Sehzade : Exclusive Talks",
-      duration: "4:20",
-      image: oakley,
+      name: "Song Two",
+      artist: "kutukalan",
     },
     {
       id: 3,
-      title: "Morning Breakfast With Helena",
-      duration: "2:58",
-      image: redw,
+      name: "Song Three",
+      artist: "kutukalan",
     },
     {
       id: 4,
-      title: "The Josephyne Alexandria Show",
-      duration: "5:10",
-      image: runwoman,
+      name: "Song Four",
+      artist: "kutukalan",
+    },
+    {
+      id: 5,
+      name: "Song Four",
+      artist: "kutukalan",
+    },
+    {
+      id: 6,
+      name: "Song Four",
+      artist: "kutukalan",
+    },
+    {
+      id: 7,
+      name: "Song Four",
+      artist: "kutukalan",
+    },
+    {
+      id: 8,
+      name: "Song Four",
+      artist: "kutukalan",
+    },
+    {
+      id: 9,
+      name: "Song Four",
+      artist: "kutukalan",
+    },
+    {
+      id: 10,
+      name: "Song Four",
+      artist: "kutukalan",
+    },
+    {
+      id: 8,
+      name: "Song Four",
+      artist: "kutukalan",
     },
   ];
+
   return (
-    <div className="flex flex-col gap-4 text-white">
-      <div className="w-full flex items-center justify-between">
-        <h2 className="">MUZIKLER</h2>
-        <button className="text-xs cursor-pointer">Tümünü Gör</button>
+    <div className="overflow-hidden">
+      <div className="w-full grid grid-cols-[3fr_2fr] py-1 px-10 text-xs text-gray-300 border-b border-white/10">
+        <div className="flex items-center gap-5 pl-5">
+          <div className="flex items-center">
+            <div className="flex items-center gap-1">
+              <span>#</span>
+              <span>Başlık</span>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`w-full px-5 py-2 grid ${
+            user?.role == "ADMIN"
+              ? "grid-cols-[3fr_2fr_0fr]"
+              : "grid-cols-[2fr_0fr]"
+          } items-center`}
+        >
+          <span className="text-left">Tarih</span>
+          <span className="text-left">Süre</span>
+          {user?.role === "ADMIN" && (
+            <span className="text-left">
+              <BsThreeDotsVertical />
+            </span>
+          )}
+        </div>
       </div>
-      <div className="flex flex-col">
-        {musics.map((music) => (
-          <div
-            key={music.id}
-            className="musicItem flex items-center justify-between hover:bg-white/10 p-2 rounded-lg cursor-pointer"
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg overflow-hidden">
-                <img
-                  src={music.image}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="text-sm flex flex-col gap-1">
-                <h3 className="font-medium">{music.title}</h3>
-                <div className="flex items-center gap-1 text-gray-400 text-xs">
-                  <FaClock />
-                  <p>{music.duration}</p>
+      <div className="px-10 w-full py-5">
+        <ul className="flex flex-col w-full">
+          {musics.map((music, index) => (
+            <li
+              key={music.id}
+              className="w-full h-[70px] rounded-md grid grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group"
+            >
+              <div className="flex items-center gap-5">
+                <div className="flex items-center">
+                  <div className="relative px-6 flex items-center justify-center w-10 h-10">
+                    {isPlaying ? (
+                      <div>a</div>
+                      //   <DotLottieReact
+                      //     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-6 group-hover:opacity-0 z-10"
+                      //     src="https://lottie.host/81713459-6e3e-433e-b2e5-1ef0bc8e5e87/48XmKJpqK7.lottie"
+                      //     loop
+                      //     autoplay
+                      //   />
+                    ) : (
+                      <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 z-10">
+                        {index + 1}
+                      </p>
+                    )}
+                    <div className="absolute flex items-center justify-center w-full h-full opacity-0 group-hover:opacity-100 z-20 text-sm">
+                      {isPlaying ? (
+                        <FaPause className="cursor-pointer" />
+                      ) : (
+                        <FaPlay className="cursor-pointer" />
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-lg overflow-hidden relative">
+                      <img
+                        src={nikegreen}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <h1 className="text-sm">{music.name}</h1>
+                      <p className="text-xs text-gray-500">kutukalan</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <button className="playButton">Play</button>
-          </div>
-        ))}
+              <div
+                className={`w-full px-5 py-2 grid ${
+                  user?.role == "ADMIN"
+                    ? "grid-cols-[3fr_2fr_0fr]"
+                    : "grid-cols-[2fr_0fr]"
+                } items-center`}
+              >
+                <p className="text-xs text-left">17 Ekim, 2025</p>
+                <p className="text-xs text-left">3.22</p>
+                {user && user.role === "ADMIN" && (
+                  <RiDeleteBinLine className="text-xs cursor-pointer text-red-300 hover:text-red-500 transition-all duration-100" />
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import "./index.css";
 import Home from "./pages/Home";
 import Queque from "./components/Queque";
+import Musics from "./pages/Musics";
 function App() {
   return (
     <div className="w-full flex relative">
@@ -19,6 +20,7 @@ function App() {
             }
           />
           <Route path="/projects" element={<Home />} />
+          <Route path="/musics" element={<Musics />} />
         </Routes>
       </div>
       <Queque />

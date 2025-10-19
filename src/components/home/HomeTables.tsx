@@ -17,8 +17,8 @@ const HomeTables = () => {
             <img src={abstract2} alt="" className="w-80 h-80 object-cover brightness-30 -rotate-50" />
           </div>
           <div className="h-full w-full flex flex-col items-center justify-center gap-2 text-center z-10">
-            <h1 className="text-md">Umut Kutukalan | Software Engineer</h1>
-            <h2 className="text-5xl w-100">BLENDING ART, CODE AND PURPOSE</h2>
+            <h1 className="text-md oswald-300">Umut Kutukalan | Software Engineer</h1>
+            <h2 className="text-5xl w-100 oswald-400">BLENDING ART, CODE AND PURPOSE</h2>
           </div>
         </div>
         <div className="w-full h-1/8 z-20 relative">

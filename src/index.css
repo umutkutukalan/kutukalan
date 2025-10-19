@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Tangerine:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Tangerine:wght@400;700&display=swap");
 
 @import "tailwindcss";
 
-*{
+* {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Oswald", sans-serif;
+  /* font-family: "Oswald", sans-serif;
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
-  font-style: normal;
+  font-style: normal; */
   margin: 0;
   padding: 0;
   background-color: black;
@@ -22,6 +22,13 @@ body {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
+  font-style: normal;
+}
+
+.oswald-300 {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -37,3 +44,8 @@ body {
   font-style: normal;
 }
 
+.bg-musicAboutPage {
+  background: linear-gradient(to right, #1a1a1a, #323232, #797979);
+  /* box-shadow: 10px 10px 10px 10px rgba(#797979, #797979, #797979, 0.5); */
+  box-shadow: 0 100px 50px 5px rgba(323232, 323232, 323232, 0.1);
+}
