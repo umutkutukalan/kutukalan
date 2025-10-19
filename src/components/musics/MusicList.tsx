@@ -1,5 +1,5 @@
 import React from "react";
-import { nikegreen, oakley } from "../../utils";
+import { nikegreen } from "../../utils";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -106,13 +106,13 @@ const MusicList = () => {
                   <div className="relative px-6 flex items-center justify-center w-10 h-10">
                     {isPlaying ? (
                       <div>a</div>
+                    ) : (
                       //   <DotLottieReact
                       //     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-6 group-hover:opacity-0 z-10"
                       //     src="https://lottie.host/81713459-6e3e-433e-b2e5-1ef0bc8e5e87/48XmKJpqK7.lottie"
                       //     loop
                       //     autoplay
                       //   />
-                    ) : (
                       <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 z-10">
                         {index + 1}
                       </p>

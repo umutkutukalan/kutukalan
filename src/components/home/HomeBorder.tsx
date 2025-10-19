@@ -1,7 +1,4 @@
 import {
-  adidas,
-  aqua,
-  baharumut,
   gray,
   homework,
   homework2,
@@ -87,9 +84,6 @@ const HomeBorder = () => {
               </div>
             </div>
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-2 items-center">
-              <div className="2xl:w-20 w-15">
-                <img src={adidas} alt="" />
-              </div>
               <div className="2xl:w-40 w-35">
                 <img src={runaley} alt="" className="w-full h-full" />
               </div>
