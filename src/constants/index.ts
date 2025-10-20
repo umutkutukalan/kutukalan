@@ -5,6 +5,7 @@ import { BsBraces } from "react-icons/bs";
 import { BsFileEarmarkTextFill } from "react-icons/bs";
 import { BsEnvelopeFill } from "react-icons/bs";
 
+// import { SiElectron } from 'react-icons/si';
 import { BiLogoReact } from "react-icons/bi";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { DiJava } from "react-icons/di";
@@ -27,12 +28,13 @@ export const contactList = [
 ];
 
 export const technologies = [
-  { id: 3, icon: DiJava },
+  { id: 1, icon: DiJava },
   { id: 2, icon: BiLogoSpringBoot },
-  { id: 4, icon: BiLogoJavascript },
-  { id: 5, icon: BiLogoTypescript },
-  { id: 1, icon: BiLogoReact },
-  { id: 8, icon: RiNextjsFill },
-  { id: 7, icon: DiMysql },
-  { id: 6, icon: DiPostgresql },
+  { id: 3, icon: BiLogoJavascript },
+  { id: 4, icon: BiLogoTypescript },
+  { id: 5, icon: BiLogoReact },
+  // { id: 6, icon: SiElectron },
+  { id: 7, icon: RiNextjsFill },
+  { id: 8, icon: DiMysql },
+  { id: 9, icon: DiPostgresql },
 ];

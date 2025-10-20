@@ -1,4 +1,3 @@
-
 import React from "react";
 import { itstime, oakley } from "../../utils";
 
@@ -9,7 +8,7 @@ const PlaylistDetail = () => {
         className="w-60 h-60 rounded-md bg-gray-500 overflow-hidden relative"
         style={{ boxShadow: "3px 5px 10px 0px rgba(0, 0, 0, 0.4)" }}
       >
-        <img src={itstime} alt="" className="h-full w-full object-cover" />
+        <img src={itstime} alt="" className="h-full w-full object-cover brightness-60" />
       </div>
       <div className="flex flex-col gap-3 mb-2">
         <div className="flex flex-col gap-3">
@@ -22,11 +21,7 @@ const PlaylistDetail = () => {
         <div className="flex items-center gap-1">
           <div className="flex items-center gap-1">
             <div className="w-6 h-6 rounded-full overflow-hidden">
-              <img
-                src={oakley}
-                alt=""
-                className="h-full w-full object-cover"
-              />
+              <img src={oakley} alt="" className="h-full w-full object-cover" />
             </div>
             <p className="text-xs">Umut Kütükalan</p>
           </div>

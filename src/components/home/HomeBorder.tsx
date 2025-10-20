@@ -1,12 +1,4 @@
-import {
-  gray,
-  homework,
-  homework2,
-  nixtio,
-  nixtio2,
-  runaley,
-  sahnesen,
-} from "../../utils";
+import { electronapp, gray, homework2, runaley } from "../../utils";
 import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
 
@@ -37,9 +29,9 @@ const HomeBorder = () => {
             <div className="absolute inset-0 p-4 w-full h-full">
               <div className="w-full h-full flex flex-col items-start justify-between">
                 <div className="flex items-center justify-between w-full relative">
-                  <div className="absolute inset-0"></div>
-                  <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-white/10">
-                    a
+                  <div className="flex items-center gap-2 text-xs">
+                    <BsChevronLeft className="cursor-pointer" />
+                    <BsChevronRight className="cursor-pointer" />
                   </div>
                   <ul className="flex items-center gap-1">
                     {Array.from({ length: 4 }).map((_, i) => (
@@ -55,8 +47,8 @@ const HomeBorder = () => {
               </div>
             </div>
             <div className="absolute -bottom-15 left-1/2 -translate-x-1/2">
-              <div className="2xl:w-80 w-70">
-                <img src={homework2} alt="" className="w-full h-full brightness-80" />
+              <div className="2xl:w-80 w-60">
+                <img src={homework2} alt="" className="w-full h-full" />
               </div>
             </div>
           </div>
@@ -67,9 +59,9 @@ const HomeBorder = () => {
             </div>
             <div className="absolute inset-0 p-4">
               <div className="flex items-center justify-between w-full relative">
-                <div className="absolute inset-0"></div>
-                <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-white/10">
-                  a
+                <div className="flex items-center gap-2 text-xs">
+                  <BsChevronLeft className="cursor-pointer" />
+                  <BsChevronRight className="cursor-pointer" />
                 </div>
                 <ul className="flex items-center gap-1">
                   {Array.from({ length: 4 }).map((_, i) => (
@@ -90,14 +82,14 @@ const HomeBorder = () => {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-full overflow-hidden grid grid-rows-2 gap-2 rounded-lg">
-          <div>
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/30" />
-            <img src={sahnesen} alt="" className="w-full h-full object-cover" />
-          </div>
-          <div>
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/30" />
-            <img src={sahnesen} alt="" className="w-full h-full object-cover" />
+        <div className="relative w-full h-full overflow-hidden rounded-lg">
+          {/* grid grid-rows-2 gap-2 */}
+          <div className="w-full h-full rounded-lg overflow-hidden border border-white/10 relative z-30 group cursor-pointer">
+            <img
+              src={electronapp}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover z-0"
+            />
           </div>
         </div>
       </div>

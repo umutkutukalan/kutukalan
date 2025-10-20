@@ -17,6 +17,7 @@ import runaley from "../assets/images/runaley.png";
 import itstime from "../assets/images/itstime.jpeg";
 import homework from "../assets/images/homework2.png";
 import homework2 from "../assets/images/homework3.png";
+import electronapp from "../assets/images/electronapp.jpeg";
 
 export {
   nikegreen,
@@ -38,5 +39,6 @@ export {
   nixtio2,
   runaley,
   itstime,
+  electronapp,
 };
 export { homework, homework2 };
