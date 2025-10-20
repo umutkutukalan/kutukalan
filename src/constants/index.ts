@@ -6,7 +6,7 @@ import { BsFileEarmarkTextFill } from "react-icons/bs";
 import { BsEnvelopeFill } from "react-icons/bs";
 
 // import { SiElectron } from 'react-icons/si';
-import { BiLogoReact } from "react-icons/bi";
+import { BiLogoReact, BiSolidUser } from "react-icons/bi";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { DiJava } from "react-icons/di";
 import { BiLogoJavascript } from 'react-icons/bi';
@@ -21,6 +21,7 @@ export const navbarList = [
   { id: 3, title: "Projects", link: "/projects", icon: BsDisplayFill },
   { id: 4, title: "Skills", link: "/skills", icon: BsBraces },
   { id: 5, title: "Blogs", link: "/blogs", icon: BsFileEarmarkTextFill },
+  { id: 6, title: "Admin", link: "/admin", icon: BiSolidUser },
 ];
 
 export const contactList = [

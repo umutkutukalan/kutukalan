@@ -4,6 +4,7 @@ import "./index.css";
 import Home from "./pages/Home";
 import Queque from "./components/Queque";
 import Musics from "./pages/Musics";
+import Admin from "./pages/Admin";
 function App() {
   return (
     <div className="w-full flex relative">
@@ -21,6 +22,7 @@ function App() {
           />
           <Route path="/projects" element={<Home />} />
           <Route path="/musics" element={<Musics />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
       <Queque />
