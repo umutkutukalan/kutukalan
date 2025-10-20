@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CreateAbout, GetAbouts, type AboutData } from "../services/About";
+import { CreateAbout, GetAbouts, type AboutData } from "../services/aboutServices";
 
 export const useAbout = () => {
   const [aboutList, setAboutList] = useState<AboutData[]>([]);
