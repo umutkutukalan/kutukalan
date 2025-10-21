@@ -1,71 +1,17 @@
-import React from "react";
-import { nikegreen } from "../../utils";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { useMusicContext } from "../../hooks/useMusicContext";
 
 const MusicList = () => {
+  const { musics } = useMusicContext();
+
+  console.log(musics);
+
   const isPlaying = false;
   const user = {
     role: "USER", // or "USER"
   };
-  const musics = [
-    {
-      id: 1,
-      name: "Song One",
-      artist: "kutukalan",
-    },
-    {
-      id: 2,
-      name: "Song Two",
-      artist: "kutukalan",
-    },
-    {
-      id: 3,
-      name: "Song Three",
-      artist: "kutukalan",
-    },
-    {
-      id: 4,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-    {
-      id: 5,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-    {
-      id: 6,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-    {
-      id: 7,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-    {
-      id: 8,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-    {
-      id: 9,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-    {
-      id: 10,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-    {
-      id: 8,
-      name: "Song Four",
-      artist: "kutukalan",
-    },
-  ];
 
   return (
     <div className="overflow-hidden">
@@ -128,13 +74,13 @@ const MusicList = () => {
                   <div className="flex items-center gap-2">
                     <div className="w-10 h-10 rounded-lg overflow-hidden relative">
                       <img
-                        src={nikegreen}
+                        src={music.musicImg}
                         alt=""
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex flex-col">
-                      <h1 className="text-sm">{music.name}</h1>
+                      <h1 className="text-sm">{music.title}</h1>
                       <p className="text-xs text-gray-500">kutukalan</p>
                     </div>
                   </div>
@@ -147,7 +93,7 @@ const MusicList = () => {
                     : "grid-cols-[2fr_0fr]"
                 } items-center`}
               >
-                <p className="text-xs text-left">17 Ekim, 2025</p>
+                <p className="text-xs text-left">{music.createdAt}</p>
                 <p className="text-xs text-left">3.22</p>
                 {user && user.role === "ADMIN" && (
                   <RiDeleteBinLine className="text-xs cursor-pointer text-red-300 hover:text-red-500 transition-all duration-100" />
