@@ -1,5 +1,9 @@
-import { useState } from "react";
-import { CreateAbout, GetAbouts, type AboutData } from "../services/aboutServices";
+import { useCallback, useState } from "react";
+import {
+  CreateAbout,
+  GetAbouts,
+  type AboutData,
+} from "../services/aboutServices";
 
 export const useAbout = () => {
   const [aboutList, setAboutList] = useState<AboutData[]>([]);
@@ -15,14 +19,15 @@ export const useAbout = () => {
   };
 
   // hakkımda içeriğini getirme
-  const getAbouts = async () => {
+  const getAbouts = useCallback(async () => {
     try {
       const response = await GetAbouts();
       setAboutList(response);
+      return response;
     } catch (error) {
       console.error("Error fetching about entries:", error);
     }
-  };
+  }, []);
 
   return {
     createAbout,

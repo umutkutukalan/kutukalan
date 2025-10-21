@@ -1,22 +1,19 @@
 import { electronapp, gray, runaley } from "../../utils";
 import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
-import { useAbout } from "../../hooks/useAbout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useAboutContext } from "../../hooks/useAboutContext";
 
 const HomeBorder = () => {
-  const { getAbouts, aboutList } = useAbout();
-  useEffect(() => {
-    getAbouts();
-  }, []);
+  const { abouts } = useAboutContext();
 
-  console.log(aboutList);
+  console.log(abouts);
 
   // Carousel state for about cards
   const [currentIdx, setCurrentIdx] = useState(0);
-  const length = aboutList.length;
+  const length = abouts.length;
   const currentAbout =
-    length > 0 ? aboutList[((currentIdx % length) + length) % length] : null;
+    length > 0 ? abouts[((currentIdx % length) + length) % length] : null;
 
   const handlePrev = () => {
     if (!length) return;

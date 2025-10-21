@@ -5,15 +5,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { MusicProvider } from "./context/MusicContext.tsx";
 import { AudioPlayerProvider } from "./context/AudioPlayerContext.tsx";
+import { AboutProvider } from "./context/AboutContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <MusicProvider>
-    <AudioPlayerProvider>
-      <StrictMode>
-        <Router>
-          <App />
-        </Router>
-      </StrictMode>
-    </AudioPlayerProvider>
-  </MusicProvider>
+  <AboutProvider>
+    <MusicProvider>
+      <AudioPlayerProvider>
+        <StrictMode>
+          <Router>
+            <App />
+          </Router>
+        </StrictMode>
+      </AudioPlayerProvider>
+    </MusicProvider>
+  </AboutProvider>
 );
