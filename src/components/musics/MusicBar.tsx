@@ -1,10 +1,68 @@
-import { blue, oakley } from "../../utils";
-import { BsList } from "react-icons/bs";
+import { blue } from "../../utils";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
-import { FaPlay } from "react-icons/fa";
-import { FaVolumeDown } from "react-icons/fa";
+import { FaPause, FaPlay } from "react-icons/fa";
+import { useAudioPlayer } from "../../context/AudioPlayerContext";
+import { useState, useEffect, type MouseEvent } from "react";
+import { PiRepeatOnce } from "react-icons/pi";
+import { IoIosShuffle } from "react-icons/io";
+import {
+  IoVolumeHighOutline,
+  IoVolumeMediumOutline,
+  IoVolumeOffOutline,
+} from "react-icons/io5";
+import { useMusicContext } from "../../hooks/useMusicContext";
 
 const MusicBar = () => {
+  const {
+    currentTrack,
+    progress,
+    playTrack,
+    pause,
+    isPlaying,
+    handleSeek,
+    isRepeat,
+    isShuffle,
+    handleRepeat,
+    handleShuffle,
+    setVolume: setAudioVolume,
+  } = useAudioPlayer();
+
+  const { musics } = useMusicContext();
+
+  const randomIndex = Math.floor(Math.random() * musics.length);
+
+  const displayTrack = currentTrack || musics[randomIndex];
+
+  // Placeholder için sahte progress (müzik çalmıyorsa)
+  const [placeholderProgress, setPlaceholderProgress] = useState({
+    current: 0,
+    duration: 0,
+  });
+
+  // Placeholder müziğin süresini al
+  useEffect(() => {
+    if (!currentTrack && displayTrack?.musicUrl) {
+      const audio = new Audio(displayTrack.musicUrl);
+      audio.addEventListener("loadedmetadata", () => {
+        setPlaceholderProgress({
+          current: 0,
+          duration: audio.duration || 0,
+        });
+      });
+      return () => {
+        audio.pause();
+        audio.src = "";
+      };
+    }
+  }, [currentTrack, displayTrack]);
+
+  // Gösterilecek progress (çalıyorsa gerçek, değilse placeholder)
+  const displayProgress = currentTrack ? progress : placeholderProgress;
+
+  const [volume, setVolume] = useState(1); // Default volume set to 1 (max volume)
+  const [showVolume, setShowVolume] = useState(false);
+  const [lastVolume, setLastVolume] = useState(1);
+
   return (
     <div className="w-full h-full bg-[#4a6d88] rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
       <div className="absolute inset-0">
@@ -18,34 +76,155 @@ const MusicBar = () => {
         <div className="flex flex-col gap-3">
           <div className="2xl:w-2/3 w-1/2 2xl:h-80 h-50 rounded-lg bg-gray-200 overflow-hidden">
             <img
-              src={oakley}
+              src={displayTrack?.musicImg}
               alt=""
               className="w-full h-full object-cover brightness-75"
             />
           </div>
           <div className="flex flex-col">
-            <h2 className="text-xl">Born from Absence</h2>
-            <p className="text-xs text-white/40">Sehzade</p>
+            <h2 className="text-xl">{displayTrack?.title}</h2>
+            <p className="text-xs text-white/40">kutukalan</p>
           </div>
         </div>
-        <div className="flex flex-col gap-1">
-          <div className="flex flex-col gap-1 mt-2">
-            <div className="h-1 w-full bg-white"></div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-white/40">0:00</span>
-              <span className="text-xs text-white/40">3:45</span>
+        <div className="flex flex-col gap-5">
+          {/* Progress bar with current time and duration */}
+          <div className="w-full flex items-center gap-2">
+            <div className="text-xs select-none">
+              {Math.floor(displayProgress.current / 60)}.
+              {(Math.floor(displayProgress.current) % 60)
+                .toString()
+                .padStart(2, "0")}
+            </div>
+            <div
+              className="flex-1 h-1 bg-gray-600 rounded cursor-pointer"
+              onClick={(e: MouseEvent<HTMLDivElement>) => {
+                if (!currentTrack) return; // Sadece müzik çalıyorsa seek yapılabilir
+                if (!displayProgress.duration) return;
+                const rect = e.currentTarget.getBoundingClientRect();
+                const clickX: number = e.clientX - rect.left;
+                const percent: number = clickX / rect.width;
+                const newTime: number = percent * displayProgress.duration;
+                handleSeek(newTime);
+              }}
+            >
+              <div
+                className="h-1 bg-white rounded"
+                style={{
+                  width:
+                    displayProgress.duration > 0
+                      ? `${
+                          (displayProgress.current / displayProgress.duration) *
+                          100
+                        }%`
+                      : "0%",
+                  transition: "width 0.2s linear",
+                }}
+              ></div>
+            </div>
+            <div className="text-xs select-none">
+              {Math.floor(displayProgress.duration / 60)}.
+              {(Math.floor(displayProgress.duration) % 60)
+                .toString()
+                .padStart(2, "0")}
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <BsList className="text-xl" />
+            <div className="flex items-center gap-2">
+              <button>
+                <PiRepeatOnce
+                  title="Tekrarla"
+                  className={`cursor-pointer text-xl ${
+                    isRepeat ? "text-blue-400" : ""
+                  }`}
+                  onClick={() => handleRepeat()}
+                />
+              </button>
+              <button>
+                <IoIosShuffle
+                  title="Karıştır"
+                  className={`cursor-pointer text-xl ${
+                    isShuffle ? "text-green-400" : ""
+                  }`}
+                  onClick={() => handleShuffle()}
+                />
+              </button>
+            </div>
             <div className="flex items-center gap-2">
               <BiSolidLeftArrow className="text-2xl" />
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white text-black">
-                <FaPlay className="text-xl" />
-              </div>
+              <button
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white text-black cursor-pointer"
+                onClick={() => {
+                  if (!isPlaying) {
+                    if (displayTrack) {
+                      playTrack(displayTrack);
+                    }
+                  } else {
+                    pause();
+                  }
+                }}
+              >
+                {!isPlaying ? (
+                  <FaPlay className="text-xl" title="Başlat" />
+                ) : (
+                  <FaPause className="text-xl" title="Durdur" />
+                )}
+              </button>
               <BiSolidRightArrow className="text-2xl" />
             </div>
-            <FaVolumeDown className="text-xl" />
+            <button
+              className="relative flex items-center cursor-pointer h-full"
+              onMouseEnter={() => setShowVolume(true)}
+              onMouseLeave={() => setShowVolume(false)}
+              style={{ minHeight: "30px" }}
+            >
+              {volume < 0.01 ? (
+                <IoVolumeOffOutline
+                  title="Ses Seviyesi"
+                  onClick={() => {
+                    setVolume(lastVolume);
+                    setAudioVolume(lastVolume);
+                  }}
+                />
+              ) : volume < 0.5 ? (
+                <IoVolumeMediumOutline
+                  title="Ses Seviyesi"
+                  onClick={() => {
+                    setLastVolume(volume);
+                    setVolume(0);
+                    setAudioVolume(0);
+                  }}
+                />
+              ) : (
+                <IoVolumeHighOutline
+                  title="Ses Seviyesi"
+                  onClick={() => {
+                    setLastVolume(volume);
+                    setVolume(0);
+                    setAudioVolume(0);
+                  }}
+                />
+              )}
+              {showVolume && (
+                <div className="absolute bottom-9 left-1/2 -translate-x-1/2 w-10 h-25 rounded-lg flex items-center justify-center z-50 bg-black">
+                  <input
+                    type="range"
+                    min={0}
+                    max={1}
+                    step={0.01}
+                    value={volume}
+                    onChange={(e) => {
+                      setVolume(Number(e.target.value));
+                      setAudioVolume(Number(e.target.value));
+                      if (Number(e.target.value) > 0)
+                        setLastVolume(Number(e.target.value));
+                    }}
+                    className="w-16 h-1 bg-gray-600 rounded cursor-pointer"
+                    style={{ transform: "rotate(-90deg)" }}
+                  />
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-t-black border-l-transparent border-r-transparent"></div>
+                </div>
+              )}
+            </button>
           </div>
         </div>
       </div>
