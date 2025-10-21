@@ -12,7 +12,7 @@ interface Music {
   id: string | number;
   title?: string;
   musicUrl?: string;
-  musicImg?: Blob;
+  musicImg?: string; // Base64 string veya URL
   createdAt?: string;
   [key: string]: unknown;
 }

@@ -2,10 +2,11 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useMusicContext } from "../../hooks/useMusicContext";
+import { useFormatDate } from "../../hooks/useFormatDate";
 
 const MusicList = () => {
   const { musics } = useMusicContext();
-
+  const { formatDate } = useFormatDate();
   console.log(musics);
 
   const isPlaying = false;
@@ -93,7 +94,9 @@ const MusicList = () => {
                     : "grid-cols-[2fr_0fr]"
                 } items-center`}
               >
-                <p className="text-xs text-left">{music.createdAt}</p>
+                <p className="text-xs text-left">
+                  {formatDate(music.createdAt as string)}
+                </p>
                 <p className="text-xs text-left">3.22</p>
                 {user && user.role === "ADMIN" && (
                   <RiDeleteBinLine className="text-xs cursor-pointer text-red-300 hover:text-red-500 transition-all duration-100" />
