@@ -1,6 +1,26 @@
 import axios from "axios";
 import { API_URL } from "./config";
 
+export interface MusicData {
+  file: File;
+  title: string;
+  musicImg?: string; // Base64 string veya URL
+}
+
+export const createMusicService = async (musicData: FormData) => {
+  try {
+    const response = await axios.post(`${API_URL}/musics/upload`, musicData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true, // HttpOnly cookie gönder
+    });
+    return response;
+  } catch (error) {
+    console.error("Müzik yüklenirken hata - services:", error);
+    throw error; // Rethrow the error for further handling if needed
+  }
+};
 
 export const getAllMusicsService = async (page = 0, size = 5) => {
   try {

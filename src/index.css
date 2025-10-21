@@ -45,7 +45,7 @@ body {
 }
 
 .bg-musicAboutPage {
-  background: linear-gradient(to right, #1a1a1a, #323232, #797979);
+  background: linear-gradient(to right, #000000, #323232, #797979);
   /* box-shadow: 10px 10px 10px 10px rgba(#797979, #797979, #797979, 0.5); */
-  box-shadow: 0 100px 50px 5px rgba(323232, 323232, 323232, 0.1);
+  box-shadow: 120px 50px 100px 5px rgba(323232, 323232, 323232, 0.1);
 }

@@ -1,5 +1,5 @@
 import { FaHome } from "react-icons/fa";
-import { BsMusicNote } from "react-icons/bs";
+import { BsMusicNote, BsMusicNoteList } from "react-icons/bs";
 import { BsDisplayFill } from "react-icons/bs";
 import { BsBraces } from "react-icons/bs";
 import { BsFileEarmarkTextFill } from "react-icons/bs";
@@ -22,6 +22,7 @@ export const navbarList = [
   { id: 4, title: "Skills", link: "/skills", icon: BsBraces },
   { id: 5, title: "Blogs", link: "/blogs", icon: BsFileEarmarkTextFill },
   { id: 6, title: "Admin", link: "/admin", icon: BiSolidUser },
+  { id: 7, title: "Create Music", link: "/create-music", icon: BsMusicNoteList },
 ];
 
 export const contactList = [
