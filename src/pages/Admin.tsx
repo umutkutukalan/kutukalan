@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAbout } from "../hooks/useAbout";
+import ImageReader from "../utils/ImageReader";
 
 export interface FormDataType {
   paragraph: string;
@@ -31,19 +32,10 @@ const Admin = () => {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setFormData((prev) => ({
-          ...prev,
-          aboutImage: base64String,
-        }));
-        setImagePreview(base64String);
-      };
-      reader.readAsDataURL(file);
-    }
+    ImageReader.handleChange(e, (base64) => {
+      setFormData((prev) => ({ ...prev, aboutImage: base64 }));
+      setImagePreview(base64);
+    });
   };
 
   return (

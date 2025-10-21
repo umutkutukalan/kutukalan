@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMusics } from "../hooks/useMusics";
+import ImageReader from "../utils/ImageReader";
 
 const CreateMusic = () => {
   const { createMusic, loading } = useMusics();
@@ -26,20 +27,11 @@ const CreateMusic = () => {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setFormData((prev) => ({
-          ...prev,
-          musicImg: base64String,
-        }));
-        setImagePreview(base64String);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+    ImageReader.handleChange(e, (base64) => {
+      setFormData((prev) => ({ ...prev, musicImg: base64 }));
+      setImagePreview(base64);
+    });
+  }
 
   const handleSubmit = async () => {
     if (!musicFile || !formData.title || !formData.musicImg) {

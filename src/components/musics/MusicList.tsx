@@ -2,7 +2,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useMusicContext } from "../../hooks/useMusicContext";
-import { useFormatDate } from "../../hooks/useFormatDate";
+import { useFormatDate } from "../../utils/FormatDate";
 
 const MusicList = () => {
   const { musics } = useMusicContext();

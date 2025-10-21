@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useFormatDate } from "../utils/FormatDate";
+import { useFormatDate } from "./FormatDate";
 
 
 interface RelativeTime {
