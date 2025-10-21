@@ -94,8 +94,10 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
   }, [currentPage, hasMore, isLoadingMore, fetchMusics]);
 
   useEffect(() => {
+    // İlk yükleme için fetchMusics'i sadece bir kere çağır
     fetchMusics(0, false);
-  }, [fetchMusics]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Boş dependency array - sadece mount'ta çalışır
 
   return (
     <MusicContext.Provider

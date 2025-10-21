@@ -1,4 +1,4 @@
-export const useFormatDate = () => {
+export const FormatDate = () => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const day = date.toLocaleDateString("tr-TR", { day: "2-digit" });

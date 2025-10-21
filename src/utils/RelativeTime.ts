@@ -1,13 +1,13 @@
 import { useMemo } from "react";
-import { useFormatDate } from "./FormatDate";
+import { FormatDate } from "./FormatDate";
 
 
 interface RelativeTime {
   formatRelativeTime: (dateString: string) => string;
 }
 
-export const useRelativeTime = (): RelativeTime => {
-  const { formatDate } = useFormatDate();
+export const RelativeTime = (): RelativeTime => {
+  const { formatDate } = FormatDate();
   const getRelativeTime = useMemo(() => {
     return (dateString: string) => {
       if (!dateString) return "Bilinmiyor";
