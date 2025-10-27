@@ -11,7 +11,7 @@ import { useState } from "react";
 import CreateUser from "./pages/CreateUser";
 
 function App() {
-  const [user, setUser] = useState("ADMIN");
+  const [user] = useState("ADMIN");
   const location = useLocation();
 
   // If current path starts with the secret prefix, render only CreateUser (full page)

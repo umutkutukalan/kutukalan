@@ -3,10 +3,10 @@ import { adminNavbarList, contactList, navbarList } from "../constants";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [user, setUser] = useState("ADMIN");
+  const [user] = useState("ADMIN");
   const navigate = useNavigate();
   return (
-    <nav className="w-15 h-screen text-white fixed top-0 left-0 py-5">
+    <nav className="w-15 h-screen text-white fixed top-0 left-0 py-5 z-10">
       <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col items-center justify-between py-2 px-5">
         <div className="flex flex-col items-center gap-1">
           <div className="flex flex-col items-center gap-1">

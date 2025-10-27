@@ -19,7 +19,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
-  const [profileImg, setProfileImg] = useState("");
+  const [profileImg] = useState("");
 
   const userData: UserData = {
     firstName: firsName,

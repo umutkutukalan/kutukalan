@@ -12,7 +12,9 @@ export interface UserData {
 
 export const createUserService = async (userData: UserData) => {
   try {
-    const response = await axios.post(`${API_URL}/users`, userData);
+    const response = await axios.post(`${API_URL}/users/register`, userData, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     console.log("Error creating user:", error);
