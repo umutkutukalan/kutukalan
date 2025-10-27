@@ -1,6 +1,9 @@
 import { BiSolidLock } from "react-icons/bi";
 import { HiMail } from "react-icons/hi";
 import { BiSolidUser } from "react-icons/bi";
+import { useState } from "react";
+import { useUsers } from "../../hooks/useUsers";
+import type { UserData } from "../../services/userServices";
 
 interface RegisterFormProps {
   setLogin: (value: boolean) => void;
@@ -8,9 +11,43 @@ interface RegisterFormProps {
 }
 
 const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
+  const { createUser } = useUsers();
+
+  const [firsName, setFirsName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [profileImg, setProfileImg] = useState("");
+
+  const userData: UserData = {
+    firstName: firsName,
+    lastName: lastName,
+    username: username,
+    email: email,
+    password: password,
+    profileImg: profileImg,
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (
+      firsName &&
+      lastName &&
+      username &&
+      email &&
+      password &&
+      password === passwordRepeat
+    ) {
+      createUser(userData);
+    }
+  };
+
   return (
     <form
       action=""
+      onSubmit={handleSubmit}
       className="flex flex-col gap-2 text-gray-800 w-100 bg-gradient-to-t from-gray-200 to-gray-400 p-10 rounded-4xl relative"
       style={{
         boxShadow: "2px 2px 10px 0px rgba(0,0,0,0.1)",
@@ -46,6 +83,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
               type="text"
               placeholder="İsim"
               className="w-full p-2 rounded-lg outline-none bg-[#eff3f6]"
+              onChange={(e) => setFirsName(e.target.value)}
             />
           </div>
           <div className="w-full flex-1 relative">
@@ -53,6 +91,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
               type="text"
               placeholder="Soyisim"
               className="w-full p-2 rounded-lg outline-none bg-[#eff3f6]"
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
         </div>
@@ -65,6 +104,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
             type="text"
             placeholder="Username"
             className="w-full p-3 pl-10 rounded-lg outline-none bg-[#eff3f6]"
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="w-full relative">
@@ -76,6 +116,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
             type="email"
             placeholder="Email"
             className="w-full p-3 pl-10 rounded-lg outline-none bg-[#eff3f6]"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="w-full flex flex-col items-end gap-2">
@@ -88,6 +129,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
               type="password"
               placeholder="Password"
               className="w-full p-3 pl-10 rounded-lg outline-none bg-[#eff3f6]"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="w-full relative">
@@ -99,6 +141,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
               type="password"
               placeholder="Password Repeat"
               className="w-full p-3 pl-10 rounded-lg outline-none bg-[#eff3f6]"
+              onChange={(e) => setPasswordRepeat(e.target.value)}
             />
           </div>
         </div>
@@ -106,7 +149,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
           type="submit"
           className="w-full bg-[#181922]  p-2 rounded-lg hover:bg-blue-700 transition-colors text-white"
         >
-          Create User
+          Kayıt Oluştur
         </button>
       </div>
     </form>
