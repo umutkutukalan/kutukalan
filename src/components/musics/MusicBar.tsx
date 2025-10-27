@@ -1,4 +1,3 @@
-import { blue } from "../../utils";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
@@ -67,14 +66,14 @@ const MusicBar = () => {
     <div className="w-full h-full bg-[#4a6d88] rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
       <div className="absolute inset-0">
         <img
-          src={blue}
+          src={displayTrack?.musicImg}
           alt=""
-          className="w-full h-full object-cover brightness-30"
+          className="w-full h-full object-cover brightness-20"
         />
       </div>
       <div className="w-full h-full flex flex-col justify-between z-100">
         <div className="flex flex-col gap-3">
-          <div className="2xl:w-2/3 w-1/2 2xl:h-80 h-50 rounded-lg bg-gray-200 overflow-hidden">
+          <div className="2xl:w-2/3 w-40 2xl:h-80 h-40 rounded-lg bg-gray-200 overflow-hidden">
             <img
               src={displayTrack?.musicImg}
               alt=""

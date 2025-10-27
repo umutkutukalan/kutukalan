@@ -1,30 +1,36 @@
 import { discovery, iphonechip, sahnesen } from "../../utils";
+import HomeVideosCard from "../ui/HomeVideosCard";
 
 const HomeVideos = () => {
+  const projects = [
+    {
+      id: 1,
+      image: sahnesen,
+      title: "Sahnesen",
+    },
+    {
+      id: 2,
+      image: iphonechip,
+      title: "iPhone Chip",
+    },
+    {
+      id: 3,
+      image: discovery,
+      title: "Discovery",
+    },
+  ];
+
   return (
     <div className="w-full h-1/5 overflow-hidden rounded-lg">
       <ul className="w-full h-full grid grid-cols-3 gap-2">
-        <li className="w-full h-full rounded-lg overflow-hidden border border-white/10 relative group cursor-pointer">
-          <div className="absolute inset-0 group-hover:bg-black/60 transition-all" />
-          <div className="absolute top-0 left-0 p-4 hidden group-hover:flex transition-all">
-            <h1 className="text-2xl">Sahnesen</h1>
-          </div>
-          <img src={sahnesen} alt="" className="w-full h-full object-cover" />
-        </li>
-        <li className="w-full h-full rounded-lg overflow-hidden border border-white/10 relative group cursor-pointer">
-          <div className="absolute inset-0 group-hover:bg-black/60 transition-all" />
-          <div className="absolute top-0 left-0 p-4 hidden group-hover:flex transition-all">
-            <h1 className="text-2xl">iPhone 15 Clone Website</h1>
-          </div>
-          <img src={iphonechip} alt="" className="w-full h-full object-cover" />
-        </li>
-        <li className="w-full h-full rounded-lg overflow-hidden border border-white/10 relative group cursor-pointer">
-          <div className="absolute inset-0 group-hover:bg-black/60 transition-all" />
-          <div className="absolute top-0 left-0 p-4 hidden group-hover:flex transition-all">
-            <h1 className="text-2xl">Discovery</h1>
-          </div>
-          <img src={discovery} alt="" className="w-full h-full object-cover" />
-        </li>
+        {projects.map((project) => (
+          <HomeVideosCard
+            key={project.title}
+            id={project.id}
+            cardImage={project.image}
+            cardTitle={project.title}
+          />
+        ))}
       </ul>
     </div>
   );

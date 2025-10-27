@@ -9,20 +9,38 @@ import { BsEnvelopeFill } from "react-icons/bs";
 import { BiLogoReact, BiSolidUser } from "react-icons/bi";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { DiJava } from "react-icons/di";
-import { BiLogoJavascript } from 'react-icons/bi';
-import { BiLogoTypescript } from 'react-icons/bi';
+import { BiLogoJavascript } from "react-icons/bi";
+import { BiLogoTypescript } from "react-icons/bi";
 import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
-import { RiNextjsFill } from 'react-icons/ri';
+import { RiNextjsFill } from "react-icons/ri";
 
 export const navbarList = [
   { id: 1, title: "Home", link: "/", icon: FaHome },
   { id: 2, title: "Musics", link: "/musics", icon: BsMusicNote },
-  { id: 3, title: "Projects", link: "/projects", icon: BsDisplayFill },
+  {
+    id: 3,
+    title: "Projects",
+    link: "/projects",
+    icon: BsDisplayFill,
+  },
   { id: 4, title: "Skills", link: "/skills", icon: BsBraces },
-  { id: 5, title: "Blogs", link: "/blogs", icon: BsFileEarmarkTextFill },
+  {
+    id: 5,
+    title: "Blogs",
+    link: "/blogs",
+    icon: BsFileEarmarkTextFill,
+  },
+];
+
+export const adminNavbarList = [
   { id: 6, title: "Admin", link: "/admin", icon: BiSolidUser },
-  { id: 7, title: "Create Music", link: "/create-music", icon: BsMusicNoteList },
+  {
+    id: 7,
+    title: "Create Music",
+    link: "/create-music",
+    icon: BsMusicNoteList,
+  },
 ];
 
 export const contactList = [
