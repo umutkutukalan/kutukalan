@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { adminNavbarList, contactList, navbarList } from "../constants";
-import { useState } from "react";
+import { useUser } from "../hooks/useUserContext";
 
 const Navbar = () => {
-  const [user] = useState("ADMIN");
+  const { user } = useUser();
+  console.log("Navbar user:", user);
   const navigate = useNavigate();
   return (
     <nav className="w-15 h-screen text-white fixed top-0 left-0 py-5 z-10">
@@ -24,7 +25,7 @@ const Navbar = () => {
               );
             })}
           </div>
-          {user === "ADMIN" && (
+          {user?.role === "ADMIN" && (
             <div className="flex flex-col items-center gap-1">
               {adminNavbarList.map((item) => {
                 const Icon = item.icon;

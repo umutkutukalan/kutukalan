@@ -1,0 +1,22 @@
+import { useNavigate } from "react-router-dom";
+import {
+  loginService,
+  type LoginUserData,
+} from "../../services/auth/loginService";
+
+export const useLogin = () => {
+  const navigate = useNavigate();
+  const login = async (userData: LoginUserData) => {
+    try {
+      const response = await loginService(userData);
+      console.log("Giriş başarılı:", response);
+      navigate("/") // Giriş başarılıysa ana sayfaya yönlendir;
+      return response; // return the login response so callers can use it
+    } catch (error) {
+      console.error("Giriş hatası:", error);
+      throw error;
+    }
+  };
+
+  return { login };
+};

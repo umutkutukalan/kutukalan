@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "./config";
 
-export interface UserData {
+export interface RegisterUserData {
   firstName: string;
   lastName: string;
   username: string;
@@ -10,7 +10,7 @@ export interface UserData {
   profileImg: string;
 }
 
-export const createUserService = async (userData: UserData) => {
+export const createUserService = async (userData: RegisterUserData) => {
   try {
     const response = await axios.post(`${API_URL}/users/register`, userData, {
       withCredentials: true,

@@ -1,5 +1,8 @@
-import { BiSolidLock } from "react-icons/bi";
-import { HiMail } from "react-icons/hi";
+import { BiSolidLock, BiSolidUser } from "react-icons/bi";
+import { useLogin } from "../../hooks/auth/useLogin";
+import { useState } from "react";
+import type { LoginUserData } from "../../services/auth/loginService";
+import { useUser } from "../../hooks/useUserContext";
 
 interface LoginFormProps {
   setLogin: (value: boolean) => void;
@@ -12,9 +15,36 @@ const LoginForm = ({
   setRegister,
   setForgotPassword,
 }: LoginFormProps) => {
+  const { login } = useLogin();
+  const { setUser } = useUser();
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const userData: LoginUserData = {
+    username: username,
+    password: password,
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (username === "" || password === "") return;
+
+    try {
+      const res = await login(userData);
+      // loginService may return an object with user/token etc.
+      // try to extract a user object if present, otherwise store the whole response
+      const loggedUser = (res && (res.user ?? res)) || null;
+      if (loggedUser) setUser(loggedUser);
+    } catch (err) {
+      console.error("Login failed (LoginForm):", err);
+      // optionally show UI error
+    }
+  };
+
   return (
     <form
       action=""
+      onSubmit={handleSubmit}
       className="flex flex-col gap-2 text-gray-800 w-100 bg-gradient-to-t from-gray-200 to-gray-400 p-10 rounded-4xl relative"
       style={{
         boxShadow: "2px 2px 10px 0px rgba(0,0,0,0.1)",
@@ -45,14 +75,15 @@ const LoginForm = ({
           </div>
         </div>
         <div className="w-full relative">
-          <HiMail
+          <BiSolidUser
             className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
             size={20}
           />
           <input
-            type="email"
-            placeholder="Email"
+            type="text"
+            placeholder="Username"
             className="w-full p-3 pl-10 rounded-lg outline-none bg-[#eff3f6]"
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="w-full flex flex-col items-end gap-2">
@@ -65,6 +96,7 @@ const LoginForm = ({
               type="password"
               placeholder="Password"
               className="w-full p-3 pl-10 rounded-lg outline-none bg-[#eff3f6]"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button

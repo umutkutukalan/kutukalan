@@ -3,7 +3,7 @@ import { HiMail } from "react-icons/hi";
 import { BiSolidUser } from "react-icons/bi";
 import { useState } from "react";
 import { useUsers } from "../../hooks/useUsers";
-import type { UserData } from "../../services/userServices";
+import type { RegisterUserData } from "../../services/userServices";
 
 interface RegisterFormProps {
   setLogin: (value: boolean) => void;
@@ -21,7 +21,7 @@ const RegisterForm = ({ setLogin, setRegister }: RegisterFormProps) => {
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [profileImg] = useState("");
 
-  const userData: UserData = {
+  const userData: RegisterUserData = {
     firstName: firsName,
     lastName: lastName,
     username: username,

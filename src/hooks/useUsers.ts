@@ -1,7 +1,10 @@
-import { createUserService, type UserData } from "../services/userServices";
+import {
+  createUserService,
+  type RegisterUserData,
+} from "../services/userServices";
 
 export const useUsers = () => {
-  const createUser = async (userData: UserData) => {
+  const createUser = async (userData: RegisterUserData) => {
     try {
       const response = await createUserService(userData);
       console.log("User created successfully:", response);
