@@ -9,6 +9,7 @@ import CreateMusic from "./pages/CreateMusic";
 import ProjectDetail from "./components/yzlm-project/ProjectDetail";
 import { useState } from "react";
 import CreateUser from "./pages/CreateUser";
+import CreateContent from "./pages/CreateContent";
 
 function App() {
   const [user] = useState("ADMIN");
@@ -41,6 +42,7 @@ function App() {
               <>
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/create-music" element={<CreateMusic />} />
+                <Route path="/create-content" element={<CreateContent />} />
               </>
             )}
           </Routes>

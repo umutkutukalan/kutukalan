@@ -14,6 +14,7 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
+import { MdCreate } from "react-icons/md";
 
 export const navbarList = [
   { id: 1, title: "Home", link: "/", icon: FaHome },
@@ -40,6 +41,12 @@ export const adminNavbarList = [
     title: "Create Music",
     link: "/create-music",
     icon: BsMusicNoteList,
+  },
+  {
+    id: 8,
+    title: "Create Content",
+    link: "/create-content",
+    icon: MdCreate,
   },
 ];
 
