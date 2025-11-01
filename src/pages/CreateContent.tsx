@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { iphonechip } from "../utils";
 import { RiDragMoveLine } from "react-icons/ri";
+import { BsPlus } from "react-icons/bs";
 
 interface ContentItem {
   type: "paragraph" | "image";
@@ -103,7 +104,9 @@ const CreateContent = () => {
                           ? "Bu paragraf içerik açıklaması olarak gösterilecektir..."
                           : "Paragraf ekle..."
                       }
-                      className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-base leading-relaxed pr-8"
+                      className={`w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-base leading-relaxed ${
+                        item.content === "" ? "pl-10" : "pl-0"
+                      } pr-8`}
                       rows={1}
                       onInput={(e) => {
                         const target = e.target as HTMLTextAreaElement;
@@ -326,6 +329,11 @@ const CreateContent = () => {
                         className="text-gray-400 cursor-move"
                       />
                     </button>
+                    {item.content === "" && (
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white text-black flex items-center justify-center cursor-pointer">
+                        <BsPlus size={24} />
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="w-full h-60 bg-gray-300 flex items-center justify-center">
@@ -334,10 +342,6 @@ const CreateContent = () => {
                 )}
               </div>
             ))}
-          </div>
-
-          <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center">
-            +
           </div>
         </form>
       </div>
