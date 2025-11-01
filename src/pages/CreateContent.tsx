@@ -41,7 +41,7 @@ const CreateContent = () => {
             <textarea
               ref={titleRef}
               value={title}
-              placeholder="Title"
+              placeholder="Başlık ekle..."
               className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-4xl font-medium leading-tight"
               rows={1}
               onInput={(e) => {
@@ -98,7 +98,11 @@ const CreateContent = () => {
                     <textarea
                       ref={(el) => (textRefs.current[idx] = el)}
                       value={item.content}
-                      placeholder="Paragraph"
+                      placeholder={
+                        idx === 0
+                          ? "Bu paragraf içerik açıklaması olarak gösterilecektir..."
+                          : "Paragraf ekle..."
+                      }
                       className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-base leading-relaxed pr-8"
                       rows={1}
                       onInput={(e) => {
