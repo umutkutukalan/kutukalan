@@ -4,6 +4,10 @@ import { RiDragMoveLine } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
 import { BiSolidImageAdd } from "react-icons/bi";
 
+import { BsCardImage } from "react-icons/bs";
+import { BsFileImage } from "react-icons/bs";
+import { MdOutlineImage } from "react-icons/md";
+
 interface ContentItem {
   type: "paragraph" | "image";
   content: string;
@@ -21,6 +25,10 @@ const CreateContent = () => {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
   const [clicked, setClicked] = useState(false);
+
+  const [smallSize, setSmallSize] = useState(false);
+  const [mediumSize, setMediumSize] = useState(false);
+  const [largeSize, setLargeSize] = useState(false);
 
   useEffect(() => {
     textRefs.current = textRefs.current.slice(0, contentList.length);
@@ -151,7 +159,15 @@ const CreateContent = () => {
                     : "border-transparent"
                 }`}
                 onFocus={() => setFocusedIndex(idx)}
-                onBlur={() => setFocusedIndex(null)}
+                onBlur={(e) => {
+                  if (
+                    e.relatedTarget &&
+                    e.currentTarget.contains(e.relatedTarget)
+                  ) {
+                    return;
+                  }
+                  setFocusedIndex(null);
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "ArrowUp" && idx > 0) {
                     e.preventDefault();
@@ -215,26 +231,79 @@ const CreateContent = () => {
                 data-img-idx={idx}
               >
                 {item.type === "image" ? (
-                  <div className="w-full h-full flex relative">
+                  <div
+                    className={`w-full ${
+                      largeSize ? "h-full" : mediumSize ? "h-100" : "h-80"
+                    } flex relative`}
+                  >
                     {item.content ? (
                       <>
                         <img
                           src={item.content}
                           alt="uploaded"
-                          className="w-full h-full object-contain rounded-lg"
+                          className={`w-full h-full rounded-lg pointer-events-none ${
+                            largeSize
+                              ? "object-contain"
+                              : mediumSize
+                              ? "object-cover"
+                              : "object-contain"
+                          } `}
                         />
-                        <div className="absolute right-5 top-2">
-                          <button
-                            className="bg-red-500 text-white rounded px-4 py-0.5 cursor-pointer hover:bg-red-600 text-xs"
-                            onClick={() => {
-                              const newContent = [...contentList];
-                              newContent.splice(idx, 1);
-                              setContentList(newContent);
-                            }}
+                        {/* Toolbar: sadece focus olduğunda görünür */}
+                        {focusedIndex === idx && (
+                          <div
+                            className={`absolute top-2 right-2 bg-white/90 backdrop-blur-sm shadow-md rounded-lg flex items-center gap-2 px-3 py-2 z-10`}
                           >
-                            Sil
-                          </button>
-                        </div>
+                            <button
+                              className="cursor-pointer"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setLargeSize(false);
+                                setMediumSize(true);
+                                setSmallSize(false);
+                              }}
+                            >
+                              <BsCardImage
+                                size={24}
+                                className={`transition-all ${
+                                  mediumSize ? "text-blue-800" : "text-gray-500"
+                                }`}
+                              />
+                            </button>
+                            <button
+                              className="cursor-pointer"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setLargeSize(true);
+                                setMediumSize(false);
+                                setSmallSize(false);
+                              }}
+                            >
+                              <BsFileImage
+                                size={24}
+                                className={`transition-all ${
+                                  largeSize ? "text-blue-800" : "text-gray-500"
+                                }`}
+                              />
+                            </button>
+                            <button
+                              className="cursor-pointer"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setLargeSize(false);
+                                setMediumSize(false);
+                                setSmallSize(true);
+                              }}
+                            >
+                              <MdOutlineImage
+                                size={24}
+                                className={`transition-all ${
+                                  smallSize ? "text-blue-800" : "text-gray-500"
+                                }`}
+                              />
+                            </button>
+                          </div>
+                        )}
                       </>
                     ) : (
                       <span className="text-gray-400">Görsel seçilmedi</span>
