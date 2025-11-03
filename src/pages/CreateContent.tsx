@@ -26,9 +26,9 @@ const CreateContent = () => {
 
   const [clicked, setClicked] = useState(false);
 
-  const [smallSize, setSmallSize] = useState(false);
-  const [mediumSize, setMediumSize] = useState(false);
-  const [largeSize, setLargeSize] = useState(false);
+  const [imageSizes, setImageSizes] = useState<
+    Record<number, "small" | "medium" | "large">
+  >({});
 
   useEffect(() => {
     textRefs.current = textRefs.current.slice(0, contentList.length);
@@ -231,84 +231,104 @@ const CreateContent = () => {
                 data-img-idx={idx}
               >
                 {item.type === "image" ? (
-                  <div
-                    className={`w-full ${
-                      largeSize ? "h-full" : mediumSize ? "h-100" : "h-80"
-                    } flex relative`}
-                  >
-                    {item.content ? (
-                      <>
-                        <img
-                          src={item.content}
-                          alt="uploaded"
-                          className={`w-full h-full rounded-lg pointer-events-none ${
-                            largeSize
-                              ? "object-contain"
-                              : mediumSize
-                              ? "object-cover"
-                              : "object-contain"
-                          } `}
-                        />
-                        {/* Toolbar: sadece focus olduğunda görünür */}
-                        {focusedIndex === idx && (
-                          <div
-                            className={`absolute top-2 right-2 bg-white/90 backdrop-blur-sm shadow-md rounded-lg flex items-center gap-2 px-3 py-2 z-10`}
-                          >
-                            <button
-                              className="cursor-pointer"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setLargeSize(false);
-                                setMediumSize(true);
-                                setSmallSize(false);
-                              }}
-                            >
-                              <BsCardImage
-                                size={24}
-                                className={`transition-all ${
-                                  mediumSize ? "text-blue-800" : "text-gray-500"
-                                }`}
-                              />
-                            </button>
-                            <button
-                              className="cursor-pointer"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setLargeSize(true);
-                                setMediumSize(false);
-                                setSmallSize(false);
-                              }}
-                            >
-                              <BsFileImage
-                                size={24}
-                                className={`transition-all ${
-                                  largeSize ? "text-blue-800" : "text-gray-500"
-                                }`}
-                              />
-                            </button>
-                            <button
-                              className="cursor-pointer"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setLargeSize(false);
-                                setMediumSize(false);
-                                setSmallSize(true);
-                              }}
-                            >
-                              <MdOutlineImage
-                                size={24}
-                                className={`transition-all ${
-                                  smallSize ? "text-blue-800" : "text-gray-500"
-                                }`}
-                              />
-                            </button>
-                          </div>
+                  (() => {
+                    const size = imageSizes[idx] || "medium";
+                    return (
+                      <div
+                        className={`w-full ${
+                          size === "large"
+                            ? "h-full"
+                            : size === "medium"
+                            ? "h-100"
+                            : "h-80"
+                        } flex relative`}
+                      >
+                        {item.content ? (
+                          <>
+                            <img
+                              src={item.content}
+                              alt="uploaded"
+                              className={`w-full h-full rounded-lg pointer-events-none ${
+                                size === "large"
+                                  ? "object-contain"
+                                  : size === "medium"
+                                  ? "object-cover"
+                                  : "object-contain"
+                              } `}
+                            />
+                            {/* Toolbar: sadece focus olduğunda görünür */}
+                            {focusedIndex === idx && (
+                              <div
+                                className={`absolute top-2 right-2 bg-white/90 backdrop-blur-sm shadow-md rounded-lg flex items-center gap-2 px-3 py-2 z-10`}
+                              >
+                                <button
+                                  className="cursor-pointer"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setImageSizes((prev) => ({
+                                      ...prev,
+                                      [idx]: "medium",
+                                    }));
+                                  }}
+                                >
+                                  <BsCardImage
+                                    size={24}
+                                    className={`transition-all ${
+                                      size === "medium"
+                                        ? "text-blue-800"
+                                        : "text-gray-500"
+                                    }`}
+                                  />
+                                </button>
+                                <button
+                                  className="cursor-pointer"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setImageSizes((prev) => ({
+                                      ...prev,
+                                      [idx]: "large",
+                                    }));
+                                  }}
+                                >
+                                  <BsFileImage
+                                    size={24}
+                                    className={`transition-all ${
+                                      size === "large"
+                                        ? "text-blue-800"
+                                        : "text-gray-500"
+                                    }`}
+                                  />
+                                </button>
+                                <button
+                                  className="cursor-pointer"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setImageSizes((prev) => ({
+                                      ...prev,
+                                      [idx]: "small",
+                                    }));
+                                  }}
+                                >
+                                  <MdOutlineImage
+                                    size={24}
+                                    className={`transition-all ${
+                                      size === "small"
+                                        ? "text-blue-800"
+                                        : "text-gray-500"
+                                    }`}
+                                  />
+                                </button>
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <span className="text-gray-400">
+                            Görsel seçilmedi
+                          </span>
                         )}
-                      </>
-                    ) : (
-                      <span className="text-gray-400">Görsel seçilmedi</span>
-                    )}
-                  </div>
+                      </div>
+                    );
+                  })()
                 ) : (
                   <div className="relative w-full">
                     <textarea
