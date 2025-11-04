@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { iphonechip } from "../utils";
 import { RiDragMoveLine } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
 import { BiSolidImageAdd } from "react-icons/bi";
@@ -8,6 +7,8 @@ import { BsCardImage } from "react-icons/bs";
 import { BsFileImage } from "react-icons/bs";
 import { MdOutlineImage } from "react-icons/md";
 
+import { LuImagePlus } from "react-icons/lu";
+
 interface ContentItem {
   type: "paragraph" | "image";
   content: string;
@@ -15,7 +16,12 @@ interface ContentItem {
 
 const CreateContent = () => {
   const [title, setTitle] = useState<string>("");
+
+  const [mainImg, setMainImg] = useState<string>("");
+  const mainImgInputRef = useRef<HTMLInputElement | null>(null);
+
   const [contentList, setContentList] = useState<ContentItem[]>([]);
+
   const textRefs = useRef<(HTMLTextAreaElement | null)[]>([]);
   const titleRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -47,11 +53,52 @@ const CreateContent = () => {
   };
 
   return (
-    <div className="p-5 relative min-h-screen">
+    <div
+      className="p-5 relative min-h-screen"
+      onClick={(e) => {
+        // Eğer tıklanan element textarea veya image değilse yeni bir paragraf ekle
+        if (e.target === e.currentTarget) {
+          setContentList((prev) => [
+            ...prev,
+            { type: "paragraph", content: "" },
+          ]);
+          setFocusedIndex(contentList.length);
+        }
+      }}
+    >
       <div className="w-full h-full flex flex-col gap-5">
-        <div className="w-full h-70 bg-gray-200">
-          <img src={iphonechip} alt="" className="w-full h-full object-cover" />
+        {/* Main Image 68-97 */}
+        <div
+          className="w-full h-80 rounded-lg overflow-hidden cursor-pointer relative border border-white/20"
+          onClick={() => mainImgInputRef.current?.click()} // tıklanınca file input açılsın
+        >
+          {mainImg ? (
+            <div className="w-full h-full">
+              <img
+                src={mainImg}
+                alt="main"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-500 hover:bg-gray-400 transition-colors">
+              <LuImagePlus size={40} />
+            </div>
+          )}
         </div>
+        <input
+          type="file"
+          accept="image/*"
+          ref={mainImgInputRef}
+          style={{ display: "none" }}
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+            const imageUrl = URL.createObjectURL(file);
+            setMainImg(imageUrl); // 🔹 seçilen resmi mainImg state'ine kaydet
+            e.target.value = ""; // input temizliği
+          }}
+        />
         <input
           type="file"
           accept="image/*"
@@ -245,6 +292,7 @@ const CreateContent = () => {
                       >
                         {item.content ? (
                           <>
+                            {/* Content Image*/}
                             <img
                               src={item.content}
                               alt="uploaded"
@@ -506,16 +554,13 @@ const CreateContent = () => {
                             if (idx > 0) {
                               const newContent = [...contentList];
 
-                              // Önceki öğe image ise → onu sil
+                              // Önceki öğe image ise → sadece bu textarea'yı sil, image'ye focuslan
                               if (newContent[idx - 1].type === "image") {
-                                newContent.splice(idx - 1, 1);
+                                newContent.splice(idx, 1); // sadece textareayı sil
                                 setContentList(newContent);
                                 adjustAllHeights();
                                 setTimeout(() => {
-                                  const current =
-                                    textRefs.current[idx - 1] ||
-                                    textRefs.current[idx - 2];
-                                  if (current) current.focus();
+                                  setFocusedIndex(idx - 1); // image'yi focusla
                                 }, 0);
                                 return;
                               }
