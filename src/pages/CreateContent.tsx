@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { RiDragMoveLine } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
 import { BiSolidImageAdd } from "react-icons/bi";
@@ -27,6 +27,7 @@ const CreateContent = () => {
   const titleRef = useRef<HTMLTextAreaElement | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
@@ -53,9 +54,31 @@ const CreateContent = () => {
     }, 0);
   };
 
+  useLayoutEffect(() => {
+    if (
+      focusedIndex !== null &&
+      typeof focusedIndex === "number" &&
+      textRefs.current[focusedIndex]
+    ) {
+      const el = textRefs.current[focusedIndex];
+      if (el) {
+        // Textarea yüksekliğini içeriğe göre ayarla
+        el.style.height = "auto";
+        el.style.height = el.scrollHeight + "px";
+
+        // Eğer textarea ekranın altına taşmışsa scroll et
+        const rect = el.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        if (rect.bottom > viewportHeight) {
+          el.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+      }
+    }
+  }, [contentList, focusedIndex]);
+
   return (
     <div
-      className="p-5 relative min-h-screen"
+      className="p-5 relative"
       onClick={(e) => {
         // Eğer tıklanan element textarea veya image değilse yeni bir paragraf ekle
         if (e.target === e.currentTarget) {
@@ -100,6 +123,7 @@ const CreateContent = () => {
             e.target.value = ""; // input temizliği
           }}
         />
+        {/* Content Input */}
         <input
           type="file"
           accept="image/*"
@@ -230,7 +254,7 @@ const CreateContent = () => {
                 }}
                 className={`w-full ${
                   item.type === "image" ? "h-full" : ""
-                } flex relative rounded-lg overflow-hidden border-2 transition-all ${
+                } flex relative rounded-lg overflow-hidden border-2 focus-visible:outline-none transition-all ${
                   focusedIndex === idx && item.type === "image"
                     ? "border-green-600"
                     : "border-transparent"
@@ -246,6 +270,7 @@ const CreateContent = () => {
                   setFocusedIndex(null);
                 }}
                 onKeyDown={(e) => {
+                  const target = e.target as HTMLTextAreaElement;
                   if (e.key === "ArrowUp" && idx > 0) {
                     e.preventDefault();
                     // Bir üst element paragraf ise oraya focus yap
@@ -253,55 +278,278 @@ const CreateContent = () => {
                       textRefs.current[idx - 1]?.focus();
                     } else {
                       // üstte yine image varsa onu focusla
-                      const prevImg = document.querySelector(
-                        `[data-img-idx="${idx - 1}"]`
-                      ) as HTMLElement;
-                      prevImg?.focus();
+                      const prevImg = imageRefs.current[idx - 1];
+                      if (prevImg) {
+                        prevImg?.focus();
+                        setFocusedIndex(idx - 1);
+                      }
                     }
                   }
+                  // 🔽 Aşağı ok
                   if (e.key === "ArrowDown" && idx < contentList.length - 1) {
+                    const nextItem = contentList[idx + 1];
+
+                    if (item.type === "paragraph") {
+                      const isAtBottom =
+                        target.selectionStart === target.value.length &&
+                        target.scrollTop + target.clientHeight >=
+                          target.scrollHeight;
+
+                      // Eğer hala textarea içinde geziniyorsa (en alta ulaşmadıysa) çık
+                      if (!isAtBottom) return;
+                    }
+
                     e.preventDefault();
-                    // Alt element paragraf ise oraya focus yap
-                    if (contentList[idx + 1].type === "paragraph") {
-                      textRefs.current[idx + 1]?.focus();
-                    } else {
-                      // altta yine image varsa onu focusla
-                      const nextImg = document.querySelector(
-                        `[data-img-idx="${idx + 1}"]`
-                      ) as HTMLElement;
-                      nextImg?.focus();
+
+                    // alt öğe paragraf ise
+                    if (nextItem.type === "paragraph") {
+                      const nextText = textRefs.current[idx + 1];
+                      if (nextText) {
+                        nextText.focus();
+                        nextText.setSelectionRange(0, 0);
+                      }
+                    }
+
+                    // alt öğe image ise
+                    else if (nextItem.type === "image") {
+                      const nextImg = imageRefs.current[idx + 1];
+                      if (nextImg) {
+                        nextImg.focus();
+                        setFocusedIndex(idx + 1);
+                      }
                     }
                   }
+                  // 1️⃣ Shift + Enter → satır sonu ekle
+                  if (
+                    e.key === "Enter" &&
+                    e.shiftKey &&
+                    item.type === "paragraph"
+                  ) {
+                    e.preventDefault();
+                    const cursorPos = target.selectionStart;
+                    const content = target.value;
+
+                    const newText =
+                      content.slice(0, cursorPos) +
+                      "\n" +
+                      content.slice(cursorPos);
+
+                    const newContent = [...contentList];
+                    newContent[idx].content = newText;
+                    setContentList(newContent);
+
+                    setTimeout(() => {
+                      const el = textRefs.current[idx];
+                      if (el) {
+                        el.focus();
+                        el.setSelectionRange(cursorPos + 1, cursorPos + 1);
+                      }
+                    }, 0);
+
+                    return; // ⚠️ burası önemli: diğer Enter bloklarına geçmesin
+                  } else if (
+                    /* Enter → yeni alan ekle */
+                    e.key === "Enter" &&
+                    !e.shiftKey &&
+                    item.type === "paragraph"
+                  ) {
+                    e.preventDefault();
+                    const cursorPos = target.selectionStart;
+                    const content = target.value;
+                    const newContent = [...contentList];
+
+                    // 1️⃣ Cursor en başta → tüm içeriği yeni textarea'ya taşı
+                    if (cursorPos === 0 && content.length > 0) {
+                      const currentContent = newContent[idx].content; //mevcut içeriği al
+                      newContent[idx].content = ""; // mevcut alanı boşalt
+                      newContent.splice(idx + 1, 0, {
+                        id: crypto.randomUUID(),
+                        type: "paragraph",
+                        content: currentContent,
+                      }); // tüm metni yeni alana taşı
+                      setContentList(newContent);
+                      adjustAllHeights();
+                      setTimeout(() => {
+                        const currentEl = textRefs.current[idx];
+                        if (currentEl) {
+                          currentEl.focus();
+                          currentEl.setSelectionRange(0, 0); // cursor'u başa al
+                        }
+                      }, 0);
+                      setClickedIndex(null);
+                      return;
+                    }
+
+                    // 2️⃣ Cursor ortadaysa → ikiye böl
+                    if (cursorPos < content.length) {
+                      const before = content.slice(0, cursorPos);
+                      const after = content.slice(cursorPos);
+                      newContent[idx].content = before;
+                      newContent.splice(idx + 1, 0, {
+                        id: crypto.randomUUID(),
+                        type: "paragraph",
+                        content: after,
+                      });
+                      setContentList(newContent);
+                      adjustAllHeights();
+                      setTimeout(() => {
+                        const nextEl = textRefs.current[idx + 1];
+                        if (nextEl) {
+                          nextEl.focus();
+                          nextEl.setSelectionRange(0, 0); // cursor'u başa al
+                        }
+                      }, 0);
+                      setClickedIndex(null);
+                      return;
+                    }
+
+                    // 3️⃣ Cursor sondaysa → klasik davranış (yeni boş alan oluştur)
+                    if (cursorPos === content.length) {
+                      newContent.splice(idx + 1, 0, {
+                        id: crypto.randomUUID(),
+                        type: "paragraph",
+                        content: "",
+                      });
+                      setContentList(newContent);
+                      adjustAllHeights();
+                      setTimeout(() => {
+                        textRefs.current[idx + 1]?.focus();
+                      }, 0);
+                      setClickedIndex(null);
+                    }
+                  }
+                  // 🔄 Image iken Enter → altına yeni paragraf ekle
+                  else if (e.key === "Enter" && item.type === "image") {
+                    e.preventDefault();
+                    const newList = [...contentList];
+                    newList.splice(idx + 1, 0, {
+                      id: crypto.randomUUID(),
+                      type: "paragraph",
+                      content: "",
+                    });
+                    setContentList(newList);
+                    setTimeout(() => {
+                      textRefs.current[idx + 1]?.focus();
+                    }, 0);
+                  }
+                  // ⬅ Backspace
                   if (e.key === "Backspace") {
                     if (item.type === "image") {
                       // sadece görselse özel silme işlemi
                       e.preventDefault();
+
                       const newList = [...contentList];
                       newList.splice(idx, 1);
                       setContentList(newList);
 
                       // 🔄 focus'u bir sonraki veya önceki öğeye taşı
                       setTimeout(() => {
-                        if (contentList[idx + 1]) {
-                          if (contentList[idx + 1].type === "image") {
+                        // Önce bir sonraki elemana bak
+                        const nextItem = newList[idx];
+                        if (nextItem) {
+                          if (nextItem.type === "image") {
                             const nextImg = document.querySelector(
                               `[data-img-idx="${idx}"]`
                             ) as HTMLElement;
-                            nextImg?.focus();
+                            if (nextImg) nextImg.focus();
                           } else {
                             textRefs.current[idx]?.focus();
                           }
-                        } else if (contentList[idx - 1]) {
-                          if (contentList[idx - 1].type === "image") {
-                            const prevImg = document.querySelector(
-                              `[data-img-idx="${idx - 1}"]`
-                            ) as HTMLElement;
-                            prevImg?.focus();
-                          } else {
-                            textRefs.current[idx - 1]?.focus();
+                        } else {
+                          // Eğer sonraki yoksa bir önceki elemana geç
+                          const prevItem = newList[idx - 1];
+                          if (prevItem) {
+                            if (prevItem.type === "image") {
+                              const prevImg = document.querySelector(
+                                `[data-img-idx="${idx - 1}"]`
+                              ) as HTMLElement;
+                              if (prevImg) prevImg.focus();
+                            } else {
+                              textRefs.current[idx - 1]?.focus();
+                            }
                           }
                         }
                       }, 0);
+                    } else if (item.type === "paragraph") {
+                      // Cursor en baştaysa ve alan doluysa → önceki textarea ile birleştir
+                      if (
+                        target.selectionStart === 0 &&
+                        target.selectionEnd === 0 &&
+                        target.value.length > 0 &&
+                        idx > 0
+                      ) {
+                        e.preventDefault();
+                        const newContent = [...contentList];
+                        const prev = newContent[idx - 1];
+                        if (prev) {
+                          const prevContentLength = prev.content.length;
+                          prev.content += target.value; // mevcut içeriği önceki textarea'ya ekle
+                          newContent.splice(idx, 1); // bu textarea'yı kaldır
+                          setContentList(newContent);
+                          adjustAllHeights();
+                          setTimeout(() => {
+                            const prevEl = textRefs.current[idx - 1];
+                            if (prevEl) {
+                              prevEl.focus();
+                              // const len = prevEl.value.length;
+                              // prevEl.setSelectionRange(len, len); // cursor'u sonuna al
+                              prevEl.setSelectionRange(
+                                prevContentLength,
+                                prevContentLength
+                              ); // cursor'u birleşen kısmın sonuna al
+                            }
+                          }, 0);
+                        }
+                      }
+                      // Eğer tamamen boşsa → önceki textarea'ya geç
+                      else if (target.value === "") {
+                        e.preventDefault();
+                        if (idx > 0) {
+                          const newContent = [...contentList];
+
+                          // Önceki öğe image ise → sadece bu textarea'yı sil, image'ye focuslan
+                          if (newContent[idx - 1].type === "image") {
+                            newContent.splice(idx, 1); // sadece textareayı sil
+                            setContentList(newContent);
+                            adjustAllHeights();
+                            setTimeout(() => {
+                              const prevImg = document.querySelector(
+                                `[data-img-idx="${idx - 1}"]`
+                              ) as HTMLElement;
+                              // önce mevcut input'u blur et
+                              if (prevImg) target.blur();
+                              // sonra image'ye focuslan
+                              prevImg?.focus();
+                              setFocusedIndex(idx - 1);
+                            }, 0);
+                            return;
+                          }
+
+                          newContent.splice(idx, 1);
+                          setContentList(newContent);
+                          adjustAllHeights();
+                          setTimeout(() => {
+                            const prev = textRefs.current[idx - 1];
+                            if (prev) {
+                              prev.focus();
+                              const len = prev.value.length;
+                              prev.setSelectionRange(len, len); // cursor'u sonuna al
+                            }
+                          }, 0);
+                        } else {
+                          // İlk content silinmişse title’a geç
+                          setContentList((prev) => prev.slice(1));
+                          adjustAllHeights();
+                          setTimeout(() => {
+                            const t = titleRef.current;
+                            if (t) {
+                              t.focus();
+                              const len = t.value.length;
+                              t.setSelectionRange(len, len);
+                            }
+                          }, 0);
+                        }
+                      }
                     }
                   }
                 }}
@@ -312,13 +560,15 @@ const CreateContent = () => {
                     const size = imageSizes[item.id] || "medium";
                     return (
                       <div
+                        ref={(el) => (imageRefs.current[idx] = el)}
                         className={`w-full ${
                           size === "large"
                             ? "h-full"
                             : size === "medium"
                             ? "h-100"
                             : "h-80"
-                        } flex relative`}
+                        } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
+                        tabIndex={0}
                       >
                         {item.content ? (
                           <>
@@ -326,7 +576,7 @@ const CreateContent = () => {
                             <img
                               src={item.content}
                               alt="uploaded"
-                              className={`w-full h-full rounded-lg pointer-events-none ${
+                              className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${
                                 size === "large"
                                   ? "object-contain"
                                   : size === "medium"
@@ -430,12 +680,9 @@ const CreateContent = () => {
                       onBlur={() => setFocusedIndex(null)}
                       onInput={(e) => {
                         const target = e.target as HTMLTextAreaElement;
-                        target.style.height = "auto";
-                        target.style.height = target.scrollHeight + "px";
                         const newContent = [...contentList];
                         newContent[idx].content = target.value;
                         setContentList(newContent);
-                        adjustAllHeights();
                       }}
                       onKeyDown={(e) => {
                         const target = e.target as HTMLTextAreaElement;
@@ -461,167 +708,6 @@ const CreateContent = () => {
                                 const len = titleEl.value.length;
                                 titleEl.setSelectionRange(len, len);
                               }
-                            }
-                          }
-                        }
-                        /* ↓ Aşağı ok */
-                        if (e.key === "ArrowDown") {
-                          const isAtBottom =
-                            target.selectionStart === target.value.length &&
-                            target.scrollTop + target.clientHeight >=
-                              target.scrollHeight;
-
-                          if (isAtBottom) {
-                            e.preventDefault();
-                            if (idx < contentList.length - 1) {
-                              const next = textRefs.current[idx + 1];
-                              if (next) {
-                                next.focus();
-                                next.setSelectionRange(0, 0);
-                              }
-                            }
-                          }
-                          setClickedIndex(null);
-                        }
-                        /* Enter → yeni alan ekle */
-                        if (e.key === "Enter" && !e.shiftKey) {
-                          e.preventDefault();
-                          const cursorPos = target.selectionStart;
-                          const content = target.value;
-                          const newContent = [...contentList];
-
-                          // 1️⃣ Cursor en başta → tüm içeriği yeni textarea'ya taşı
-                          if (cursorPos === 0 && content.length > 0) {
-                            const currentContent = newContent[idx].content; //mevcut içeriği al
-                            newContent[idx].content = ""; // mevcut alanı boşalt
-                            newContent.splice(idx + 1, 0, {
-                              id: crypto.randomUUID(),
-                              type: "paragraph",
-                              content: currentContent,
-                            }); // tüm metni yeni alana taşı
-                            setContentList(newContent);
-                            adjustAllHeights();
-                            setTimeout(() => {
-                              const currentEl = textRefs.current[idx];
-                              if (currentEl) {
-                                currentEl.focus();
-                                currentEl.setSelectionRange(0, 0); // cursor'u başa al
-                              }
-                            }, 0);
-                            setClickedIndex(null);
-                            return;
-                          }
-
-                          // 2️⃣ Cursor ortadaysa → ikiye böl
-                          if (cursorPos < content.length) {
-                            const before = content.slice(0, cursorPos);
-                            const after = content.slice(cursorPos);
-                            newContent[idx].content = before;
-                            newContent.splice(idx + 1, 0, {
-                              id: crypto.randomUUID(),
-                              type: "paragraph",
-                              content: after,
-                            });
-                            setContentList(newContent);
-                            adjustAllHeights();
-                            setTimeout(() => {
-                              const nextEl = textRefs.current[idx + 1];
-                              if (nextEl) {
-                                nextEl.focus();
-                                nextEl.setSelectionRange(0, 0); // cursor'u başa al
-                              }
-                            }, 0);
-                            setClickedIndex(null);
-                            return;
-                          }
-
-                          // 3️⃣ Cursor sondaysa → klasik davranış (yeni boş alan oluştur)
-                          if (cursorPos === content.length) {
-                            newContent.splice(idx + 1, 0, {
-                              id: crypto.randomUUID(),
-                              type: "paragraph",
-                              content: "",
-                            });
-                            setContentList(newContent);
-                            adjustAllHeights();
-                            setTimeout(() => {
-                              textRefs.current[idx + 1]?.focus();
-                            }, 0);
-                            setClickedIndex(null);
-                          }
-                        }
-                        /* Backspace → alan boşsa önceki textarea’ya geç */
-                        if (e.key === "Backspace") {
-                          // Cursor en baştaysa ve alan doluysa → önceki textarea ile birleştir
-                          if (
-                            target.selectionStart === 0 &&
-                            target.selectionEnd === 0 &&
-                            target.value.length > 0 &&
-                            idx > 0
-                          ) {
-                            e.preventDefault();
-                            const newContent = [...contentList];
-                            const prev = newContent[idx - 1];
-                            if (prev) {
-                              const prevContentLength = prev.content.length;
-                              prev.content += target.value; // mevcut içeriği önceki textarea'ya ekle
-                              newContent.splice(idx, 1); // bu textarea'yı kaldır
-                              setContentList(newContent);
-                              adjustAllHeights();
-                              setTimeout(() => {
-                                const prevEl = textRefs.current[idx - 1];
-                                if (prevEl) {
-                                  prevEl.focus();
-                                  // const len = prevEl.value.length;
-                                  // prevEl.setSelectionRange(len, len); // cursor'u sonuna al
-                                  prevEl.setSelectionRange(
-                                    prevContentLength,
-                                    prevContentLength
-                                  ); // cursor'u birleşen kısmın sonuna al
-                                }
-                              }, 0);
-                            }
-                          }
-                          // Eğer tamamen boşsa → önceki textarea'ya geç
-                          else if (target.value === "") {
-                            e.preventDefault();
-                            if (idx > 0) {
-                              const newContent = [...contentList];
-
-                              // Önceki öğe image ise → sadece bu textarea'yı sil, image'ye focuslan
-                              if (newContent[idx - 1].type === "image") {
-                                newContent.splice(idx, 1); // sadece textareayı sil
-                                setContentList(newContent);
-                                adjustAllHeights();
-                                setTimeout(() => {
-                                  setFocusedIndex(idx - 1); // image'yi focusla
-                                }, 0);
-                                return;
-                              }
-
-                              newContent.splice(idx, 1);
-                              setContentList(newContent);
-                              adjustAllHeights();
-                              setTimeout(() => {
-                                const prev = textRefs.current[idx - 1];
-                                if (prev) {
-                                  prev.focus();
-                                  const len = prev.value.length;
-                                  prev.setSelectionRange(len, len); // cursor'u sonuna al
-                                }
-                              }, 0);
-                            } else {
-                              // İlk content silinmişse title’a geç
-                              setContentList((prev) => prev.slice(1));
-                              adjustAllHeights();
-                              setTimeout(() => {
-                                const t = titleRef.current;
-                                if (t) {
-                                  t.focus();
-                                  const len = t.value.length;
-                                  t.setSelectionRange(len, len);
-                                }
-                              }, 0);
                             }
                           }
                         }
