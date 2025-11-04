@@ -10,6 +10,7 @@ import { MdOutlineImage } from "react-icons/md";
 import { LuImagePlus } from "react-icons/lu";
 
 interface ContentItem {
+  id: string;
   type: "paragraph" | "image";
   content: string;
 }
@@ -33,7 +34,7 @@ const CreateContent = () => {
   const [clicked, setClicked] = useState(false);
 
   const [imageSizes, setImageSizes] = useState<
-    Record<number, "small" | "medium" | "large">
+    Record<string, "small" | "medium" | "large">
   >({});
 
   useEffect(() => {
@@ -60,7 +61,7 @@ const CreateContent = () => {
         if (e.target === e.currentTarget) {
           setContentList((prev) => [
             ...prev,
-            { type: "paragraph", content: "" },
+            { id: crypto.randomUUID(), type: "paragraph", content: "" },
           ]);
           setFocusedIndex(contentList.length);
         }
@@ -116,11 +117,13 @@ const CreateContent = () => {
               : newContent.length;
 
             newContent[insertIdx] = {
+              id: crypto.randomUUID(),
               type: "image",
               content: imageUrl,
             };
 
             newContent.splice(insertIdx + 1, 0, {
+              id: crypto.randomUUID(),
               type: "paragraph",
               content: "",
             });
@@ -198,6 +201,33 @@ const CreateContent = () => {
               <div
                 key={idx}
                 tabIndex={0}
+                draggable
+                onDragStart={(e) => {
+                  e.dataTransfer.setData("text/plain", idx.toString());
+                }}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  const draggedIdx = Number(
+                    e.dataTransfer.getData("text/plain")
+                  );
+                  if (isNaN(draggedIdx) || draggedIdx === idx) return;
+
+                  const newList = [...contentList];
+                  const [draggedItem] = newList.splice(draggedIdx, 1);
+                  newList.splice(idx, 0, draggedItem);
+                  setContentList(newList);
+
+                  // textarea yüksekliklerini yeniden ayarla
+                  setTimeout(() => {
+                    textRefs.current.forEach((el) => {
+                      if (el) {
+                        el.style.height = "auto";
+                        el.style.height = el.scrollHeight + "px";
+                      }
+                    });
+                  }, 0);
+                }}
                 className={`w-full ${
                   item.type === "image" ? "h-full" : ""
                 } flex relative rounded-lg overflow-hidden border-2 transition-all ${
@@ -279,7 +309,7 @@ const CreateContent = () => {
               >
                 {item.type === "image" ? (
                   (() => {
-                    const size = imageSizes[idx] || "medium";
+                    const size = imageSizes[item.id] || "medium";
                     return (
                       <div
                         className={`w-full ${
@@ -315,7 +345,7 @@ const CreateContent = () => {
                                     e.preventDefault();
                                     setImageSizes((prev) => ({
                                       ...prev,
-                                      [idx]: "medium",
+                                      [item.id]: "medium",
                                     }));
                                   }}
                                 >
@@ -334,7 +364,7 @@ const CreateContent = () => {
                                     e.preventDefault();
                                     setImageSizes((prev) => ({
                                       ...prev,
-                                      [idx]: "large",
+                                      [item.id]: "large",
                                     }));
                                   }}
                                 >
@@ -353,7 +383,7 @@ const CreateContent = () => {
                                     e.preventDefault();
                                     setImageSizes((prev) => ({
                                       ...prev,
-                                      [idx]: "small",
+                                      [item.id]: "small",
                                     }));
                                   }}
                                 >
@@ -379,6 +409,7 @@ const CreateContent = () => {
                   })()
                 ) : (
                   <div className="relative w-full">
+                    {/* Paragraph Textarea */}
                     <textarea
                       ref={(el) => (textRefs.current[idx] = el)}
                       value={item.content}
@@ -464,6 +495,7 @@ const CreateContent = () => {
                             const currentContent = newContent[idx].content; //mevcut içeriği al
                             newContent[idx].content = ""; // mevcut alanı boşalt
                             newContent.splice(idx + 1, 0, {
+                              id: crypto.randomUUID(),
                               type: "paragraph",
                               content: currentContent,
                             }); // tüm metni yeni alana taşı
@@ -486,6 +518,7 @@ const CreateContent = () => {
                             const after = content.slice(cursorPos);
                             newContent[idx].content = before;
                             newContent.splice(idx + 1, 0, {
+                              id: crypto.randomUUID(),
                               type: "paragraph",
                               content: after,
                             });
@@ -505,6 +538,7 @@ const CreateContent = () => {
                           // 3️⃣ Cursor sondaysa → klasik davranış (yeni boş alan oluştur)
                           if (cursorPos === content.length) {
                             newContent.splice(idx + 1, 0, {
+                              id: crypto.randomUUID(),
                               type: "paragraph",
                               content: "",
                             });
@@ -593,38 +627,7 @@ const CreateContent = () => {
                         }
                       }}
                     />
-                    <button
-                      draggable
-                      onDragStart={(e) => {
-                        e.dataTransfer.setData("text/plain", idx.toString());
-                      }}
-                      onDragOver={(e) => e.preventDefault()}
-                      onDrop={(e) => {
-                        e.preventDefault();
-                        const draggedIdx = Number(
-                          e.dataTransfer.getData("text/plain")
-                        );
-                        if (isNaN(draggedIdx) || draggedIdx === idx) return;
-
-                        // reorder array
-                        const newList = [...contentList];
-                        const [draggedItem] = newList.splice(draggedIdx, 1);
-                        newList.splice(idx, 0, draggedItem);
-                        setContentList(newList);
-
-                        // after React re-renders, make sure each textarea's height is reset to its scrollHeight
-                        // so that items keep their visual heights when reordered.
-                        setTimeout(() => {
-                          textRefs.current.forEach((el) => {
-                            if (el) {
-                              el.style.height = "auto";
-                              el.style.height = el.scrollHeight + "px";
-                            }
-                          });
-                        }, 0);
-                      }}
-                      className={`absolute right-0 top-1 `}
-                    >
+                    <button className={`absolute right-0 top-1 `}>
                       <RiDragMoveLine
                         size={20}
                         className="text-gray-400 cursor-move"
