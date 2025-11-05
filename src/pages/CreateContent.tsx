@@ -175,7 +175,7 @@ const CreateContent = () => {
               ref={titleRef}
               value={title}
               placeholder="Başlık ekle..."
-              className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-4xl font-medium leading-tight"
+              className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-4xl font-medium leading-tight dmserif"
               rows={1}
               onInput={(e) => {
                 const target = e.target as HTMLTextAreaElement;
@@ -206,6 +206,7 @@ const CreateContent = () => {
                   const newContent = [...contentList];
                   if (cursorPos === content.length) {
                     newContent.splice(0, 0, {
+                      id: crypto.randomUUID(),
                       type: "paragraph",
                       content: "",
                     });
@@ -685,7 +686,7 @@ const CreateContent = () => {
                             : "Paragraf ekle..."
                           : ""
                       }
-                      className={`w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-lg leading-relaxed ${
+                      className={`w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-base text-gray-300 leading-relaxed roboto ${
                         focusedIndex === idx && item.content === ""
                           ? "pl-10"
                           : "pl-0"
