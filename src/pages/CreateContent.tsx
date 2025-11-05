@@ -8,6 +8,8 @@ import { BsFileImage } from "react-icons/bs";
 import { MdOutlineImage } from "react-icons/md";
 
 import { LuImagePlus } from "react-icons/lu";
+import { nikegreen } from "../utils";
+import { useUser } from "../hooks/useUserContext";
 
 interface ContentItem {
   id: string;
@@ -16,6 +18,10 @@ interface ContentItem {
 }
 
 const CreateContent = () => {
+
+  const { user } = useUser();
+  console.log(user);
+
   const [title, setTitle] = useState<string>("");
 
   const [mainImg, setMainImg] = useState<string>("");
@@ -80,7 +86,8 @@ const CreateContent = () => {
 
   return (
     <div
-      className="p-5 relative"
+      className="p-20 relative"
+      // Boş alana tıklayınca yeni paragraf ekle
       onClick={(e) => {
         // Eğer tıklanan element textarea veya image değilse yeni bir paragraf ekle
         if (e.target === e.currentTarget) {
@@ -93,8 +100,20 @@ const CreateContent = () => {
       }}
     >
       <div className="w-full h-full flex flex-col gap-5">
-        {/* Main Image 68-97 */}
-        <div
+        <div className="w-full border-b border-gray-200">
+          <div className="flex items-center gap-2">
+            <div className="w-12 h-12 rounded-full overflow-hidden">
+              <img
+                src={nikegreen}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="text-gray-500">{user?.firstname} {user?.lastname}</p>
+          </div>
+        </div>
+
+        {/* <div
           className="w-full h-80 rounded-lg overflow-hidden cursor-pointer relative border border-white/20"
           onClick={() => mainImgInputRef.current?.click()} // tıklanınca file input açılsın
         >
@@ -111,7 +130,8 @@ const CreateContent = () => {
               <LuImagePlus size={40} />
             </div>
           )}
-        </div>
+        </div> */}
+        {/* Main Image Input */}
         <input
           type="file"
           accept="image/*"
@@ -147,28 +167,25 @@ const CreateContent = () => {
               type: "image",
               content: imageUrl,
             };
-
             newContent.splice(insertIdx + 1, 0, {
               id: crypto.randomUUID(),
               type: "paragraph",
               content: "",
             });
-
             setContentList(newContent);
             setClickedIndex(null);
-
             setTimeout(() => {
               const nextEl = textRefs.current[insertIdx + 1];
               if (nextEl) {
                 nextEl.focus();
               }
             }, 0);
-
             // temizlik
             e.target.value = "";
           }}
         />
         <form className="w-full flex flex-col gap-5">
+          {/* Title & Contents */}
           <div className="flex flex-col gap-4">
             {/* Title textarea */}
             <textarea
@@ -185,7 +202,6 @@ const CreateContent = () => {
               }}
               onKeyDown={(e) => {
                 const target = e.target as HTMLTextAreaElement;
-
                 // Aşağı ok ile ilk content'e geç
                 if (e.key === "ArrowDown") {
                   e.preventDefault();
@@ -197,7 +213,6 @@ const CreateContent = () => {
                     }
                   }
                 }
-
                 // Enter → yeni content oluştur
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
@@ -218,7 +233,6 @@ const CreateContent = () => {
                     }, 0);
                   }
                 }
-
                 // Backspace → title boşsa hiçbir şey yapma
                 // (ilk content textarea'ya geri geçiş buradan değil oradan yapılacak)
               }}
