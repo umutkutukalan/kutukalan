@@ -76,6 +76,8 @@ const CreateContent = () => {
     }
   }, [contentList, focusedIndex]);
 
+  console.log(contentList);
+
   return (
     <div
       className="p-5 relative"
@@ -272,10 +274,23 @@ const CreateContent = () => {
                 onKeyDown={(e) => {
                   const target = e.target as HTMLTextAreaElement;
                   if (e.key === "ArrowUp" && idx > 0) {
+                    if (item.type === "paragraph") {
+                      const isAtTop =
+                        target.selectionStart === 0 && target.scrollTop === 0;
+
+                      // Eğer hala textarea içinde geziniyorsa (en üste ulaşmadıysa) çık
+                      if (!isAtTop) return;
+                    }
+
                     e.preventDefault();
                     // Bir üst element paragraf ise oraya focus yap
                     if (contentList[idx - 1].type === "paragraph") {
-                      textRefs.current[idx - 1]?.focus();
+                      const prevText = textRefs.current[idx - 1];
+                      if (prevText) {
+                        prevText.focus();
+                        const len = prevText.value.length;
+                        prevText.setSelectionRange(len, len);
+                      }
                     } else {
                       // üstte yine image varsa onu focusla
                       const prevImg = imageRefs.current[idx - 1];
@@ -670,7 +685,7 @@ const CreateContent = () => {
                             : "Paragraf ekle..."
                           : ""
                       }
-                      className={`w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-base leading-relaxed ${
+                      className={`w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-lg leading-relaxed ${
                         focusedIndex === idx && item.content === ""
                           ? "pl-10"
                           : "pl-0"
