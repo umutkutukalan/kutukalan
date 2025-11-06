@@ -7,9 +7,10 @@ import { BsCardImage } from "react-icons/bs";
 import { BsFileImage } from "react-icons/bs";
 import { MdOutlineImage } from "react-icons/md";
 
-import { LuImagePlus } from "react-icons/lu";
+// import { LuImagePlus } from "react-icons/lu";
 import { nikegreen } from "../utils";
 import { useUser } from "../hooks/useUserContext";
+import { technologies } from "../constants";
 
 interface ContentItem {
   id: string;
@@ -17,14 +18,23 @@ interface ContentItem {
   content: string;
 }
 
-const CreateContent = () => {
+interface ProjectTechnologiest {
+  value: string;
+  icon: string;
+}
 
+const CreateContent = () => {
   const { user } = useUser();
   console.log(user);
 
+  const [contentType, setContentType] = useState<string>("");
+  const [projectTechnologies, setProjectTechnologies] = useState<
+    ProjectTechnologiest[]
+  >([]);
+
   const [title, setTitle] = useState<string>("");
 
-  const [mainImg, setMainImg] = useState<string>("");
+  // const [mainImg, setMainImg] = useState<string>("");
   const mainImgInputRef = useRef<HTMLInputElement | null>(null);
 
   const [contentList, setContentList] = useState<ContentItem[]>([]);
@@ -83,6 +93,7 @@ const CreateContent = () => {
   }, [contentList, focusedIndex]);
 
   console.log(contentList);
+  console.log(projectTechnologies);
 
   return (
     <div
@@ -100,16 +111,103 @@ const CreateContent = () => {
       }}
     >
       <div className="w-full h-full flex flex-col gap-5">
-        <div className="w-full border-b border-gray-200">
-          <div className="flex items-center gap-2">
-            <div className="w-12 h-12 rounded-full overflow-hidden">
-              <img
-                src={nikegreen}
-                alt=""
-                className="w-full h-full object-cover"
-              />
+        <div className="w-full border-b border-gray-200 pb-5">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full overflow-hidden">
+                <img
+                  src={nikegreen}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-gray-400 text-sm">
+                {user?.firstName} {user?.lastName}
+              </p>
             </div>
-            <p className="text-gray-500">{user?.firstname} {user?.lastname}</p>
+            <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-2 gap-2">
+                <select
+                  name="contentType"
+                  id="contentType"
+                  className="border border-gray-700 rounded-md px-3 py-1 text-xs w-full focus:outline-none"
+                  onChange={(e) => setContentType(e.target.value)}
+                  onClick={() => {
+                    if (contentType !== "project") {
+                      setProjectTechnologies([]);
+                    } else return;
+                  }}
+                >
+                  <option value="">Kategori Seçin</option>
+                  <option value="project" selected={contentType === "project"}>
+                    Proje
+                  </option>
+                  <option value="blog" selected={contentType === "blog"}>
+                    Blog
+                  </option>
+                </select>
+                <div className="grid grid-cols-2 gap-2">
+                  {contentType === "project" && (
+                    <>
+                      <select
+                        name="technologies"
+                        id="technologies"
+                        className="border border-gray-700 rounded-md px-3 py-1 text-xs w-full focus:outline-none"
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (!value) return;
+
+                          const selectedTech = technologies.find(
+                            (t) => t.title === value
+                          );
+                          if (!selectedTech) return;
+
+                          setProjectTechnologies((prev) =>
+                            prev.find((tech) => tech.value === value)
+                              ? prev.filter((tech) => tech.value !== value)
+                              : [...prev, { value, icon: selectedTech.icon }]
+                          );
+
+                          // seçimi sıfırla (aynı seçimi tekrar yapabilmek için)
+                          e.target.value = "";
+                        }}
+                      >
+                        <option value="">Teknoloji Seçin</option>
+                        {technologies.map((tech) => (
+                          <option key={tech.id} value={tech.title}>
+                            {tech.title}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        type="text"
+                        className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
+                        placeholder="Github Url"
+                      />
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {projectTechnologies.map((tech) => {
+                  const Icon = tech.icon;
+                  return (
+                    <div
+                      key={tech.value}
+                      className="px-2 py-1 bg-gray-700 text-white rounded-md text-xs cursor-pointer flex items-center gap-1"
+                      onClick={() =>
+                        setProjectTechnologies((prev) =>
+                          prev.filter((t) => t !== tech)
+                        )
+                      }
+                    >
+                      <Icon size={16} />
+                      <span>{tech.value}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -192,7 +290,7 @@ const CreateContent = () => {
               ref={titleRef}
               value={title}
               placeholder="Başlık ekle..."
-              className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-4xl font-medium leading-tight dmserif"
+              className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-4xl font-medium leading-tight roboto"
               rows={1}
               onInput={(e) => {
                 const target = e.target as HTMLTextAreaElement;

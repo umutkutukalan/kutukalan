@@ -15,6 +15,7 @@ import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { MdCreate } from "react-icons/md";
+import { title } from "process";
 
 export const navbarList = [
   { id: 1, title: "Home", link: "/", icon: FaHome },
@@ -54,14 +55,21 @@ export const contactList = [
   { id: 1, title: "Contact", link: "/contact", icon: BsEnvelopeFill },
 ];
 
-export const technologies = [
-  { id: 1, icon: DiJava },
-  { id: 2, icon: BiLogoSpringBoot },
-  { id: 3, icon: BiLogoJavascript },
-  { id: 4, icon: BiLogoTypescript },
-  { id: 5, icon: BiLogoReact },
+
+export interface Technology {
+  id: number;
+  icon: any;
+  title: string;
+}
+
+export const technologies: Technology[] = [
+  { id: 1, icon: DiJava, title: "Java" },
+  { id: 2, icon: BiLogoSpringBoot, title : "Spring Boot" },
+  { id: 3, icon: BiLogoJavascript, title : "JavaScript" },
+  { id: 4, icon: BiLogoTypescript, title : "TypeScript" },
+  { id: 5, icon: BiLogoReact, title : "ReactJS" },
   // { id: 6, icon: SiElectron },
-  { id: 7, icon: RiNextjsFill },
-  { id: 8, icon: DiMysql },
-  { id: 9, icon: DiPostgresql },
+  { id: 7, icon: RiNextjsFill, title : "NextJS" },
+  { id: 8, icon: DiMysql, title : "MySQL" },
+  { id: 9, icon: DiPostgresql, title : "PostgreSQL" },
 ];
