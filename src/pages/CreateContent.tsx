@@ -1,4 +1,3 @@
-import { IconType } from "react-icons";
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { RiDragMoveLine } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
@@ -13,6 +12,8 @@ import { oakley } from "../utils";
 import { useUser } from "../hooks/useUserContext";
 import { technologiesForCreateContent } from "../constants";
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
+import { useCreateProject } from "../hooks/project/useCreateProject";
+import type { ProjectData } from "../services/project/projectServices";
 
 interface ContentItem {
   id: string;
@@ -22,17 +23,20 @@ interface ContentItem {
 
 interface ProjectTechnologiest {
   value: string;
-  icon: IconType | null;
 }
 
 const CreateContent = () => {
   const { user } = useUser();
+  const { createProject } = useCreateProject();
+
   console.log(user);
 
   const [contentType, setContentType] = useState<string>("");
   const [projectTechnologies, setProjectTechnologies] = useState<
     ProjectTechnologiest[]
   >([]);
+  const [githubUrl, setGithubUrl] = useState<string>("");
+  const [liveUrl, setLiveUrl] = useState<string>("");
 
   const [title, setTitle] = useState<string>("");
 
@@ -94,9 +98,30 @@ const CreateContent = () => {
     }
   }, [contentList, focusedIndex]);
 
-  console.log(contentList);
-  console.log(projectTechnologies);
+  const projectData: ProjectData = {
+    mainImg: contentList.find((item) => item.type === "image")?.content || "",
+    title: title, // formdan veya state’ten gelen başlık
+    description:
+      contentList.find((item) => item.type === "paragraph")?.content || "",
+    githubUrl: githubUrl, // senin formundaki inputtan
+    liveUrl: liveUrl, // yine inputtan
+    technologies: projectTechnologies.map((t) => t.value),
+    contentItems: contentList,
+  };
 
+  const handleCreate = async () => {
+    if (contentType === "project") {
+      createProject(projectData);
+    } else if (contentType === "blog") {
+      // blog oluşturma fonksiyonu burada çağrılacak
+    }
+  };
+
+  console.log("projectTechnologies:", projectTechnologies);
+  console.log("contentItems:", contentList);
+  console.log("githubUrl:", githubUrl);
+  console.log("liveUrl:", liveUrl);
+  console.log("title:", title);
   return (
     <div
       className="p-20 relative"
@@ -115,27 +140,37 @@ const CreateContent = () => {
       <div className="w-full h-full flex flex-col gap-5">
         <div className="w-full border-b border-gray-200 pb-5">
           <div className="flex flex-col gap-5">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
-                <img
-                  src={oakley}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex flex-col text-gray-400 text-xs">
-                <div className="flex items-center gap-1">
-                  <p className="text-white text-sm">
-                    {user?.firstName} {user?.lastName}
-                  </p>
-                  <TbRosetteDiscountCheckFilled
-                    size={12}
-                    color="white"
-                    title="Yazar"
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
+                  <img
+                    src={oakley}
+                    alt=""
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <p>Yazılım Mühendisi</p>
+                <div className="flex flex-col text-gray-400 text-xs">
+                  <div className="flex items-center gap-1">
+                    <p className="text-white text-sm">
+                      {user?.firstName} {user?.lastName}
+                    </p>
+                    <TbRosetteDiscountCheckFilled
+                      size={12}
+                      color="white"
+                      title="Yazar"
+                    />
+                  </div>
+                  <p>Yazılım Mühendisi</p>
+                </div>
               </div>
+              {contentList.length > 0 && (
+                <button
+                  onClick={handleCreate}
+                  className="text-xs bg-blue-700 text-white px-5 py-2 rounded-sm cursor-pointer"
+                >
+                  Oluştur
+                </button>
+              )}
             </div>
             <div className="flex flex-col gap-2">
               <div className="grid grid-cols-2 gap-2">
@@ -178,7 +213,7 @@ const CreateContent = () => {
                           setProjectTechnologies((prev) =>
                             prev.find((tech) => tech.value === value)
                               ? prev.filter((tech) => tech.value !== value)
-                              : [...prev, { value, icon: selectedTech.icon }]
+                              : [...prev, { value }]
                           );
 
                           // seçimi sıfırla (aynı seçimi tekrar yapabilmek için)
@@ -205,7 +240,6 @@ const CreateContent = () => {
                 <div className="flex items-start gap-2">
                   <div className="flex flex-wrap gap-2">
                     {projectTechnologies.map((tech) => {
-                      const Icon = tech.icon;
                       return (
                         <div
                           key={tech.value}
@@ -216,8 +250,6 @@ const CreateContent = () => {
                             )
                           }
                         >
-                          {Icon && <Icon size={16} />}{" "}
-                          {/* 🔹 ikon varsa göster */}
                           <span>{tech.value}</span>
                         </div>
                       );
@@ -247,7 +279,6 @@ const CreateContent = () => {
             </div>
           )}
         </div> */}
-
 
         {/* Main Image Input */}
         {/* <input
@@ -305,7 +336,6 @@ const CreateContent = () => {
           }}
         />
 
-
         {/* Content Form */}
         <form className="w-full flex flex-col gap-5">
           {/* Title & Contents */}
@@ -359,6 +389,7 @@ const CreateContent = () => {
                 // Backspace → title boşsa hiçbir şey yapma
                 // (ilk content textarea'ya geri geçiş buradan değil oradan yapılacak)
               }}
+              onChange={(e) => setTitle(e.target.value)}
             />
             {/* Content textareas */}
             {contentList.map((item, idx) => (
