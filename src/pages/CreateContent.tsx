@@ -202,19 +202,14 @@ const CreateContent = () => {
                 </div>
               </div>
               {projectTechnologies.length > 0 && (
-                <div className="flex items-center gap-2">
-                  <div className="px-2 py-1 bg-green-800 rounded-md flex items-center justify-center">
-                    <span className="text-xs text-white">
-                      Seçilen Teknolojiler:
-                    </span>
-                  </div>
+                <div className="flex items-start gap-2">
                   <div className="flex flex-wrap gap-2">
                     {projectTechnologies.map((tech) => {
                       const Icon = tech.icon;
                       return (
                         <div
                           key={tech.value}
-                          className="px-2 py-1 bg-gray-700 text-white rounded-md text-xs cursor-pointer flex items-center gap-1"
+                          className="px-2 py-1 bg-green-900 text-white rounded-md text-xs cursor-pointer flex items-center gap-1"
                           onClick={() =>
                             setProjectTechnologies((prev) =>
                               prev.filter((t) => t !== tech)
