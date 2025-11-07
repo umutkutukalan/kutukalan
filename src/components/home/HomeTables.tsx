@@ -1,4 +1,4 @@
-import { technologies } from "../../constants";
+import { technologiesForHome } from "../../constants";
 import { abstract1, abstract2, mor } from "../../utils";
 
 const HomeTables = () => {
@@ -11,25 +11,37 @@ const HomeTables = () => {
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="w-full h-7/8 py-3 px-5 flex flex-col gap-2">
           <div className="absolute left-20 top-1/2 -translate-y-1/2">
-            <img src={abstract1} alt="" className="w-80 h-80 object-cover brightness-30" />
+            <img
+              src={abstract1}
+              alt=""
+              className="w-80 h-80 object-cover brightness-30"
+            />
           </div>
           <div className="absolute right-25 top-10 ">
-            <img src={abstract2} alt="" className="w-80 h-80 object-cover brightness-30 -rotate-50" />
+            <img
+              src={abstract2}
+              alt=""
+              className="w-80 h-80 object-cover brightness-30 -rotate-50"
+            />
           </div>
           <div className="h-full w-full flex flex-col items-center justify-center gap-2 text-center z-10">
-            <h1 className="text-md oswald-300">Umut Kutukalan | Software Engineer</h1>
-            <h2 className="text-5xl w-100 oswald-400">BLENDING ART, CODE AND PURPOSE</h2>
+            <h1 className="text-md oswald-300">
+              Umut Kutukalan | Software Engineer
+            </h1>
+            <h2 className="text-5xl w-100 oswald-400">
+              BLENDING ART, CODE AND PURPOSE
+            </h2>
           </div>
         </div>
         <div className="w-full h-1/8 z-20 relative">
           <div className="h-full w-full flex items-center justify-between">
-            {technologies.map((tech, index) => {
+            {technologiesForHome.map((tech, index) => {
               const Icon = tech.icon;
               return (
                 <div
                   key={tech.id}
                   className={`w-full h-full flex items-center justify-center ${
-                    index === technologies.length - 1
+                    index === technologiesForHome.length - 1
                       ? ""
                       : "border-r border-white/10"
                   }`}

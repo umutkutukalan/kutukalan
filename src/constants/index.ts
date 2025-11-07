@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 import { FaHome } from "react-icons/fa";
 import { BsMusicNote, BsMusicNoteList } from "react-icons/bs";
 import { BsDisplayFill } from "react-icons/bs";
@@ -15,6 +16,8 @@ import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { MdCreate } from "react-icons/md";
+import { SiElectron } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
 export const navbarList = [
   { id: 1, title: "Home", link: "/", icon: FaHome },
@@ -54,14 +57,40 @@ export const contactList = [
   { id: 1, title: "Contact", link: "/contact", icon: BsEnvelopeFill },
 ];
 
-export const technologies = [
-  { id: 1, icon: DiJava },
-  { id: 2, icon: BiLogoSpringBoot },
-  { id: 3, icon: BiLogoJavascript },
-  { id: 4, icon: BiLogoTypescript },
-  { id: 5, icon: BiLogoReact },
-  // { id: 6, icon: SiElectron },
-  { id: 7, icon: RiNextjsFill },
-  { id: 8, icon: DiMysql },
-  { id: 9, icon: DiPostgresql },
+export interface TechnologyForHome {
+  id: number;
+  icon: React.ComponentType | null;
+  title: string;
+}
+
+export interface TechnologyForCreateContent {
+  id: number;
+  icon: IconType | null;
+  title: string;
+}
+
+export const technologiesForHome: TechnologyForHome[] = [
+  { id: 1, icon: DiJava, title: "Java" },
+  { id: 2, icon: BiLogoSpringBoot, title: "Spring Boot" },
+  { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
+  { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
+  { id: 5, icon: BiLogoReact, title: "ReactJS" },
+  { id: 7, icon: SiElectron, title: "ElectronJS" },
+  { id: 8, icon: RiNextjsFill, title: "NextJS" },
+  { id: 9, icon: DiMysql, title: "MySQL" },
+  { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
+];
+
+export const technologiesForCreateContent: TechnologyForCreateContent[] = [
+  { id: 1, icon: DiJava, title: "Java" },
+  { id: 2, icon: BiLogoSpringBoot, title: "Spring Boot" },
+  { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
+  { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
+  { id: 5, icon: BiLogoReact, title: "ReactJS" },
+  { id: 7, icon: SiElectron, title: "ElectronJS" },
+  { id: 8, icon: RiNextjsFill, title: "NextJS" },
+  { id: 9, icon: TbBrandReactNative, title: "React Native" },
+  { id: 10, icon: DiMysql, title: "MySQL" },
+  { id: 11, icon: DiPostgresql, title: "PostgreSQL" },
+  { id: 12, icon: null, title: "PostGIS" },
 ];

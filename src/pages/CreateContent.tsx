@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { RiDragMoveLine } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
@@ -7,7 +8,11 @@ import { BsCardImage } from "react-icons/bs";
 import { BsFileImage } from "react-icons/bs";
 import { MdOutlineImage } from "react-icons/md";
 
-import { LuImagePlus } from "react-icons/lu";
+// import { LuImagePlus } from "react-icons/lu";
+import { oakley } from "../utils";
+import { useUser } from "../hooks/useUserContext";
+import { technologiesForCreateContent } from "../constants";
+import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 
 interface ContentItem {
   id: string;
@@ -15,11 +20,24 @@ interface ContentItem {
   content: string;
 }
 
+interface ProjectTechnologiest {
+  value: string;
+  icon: IconType | null;
+}
+
 const CreateContent = () => {
+  const { user } = useUser();
+  console.log(user);
+
+  const [contentType, setContentType] = useState<string>("");
+  const [projectTechnologies, setProjectTechnologies] = useState<
+    ProjectTechnologiest[]
+  >([]);
+
   const [title, setTitle] = useState<string>("");
 
-  const [mainImg, setMainImg] = useState<string>("");
-  const mainImgInputRef = useRef<HTMLInputElement | null>(null);
+  // const [mainImg, setMainImg] = useState<string>("");
+  // const mainImgInputRef = useRef<HTMLInputElement | null>(null);
 
   const [contentList, setContentList] = useState<ContentItem[]>([]);
 
@@ -77,10 +95,12 @@ const CreateContent = () => {
   }, [contentList, focusedIndex]);
 
   console.log(contentList);
+  console.log(projectTechnologies);
 
   return (
     <div
-      className="p-5 relative"
+      className="p-20 relative"
+      // Boş alana tıklayınca yeni paragraf ekle
       onClick={(e) => {
         // Eğer tıklanan element textarea veya image değilse yeni bir paragraf ekle
         if (e.target === e.currentTarget) {
@@ -93,8 +113,123 @@ const CreateContent = () => {
       }}
     >
       <div className="w-full h-full flex flex-col gap-5">
-        {/* Main Image 68-97 */}
-        <div
+        <div className="w-full border-b border-gray-200 pb-5">
+          <div className="flex flex-col gap-5">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
+                <img
+                  src={oakley}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col text-gray-400 text-xs">
+                <div className="flex items-center gap-1">
+                  <p className="text-white text-sm">
+                    {user?.firstName} {user?.lastName}
+                  </p>
+                  <TbRosetteDiscountCheckFilled
+                    size={12}
+                    color="white"
+                    title="Yazar"
+                  />
+                </div>
+                <p>Yazılım Mühendisi</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-2 gap-2">
+                <select
+                  name="contentType"
+                  id="contentType"
+                  className="border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none"
+                  onChange={(e) => setContentType(e.target.value)}
+                  onClick={() => {
+                    if (contentType !== "project") {
+                      setProjectTechnologies([]);
+                    } else return;
+                  }}
+                >
+                  <option value="">Kategori Seçin</option>
+                  <option value="project" selected={contentType === "project"}>
+                    Proje
+                  </option>
+                  <option value="blog" selected={contentType === "blog"}>
+                    Blog
+                  </option>
+                </select>
+                <div className="grid grid-cols-2 gap-2">
+                  {contentType === "project" && (
+                    <>
+                      <select
+                        name="technologies"
+                        id="technologies"
+                        className="border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none"
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (!value) return;
+
+                          const selectedTech =
+                            technologiesForCreateContent.find(
+                              (t) => t.title === value
+                            );
+                          if (!selectedTech) return;
+
+                          setProjectTechnologies((prev) =>
+                            prev.find((tech) => tech.value === value)
+                              ? prev.filter((tech) => tech.value !== value)
+                              : [...prev, { value, icon: selectedTech.icon }]
+                          );
+
+                          // seçimi sıfırla (aynı seçimi tekrar yapabilmek için)
+                          e.target.value = "";
+                        }}
+                      >
+                        <option value="">Teknoloji Seçin</option>
+                        {technologiesForCreateContent.map((tech) => (
+                          <option key={tech.id} value={tech.title}>
+                            {tech.title}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        type="text"
+                        className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
+                        placeholder="Github Url"
+                      />
+                    </>
+                  )}
+                </div>
+              </div>
+              {projectTechnologies.length > 0 && (
+                <div className="flex items-start gap-2">
+                  <div className="flex flex-wrap gap-2">
+                    {projectTechnologies.map((tech) => {
+                      const Icon = tech.icon;
+                      return (
+                        <div
+                          key={tech.value}
+                          className="px-2 py-1 bg-green-900 text-white rounded-md text-xs cursor-pointer flex items-center gap-1"
+                          onClick={() =>
+                            setProjectTechnologies((prev) =>
+                              prev.filter((t) => t !== tech)
+                            )
+                          }
+                        >
+                          {Icon && <Icon size={16} />}{" "}
+                          {/* 🔹 ikon varsa göster */}
+                          <span>{tech.value}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* <div
           className="w-full h-80 rounded-lg overflow-hidden cursor-pointer relative border border-white/20"
           onClick={() => mainImgInputRef.current?.click()} // tıklanınca file input açılsın
         >
@@ -111,8 +246,11 @@ const CreateContent = () => {
               <LuImagePlus size={40} />
             </div>
           )}
-        </div>
-        <input
+        </div> */}
+
+
+        {/* Main Image Input */}
+        {/* <input
           type="file"
           accept="image/*"
           ref={mainImgInputRef}
@@ -125,6 +263,8 @@ const CreateContent = () => {
             e.target.value = ""; // input temizliği
           }}
         />
+
+
         {/* Content Input */}
         <input
           type="file"
@@ -147,35 +287,35 @@ const CreateContent = () => {
               type: "image",
               content: imageUrl,
             };
-
             newContent.splice(insertIdx + 1, 0, {
               id: crypto.randomUUID(),
               type: "paragraph",
               content: "",
             });
-
             setContentList(newContent);
             setClickedIndex(null);
-
             setTimeout(() => {
               const nextEl = textRefs.current[insertIdx + 1];
               if (nextEl) {
                 nextEl.focus();
               }
             }, 0);
-
             // temizlik
             e.target.value = "";
           }}
         />
+
+
+        {/* Content Form */}
         <form className="w-full flex flex-col gap-5">
+          {/* Title & Contents */}
           <div className="flex flex-col gap-4">
             {/* Title textarea */}
             <textarea
               ref={titleRef}
               value={title}
               placeholder="Başlık ekle..."
-              className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-4xl font-medium leading-tight dmserif"
+              className="w-full placeholder-gray-400 focus:outline-none resize-none overflow-hidden text-4xl font-medium leading-tight roboto"
               rows={1}
               onInput={(e) => {
                 const target = e.target as HTMLTextAreaElement;
@@ -185,7 +325,6 @@ const CreateContent = () => {
               }}
               onKeyDown={(e) => {
                 const target = e.target as HTMLTextAreaElement;
-
                 // Aşağı ok ile ilk content'e geç
                 if (e.key === "ArrowDown") {
                   e.preventDefault();
@@ -197,7 +336,6 @@ const CreateContent = () => {
                     }
                   }
                 }
-
                 // Enter → yeni content oluştur
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
@@ -218,7 +356,6 @@ const CreateContent = () => {
                     }, 0);
                   }
                 }
-
                 // Backspace → title boşsa hiçbir şey yapma
                 // (ilk content textarea'ya geri geçiş buradan değil oradan yapılacak)
               }}
@@ -569,7 +706,6 @@ const CreateContent = () => {
                     }
                   }
                 }}
-                data-img-idx={idx}
               >
                 {item.type === "image" ? (
                   (() => {
@@ -680,7 +816,7 @@ const CreateContent = () => {
                       ref={(el) => (textRefs.current[idx] = el)}
                       value={item.content}
                       placeholder={
-                        clickedIndex !== idx
+                        clickedIndex !== idx && focusedIndex === idx
                           ? idx === 0
                             ? "Bu paragraf içerik açıklaması olarak gösterilecektir..."
                             : "Paragraf ekle..."
