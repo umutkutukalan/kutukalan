@@ -16,6 +16,8 @@ import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { MdCreate } from "react-icons/md";
 import { title } from "process";
+import { SiElectron } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
 export const navbarList = [
   { id: 1, title: "Home", link: "/", icon: FaHome },
@@ -55,7 +57,6 @@ export const contactList = [
   { id: 1, title: "Contact", link: "/contact", icon: BsEnvelopeFill },
 ];
 
-
 export interface Technology {
   id: number;
   icon: any;
@@ -64,12 +65,14 @@ export interface Technology {
 
 export const technologies: Technology[] = [
   { id: 1, icon: DiJava, title: "Java" },
-  { id: 2, icon: BiLogoSpringBoot, title : "Spring Boot" },
-  { id: 3, icon: BiLogoJavascript, title : "JavaScript" },
-  { id: 4, icon: BiLogoTypescript, title : "TypeScript" },
-  { id: 5, icon: BiLogoReact, title : "ReactJS" },
-  // { id: 6, icon: SiElectron },
-  { id: 7, icon: RiNextjsFill, title : "NextJS" },
-  { id: 8, icon: DiMysql, title : "MySQL" },
-  { id: 9, icon: DiPostgresql, title : "PostgreSQL" },
+  { id: 2, icon: BiLogoSpringBoot, title: "Spring Boot" },
+  { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
+  { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
+  { id: 5, icon: BiLogoReact, title: "ReactJS" },
+  { id: 6, icon: TbBrandReactNative, title: "React Native" },
+  { id: 7, icon: SiElectron, title: "Electron" },
+  { id: 8, icon: RiNextjsFill, title: "NextJS" },
+  { id: 9, icon: DiMysql, title: "MySQL" },
+  { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
+  { id: 11, icon: null, title: "PostgreSQL" },
 ];

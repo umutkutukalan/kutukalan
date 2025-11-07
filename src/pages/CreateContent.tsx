@@ -792,7 +792,7 @@ const CreateContent = () => {
                       ref={(el) => (textRefs.current[idx] = el)}
                       value={item.content}
                       placeholder={
-                        clickedIndex !== idx
+                        clickedIndex !== idx && focusedIndex === idx
                           ? idx === 0
                             ? "Bu paragraf içerik açıklaması olarak gösterilecektir..."
                             : "Paragraf ekle..."
