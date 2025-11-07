@@ -69,10 +69,8 @@ export const technologies: Technology[] = [
   { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
   { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
   { id: 5, icon: BiLogoReact, title: "ReactJS" },
-  { id: 6, icon: TbBrandReactNative, title: "React Native" },
-  { id: 7, icon: SiElectron, title: "Electron" },
+  { id: 7, icon: SiElectron, title: "ElectronJS" },
   { id: 8, icon: RiNextjsFill, title: "NextJS" },
   { id: 9, icon: DiMysql, title: "MySQL" },
   { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
-  { id: 11, icon: null, title: "PostgreSQL" },
 ];

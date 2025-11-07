@@ -8,9 +8,10 @@ import { BsFileImage } from "react-icons/bs";
 import { MdOutlineImage } from "react-icons/md";
 
 // import { LuImagePlus } from "react-icons/lu";
-import { nikegreen } from "../utils";
+import { oakley } from "../utils";
 import { useUser } from "../hooks/useUserContext";
 import { technologies } from "../constants";
+import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 
 interface ContentItem {
   id: string;
@@ -112,25 +113,35 @@ const CreateContent = () => {
     >
       <div className="w-full h-full flex flex-col gap-5">
         <div className="w-full border-b border-gray-200 pb-5">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-5">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full overflow-hidden">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
                 <img
-                  src={nikegreen}
+                  src={oakley}
                   alt=""
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-gray-400 text-sm">
-                {user?.firstName} {user?.lastName}
-              </p>
+              <div className="flex flex-col text-gray-400 text-xs">
+                <div className="flex items-center gap-1">
+                  <p className="text-white text-sm">
+                    {user?.firstName} {user?.lastName}
+                  </p>
+                  <TbRosetteDiscountCheckFilled
+                    size={12}
+                    color="white"
+                    title="Yazar"
+                  />
+                </div>
+                <p>Yazılım Mühendisi</p>
+              </div>
             </div>
             <div className="flex flex-col gap-2">
               <div className="grid grid-cols-2 gap-2">
                 <select
                   name="contentType"
                   id="contentType"
-                  className="border border-gray-700 rounded-md px-3 py-1 text-xs w-full focus:outline-none"
+                  className="border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none"
                   onChange={(e) => setContentType(e.target.value)}
                   onClick={() => {
                     if (contentType !== "project") {
@@ -152,7 +163,7 @@ const CreateContent = () => {
                       <select
                         name="technologies"
                         id="technologies"
-                        className="border border-gray-700 rounded-md px-3 py-1 text-xs w-full focus:outline-none"
+                        className="border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none"
                         onChange={(e) => {
                           const value = e.target.value;
                           if (!value) return;
@@ -188,25 +199,34 @@ const CreateContent = () => {
                   )}
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {projectTechnologies.map((tech) => {
-                  const Icon = tech.icon;
-                  return (
-                    <div
-                      key={tech.value}
-                      className="px-2 py-1 bg-gray-700 text-white rounded-md text-xs cursor-pointer flex items-center gap-1"
-                      onClick={() =>
-                        setProjectTechnologies((prev) =>
-                          prev.filter((t) => t !== tech)
-                        )
-                      }
-                    >
-                      <Icon size={16} />
-                      <span>{tech.value}</span>
-                    </div>
-                  );
-                })}
-              </div>
+              {projectTechnologies.length > 0 && (
+                <div className="flex items-center gap-2">
+                  <div className="px-2 py-1 bg-green-800 rounded-md flex items-center justify-center">
+                    <span className="text-xs text-white">
+                      Seçilen Teknolojiler:
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {projectTechnologies.map((tech) => {
+                      const Icon = tech.icon;
+                      return (
+                        <div
+                          key={tech.value}
+                          className="px-2 py-1 bg-gray-700 text-white rounded-md text-xs cursor-pointer flex items-center gap-1"
+                          onClick={() =>
+                            setProjectTechnologies((prev) =>
+                              prev.filter((t) => t !== tech)
+                            )
+                          }
+                        >
+                          <Icon size={16} />
+                          <span>{tech.value}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -229,8 +249,10 @@ const CreateContent = () => {
             </div>
           )}
         </div> */}
+
+
         {/* Main Image Input */}
-        <input
+        {/* <input
           type="file"
           accept="image/*"
           ref={mainImgInputRef}
@@ -243,6 +265,8 @@ const CreateContent = () => {
             e.target.value = ""; // input temizliği
           }}
         />
+
+
         {/* Content Input */}
         <input
           type="file"
@@ -282,6 +306,9 @@ const CreateContent = () => {
             e.target.value = "";
           }}
         />
+
+
+        {/* Content Form */}
         <form className="w-full flex flex-col gap-5">
           {/* Title & Contents */}
           <div className="flex flex-col gap-4">
