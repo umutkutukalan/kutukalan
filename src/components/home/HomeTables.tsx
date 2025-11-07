@@ -1,4 +1,4 @@
-import { technologies } from "../../constants";
+import { technologiesForHome } from "../../constants";
 import { abstract1, abstract2, mor } from "../../utils";
 
 const HomeTables = () => {
@@ -35,13 +35,13 @@ const HomeTables = () => {
         </div>
         <div className="w-full h-1/8 z-20 relative">
           <div className="h-full w-full flex items-center justify-between">
-            {technologies.map((tech, index) => {
+            {technologiesForHome.map((tech, index) => {
               const Icon = tech.icon;
               return (
                 <div
                   key={tech.id}
                   className={`w-full h-full flex items-center justify-center ${
-                    index === technologies.length - 1
+                    index === technologiesForHome.length - 1
                       ? ""
                       : "border-r border-white/10"
                   }`}

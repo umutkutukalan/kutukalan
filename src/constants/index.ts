@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 import { FaHome } from "react-icons/fa";
 import { BsMusicNote, BsMusicNoteList } from "react-icons/bs";
 import { BsDisplayFill } from "react-icons/bs";
@@ -15,7 +16,6 @@ import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { MdCreate } from "react-icons/md";
-import { title } from "process";
 import { SiElectron } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 
@@ -57,13 +57,19 @@ export const contactList = [
   { id: 1, title: "Contact", link: "/contact", icon: BsEnvelopeFill },
 ];
 
-export interface Technology {
+export interface TechnologyForHome {
   id: number;
-  icon: any;
+  icon: React.ComponentType | null;
   title: string;
 }
 
-export const technologies: Technology[] = [
+export interface TechnologyForCreateContent {
+  id: number;
+  icon: IconType | null;
+  title: string;
+}
+
+export const technologiesForHome: TechnologyForHome[] = [
   { id: 1, icon: DiJava, title: "Java" },
   { id: 2, icon: BiLogoSpringBoot, title: "Spring Boot" },
   { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
@@ -73,4 +79,18 @@ export const technologies: Technology[] = [
   { id: 8, icon: RiNextjsFill, title: "NextJS" },
   { id: 9, icon: DiMysql, title: "MySQL" },
   { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
+];
+
+export const technologiesForCreateContent: TechnologyForCreateContent[] = [
+  { id: 1, icon: DiJava, title: "Java" },
+  { id: 2, icon: BiLogoSpringBoot, title: "Spring Boot" },
+  { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
+  { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
+  { id: 5, icon: BiLogoReact, title: "ReactJS" },
+  { id: 7, icon: SiElectron, title: "ElectronJS" },
+  { id: 8, icon: RiNextjsFill, title: "NextJS" },
+  { id: 9, icon: TbBrandReactNative, title: "React Native" },
+  { id: 10, icon: DiMysql, title: "MySQL" },
+  { id: 11, icon: DiPostgresql, title: "PostgreSQL" },
+  { id: 12, icon: null, title: "PostGIS" },
 ];

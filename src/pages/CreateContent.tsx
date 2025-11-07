@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { RiDragMoveLine } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
@@ -10,7 +11,7 @@ import { MdOutlineImage } from "react-icons/md";
 // import { LuImagePlus } from "react-icons/lu";
 import { oakley } from "../utils";
 import { useUser } from "../hooks/useUserContext";
-import { technologies } from "../constants";
+import { technologiesForCreateContent } from "../constants";
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 
 interface ContentItem {
@@ -21,7 +22,7 @@ interface ContentItem {
 
 interface ProjectTechnologiest {
   value: string;
-  icon: string;
+  icon: IconType | null;
 }
 
 const CreateContent = () => {
@@ -36,7 +37,7 @@ const CreateContent = () => {
   const [title, setTitle] = useState<string>("");
 
   // const [mainImg, setMainImg] = useState<string>("");
-  const mainImgInputRef = useRef<HTMLInputElement | null>(null);
+  // const mainImgInputRef = useRef<HTMLInputElement | null>(null);
 
   const [contentList, setContentList] = useState<ContentItem[]>([]);
 
@@ -168,9 +169,10 @@ const CreateContent = () => {
                           const value = e.target.value;
                           if (!value) return;
 
-                          const selectedTech = technologies.find(
-                            (t) => t.title === value
-                          );
+                          const selectedTech =
+                            technologiesForCreateContent.find(
+                              (t) => t.title === value
+                            );
                           if (!selectedTech) return;
 
                           setProjectTechnologies((prev) =>
@@ -184,7 +186,7 @@ const CreateContent = () => {
                         }}
                       >
                         <option value="">Teknoloji Seçin</option>
-                        {technologies.map((tech) => (
+                        {technologiesForCreateContent.map((tech) => (
                           <option key={tech.id} value={tech.title}>
                             {tech.title}
                           </option>
@@ -219,7 +221,8 @@ const CreateContent = () => {
                             )
                           }
                         >
-                          <Icon size={16} />
+                          {Icon && <Icon size={16} />}{" "}
+                          {/* 🔹 ikon varsa göster */}
                           <span>{tech.value}</span>
                         </div>
                       );
@@ -708,7 +711,6 @@ const CreateContent = () => {
                     }
                   }
                 }}
-                data-img-idx={idx}
               >
                 {item.type === "image" ? (
                   (() => {
