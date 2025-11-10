@@ -29,3 +29,18 @@ export const CreateProjectService = async (projectData: ProjectData) => {
     console.error("Error creating project:", error);
   }
 };
+
+export const GetProjectService = async (page = 0, size = 5) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/projects?page=${page}&size=${size}&sort=createdAt,desc`,
+      {
+        withCredentials: true, // HttpOnly cookie gönder
+      }
+    );
+    return response;
+  } catch (error) {
+    console.error("Projeler çekilirlen hata:", error);
+    throw error;
+  }
+};
