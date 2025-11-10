@@ -10,6 +10,7 @@ import ProjectDetail from "./components/yzlm-project/ProjectDetail";
 import { useState } from "react";
 import CreateUser from "./pages/CreateUser";
 import CreateContent from "./pages/CreateContent";
+import Projects from "./pages/Projects";
 
 function App() {
   const [user] = useState("ADMIN");
@@ -35,7 +36,7 @@ function App() {
                 </>
               }
             />
-            <Route path="/projects" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
             <Route path="/musics" element={<Musics />} />
             {user === "ADMIN" && (
