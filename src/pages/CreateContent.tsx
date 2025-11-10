@@ -232,6 +232,7 @@ const CreateContent = () => {
                         type="text"
                         className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
                         placeholder="Github Url"
+                        onChange={(e) => setGithubUrl(e.target.value)}
                       />
                     </>
                   )}
