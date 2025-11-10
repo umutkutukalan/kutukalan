@@ -33,7 +33,7 @@ const Projects = () => {
   }
 
   return (
-    <div className="p-5">
+    <div className="py-10 px-20">
       <ProjectList projects={projects} />
 
       {/* Veri Bittiğinde Gösterilecek Mesaj */}
