@@ -26,7 +26,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="w-full h-50 overflow-hidden">
       <div className="w-full h-full flex gap-5">
-        <div className="w-1/3 h-full overflow-hidden relative flex-shrink-0">
+        <div className="w-1/3 h-full overflow-hidden relative flex-shrink-0 rounded-xl">
           <div className="absolute inset-0 bg-black opacity-20" />
           <img
             src={project.mainImg}
@@ -35,7 +35,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           />
         </div>
         <div className="w-full flex flex-col justify-between">
-          <div className="w-full flex flex-col gap-3">
+          <div className="w-full flex flex-col gap-5">
             <div className="w-full flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs">
                 <div className="w-7 h-7 rounded-full overflow-hidden">
@@ -57,20 +57,39 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               <h3 className="text-2xl font-semibold line-clamp-2">
                 {project.title}
               </h3>
-              <p className="text-sm text-white/60 flex-1 overflow-hidden text-ellipsis line-clamp-3">
+              <p className="text-sm text-white/60 flex-1 overflow-hidden text-ellipsis line-clamp-2">
                 {project.description}
               </p>
             </div>
           </div>
           <div className="w-full flex items-center justify-between">
-            <Link to={project.githubUrl} className="flex items-center gap-1">
-              <FaGithub size={12} />
-              <span className="text-xs">GITHUB URL</span>
-            </Link>
-            <div className="flex items-center justify-between text-xs text-white/40">
+            <ul className="flex flex-wrap items-center gap-2">
+              {project.technologies.map((tech) => (
+                <li
+                  key={tech}
+                  className="text-xs pointer-events-none flex items-center"
+                >
+                  {tech === "TypeScript" && <BiLogoTypescript size={18} />}
+                  {tech === "JavaScript" && <BiLogoJavascript size={18} />}
+                  {tech === "ReactJS" && <BiLogoReact size={18} />}
+                  {tech === "NextJS" && <RiNextjsFill size={18} />}
+                  {tech === "Spring Boot" && <BiLogoSpringBoot size={18} />}
+                  {tech === "Java" && <DiJava size={18} />}
+                  {tech === "PostgreSQL" && <DiPostgresql size={18} />}
+                  {tech === "MySQL" && <DiMysql size={18} />}
+                  {tech === "ElectronJS" && <SiElectron size={18} />}
+                  {tech === "React Native" && <TbBrandReactNative size={18} />}
+                  {tech === "PostGIS" && <span className="text-xs">PGIS</span>}
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center gap-2 text-xs">
+              <Link to={project.githubUrl} className="flex items-center gap-1 border-r pr-2">
+                <FaGithub size={12} className="hover:text-blue-500 transition-all"/>                
+              </Link>
               <Link
                 to={`/projects/${project.id}`}
-                className="text-blue-400 hover:underline"
+                className="hover:underline"
               >
                 Projeyi İncele
               </Link>
@@ -83,23 +102,3 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 };
 
 export default ProjectCard;
-
-{
-  /* <ul className="flex flex-wrap items-center gap-2">
-  {project.technologies.map((tech) => (
-    <li key={tech} className="text-xs pointer-events-none flex items-center">
-      {tech === "TypeScript" && <BiLogoTypescript size={18} />}
-      {tech === "JavaScript" && <BiLogoJavascript size={18} />}
-      {tech === "ReactJS" && <BiLogoReact size={18} />}
-      {tech === "NextJS" && <RiNextjsFill size={18} />}
-      {tech === "Spring Boot" && <BiLogoSpringBoot size={18} />}
-      {tech === "Java" && <DiJava size={18} />}
-      {tech === "PostgreSQL" && <DiPostgresql size={18} />}
-      {tech === "MySQL" && <DiMysql size={18} />}
-      {tech === "ElectronJS" && <SiElectron size={18} />}
-      {tech === "React Native" && <TbBrandReactNative size={18} />}
-      {tech === "PostGIS" && <span className="text-xs">PGIS</span>}
-    </li>
-  ))}
-</ul>; */
-}
