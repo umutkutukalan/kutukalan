@@ -1,8 +1,12 @@
+import type { Project } from "../../services/project/projectServices";
 
-const ProjectCard = () => {
-  return (
-    <div>ProjectCard</div>
-  )
+interface ProjectCardProps {
+  project: Project;
 }
 
-export default ProjectCard
+const ProjectCard = ({ project }: ProjectCardProps) => {
+  console.log("ProjectCard project:", project.id, project);
+  return <div>ProjectCard</div>;
+};
+
+export default ProjectCard;
