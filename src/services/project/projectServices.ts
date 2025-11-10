@@ -30,6 +30,19 @@ export const CreateProjectService = async (projectData: ProjectData) => {
   }
 };
 
+export interface Project {
+  contentItems: unknown[];
+  createdAt: string;
+  description: string;
+  githubUrl: string;
+  id: number;
+  liveUrl: string;
+  mainImg: string;
+  technologies: string[];
+  title: string;
+  updatedAt: string;
+}
+
 export const GetProjectService = async (page = 0, size = 5) => {
   try {
     const response = await axios.get(
