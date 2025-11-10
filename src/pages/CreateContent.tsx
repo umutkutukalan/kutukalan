@@ -50,7 +50,7 @@ const CreateContent = () => {
   const titleRef = useRef<HTMLTextAreaElement | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
@@ -633,9 +633,7 @@ const CreateContent = () => {
                         const nextItem = newList[idx];
                         if (nextItem) {
                           if (nextItem.type === "image") {
-                            const nextImg = document.querySelector(
-                              `[data-img-idx="${idx}"]`
-                            ) as HTMLElement;
+                            const nextImg = imageRefs.current[idx];
                             if (nextImg) nextImg.focus();
                           } else {
                             textRefs.current[idx]?.focus();
@@ -645,9 +643,7 @@ const CreateContent = () => {
                           const prevItem = newList[idx - 1];
                           if (prevItem) {
                             if (prevItem.type === "image") {
-                              const prevImg = document.querySelector(
-                                `[data-img-idx="${idx - 1}"]`
-                              ) as HTMLElement;
+                              const prevImg = imageRefs.current[idx - 1];
                               if (prevImg) prevImg.focus();
                             } else {
                               textRefs.current[idx - 1]?.focus();
@@ -698,9 +694,7 @@ const CreateContent = () => {
                             setContentList(newContent);
                             adjustAllHeights();
                             setTimeout(() => {
-                              const prevImg = document.querySelector(
-                                `[data-img-idx="${idx - 1}"]`
-                              ) as HTMLElement;
+                              const prevImg = imageRefs.current[idx - 1];
                               // önce mevcut input'u blur et
                               if (prevImg) target.blur();
                               // sonra image'ye focuslan
