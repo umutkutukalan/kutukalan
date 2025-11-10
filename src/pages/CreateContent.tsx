@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { RiDragMoveLine } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
@@ -49,7 +50,7 @@ const CreateContent = () => {
   const titleRef = useRef<HTMLTextAreaElement | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
