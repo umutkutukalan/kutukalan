@@ -57,3 +57,15 @@ export const GetProjectService = async (page = 0, size = 5) => {
     throw error;
   }
 };
+
+export const GetProjectByIdService = async (projectId: number) => {
+  try {
+    const response = await axios.get(`${API_URL}/projects/${projectId}`, {
+      withCredentials: true, // HttpOnly cookie gönder
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Proje detayları çekilirken hata:", error);
+    throw error;
+  }
+};

@@ -12,15 +12,17 @@ import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiElectron } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { nikegreen } from "../../utils";
 import { FaGithub } from "react-icons/fa";
+import { handleViewProject } from "../../utils/HandleViewProject";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const navigate = useNavigate();
   const { formatRelativeTime } = RelativeTime();
 
   return (
@@ -84,15 +86,21 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               ))}
             </ul>
             <div className="flex items-center gap-2 text-xs">
-              <Link to={project.githubUrl} className="flex items-center gap-1 border-r pr-2">
-                <FaGithub size={12} className="hover:text-blue-500 transition-all"/>                
-              </Link>
               <Link
-                to={`/projects/${project.id}`}
+                to={project.githubUrl}
+                className="flex items-center gap-1 border-r pr-2"
+              >
+                <FaGithub
+                  size={12}
+                  className="hover:text-blue-500 transition-all"
+                />
+              </Link>
+              <button
+                onClick={() => handleViewProject(project, navigate)}
                 className="hover:underline"
               >
                 Projeyi İncele
-              </Link>
+              </button>
             </div>
           </div>
         </div>
