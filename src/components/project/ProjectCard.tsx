@@ -40,7 +40,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <div className="w-full flex flex-col gap-5">
             <div className="w-full flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs">
-                <div className="w-7 h-7 rounded-full overflow-hidden">
+                <div className="w-5 h-5 rounded-full overflow-hidden">
                   <img
                     src={nikegreen}
                     alt=""
@@ -48,7 +48,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   />
                 </div>
                 <div>
-                  <span>Umut Kütükalan</span>
+                  <span>kutukalan</span>
                 </div>
               </div>
               <span className="text-xs text-gray-400">
@@ -65,26 +65,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             </div>
           </div>
           <div className="w-full flex items-center justify-between">
-            <ul className="flex flex-wrap items-center gap-2">
-              {project.technologies.map((tech) => (
-                <li
-                  key={tech}
-                  className="text-xs pointer-events-none flex items-center"
-                >
-                  {tech === "TypeScript" && <BiLogoTypescript size={18} />}
-                  {tech === "JavaScript" && <BiLogoJavascript size={18} />}
-                  {tech === "ReactJS" && <BiLogoReact size={18} />}
-                  {tech === "NextJS" && <RiNextjsFill size={18} />}
-                  {tech === "Spring Boot" && <BiLogoSpringBoot size={18} />}
-                  {tech === "Java" && <DiJava size={18} />}
-                  {tech === "PostgreSQL" && <DiPostgresql size={18} />}
-                  {tech === "MySQL" && <DiMysql size={18} />}
-                  {tech === "ElectronJS" && <SiElectron size={18} />}
-                  {tech === "React Native" && <TbBrandReactNative size={18} />}
-                  {tech === "PostGIS" && <span className="text-xs">PGIS</span>}
-                </li>
-              ))}
-            </ul>
             <div className="flex items-center gap-2 text-xs">
               <Link
                 to={project.githubUrl}
@@ -102,6 +82,26 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 Projeyi İncele
               </button>
             </div>
+            <ul className="flex flex-wrap items-center gap-2">
+              {project.technologies.map((tech) => (
+                <li
+                  key={tech}
+                  className="pointer-events-none flex items-center"
+                >
+                  {tech === "TypeScript" && <BiLogoTypescript size={15} />}
+                  {tech === "JavaScript" && <BiLogoJavascript size={15} />}
+                  {tech === "ReactJS" && <BiLogoReact size={15} />}
+                  {tech === "NextJS" && <RiNextjsFill size={15} />}
+                  {tech === "Spring Boot" && <BiLogoSpringBoot size={15} />}
+                  {tech === "Java" && <DiJava size={15} />}
+                  {tech === "PostgreSQL" && <DiPostgresql size={15} />}
+                  {tech === "MySQL" && <DiMysql size={15} />}
+                  {tech === "ElectronJS" && <SiElectron size={15} />}
+                  {tech === "React Native" && <TbBrandReactNative size={15} />}
+                  {tech === "PostGIS" && <span className="text-xs">PGIS</span>}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
