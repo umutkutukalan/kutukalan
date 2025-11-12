@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import ProjectList from "../components/project/ProjectList";
 import { useGetProjects } from "../hooks/project/useGetProjects";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
+import ProjectHeader from "../components/pageheader/ProjectHeader";
 
 const Projects = () => {
   const {
@@ -34,7 +35,10 @@ const Projects = () => {
 
   return (
     <div className="py-10 px-20">
-      <ProjectList projects={projects} />
+      <div className="flex flex-col gap-5">
+        <ProjectHeader />
+        <ProjectList projects={projects} />
+      </div>
 
       {/* Veri Bittiğinde Gösterilecek Mesaj */}
       {!hasMore && projects.length > 0 && (

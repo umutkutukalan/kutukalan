@@ -1,4 +1,4 @@
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { runwoman } from "../utils";
 import type { Project } from "../services/project/projectServices";
 import { useRelativeTime } from "../hooks/useRelativeTime";
@@ -16,7 +16,6 @@ import { TbBrandReactNative } from "react-icons/tb";
 const ProjectDetail = () => {
   const { projectSlug } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
 
   const { formatRelativeTime } = useRelativeTime();
 
@@ -27,8 +26,8 @@ const ProjectDetail = () => {
     <div className="w-full p-10 flex items-center justify-center">
       <div className="w-200 flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
-          <div>
-            <h1 className="font-bold text-5xl">{project.title}</h1>
+          <div className="flex items-start gap-1">
+            <h1 className="font-bold text-3xl">{project.title}</h1>
           </div>
           <div className="w-full flex items-center justify-between text-sm">
             <div className="w-full flex items-center gap-2">
@@ -70,16 +69,16 @@ const ProjectDetail = () => {
         <ul className="flex flex-col gap-5">
           {project.contentItems.map((item, index) => (
             <li key={index}>
-              {item.type === "image" && (
+              {item?.type === "image" && (
                 <img
-                  src={item.content}
+                  src={item?.content}
                   alt=""
                   className="w-full h-auto object-cover rounded-md"
                 />
               )}
-              {item.type === "paragraph" && (
+              {item?.type === "paragraph" && (
                 <p className="text-base leading-7 whitespace-pre-line">
-                  {item.content}
+                  {item?.content}
                 </p>
               )}
             </li>
