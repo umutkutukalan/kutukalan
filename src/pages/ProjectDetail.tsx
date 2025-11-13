@@ -1,5 +1,5 @@
 import { useParams, useLocation } from "react-router-dom";
-import { runwoman } from "../utils";
+import { naturerun } from "../utils";
 import type { Project } from "../services/project/projectServices";
 import { useRelativeTime } from "../hooks/useRelativeTime";
 import {
@@ -27,14 +27,14 @@ const ProjectDetail = () => {
       <div className="w-200 flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
           <div className="flex items-start gap-1">
-            <h1 className="font-bold text-3xl">{project.title}</h1>
+            <h1 className="font-bold text-4xl">{project.title}</h1>
           </div>
           <div className="w-full flex items-center justify-between text-sm">
             <div className="w-full flex items-center gap-2">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-full overflow-hidden">
                   <img
-                    src={runwoman}
+                    src={naturerun}
                     alt=""
                     className="w-full h-full object-cover"
                   />
@@ -77,7 +77,7 @@ const ProjectDetail = () => {
                 />
               )}
               {item?.type === "paragraph" && (
-                <p className="text-base leading-7 whitespace-pre-line">
+                <p className="text-base leading-7 whitespace-pre-line text-gray-300">
                   {item?.content}
                 </p>
               )}

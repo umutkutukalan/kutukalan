@@ -34,7 +34,7 @@ const Projects = () => {
   }
 
   return (
-    <div className="py-10 px-20">
+    <div className="py-8 px-10">
       <div className="flex flex-col gap-5">
         <ProjectHeader />
         <ProjectList projects={projects} />

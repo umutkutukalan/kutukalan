@@ -13,10 +13,10 @@ import { RiNextjsFill } from "react-icons/ri";
 import { SiElectron } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
-import { nikegreen } from "../../utils";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaYoutube } from "react-icons/fa";
 import { handleViewProject } from "../../utils/HandleViewProject";
 import { IoIosArrowForward } from "react-icons/io";
+import { nikegreen } from "../../utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -27,15 +27,27 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   const { formatRelativeTime } = RelativeTime();
 
   return (
-    <div className="w-full h-50 overflow-hidden hover:scale-[1.02] transition-all">
+    <div className="w-full h-50 hover:bg-gray-800 hover:scale-[1.02] transition-all p-5 rounded-lg hover:border-none border-b border-white/10">
       <div className="w-full h-full flex gap-5">
-        <div className="w-1/3 h-full overflow-hidden relative flex-shrink-0">
+        <div className="w-1/5 h-full rounded-lg relative flex-shrink-0 relative">
           <div className="absolute inset-0 bg-black opacity-20" />
-          <img
-            src={project.mainImg}
-            alt=""
-            className="w-full h-full object-cover"
-          />
+          <div className="absolute inset-0 w-full h-full overflow-hidden rounded-md z-10">
+            <img
+              src={project.mainImg}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute w-full h-full rounded-md -left-2 -top-2 z-5 overflow-hidden">
+            <div className="relative w-full h-full">
+              <div className="absolute inset-0 bg-black opacity-30"></div>
+              <img
+                src={nikegreen}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
         <div className="w-full flex flex-col justify-between">
           <div className="w-full flex flex-col gap-5">
@@ -49,17 +61,17 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                     key={tech}
                     className="pointer-events-none flex items-center"
                   >
-                    {tech === "TypeScript" && <BiLogoTypescript size={15} />}
-                    {tech === "JavaScript" && <BiLogoJavascript size={15} />}
-                    {tech === "ReactJS" && <BiLogoReact size={15} />}
-                    {tech === "NextJS" && <RiNextjsFill size={15} />}
-                    {tech === "Spring Boot" && <BiLogoSpringBoot size={15} />}
-                    {tech === "Java" && <DiJava size={15} />}
-                    {tech === "PostgreSQL" && <DiPostgresql size={15} />}
-                    {tech === "MySQL" && <DiMysql size={15} />}
-                    {tech === "ElectronJS" && <SiElectron size={15} />}
+                    {tech === "TypeScript" && <BiLogoTypescript size={12} />}
+                    {tech === "JavaScript" && <BiLogoJavascript size={12} />}
+                    {tech === "ReactJS" && <BiLogoReact size={12} />}
+                    {tech === "NextJS" && <RiNextjsFill size={12} />}
+                    {tech === "Spring Boot" && <BiLogoSpringBoot size={12} />}
+                    {tech === "Java" && <DiJava size={12} />}
+                    {tech === "PostgreSQL" && <DiPostgresql size={12} />}
+                    {tech === "MySQL" && <DiMysql size={12} />}
+                    {tech === "ElectronJS" && <SiElectron size={12} />}
                     {tech === "React Native" && (
-                      <TbBrandReactNative size={15} />
+                      <TbBrandReactNative size={12} />
                     )}
                     {tech === "PostGIS" && (
                       <span className="text-xs">PGIS</span>
@@ -78,13 +90,23 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             </div>
           </div>
           <div className="w-full flex items-center justify-between">
-            <Link
-              to={project.githubUrl}
-              className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
-            >
-              <FaGithub title="Github Url" size={12} />
-              <span>Github</span>
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                to={project.githubUrl}
+                className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+              >
+                <FaGithub title="Github Url" size={12} />
+                <span>Github</span>
+              </Link>
+              <span>·</span>
+              <Link
+                to={project.liveUrl}
+                className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+              >
+                <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
+                <span>YouTube</span>
+              </Link>
+            </div>
 
             <div className="flex items-center gap-2 text-xs">
               <button
