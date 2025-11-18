@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { naturerun } from "../utils";
 import type { Project } from "../services/project/projectServices";
@@ -21,6 +22,11 @@ const ProjectDetail = () => {
 
   // handleViewProject ile gönderilen state üzerinden proje verisini al
   const project: Project = location.state?.project;
+
+  useEffect(() => {
+    // Sayfa yüklendiğinde başa kaydır
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   return (
     <div className="w-full p-10 flex items-center justify-center">
