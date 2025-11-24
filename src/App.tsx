@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import Home from "./pages/Home";
@@ -6,15 +6,14 @@ import Queque from "./components/Queque";
 import Musics from "./pages/Musics";
 import Admin from "./pages/Admin";
 import CreateMusic from "./pages/CreateMusic";
-import ProjectDetail from "./components/yzlm-project/ProjectDetail";
-import { useState } from "react";
 import CreateUser from "./pages/CreateUser";
 import CreateContent from "./pages/CreateContent";
 import Projects from "./pages/Projects";
+import { useUser } from "./hooks/useUserContext";
+import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
-  const [user] = useState("ADMIN");
-  const location = useLocation();
+  const { user } = useUser();
 
   // If current path starts with the secret prefix, render only CreateUser (full page)
   const secretCreateUserPrefix = "/create-user-th&a5tg8+521&6j%25qwp";
@@ -37,11 +36,11 @@ function App() {
               }
             />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/project/:id" element={<ProjectDetail />} />
+            <Route path="/projeler/:projectSlug" element={<ProjectDetail />} />
             <Route path="/musics" element={<Musics />} />
-            {user === "ADMIN" && (
+            {user?.role === "ADMIN" && (
               <>
-                <Route path="/admin" element={<Admin />} />
+                <Route path="/create-homecard" element={<Admin />} />
                 <Route path="/create-music" element={<CreateMusic />} />
                 <Route path="/create-content" element={<CreateContent />} />
               </>

@@ -29,3 +29,43 @@ export const CreateProjectService = async (projectData: ProjectData) => {
     console.error("Error creating project:", error);
   }
 };
+
+export interface Project {
+  contentItems: unknown[];
+  createdAt: string;
+  description: string;
+  githubUrl: string;
+  id: number;
+  liveUrl: string;
+  mainImg: string;
+  technologies: string[];
+  title: string;
+  updatedAt: string;
+}
+
+export const GetProjectService = async (page = 0, size = 5) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/projects?page=${page}&size=${size}&sort=createdAt,desc`,
+      {
+        withCredentials: true, // HttpOnly cookie gönder
+      }
+    );
+    return response;
+  } catch (error) {
+    console.error("Projeler çekilirlen hata:", error);
+    throw error;
+  }
+};
+
+export const GetProjectByIdService = async (projectId: number) => {
+  try {
+    const response = await axios.get(`${API_URL}/projects/${projectId}`, {
+      withCredentials: true, // HttpOnly cookie gönder
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Proje detayları çekilirken hata:", error);
+    throw error;
+  }
+};

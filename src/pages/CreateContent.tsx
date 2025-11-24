@@ -232,6 +232,7 @@ const CreateContent = () => {
                         type="text"
                         className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
                         placeholder="Github Url"
+                        onChange={(e) => setGithubUrl(e.target.value)}
                       />
                     </>
                   )}
@@ -307,32 +308,39 @@ const CreateContent = () => {
             const file = e.target.files?.[0];
             if (!file) return;
 
-            const imageUrl = URL.createObjectURL(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              if (!reader.result) return;
 
-            const newContent = [...contentList];
-            const insertIdx = fileInputRef.current?.dataset.idx
-              ? Number(fileInputRef.current.dataset.idx)
-              : newContent.length;
+              const base64 = reader.result as string;
+              const newContent = [...contentList];
+              const insertIdx = fileInputRef.current?.dataset.idx
+                ? Number(fileInputRef.current.dataset.idx)
+                : newContent.length;
 
-            newContent[insertIdx] = {
-              id: crypto.randomUUID(),
-              type: "image",
-              content: imageUrl,
+              newContent[insertIdx] = {
+                id: crypto.randomUUID(),
+                type: "image",
+                content: base64, // base64 string kaydediyoruz
+              };
+
+              newContent.splice(insertIdx + 1, 0, {
+                id: crypto.randomUUID(),
+                type: "paragraph",
+                content: "",
+              });
+
+              setContentList(newContent);
+              setClickedIndex(null);
+              setTimeout(() => {
+                const nextEl = textRefs.current[insertIdx + 1];
+                if (nextEl) {
+                  nextEl.focus();
+                }
+              }, 0);
             };
-            newContent.splice(insertIdx + 1, 0, {
-              id: crypto.randomUUID(),
-              type: "paragraph",
-              content: "",
-            });
-            setContentList(newContent);
-            setClickedIndex(null);
-            setTimeout(() => {
-              const nextEl = textRefs.current[insertIdx + 1];
-              if (nextEl) {
-                nextEl.focus();
-              }
-            }, 0);
-            // temizlik
+
+            reader.readAsDataURL(file);
             e.target.value = "";
           }}
         />
