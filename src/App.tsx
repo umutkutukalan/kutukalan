@@ -40,7 +40,7 @@ function App() {
             <Route path="/musics" element={<Musics />} />
             {user?.role === "ADMIN" && (
               <>
-                <Route path="/admin" element={<Admin />} />
+                <Route path="/create-homecard" element={<Admin />} />
                 <Route path="/create-music" element={<CreateMusic />} />
                 <Route path="/create-content" element={<CreateContent />} />
               </>

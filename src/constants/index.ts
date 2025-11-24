@@ -1,13 +1,7 @@
 import { IconType } from "react-icons";
-import { FaHome } from "react-icons/fa";
-import { BsMusicNote, BsMusicNoteList } from "react-icons/bs";
-import { BsDisplayFill } from "react-icons/bs";
-import { BsBraces } from "react-icons/bs";
-import { BsFileEarmarkTextFill } from "react-icons/bs";
-import { BsEnvelopeFill } from "react-icons/bs";
 
 // import { SiElectron } from 'react-icons/si';
-import { BiLogoReact, BiSolidUser } from "react-icons/bi";
+import { BiLogoReact } from "react-icons/bi";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { DiJava } from "react-icons/di";
 import { BiLogoJavascript } from "react-icons/bi";
@@ -15,46 +9,72 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
-import { MdCreate } from "react-icons/md";
-import { SiElectron } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
+import { MdComputer, MdOutlineLibraryMusic } from "react-icons/md";
+import { SiElectron, SiReaddotcv } from "react-icons/si";
+import { TbBrandReactNative, TbMusicPlus } from "react-icons/tb";
+import { LuFiles } from "react-icons/lu";
+import { IoIdCardOutline, IoMailOutline } from "react-icons/io5";
+import { RxText } from "react-icons/rx";
+import { GoHome } from "react-icons/go";
+import { PiCertificate } from "react-icons/pi";
+import { AiOutlineShopping } from "react-icons/ai";
+import { FiUser } from "react-icons/fi";
 
 export const navbarList = [
-  { id: 1, title: "Home", link: "/", icon: FaHome },
-  { id: 2, title: "Musics", link: "/musics", icon: BsMusicNote },
+  { id: 1, title: "Home", link: "/", icon: GoHome },
+  { id: 2, title: "Musics", link: "/musics", icon: MdOutlineLibraryMusic },
   {
     id: 3,
     title: "Projects",
     link: "/projects",
-    icon: BsDisplayFill,
+    icon: MdComputer,
   },
-  { id: 4, title: "Skills", link: "/skills", icon: BsBraces },
+  // { id: 4, title: "Skills", link: "/skills", icon: BsBraces },
   {
-    id: 5,
+    id: 4,
     title: "Blogs",
     link: "/blogs",
-    icon: BsFileEarmarkTextFill,
+    icon: LuFiles,
+  },
+  {
+    id: 5,
+    title: "Certificates",
+    link: "/certificates",
+    icon: PiCertificate,
+  },
+  {
+    id: 6,
+    title: "Service Pricing",
+    link: "/service-pricing",
+    icon: AiOutlineShopping,
   },
 ];
 
 export const adminNavbarList = [
-  { id: 6, title: "Admin", link: "/admin", icon: BiSolidUser },
   {
     id: 7,
-    title: "Create Music",
-    link: "/create-music",
-    icon: BsMusicNoteList,
+    title: "Create Homecard",
+    link: "/create-homecard",
+    icon: IoIdCardOutline,
   },
   {
     id: 8,
+    title: "Create Music",
+    link: "/create-music",
+    icon: TbMusicPlus,
+  },
+  {
+    id: 9,
     title: "Create Content",
     link: "/create-content",
-    icon: MdCreate,
+    icon: RxText,
   },
 ];
 
 export const contactList = [
-  { id: 1, title: "Contact", link: "/contact", icon: BsEnvelopeFill },
+  { id: 1, title: "CV", link: "/cv", icon: SiReaddotcv },
+  { id: 2, title: "About", link: "/about", icon: FiUser },
+  { id: 3, title: "Contact", link: "/contact", icon: IoMailOutline },
 ];
 
 export interface TechnologyForHome {
