@@ -64,12 +64,12 @@ const MusicQueueList = () => {
         {selected?.map((music: MusicItem) => (
           <li
             key={music.id}
-            className="musicItem flex items-center justify-between hover:bg-white/10 p-2 rounded-lg cursor-pointer"
+            className="musicItem flex items-center justify-between hover:bg-white/10 p-2 rounded-lg"
           >
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-lg overflow-hidden">
                 <img
-                  src={String(music.musicImg)}
+                  src={music.musicImg}
                   alt=""
                   className="w-full h-full object-cover"
                 />
