@@ -11,7 +11,7 @@ import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { MdComputer, MdOutlineLibraryMusic } from "react-icons/md";
 import { SiElectron, SiReaddotcv } from "react-icons/si";
-import { TbBrandReactNative, TbMusicPlus } from "react-icons/tb";
+import { TbBrandReactNative, TbBrandThreejs, TbMusicPlus } from "react-icons/tb";
 import { LuFiles } from "react-icons/lu";
 import { IoIdCardOutline, IoMailOutline } from "react-icons/io5";
 import { RxText } from "react-icons/rx";
@@ -113,4 +113,6 @@ export const technologiesForCreateContent: TechnologyForCreateContent[] = [
   { id: 10, icon: DiMysql, title: "MySQL" },
   { id: 11, icon: DiPostgresql, title: "PostgreSQL" },
   { id: 12, icon: null, title: "PostGIS" },
+  { id: 13, icon: TbBrandThreejs, title: "ThreeJS" },
+  { id: 14, icon: null, title: "GSAP" },
 ];
