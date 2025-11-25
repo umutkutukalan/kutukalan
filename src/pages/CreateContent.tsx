@@ -37,7 +37,7 @@ const CreateContent = () => {
     ProjectTechnologiest[]
   >([]);
   const [githubUrl, setGithubUrl] = useState<string>("");
-  const [liveUrl, setLiveUrl] = useState<string>("");
+  // const [liveUrl, setLiveUrl] = useState<string>("");
 
   const [title, setTitle] = useState<string>("");
 
@@ -105,7 +105,7 @@ const CreateContent = () => {
     description:
       contentList.find((item) => item.type === "paragraph")?.content || "",
     githubUrl: githubUrl, // senin formundaki inputtan
-    liveUrl: liveUrl, // yine inputtan
+    // liveUrl: liveUrl, // yine inputtan
     technologies: projectTechnologies.map((t) => t.value),
     contentItems: contentList,
   };
@@ -121,7 +121,7 @@ const CreateContent = () => {
   console.log("projectTechnologies:", projectTechnologies);
   console.log("contentItems:", contentList);
   console.log("githubUrl:", githubUrl);
-  console.log("liveUrl:", liveUrl);
+  // console.log("liveUrl:", liveUrl);
   console.log("title:", title);
   return (
     <div
@@ -746,7 +746,9 @@ const CreateContent = () => {
                     const size = imageSizes[item.id] || "medium";
                     return (
                       <div
-                        ref={(el) => (imageRefs.current[idx] = el)}
+                        ref={(el) => {
+                          imageRefs.current[idx] = el;
+                        }}
                         className={`w-full ${
                           size === "large"
                             ? "h-full"
@@ -847,7 +849,9 @@ const CreateContent = () => {
                   <div className="relative w-full">
                     {/* Paragraph Textarea */}
                     <textarea
-                      ref={(el) => (textRefs.current[idx] = el)}
+                      ref={(el) => {
+                        textRefs.current[idx] = el;
+                      }}
                       value={item.content}
                       placeholder={
                         clickedIndex !== idx && focusedIndex === idx

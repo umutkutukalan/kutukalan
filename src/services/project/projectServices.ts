@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+export type { IconType } from "react-icons";
 
 import axios from "axios";
 import { API_URL } from "../config";
@@ -14,7 +14,7 @@ export interface ProjectData {
   title: string;
   description: string;
   githubUrl: string;
-  liveUrl: string;
+  // liveUrl: string;
   technologies: string[];
   contentItems: ProjectContentItem[];
 }
@@ -31,7 +31,7 @@ export const CreateProjectService = async (projectData: ProjectData) => {
 };
 
 export interface Project {
-  contentItems: unknown[];
+  contentItems: ProjectContentItem[];
   createdAt: string;
   description: string;
   githubUrl: string;

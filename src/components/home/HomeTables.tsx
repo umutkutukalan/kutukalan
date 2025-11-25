@@ -1,5 +1,12 @@
+import type { IconType } from "react-icons";
 import { technologiesForHome } from "../../constants";
 import { abstract1, abstract2, mor } from "../../utils";
+
+export interface Tech {
+  id: number;
+  icon: IconType | null;
+  title: string;
+}
 
 const HomeTables = () => {
   return (
@@ -35,7 +42,7 @@ const HomeTables = () => {
         </div>
         <div className="w-full h-1/8 z-20 relative">
           <div className="h-full w-full flex items-center justify-between">
-            {technologiesForHome.map((tech, index) => {
+            {technologiesForHome.map((tech: Tech, index: number) => {
               const Icon = tech.icon;
               return (
                 <div
@@ -46,7 +53,7 @@ const HomeTables = () => {
                       : "border-r border-white/10"
                   }`}
                 >
-                  <Icon className={`text-3xl`} size={28} />
+                  {Icon && <Icon className={`text-3xl`} size={28} />}
                 </div>
               );
             })}
@@ -58,16 +65,3 @@ const HomeTables = () => {
 };
 
 export default HomeTables;
-
-{
-  /* <div className="w-full h-full rounded-2xl overflow-hidden relative">
-        <div className="absolute inset-0 bg-black/70"></div>
-        <img src={homeImg} alt="" className="w-full h-full object-cover" />
-      </div> */
-}
-
-{
-  /* <div className="absolute top-5 left-5">
-        <h1 className="text-7xl oswald-400">kutukalan.</h1>
-      </div> */
-}

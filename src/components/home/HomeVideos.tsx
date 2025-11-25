@@ -1,8 +1,5 @@
-import { useGetProjects } from "../../hooks/project/useGetProjects";
 
 const HomeVideos = () => {
-  const { projects } = useGetProjects();
-
   return (
     <div className="w-full h-1/5 overflow-hidden rounded-lg">
       <ul className="w-full h-full grid grid-cols-2 gap-2">

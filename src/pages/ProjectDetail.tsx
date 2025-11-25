@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { naturerun } from "../utils";
 import type { Project } from "../services/project/projectServices";
 import { useRelativeTime } from "../hooks/useRelativeTime";
@@ -15,7 +15,6 @@ import { SiElectron } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 
 const ProjectDetail = () => {
-  const { projectSlug } = useParams();
   const location = useLocation();
 
   const { formatRelativeTime } = useRelativeTime();
@@ -73,7 +72,7 @@ const ProjectDetail = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-5">
-          {project.contentItems.map((item, index) => (
+          {project.contentItems.map((item,index) => (
             <li key={index}>
               {item?.type === "image" && (
                 <img

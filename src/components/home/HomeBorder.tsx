@@ -1,4 +1,4 @@
-import { electronapp, gray, runaley } from "../../utils";
+import { gray, runaley } from "../../utils";
 import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
 import { useState } from "react";

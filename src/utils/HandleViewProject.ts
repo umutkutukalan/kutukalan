@@ -1,5 +1,6 @@
+import type { NavigateFunction } from "react-router-dom";
 import { generateSlug } from "./GenerateSlug";
-import { NavigateFunction } from "react-router-dom";
+export type { NavigateFunction } from "react-router-dom";
 
 export interface Project {
   contentItems: unknown[];

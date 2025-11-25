@@ -1,5 +1,3 @@
-import { IconType } from "react-icons";
-
 // import { SiElectron } from 'react-icons/si';
 import { BiLogoReact } from "react-icons/bi";
 import { BiLogoSpringBoot } from "react-icons/bi";
@@ -19,6 +17,7 @@ import { GoHome } from "react-icons/go";
 import { PiCertificate } from "react-icons/pi";
 import { AiOutlineShopping } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
+import type { IconType } from "react-icons";
 
 export const navbarList = [
   { id: 1, title: "Home", link: "/", icon: GoHome },
@@ -79,7 +78,7 @@ export const contactList = [
 
 export interface TechnologyForHome {
   id: number;
-  icon: React.ComponentType | null;
+  icon: IconType | null;
   title: string;
 }
 
