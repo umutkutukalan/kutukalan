@@ -18,6 +18,10 @@ import itstime from "../assets/images/itstime.jpeg";
 import homework from "../assets/images/homework2.png";
 import homework2 from "../assets/images/homework3.png";
 import electronapp from "../assets/images/electronapp.jpeg";
+import projectbanner from "../assets/images/projectbanner.jpeg";
+import blogbanner from "../assets/images/blogbanner.jpeg";
+
+export { projectbanner, blogbanner };
 
 export {
   nikegreen,
