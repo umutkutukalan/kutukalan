@@ -28,29 +28,28 @@ export const CreateBlogService = async (blogData: BlogData) => {
   }
 };
 
-export interface Project {
+export interface Blog {
   contentItems: BlogContentItem[];
   createdAt: string;
   description: string;
-  id: number;
-  liveUrl: string;
+  id: number;  
   mainImg: string;
   tags: string[];
   title: string;
   updatedAt: string;
 }
 
-export const GetProjectService = async (page = 0, size = 5) => {
+export const GetBlogService = async (page = 0, size = 5) => {
   try {
     const response = await axios.get(
-      `${API_URL}/projects?page=${page}&size=${size}&sort=createdAt,desc`,
+      `${API_URL}/blogs?page=${page}&size=${size}&sort=createdAt,desc`,
       {
         withCredentials: true, // HttpOnly cookie gönder
       }
     );
     return response;
   } catch (error) {
-    console.error("Projeler çekilirken hata:", error);
+    console.error("Bloglar çekilirken hata:", error);
     throw error;
   }
 };
