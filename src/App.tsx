@@ -11,6 +11,8 @@ import CreateContent from "./pages/CreateContent";
 import Projects from "./pages/Projects";
 import { useUser } from "./hooks/useUserContext";
 import ProjectDetail from "./pages/ProjectDetail";
+import Blogs from "./pages/Blogs";
+import BlogDetail from "./pages/BlogDetail";
 
 function App() {
   const { user } = useUser();
@@ -37,6 +39,8 @@ function App() {
             />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projeler/:projectSlug" element={<ProjectDetail />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/bloglar/:blogSlug" element={<BlogDetail />} />
             <Route path="/musics" element={<Musics />} />
             {user?.role === "ADMIN" && (
               <>

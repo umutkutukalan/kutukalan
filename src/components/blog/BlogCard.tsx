@@ -1,34 +1,115 @@
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { nikegreen, oakley } from "../../utils";
+import { RelativeTime } from "../../utils/RelativeTime";
 
-<div className="absolute top-0 left-0 p-4 z-5 w-full h-full">
-  <div className="w-full h-full flex items-center gap-4">
-    <div className="h-full w-1/3">
-      <div className="w-full h-full rounded-md bg-gray-200 overflow-hidden shadow-md shadow-white/30">
-        <img src={nikegreen} alt="" className="h-full w-full object-cover" />
-      </div>
-    </div>
-    <div className="h-full w-2/3">
-      <div className="w-full h-full flex flex-col items-start justify-between">
-        <div className="flex items-center justify-between w-full">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full overflow-hidden border-white/20 border">
-              <img src={oakley} alt="" className="w-full h-full object-cover" />
-            </div>
-            <p className="text-xs">Umut Kütükalan</p>
+// import { SiElectron } from 'react-icons/si';
+import { BiLogoReact } from "react-icons/bi";
+import { BiLogoSpringBoot } from "react-icons/bi";
+import { DiJava } from "react-icons/di";
+import { BiLogoJavascript } from "react-icons/bi";
+import { BiLogoTypescript } from "react-icons/bi";
+import { DiPostgresql } from "react-icons/di";
+import { DiMysql } from "react-icons/di";
+import { RiNextjsFill } from "react-icons/ri";
+import { SiElectron } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
+import { Link, useNavigate } from "react-router-dom";
+import { FaYoutube } from "react-icons/fa";
+import { IoIosArrowForward } from "react-icons/io";
+import { nikegreen } from "../../utils";
+import type { Blog } from "../../services/blog/blogServices";
+import { handleViewBlog } from "../../utils/HandleViewBlog";
+
+interface BlogCardProps {
+  blog: Blog;
+}
+
+const BlogCard = ({ blog }: BlogCardProps) => {
+  const navigate = useNavigate();
+  const { formatRelativeTime } = RelativeTime();
+
+  return (
+    <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all p-5 rounded-lg hover:border-none border-b border-white/10">
+      <div className="w-full h-full flex gap-5">
+        <div className="w-1/5 h-full rounded-lg relative flex-shrink-0 relative">
+          <div className="absolute inset-0 bg-black opacity-20" />
+          <div className="absolute inset-0 w-full h-full overflow-hidden rounded-md z-10">
+            <img
+              src={blog.mainImg}
+              alt=""
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="flex items-center gap-2 text-xs">
-            <BsChevronLeft />
-            <BsChevronRight />
+          <div className="absolute w-full h-full rounded-md -left-2 -top-2 z-5 overflow-hidden">
+            <div className="relative w-full h-full">
+              <div className="absolute inset-0 bg-black opacity-30"></div>
+              <img
+                src={nikegreen}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
-        <h2 className="text-lg line-clamp-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-          dolorum reiciendis numquam placeat ut saepe?
-        </h2>
+        <div className="w-full flex flex-col justify-between">
+          <div className="w-full flex flex-col gap-5">
+            <div className="w-full flex items-center justify-between">
+              <span className="text-xs text-gray-400">
+                {formatRelativeTime(blog.createdAt)}
+              </span>
+              <ul className="flex flex-wrap items-center gap-2">
+                {blog.tags.map((tag) => (
+                  <li
+                    key={tag}
+                    className="pointer-events-none flex items-center"
+                  >
+                    {tag === "TypeScript" && <BiLogoTypescript size={12} />}
+                    {tag === "JavaScript" && <BiLogoJavascript size={12} />}
+                    {tag === "ReactJS" && <BiLogoReact size={12} />}
+                    {tag === "NextJS" && <RiNextjsFill size={12} />}
+                    {tag === "Spring Boot" && <BiLogoSpringBoot size={12} />}
+                    {tag === "Java" && <DiJava size={12} />}
+                    {tag === "PostgreSQL" && <DiPostgresql size={12} />}
+                    {tag === "MySQL" && <DiMysql size={12} />}
+                    {tag === "ElectronJS" && <SiElectron size={12} />}
+                    {tag === "React Native" && <TbBrandReactNative size={12} />}
+                    {tag === "PostGIS" && <span className="text-xs">PGIS</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col gap-1">
+              <h3 className="text-xl font-semibold line-clamp-2">
+                {blog.title}
+              </h3>
+              <p className="text-xs text-white/60 flex-1 overflow-hidden text-ellipsis line-clamp-2">
+                {blog.description}
+              </p>
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Link
+                to={""}
+                className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+              >
+                <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
+                <span>YouTube</span>
+              </Link>
+            </div>
 
-        <p style={{ fontSize: "12px" }}>20 Ekim, 2025</p>
+            <div className="flex items-center gap-2 text-xs">
+              <button
+                onClick={() => handleViewBlog(blog, navigate)}
+                className="cursor-pointer transition-all hover:text-gray-300 flex items-center gap-1"
+              >
+                <span>Okumaya Devam Et</span>
+                <IoIosArrowForward />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>;
+  );
+};
+
+export default BlogCard;
