@@ -18,6 +18,8 @@ import {
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { useCreateProject } from "../hooks/project/useCreateProject";
 import type { ProjectData } from "../services/project/projectServices";
+import { useCreateBlog } from "../hooks/blog/useCreateBlog";
+import type { BlogData } from "../services/blog/blogServices";
 
 interface ContentItem {
   id: string;
@@ -36,6 +38,7 @@ interface BlogTag {
 const CreateContent = () => {
   const { user } = useUser();
   const { createProject } = useCreateProject();
+  const { createBlog } = useCreateBlog();
 
   console.log(user);
 
@@ -118,11 +121,20 @@ const CreateContent = () => {
     contentItems: contentList,
   };
 
+  const blogData: BlogData = {
+    mainImg: contentList.find((item) => item.type === "image")?.content || "",
+    title: title,
+    description:
+      contentList.find((item) => item.type === "paragraph")?.content || "",
+    tags: blogTags.map((t) => t.value),
+    contentItems: contentList,
+  };
+
   const handleCreate = async () => {
     if (contentType === "project") {
       createProject(projectData);
     } else if (contentType === "blog") {
-      // blog oluşturma fonksiyonu burada çağrılacak
+      createBlog(blogData);
     }
   };
 
@@ -249,7 +261,11 @@ const CreateContent = () => {
                       <select
                         name="tags"
                         id="tags"
-                        className={`border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none ${blogTags.length < 3 ? "pointer-events-auto" : "pointer-events-none bg-gray-700 text-gray-500"}`}
+                        className={`border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none ${
+                          blogTags.length < 3
+                            ? "pointer-events-auto"
+                            : "pointer-events-none bg-gray-700 text-gray-500"
+                        }`}
                         onChange={(e) => {
                           const value = e.target.value;
                           if (!value) return;
