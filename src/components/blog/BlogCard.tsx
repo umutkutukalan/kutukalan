@@ -1,22 +1,12 @@
 import { RelativeTime } from "../../utils/RelativeTime";
 
 // import { SiElectron } from 'react-icons/si';
-import { BiLogoReact } from "react-icons/bi";
-import { BiLogoSpringBoot } from "react-icons/bi";
-import { DiJava } from "react-icons/di";
-import { BiLogoJavascript } from "react-icons/bi";
-import { BiLogoTypescript } from "react-icons/bi";
-import { DiPostgresql } from "react-icons/di";
-import { DiMysql } from "react-icons/di";
-import { RiNextjsFill } from "react-icons/ri";
-import { SiElectron } from "react-icons/si";
 import { Link, useNavigate } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { nikegreen } from "../../utils";
 import type { Blog } from "../../services/blog/blogServices";
 import { handleViewBlog } from "../../utils/HandleViewBlog";
-import { GrTechnology } from "react-icons/gr";
 
 interface BlogCardProps {
   blog: Blog;
