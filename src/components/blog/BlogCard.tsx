@@ -10,13 +10,13 @@ import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiElectron } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { nikegreen } from "../../utils";
 import type { Blog } from "../../services/blog/blogServices";
 import { handleViewBlog } from "../../utils/HandleViewBlog";
+import { GrTechnology } from "react-icons/gr";
 
 interface BlogCardProps {
   blog: Blog;
@@ -59,19 +59,9 @@ const BlogCard = ({ blog }: BlogCardProps) => {
                 {blog.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="pointer-events-none flex items-center"
+                    className="pointer-events-none flex items-center px-3 py-1 bg-blue-800 text-xs rounded-full"
                   >
-                    {tag === "TypeScript" && <BiLogoTypescript size={12} />}
-                    {tag === "JavaScript" && <BiLogoJavascript size={12} />}
-                    {tag === "ReactJS" && <BiLogoReact size={12} />}
-                    {tag === "NextJS" && <RiNextjsFill size={12} />}
-                    {tag === "Spring Boot" && <BiLogoSpringBoot size={12} />}
-                    {tag === "Java" && <DiJava size={12} />}
-                    {tag === "PostgreSQL" && <DiPostgresql size={12} />}
-                    {tag === "MySQL" && <DiMysql size={12} />}
-                    {tag === "ElectronJS" && <SiElectron size={12} />}
-                    {tag === "React Native" && <TbBrandReactNative size={12} />}
-                    {tag === "PostGIS" && <span className="text-xs">PGIS</span>}
+                    {tag}
                   </li>
                 ))}
               </ul>

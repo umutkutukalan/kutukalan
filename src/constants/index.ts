@@ -125,4 +125,5 @@ export const tagsForCreateContent = [
   { id: 6, title: "Education" },
   { id: 7, title: "Health" },
   { id: 8, title: "Finance" },
+  { id: 9, title: "Software" },
 ];
