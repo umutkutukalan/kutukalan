@@ -127,13 +127,13 @@ const HomeBorder = () => {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-full overflow-hidden rounded-lg">
+        <div className="relative w-full h-full overflow-hidden rounded-xl oswald-400">
           {/* grid grid-rows-2 gap-2 */}
-          <div className="w-full h-full rounded-lg overflow-hidden border border-white/10 relative z-30 group cursor-pointer">
+          <div className="w-full h-full overflow-hidden border border-white/10 text-black relative group">
             <img
               src={gray}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover z-0"
+              className="absolute inset-0 w-full h-full object-cover z-0 brightness-75"
             />
           </div>
         </div>

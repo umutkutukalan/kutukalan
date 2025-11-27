@@ -115,3 +115,14 @@ export const technologiesForCreateContent: TechnologyForCreateContent[] = [
   { id: 13, icon: TbBrandThreejs, title: "ThreeJS" },
   { id: 14, icon: null, title: "GSAP" },
 ];
+
+export const tagsForCreateContent = [
+  { id: 1, title: "Technology" },
+  { id: 2, title: "Music" },
+  { id: 3, title: "Travel" },
+  { id: 4, title: "Food" },
+  { id: 5, title: "Lifestyle" },
+  { id: 6, title: "Education" },
+  { id: 7, title: "Health" },
+  { id: 8, title: "Finance" },
+];

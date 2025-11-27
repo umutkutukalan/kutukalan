@@ -11,7 +11,10 @@ import { MdOutlineImage } from "react-icons/md";
 // import { LuImagePlus } from "react-icons/lu";
 import { oakley } from "../utils";
 import { useUser } from "../hooks/useUserContext";
-import { technologiesForCreateContent } from "../constants";
+import {
+  tagsForCreateContent,
+  technologiesForCreateContent,
+} from "../constants";
 import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { useCreateProject } from "../hooks/project/useCreateProject";
 import type { ProjectData } from "../services/project/projectServices";
@@ -26,6 +29,10 @@ interface ProjectTechnologiest {
   value: string;
 }
 
+interface BlogTag {
+  value: string;
+}
+
 const CreateContent = () => {
   const { user } = useUser();
   const { createProject } = useCreateProject();
@@ -36,6 +43,7 @@ const CreateContent = () => {
   const [projectTechnologies, setProjectTechnologies] = useState<
     ProjectTechnologiest[]
   >([]);
+  const [blogTags, setBlogTags] = useState<BlogTag[]>([]);
   const [githubUrl, setGithubUrl] = useState<string>("");
   // const [liveUrl, setLiveUrl] = useState<string>("");
 
@@ -236,6 +244,39 @@ const CreateContent = () => {
                       />
                     </>
                   )}
+                  {contentType === "blog" && (
+                    <>
+                      <select
+                        name="tags"
+                        id="tags"
+                        className={`border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none ${blogTags.length < 3 ? "pointer-events-auto" : "pointer-events-none bg-gray-700 text-gray-500"}`}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (!value) return;
+
+                          const selectedTag = tagsForCreateContent.find(
+                            (t) => t.title === value
+                          );
+                          if (!selectedTag) return;
+                          setBlogTags((prev) =>
+                            prev.find((tag) => tag.value === value)
+                              ? prev.filter((tag) => tag.value !== value)
+                              : [...prev, { value }]
+                          );
+
+                          // seçimi sıfırla (aynı seçimi tekrar yapabilmek için)
+                          e.target.value = "";
+                        }}
+                      >
+                        <option value="">Etiketler</option>
+                        {tagsForCreateContent.map((tag) => (
+                          <option key={tag.id} value={tag.title}>
+                            {tag.title}
+                          </option>
+                        ))}
+                      </select>
+                    </>
+                  )}
                 </div>
               </div>
               {projectTechnologies.length > 0 && (
@@ -253,6 +294,25 @@ const CreateContent = () => {
                           }
                         >
                           <span>{tech.value}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+              {blogTags.length > 0 && (
+                <div className="flex items-start gap-2">
+                  <div className="flex flex-wrap gap-2">
+                    {blogTags.map((tag) => {
+                      return (
+                        <div
+                          key={tag.value}
+                          className="px-2 py-1 bg-green-900 text-white rounded-md text-xs cursor-pointer flex items-center gap-1"
+                          onClick={() =>
+                            setBlogTags((prev) => prev.filter((t) => t !== tag))
+                          }
+                        >
+                          <span>{tag.value}</span>
                         </div>
                       );
                     })}
