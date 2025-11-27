@@ -1,0 +1,68 @@
+export type { IconType } from "react-icons";
+
+import axios from "axios";
+import { API_URL } from "../config";
+
+export interface BlogContentItem {
+  type: string;
+  content: string;
+  size?: string | null;
+}
+
+export interface BlogData {
+  mainImg: string;
+  title: string;
+  description: string;
+  tags: string[];
+  contentItems: BlogContentItem[];
+}
+
+export const CreateBlogService = async (blogData: BlogData) => {
+  try {
+    const response = await axios.post(`${API_URL}/blogs`, blogData, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating blog:", error);
+  }
+};
+
+export interface Project {
+  contentItems: BlogContentItem[];
+  createdAt: string;
+  description: string;
+  id: number;
+  liveUrl: string;
+  mainImg: string;
+  tags: string[];
+  title: string;
+  updatedAt: string;
+}
+
+export const GetProjectService = async (page = 0, size = 5) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/projects?page=${page}&size=${size}&sort=createdAt,desc`,
+      {
+        withCredentials: true, // HttpOnly cookie gönder
+      }
+    );
+    return response;
+  } catch (error) {
+    console.error("Projeler çekilirken hata:", error);
+    throw error;
+  }
+};
+
+export const GetBlogByIdService = async (blogId: number) => {
+  try {
+    const response = await axios.get(`${API_URL}/blogs/${blogId}`, {
+      withCredentials: true, // HttpOnly cookie gönder
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Blog detayları çekilirken hata:", error);
+    throw error;
+  }
+};
