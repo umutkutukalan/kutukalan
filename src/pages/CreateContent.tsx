@@ -20,6 +20,7 @@ import { useCreateProject } from "../hooks/project/useCreateProject";
 import type { ProjectData } from "../services/project/projectServices";
 import { useCreateBlog } from "../hooks/blog/useCreateBlog";
 import type { BlogData } from "../services/blog/blogServices";
+import { v4 as uuidv4 } from "uuid";
 
 interface ContentItem {
   id: string;
@@ -152,7 +153,7 @@ const CreateContent = () => {
         if (e.target === e.currentTarget) {
           setContentList((prev) => [
             ...prev,
-            { id: crypto.randomUUID(), type: "paragraph", content: "" },
+            { id: uuidv4(), type: "paragraph", content: "" },
           ]);
           setFocusedIndex(contentList.length);
         }
@@ -395,13 +396,13 @@ const CreateContent = () => {
                 : newContent.length;
 
               newContent[insertIdx] = {
-                id: crypto.randomUUID(),
+                id: uuidv4(),
                 type: "image",
                 content: base64, // base64 string kaydediyoruz
               };
 
               newContent.splice(insertIdx + 1, 0, {
-                id: crypto.randomUUID(),
+                id: uuidv4(),
                 type: "paragraph",
                 content: "",
               });
@@ -459,7 +460,7 @@ const CreateContent = () => {
                   const newContent = [...contentList];
                   if (cursorPos === content.length) {
                     newContent.splice(0, 0, {
-                      id: crypto.randomUUID(),
+                      id: uuidv4(),
                       type: "paragraph",
                       content: "",
                     });
@@ -632,7 +633,7 @@ const CreateContent = () => {
                       const currentContent = newContent[idx].content; //mevcut içeriği al
                       newContent[idx].content = ""; // mevcut alanı boşalt
                       newContent.splice(idx + 1, 0, {
-                        id: crypto.randomUUID(),
+                        id: uuidv4(),
                         type: "paragraph",
                         content: currentContent,
                       }); // tüm metni yeni alana taşı
@@ -655,7 +656,7 @@ const CreateContent = () => {
                       const after = content.slice(cursorPos);
                       newContent[idx].content = before;
                       newContent.splice(idx + 1, 0, {
-                        id: crypto.randomUUID(),
+                        id: uuidv4(),
                         type: "paragraph",
                         content: after,
                       });
@@ -675,7 +676,7 @@ const CreateContent = () => {
                     // 3️⃣ Cursor sondaysa → klasik davranış (yeni boş alan oluştur)
                     if (cursorPos === content.length) {
                       newContent.splice(idx + 1, 0, {
-                        id: crypto.randomUUID(),
+                        id: uuidv4(),
                         type: "paragraph",
                         content: "",
                       });
@@ -692,7 +693,7 @@ const CreateContent = () => {
                     e.preventDefault();
                     const newList = [...contentList];
                     newList.splice(idx + 1, 0, {
-                      id: crypto.randomUUID(),
+                      id: uuidv4(),
                       type: "paragraph",
                       content: "",
                     });
