@@ -32,10 +32,10 @@ const HomeTables = () => {
             />
           </div>
           <div className="h-full w-full flex flex-col items-center justify-center gap-2 text-center z-10">
-            <h1 className="text-md oswald-300">
+            <h1 className="text-sm sm:text-base oswald-300">
               Umut Kutukalan | Software Engineer
             </h1>
-            <h2 className="text-5xl w-100 oswald-400">
+            <h2 className="text-4xl sm:text-5xl w-80 sm:w-100 oswald-400">
               BLENDING ART, CODE AND PURPOSE
             </h2>
           </div>
@@ -53,7 +53,7 @@ const HomeTables = () => {
                       : "border-r border-white/10"
                   }`}
                 >
-                  {Icon && <Icon className={`text-3xl`} size={28} />}
+                  {Icon && <Icon className={`text-xl sm:text-3xl`} />}
                 </div>
               );
             })}
