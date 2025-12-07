@@ -33,7 +33,7 @@ const HomeBorder = () => {
           <BsChevronRight className="text-lg cursor-pointer" />
         </div>
       </div> */}
-      <div className="w-full h-full overflow-hidden shadow-2xl relative gap-2 grid grid-cols-2 auto-rows-fr">
+      <div className="w-full h-full overflow-hidden shadow-2xl relative gap-2 grid sm:grid-cols-2 auto-rows-fr">
         <div className="relative w-full h-full overflow-hidden grid grid-cols-2 gap-2 items-center">
           <div className="rounded-xl bg-white/10 h-full w-full relative overflow-hidden">
             {currentAbout ? (
@@ -127,7 +127,7 @@ const HomeBorder = () => {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-full overflow-hidden rounded-xl oswald-400">
+        <div className="relative w-full h-full overflow-hidden rounded-xl oswald-400 sm:block hidden">
           {/* grid grid-rows-2 gap-2 */}
           <div className="w-full h-full overflow-hidden border border-white/10 text-black relative group">
             <img

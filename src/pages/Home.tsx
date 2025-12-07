@@ -4,11 +4,13 @@ import HomeVideos from "../components/home/HomeVideos";
 
 const Home = () => {
   return (
-    <div className="w-full h-screen p-5 flex flex-col justify-between gap-3 overflow-hidden">
-      <HomeTables />
-      <HomeVideos />
-      <HomeBorder />
-    </div>
+    <section className="flex flex-col">
+      <div className="w-full h-screen p-5 flex flex-col justify-between gap-3 overflow-hidden">
+        <HomeTables />
+        <HomeVideos />
+        <HomeBorder />
+      </div>
+    </section>
   );
 };
 
