@@ -1,35 +1,21 @@
 import { Link } from "react-router-dom";
 import { adminNavbarList, contactList, navbarList } from "../constants";
 import { useUser } from "../hooks/useUserContext";
+import { useState } from "react";
+import { CiMenuFries } from "react-icons/ci";
 
 const Navbar = () => {
   const { user } = useUser();
+  const [show, setShow] = useState(false);
+
   console.log("Navbar user:", user);
   return (
-    <nav className="w-15 hover:w-50 group transition-all h-screen text-white fixed top-0 left-0 py-5 z-50 bg-black">
-      <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between py-2">
-        <div className="flex flex-col gap-1">
+    <header>
+      <nav className="w-15 hover:w-50 group transition-all h-screen text-white fixed top-0 left-0 py-5 z-50 bg-black sm:block hidden">
+        <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between py-2">
           <div className="flex flex-col gap-1">
-            {navbarList.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.id}
-                  className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center px-5"
-                  title={item.title}
-                  to={item.link}
-                >
-                  <Icon className="text-lg w-5 flex-shrink-0" />
-                  <span className="text-xs transition-all duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100">
-                    {item.title}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-          {user?.role === "ADMIN" && (
-            <div className="flex flex-col gap-1 border-t border-white/20 pt-1">
-              {adminNavbarList.map((item) => {
+            <div className="flex flex-col gap-1">
+              {navbarList.map((item) => {
                 const Icon = item.icon;
                 return (
                   <Link
@@ -46,28 +32,133 @@ const Navbar = () => {
                 );
               })}
             </div>
-          )}
+            {user?.role === "ADMIN" && (
+              <div className="flex flex-col gap-1 border-t border-white/20 pt-1">
+                {adminNavbarList.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.id}
+                      className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center px-5"
+                      title={item.title}
+                      to={item.link}
+                    >
+                      <Icon className="text-lg w-5 flex-shrink-0" />
+                      <span className="text-xs transition-all duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100">
+                        {item.title}
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          <div className="flex flex-col gap-1">
+            {contactList.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.id}
+                  className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center px-5"
+                  title={item.title}
+                  to={item.link}
+                >
+                  <Icon className="text-lg w-5 flex-shrink-0" />
+                  <span className="text-xs transition-all duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100">
+                    {item.title}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-        <div className="flex flex-col gap-1">
-          {contactList.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.id}
-                className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center px-5"
-                title={item.title}
-                to={item.link}
-              >
-                <Icon className="text-lg w-5 flex-shrink-0" />
-                <span className="text-xs transition-all duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100">
-                  {item.title}
-                </span>
-              </Link>
-            );
-          })}
+      </nav>
+      {/* Mobile Navbar */}
+      <nav className="w-full h-12 bg-black text-white fixed top-0 left-0 z-50 flex items-center justify-between px-4 sm:hidden">
+        <div className="flex items-center justify-between w-full">
+          <CiMenuFries onClick={() => setShow(!show)} />
         </div>
-      </div>
-    </nav>
+        {/* Overlay */}
+        {show && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40"
+            onClick={() => setShow(false)}
+          />
+        )}
+        <div
+          className={`absolute top-0 w-48 h-screen bg-black border-r border-white/20 z-50 transition-transform duration-500 ease-out ${
+            show ? "translate-x-0" : "-translate-x-full"
+          } left-0`}
+        >
+          <div className="flex flex-col gap-5 h-full pb-5 pt-4 px-5">
+            <CiMenuFries onClick={() => setShow(!show)}/>
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1">
+                  {navbarList.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link
+                        key={item.id}
+                        className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center"
+                        title={item.title}
+                        to={item.link}
+                        onClick={() => setShow(false)}
+                      >
+                        <Icon className="text-lg w-5 flex-shrink-0" />
+                        <span className="text-xs whitespace-nowrap">
+                          {item.title}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+                {user?.role === "ADMIN" && (
+                  <div className="flex flex-col gap-1 border-t border-white/20 pt-1">
+                    {adminNavbarList.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <Link
+                          key={item.id}
+                          className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center"
+                          title={item.title}
+                          to={item.link}
+                          onClick={() => setShow(false)}
+                        >
+                          <Icon className="text-lg w-5 flex-shrink-0" />
+                          <span className="text-xs whitespace-nowrap">
+                            {item.title}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+              <div className="flex flex-col gap-1">
+                {contactList.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.id}
+                      className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center"
+                      title={item.title}
+                      to={item.link}
+                      onClick={() => setShow(false)}
+                    >
+                      <Icon className="text-lg w-5 flex-shrink-0" />
+                      <span className="text-xs whitespace-nowrap">
+                        {item.title}
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 };
 

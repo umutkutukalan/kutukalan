@@ -20,8 +20,10 @@ import homework2 from "../assets/images/homework3.png";
 import electronapp from "../assets/images/electronapp.jpeg";
 import projectbanner from "../assets/images/projectbanner.jpeg";
 import blogbanner from "../assets/images/blogbanner.jpeg";
+import kutukalan from "../assets/logo/kutukalan.png";
 
 export { projectbanner, blogbanner };
+export { kutukalan };
 
 export {
   nikegreen,
