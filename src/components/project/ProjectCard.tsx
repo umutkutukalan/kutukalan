@@ -27,9 +27,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   const { formatRelativeTime } = RelativeTime();
 
   return (
-    <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all p-5 rounded-lg hover:border-none border-b border-white/10">
+    <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all py-2 sm:p-5 rounded-lg hover:border-none border-b border-white/10">
       <div className="w-full h-full flex gap-5">
-        <div className="w-1/5 h-full rounded-lg relative flex-shrink-0 relative">
+        <div className="sm:w-2/7 lg:w-1/5 h-full rounded-lg relative flex-shrink-0 relative sm:block hidden">
           <div className="absolute inset-0 bg-black opacity-20" />
           <div className="absolute inset-0 w-full h-full overflow-hidden rounded-md z-10">
             <img

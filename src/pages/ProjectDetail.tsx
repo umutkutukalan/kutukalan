@@ -28,26 +28,28 @@ const ProjectDetail = () => {
   }, []);
 
   return (
-    <div className="w-full p-10 flex items-center justify-center">
+    <div className="w-full px-5 py-15 sm:p-10 flex items-center justify-center">
       <div className="w-200 flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
           <div className="flex items-start gap-1">
-            <h1 className="font-bold text-4xl">{project.title}</h1>
+            <h1 className="font-bold text-3xl sm:text-4xl">{project.title}</h1>
           </div>
           <div className="w-full flex items-center justify-between text-sm">
             <div className="w-full flex items-center gap-2">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full overflow-hidden">
+                <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full overflow-hidden">
                   <img
                     src={naturerun}
                     alt=""
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p>kutukalan</p>
+                <p className="text-xs sm:text-base">kutukalan</p>
               </div>
               <span>·</span>
-              <span className="">{formatRelativeTime(project.createdAt)}</span>
+              <span className="text-xs sm:text-base">
+                {formatRelativeTime(project.createdAt)}
+              </span>
             </div>
             <ul className="flex items-center gap-2">
               {project.technologies.map((tech) => (
@@ -55,16 +57,16 @@ const ProjectDetail = () => {
                   key={tech}
                   className="text-xs pointer-events-none flex items-center"
                 >
-                  {tech === "TypeScript" && <BiLogoTypescript size={16} />}
-                  {tech === "JavaScript" && <BiLogoJavascript size={16} />}
-                  {tech === "ReactJS" && <BiLogoReact size={16} />}
-                  {tech === "NextJS" && <RiNextjsFill size={16} />}
-                  {tech === "Spring Boot" && <BiLogoSpringBoot size={16} />}
-                  {tech === "Java" && <DiJava size={16} />}
-                  {tech === "PostgreSQL" && <DiPostgresql size={16} />}
-                  {tech === "MySQL" && <DiMysql size={16} />}
-                  {tech === "ElectronJS" && <SiElectron size={16} />}
-                  {tech === "React Native" && <TbBrandReactNative size={16} />}
+                  {tech === "TypeScript" && <BiLogoTypescript className="text-xs sm:text-sm" />}
+                  {tech === "JavaScript" && <BiLogoJavascript className="text-xs sm:text-sm" />}
+                  {tech === "ReactJS" && <BiLogoReact className="text-xs sm:text-sm" />}
+                  {tech === "NextJS" && <RiNextjsFill className="text-xs sm:text-sm" />}
+                  {tech === "Spring Boot" && <BiLogoSpringBoot className="text-xs sm:text-sm" />}
+                  {tech === "Java" && <DiJava className="text-xs sm:text-sm" />}
+                  {tech === "PostgreSQL" && <DiPostgresql className="text-xs sm:text-sm" />}
+                  {tech === "MySQL" && <DiMysql className="text-xs sm:text-sm" />}
+                  {tech === "ElectronJS" && <SiElectron className="text-xs sm:text-sm" />}
+                  {tech === "React Native" && <TbBrandReactNative className="text-xs sm:text-sm" />}
                   {tech === "PostGIS" && <span className="text-xs">PGIS</span>}
                 </li>
               ))}
@@ -72,7 +74,7 @@ const ProjectDetail = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-5">
-          {project.contentItems.map((item,index) => (
+          {project.contentItems.map((item, index) => (
             <li key={index}>
               {item?.type === "image" && (
                 <img
@@ -82,7 +84,7 @@ const ProjectDetail = () => {
                 />
               )}
               {item?.type === "paragraph" && (
-                <p className="text-base leading-7 whitespace-pre-line text-gray-300">
+                <p className="text-sm sm:text-base leading-7 whitespace-pre-line text-gray-300">
                   {item?.content}
                 </p>
               )}
