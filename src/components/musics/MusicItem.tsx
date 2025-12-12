@@ -64,10 +64,12 @@ const MusicItem = ({
   const handleCancelDelete = () => {
     setShowConfirm(false);
   };
+
   return (
     <li
       key={music.id}
-      className="w-full h-[70px] rounded-md grid grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group"
+      onDoubleClick={isPlaying ? onPause : onPlay}
+      className="w-full h-[70px] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group"
     >
       <audio
         ref={audioRef}
@@ -107,14 +109,16 @@ const MusicItem = ({
               />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-sm">{music.title}</h1>
-              <p className="text-xs text-gray-500">kutukalan</p>
+              <h1 className="text-xs sm:text-sm">{music.title}</h1>
+              <p className="text-[10px] sm:text-xs text-gray-500">kutukalan</p>
             </div>
           </div>
         </div>
       </div>
       <div className="w-full px-5 py-2 grid grid-cols-[2fr_0fr] items-center">
-        <p className="text-xs text-left">{formatDate(music.createdAt || "")}</p>
+        <p className="text-xs text-left sm:block hidden">
+          {formatDate(music.createdAt || "")}
+        </p>
         <p className="text-xs text-left">{formatDuration(duration)}</p>
       </div>
       {/* Admin controls removed - should be handled by parent component */}

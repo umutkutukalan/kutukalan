@@ -4,21 +4,28 @@ import { itstime, oakley } from "../../utils";
 const PlaylistDetail = () => {
   const { musics } = useMusicContext();
   return (
-    <div className="w-full flex items-end gap-5 py-5 bg-musicAboutPage px-10 rounded-tr-2xl">
+    <div
+      className={`w-full flex flex-col sm:flex-row items-center sm:items-end gap-5 px-10 sm:rounded-tr-2xl relative overflow-hidden py-5`}
+    >
+      <div className="sm:absolute h-full w-full bg-gradient-to-r from-black to-white/60"></div>
+      <div className="sm:hidden absolute h-70 w-full bg-gradient-to-t from-white/20 to-black "></div>
       <div
-        className="w-60 h-60 rounded-md bg-gray-500 overflow-hidden relative"
+        className="w-60 h-60 rounded-md overflow-hidden relative z-20"
         style={{ boxShadow: "3px 5px 10px 0px rgba(0, 0, 0, 0.4)" }}
       >
         <img
           src={itstime}
           alt=""
-          className="h-full w-full object-cover brightness-60"
+          className="h-full w-full object-cover brightness-80 sm:brightness-60"
         />
       </div>
-      <div className="flex flex-col gap-3 mb-2">
+      <div className="flex flex-col gap-3 mb-2 sm:flex hidden z-20">
         <div className="flex flex-col gap-3">
-          <h1 className="text-6xl font-semibold"> Can't Hurt Me </h1>
-          <p className="text-xs w-100">
+          <h1 className="text-2xl sm:text-6xl font-semibold">
+            {" "}
+            Can't Hurt Me{" "}
+          </h1>
+          <p className="text-xs sm:w-100">
             Her ritim bir duygunun yankısı, her beat kendi hikayesini fısıldar.
             Müzik, kelimelerle anlatamadığım şeyleri duyurmanın yolu.
           </p>

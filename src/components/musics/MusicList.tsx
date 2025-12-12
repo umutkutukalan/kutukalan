@@ -14,8 +14,8 @@ const MusicList = () => {
   };
 
   return (
-    <div className="overflow-hidden">
-      <div className="w-full grid grid-cols-[3fr_2fr] py-1 px-10 text-xs text-gray-300 border-b border-white/10">
+    <div className="overflow-hidden px-2 sm:px-0">
+      <div className="w-full grid grid-cols-[3fr_0fr] sm:grid-cols-[3fr_2fr] py-1 sm:px-10 text-xs text-gray-300 border-b border-white/10">
         <div className="flex items-center gap-5 pl-5">
           <div className="flex items-center">
             <div className="flex items-center gap-1">
@@ -31,8 +31,8 @@ const MusicList = () => {
               : "grid-cols-[2fr_0fr]"
           } items-center`}
         >
-          <span className="text-left">Tarih</span>
-          <span className="text-left">Süre</span>
+          <span className="sm:block hidden">Tarih</span>
+          <span className="">Süre</span>
           {user?.role === "ADMIN" && (
             <span className="text-left">
               <BsThreeDotsVertical />
@@ -40,7 +40,7 @@ const MusicList = () => {
           )}
         </div>
       </div>
-      <div className="px-10 w-full py-5">
+      <div className="sm:px-10 w-full py-5">
         <ul className="flex flex-col w-full">
           {musics.map((music, idx) => (
             <MusicItem
