@@ -17,9 +17,9 @@ const BlogCard = ({ blog }: BlogCardProps) => {
   const { formatRelativeTime } = RelativeTime();
 
   return (
-    <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all p-5 rounded-lg hover:border-none border-b border-white/10">
+    <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all py-2 p-2 sm:p-5rounded-lg hover:border-none border-b border-white/10">
       <div className="w-full h-full flex gap-5">
-        <div className="w-1/5 h-full rounded-lg relative flex-shrink-0 relative">
+        <div className="sm:w-2/7 lg:w-1/5 h-full rounded-lg relative flex-shrink-0 relative sm:block hidden">
           <div className="absolute inset-0 bg-black opacity-20" />
           <div className="absolute inset-0 w-full h-full overflow-hidden rounded-md z-10">
             <img
@@ -49,7 +49,7 @@ const BlogCard = ({ blog }: BlogCardProps) => {
                 {blog.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="pointer-events-none flex items-center px-3 py-1 bg-blue-800 text-xs rounded-full"
+                    className="pointer-events-none flex items-center px-2 py-0.25 bg-blue-800 text-[10px] rounded-full"
                   >
                     {tag}
                   </li>

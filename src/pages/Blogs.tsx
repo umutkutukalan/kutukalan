@@ -3,6 +3,7 @@ import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import { useGetBlogs } from "../hooks/blog/useGetBlogs";
 import BlogHeader from "../components/pageheader/BlogHeader";
 import BlogList from "../components/blog/BlogList";
+import { useAudioPlayer } from "../context/AudioPlayerContext";
 
 const Blogs = () => {
   const {
@@ -12,9 +13,11 @@ const Blogs = () => {
     hasMore,
     loadMoreBlogs,
     getBlogs,
-    currentPage,
-    totalPages,
+    // currentPage,
+    // totalPages,
   } = useGetBlogs();
+
+  const { currentTrack } = useAudioPlayer();
 
   // Infinite scroll hook'unu kullan
   useInfiniteScroll(loadMoreBlogs, hasMore, isLoadingMore);
@@ -33,7 +36,9 @@ const Blogs = () => {
   }
 
   return (
-    <div className="py-8 px-10">
+    <div
+      className={`pt-15 px-5 sm:px-10 xl:pb-5 ${currentTrack ? "pb-10" : ""}`}
+    >
       <div className="flex flex-col gap-5">
         <BlogHeader />
         <BlogList blogs={blogs} />
@@ -53,16 +58,6 @@ const Blogs = () => {
           <span className="ml-3 text-gray-600">
             Daha fazla blog yükleniyor...
           </span>
-        </div>
-      )}
-
-      {/* Sayfa Bilgisi */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center py-4">
-          <p className="text-sm text-gray-400">
-            Sayfa {currentPage + 1} / {totalPages} • {blogs.length} blog
-            gösteriliyor
-          </p>
         </div>
       )}
     </div>

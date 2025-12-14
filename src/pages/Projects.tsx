@@ -4,6 +4,7 @@ import ProjectList from "../components/project/ProjectList";
 import { useGetProjects } from "../hooks/project/useGetProjects";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import ProjectHeader from "../components/pageheader/ProjectHeader";
+import { useAudioPlayer } from "../context/AudioPlayerContext";
 
 const Projects = () => {
   const {
@@ -13,9 +14,11 @@ const Projects = () => {
     hasMore,
     loadMoreProjects,
     getProjects,
-    currentPage,
-    totalPages,
+    // currentPage,
+    // totalPages,
   } = useGetProjects();
+
+  const { currentTrack } = useAudioPlayer();
 
   // Infinite scroll hook'unu kullan
   useInfiniteScroll(loadMoreProjects, hasMore, isLoadingMore);
@@ -34,7 +37,9 @@ const Projects = () => {
   }
 
   return (
-    <div className="pb-8 pt-15 px-5 sm:px-10">
+    <div
+      className={`pt-15 px-5 sm:px-10 xl:pb-5 ${currentTrack ? "pb-10" : ""}`}
+    >
       <div className="flex flex-col gap-5">
         <ProjectHeader />
         <ProjectList projects={projects} />
@@ -54,16 +59,6 @@ const Projects = () => {
           <span className="ml-3 text-gray-600">
             Daha fazla proje yükleniyor...
           </span>
-        </div>
-      )}
-
-      {/* Sayfa Bilgisi */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center py-4">
-          <p className="text-sm text-gray-400">
-            Sayfa {currentPage + 1} / {totalPages} • {projects.length} proje
-            gösteriliyor
-          </p>
         </div>
       )}
     </div>
