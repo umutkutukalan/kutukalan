@@ -45,9 +45,9 @@ export const GlobalMusicBar = () => {
   };
 
   return (
-    <div className="xl:hidden fixed bottom-0 left-0 w-full bg-[#212121] text-white flex items-center justify-between xl:px-20 md:px-20 px-10 py-2 z-50">
+    <div className="xl:hidden fixed bottom-0 left-0 w-full bg-[#212121] text-white flex items-center justify-between px-5 lg:px-20 py-2 z-50">
       {/* Left section for controls */}
-      <div className="xl:w-5/7 md:w-2/3 flex items-center gap-8">
+      <div className="xl:w-5/7 md:w-2/3 sm:w-1/3 w-2/3 flex items-center gap-4 md:gap-8">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-5">
             <IoPlaySkipBackSharp
@@ -74,7 +74,7 @@ export const GlobalMusicBar = () => {
               onClick={playNext}
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:flex hidden">
             <button>
               <PiRepeatOnce
                 title="Tekrarla"
@@ -95,10 +95,11 @@ export const GlobalMusicBar = () => {
             </button>
           </div>
         </div>
+        <span className="select-none text-gray-400 md:hidden sm:flex hidden">·</span>
         {/* Middle section for progress bar */}
-        <div className="w-full flex items-center gap-8">
+        <div className="w-full flex items-center gap-8 sm:flex hidden">
           {/* Progress bar with current time and duration */}
-          <div className="w-full flex items-center gap-2">
+          <div className="w-full flex items-center gap-2 md:flex hidden">
             <div className="text-xs select-none">
               {Math.floor(progress.current / 60)}.
               {(Math.floor(progress.current) % 60).toString().padStart(2, "0")}
@@ -214,7 +215,7 @@ export const GlobalMusicBar = () => {
       </div>
 
       {/* Right section for current track details */}
-      <div className="xl:w-2/7 md:w-1/3">
+      <div className="xl:w-2/7 md:w-1/3 sm:w-2/7 w-1/2">
         <div className="flex items-center justify-end">
           <div className="flex items-center gap-3 w-50">
             <img

@@ -44,10 +44,10 @@ const ProjectDetail = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-xs sm:text-base">kutukalan</p>
+                <p className="text-xs text-gray-300">kutukalan</p>
               </div>
               <span>·</span>
-              <span className="text-xs sm:text-base">
+              <span className="text-xs text-gray-300">
                 {formatRelativeTime(project.createdAt)}
               </span>
             </div>

@@ -55,9 +55,9 @@ function App() {
               }
             />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/projeler/:projectSlug" element={<ProjectDetail />} />
+            <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/bloglar/:blogSlug" element={<BlogDetail />} />
+            <Route path="/blogs/:blogSlug" element={<BlogDetail />} />
             <Route path="/musics" element={<Musics />} />
             {user?.role === "ADMIN" && (
               <>
