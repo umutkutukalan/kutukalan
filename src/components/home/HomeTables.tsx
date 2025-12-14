@@ -10,7 +10,7 @@ export interface Tech {
 
 const HomeTables = () => {
   return (
-    <div className="w-full h-60 md:h-80 overflow-hidden relative">
+    <div className="w-full h-60 md:h-70 overflow-hidden relative">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/70"></div>
         <img src={mor} alt="" className="object-cover w-full h-full" />
