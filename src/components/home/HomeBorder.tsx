@@ -1,4 +1,4 @@
-import { gray, runaley } from "../../utils";
+import { gray, runaley, sahnesen } from "../../utils";
 import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
 import { useState } from "react";
@@ -25,7 +25,7 @@ const HomeBorder = () => {
   };
 
   return (
-    <div className="w-full h-100 md:h-80 xl:h-74 relative flex flex-col gap-1 oswald-300">
+    <div className="w-full h-80 md:h-70 lg:h-74 relative flex flex-col gap-1 oswald-300">
       {/* <div className="w-full flex items-center justify-between">
         <h2 className="text-lg">PROJELER</h2>
         <div className="flex items-center gap-1">
@@ -45,8 +45,8 @@ const HomeBorder = () => {
                     alt=""
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-15 sm:top-10 md:top-10 lg:top-15 xl:top-10 left-2 z-20">
-                    <p className="2xl:text-3xl lg:text-2xl sm:text-xl text-2xl">
+                  <div className="absolute top-11 sm:top-11 md:top-11 lg:top-11 xl:top-11 left-2 z-20">
+                    <p className="2xl:text-3xl lg:text-2xl md:text-xl sm:text-2xl text-2xl">
                       <span className="bg-white text-black box-decoration-clone leading-snug px-2">
                         {currentAbout.paragraph}
                       </span>
@@ -81,8 +81,8 @@ const HomeBorder = () => {
                   </div>
                 </div>
 
-                <div className="absolute -bottom-5 lg:-bottom-20 xl:-bottom-15 left-1/2 -translate-x-1/2">
-                  <div className={`2xl:w-80 xl:w-60 lg:w-70 md:w-60 sm:w-80 w-70`}>
+                <div className="absolute -bottom-15 sm:-bottom-20 md:-bottom-10 lg:-bottom-25 xl:-bottom-15 left-1/2 -translate-x-1/2">
+                  <div className={`2xl:w-80 xl:w-60 lg:w-70 md:w-50 sm:w-80 w-70`}>
                     <img
                       src={currentAbout.aboutImage}
                       alt=""
@@ -121,7 +121,7 @@ const HomeBorder = () => {
               </div>
             </div>
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-2 items-center">
-              <div className="2xl:w-40 md:w-35 w-45">
+              <div className="2xl:w-40 lg:w-32 md:w-30 w-35">
                 <img src={runaley} alt="" className="w-full h-full" />
               </div>
             </div>
@@ -131,7 +131,7 @@ const HomeBorder = () => {
           {/* grid grid-rows-2 gap-2 */}
           <div className="w-full h-full overflow-hidden border border-white/10 text-black relative group">
             <img
-              src={gray}
+              src={sahnesen}
               alt=""
               className="absolute inset-0 w-full h-full object-cover z-0 brightness-75"
             />

@@ -1,11 +1,10 @@
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { blogbanner, projectbanner, sahnesen } from "../../utils";
+import { blogbanner, projectbanner } from "../../utils";
 import { FaStarHalf } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const HomeVideos = () => {
   return (
-    <div className="w-full h-40 md:h-50 xl:h-35 overflow-hidden rounded-lg grid grid-cols-2 gap-2">
+    <div className="w-full h-60 sm:h-35 xl:h-35 overflow-hidden rounded-lg grid grid-cols-1 gap-2">
       <ul className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-hidden">
         <li className="w-full h-full bg-gray-200 rounded-lg overflow-hidden relative group">
           <Link to="/projects" className="absolute inset-0 z-10 flex flex-col justify-center items-center">
@@ -40,7 +39,7 @@ const HomeVideos = () => {
           />
         </li>
       </ul>
-      <div className="w-full h-full bg-gray-200 rounded-lg overflow-hidden relative">
+      {/* <div className="w-full h-full bg-gray-200 rounded-lg overflow-hidden relative">
         <div className="absolute left-3 bottom-3 flex items-center z-10">
           <IoIosArrowBack size={16} className="text-black/70 cursor-pointer" />
           <IoIosArrowForward
@@ -49,7 +48,7 @@ const HomeVideos = () => {
           />
         </div>
         <img src={sahnesen} alt="" className="w-full h-full object-cover" />
-      </div>
+      </div> */}
     </div>
   );
 };

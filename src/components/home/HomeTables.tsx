@@ -10,7 +10,7 @@ export interface Tech {
 
 const HomeTables = () => {
   return (
-    <div className="w-full h-60 md:h-70 overflow-hidden relative">
+    <div className="w-full h-60 sm:h-70 xl:h-70 overflow-hidden relative">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/70"></div>
         <img src={mor} alt="" className="object-cover w-full h-full" />
@@ -21,21 +21,21 @@ const HomeTables = () => {
             <img
               src={abstract1}
               alt=""
-              className="w-80 h-80 object-cover brightness-30"
+              className="w-60 h-60 md:w-70 md:h-70 xl:w-80 xl:h-80 object-cover brightness-30"
             />
           </div>
-          <div className="absolute right-25 top-10 sm:flex hidden">
+          <div className="absolute right-25 top-10">
             <img
               src={abstract2}
               alt=""
-              className="w-80 h-80 object-cover brightness-30 -rotate-50"
+              className="w-60 h-60 md:w-70 md:h-70 xl:w-80 xl:h-80 object-cover brightness-30 -rotate-50"
             />
           </div>
           <div className="h-full w-full flex flex-col items-center justify-center gap-2 text-center z-10">
             <h1 className="text-sm sm:text-base oswald-300">
               Umut Kutukalan | Software Engineer
             </h1>
-            <h2 className="text-4xl md:text-6xl xl:text-5xl w-80 md:w-120 xl:w-100 oswald-400">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl w-80 md:w-110 xl:w-100 oswald-400">
               BLENDING ART, CODE AND PURPOSE
             </h2>
           </div>
