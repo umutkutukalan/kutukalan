@@ -8,13 +8,15 @@ const MusicList = () => {
   const { musics } = useMusicContext();
   const { currentTrack, isPlaying, playTrack, pause } = useAudioPlayer();
   const { formatDate } = FormatDate();
-  
+
   const user = {
     role: "USER", // or "USER"
   };
 
   return (
-    <div className="overflow-hidden px-2 sm:px-0">
+    <div
+      className={`overflow-hidden px-2 sm:px-0 ${currentTrack ? "pb-10" : ""} xl:pb-0` }
+    >
       <div className="w-full grid grid-cols-[3fr_0fr] sm:grid-cols-[3fr_2fr] py-1 sm:px-10 text-xs text-gray-300 border-b border-white/10">
         <div className="flex items-center gap-5 pl-5">
           <div className="flex items-center">

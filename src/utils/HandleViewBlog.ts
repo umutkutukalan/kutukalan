@@ -19,7 +19,7 @@ export const handleViewBlog = (
   navigate: NavigateFunction
 ): void => {
   const blogSlug = generateSlug(blog.title);
-  navigate(`/bloglar/${blogSlug}`, {
+  navigate(`/blogs/${blogSlug}`, {
     state: { blog },
   });
 };

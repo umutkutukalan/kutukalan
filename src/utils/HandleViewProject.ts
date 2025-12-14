@@ -20,7 +20,7 @@ export const handleViewProject = (
   navigate: NavigateFunction,
 ): void => {
   const projectSlug = generateSlug(project.title);
-  navigate(`/projeler/${projectSlug}`, {
+  navigate(`/projects/${projectSlug}`, {
     state: { project },
   });
 };
