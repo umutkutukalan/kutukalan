@@ -63,6 +63,7 @@ const MusicBar = () => {
   const [lastVolume, setLastVolume] = useState(1);
 
   return (
+    <>
     <div className="w-full h-full bg-[#4a6d88] rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
       <div className="absolute inset-0">
         <img
@@ -228,6 +229,8 @@ const MusicBar = () => {
         </div>
       </div>
     </div>
+    
+    </>
   );
 };
 

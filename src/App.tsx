@@ -13,9 +13,13 @@ import { useUser } from "./hooks/useUserContext";
 import ProjectDetail from "./pages/ProjectDetail";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
+import GlobalMusicBar from "./components/musics/GlobalMusicBar";
+import { useAudioPlayer } from "./context/AudioPlayerContext";
 
 function App() {
   const { user } = useUser();
+  const { currentTrack } = useAudioPlayer();
+  const { isPlaying, pause, playTrack } = useAudioPlayer();
 
   // If current path starts with the secret prefix, render only CreateUser (full page)
   const secretCreateUserPrefix = "/create-user-th&a5tg8+521&6j%25qwp";
@@ -25,7 +29,20 @@ function App() {
 
   return (
     <>
-      <div className="w-full flex relative">
+      <div
+        className="w-full flex relative focus:outline-none focus-visible:outline-none"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.code === "Space" || e.key === " ") {
+            e.preventDefault();
+            if (isPlaying) {
+              pause();
+            } else {
+              playTrack(currentTrack);
+            }
+          }
+        }}
+      >
         <Navbar />
         <div className="w-full sm:pl-15 xl:pr-95 relative">
           <Routes>
@@ -53,6 +70,7 @@ function App() {
         </div>
         <Queque />
       </div>
+      {currentTrack && <GlobalMusicBar />}
     </>
   );
 }

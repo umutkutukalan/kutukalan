@@ -3,15 +3,17 @@ import { adminNavbarList, contactList, navbarList } from "../constants";
 import { useUser } from "../hooks/useUserContext";
 import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
+import { useAudioPlayer } from "../context/AudioPlayerContext";
 
 const Navbar = () => {
   const { user } = useUser();
-  const [show, setShow] = useState(false);
+  const { currentTrack } = useAudioPlayer();
+  const [show, setShow] = useState<boolean>(false);
 
   console.log("Navbar user:", user);
   return (
     <header>
-      <nav className="w-15 hover:w-50 group transition-all h-screen text-white fixed top-0 left-0 py-5 z-50 bg-black sm:block hidden">
+      <nav className={`w-15 hover:w-50 group transition-all ${currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"} xl:h-screen text-white fixed top-0 left-0 py-5 z-50 bg-black sm:block hidden`}>
         <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between py-2">
           <div className="flex flex-col gap-1">
             <div className="flex flex-col gap-1">
@@ -86,12 +88,12 @@ const Navbar = () => {
           />
         )}
         <div
-          className={`absolute top-0 w-48 h-screen bg-black border-r border-white/20 z-50 transition-transform duration-500 ease-out ${
+          className={`absolute top-0 w-48 h-[calc(100vh-3rem)] bg-black border-r border-white/20 z-50 transition-transform duration-500 ease-out ${
             show ? "translate-x-0" : "-translate-x-full"
           } left-0`}
         >
           <div className="flex flex-col gap-5 h-full pb-5 pt-4 px-5">
-            <CiMenuFries onClick={() => setShow(!show)}/>
+            <CiMenuFries onClick={() => setShow(!show)} />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-col gap-1">
                 <div className="flex flex-col gap-1">

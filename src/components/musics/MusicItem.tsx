@@ -69,6 +69,12 @@ const MusicItem = ({
     <li
       key={music.id}
       onDoubleClick={isPlaying ? onPause : onPlay}
+      onClick={(e) => {
+        // lg ve altında (mobil/tablet) tek tıklama ile çal
+        if (window.innerWidth < 1024 && e.currentTarget === e.target) {
+          handleToggle();
+        }
+      }}
       className="w-full h-[70px] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group"
     >
       <audio
