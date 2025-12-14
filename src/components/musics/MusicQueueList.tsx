@@ -64,7 +64,7 @@ const MusicQueueList = () => {
         {selected?.map((music: MusicItem) => (
           <li
             key={music.id}
-            className="musicItem flex items-center justify-between hover:bg-white/10 p-2 rounded-lg"
+            className={`musicItem flex items-center justify-between hover:bg-white/10 p-2 rounded-lg`}
           >
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-lg overflow-hidden">
@@ -75,7 +75,15 @@ const MusicQueueList = () => {
                 />
               </div>
               <div className="text-sm flex flex-col gap-1">
-                <h3 className="">{music.title}</h3>
+                <h3
+                  className={`${
+                    currentTrack && currentTrack.id === music.id
+                      ? "text-green-400"
+                      : ""
+                  }`}
+                >
+                  {music.title}
+                </h3>
                 <div className="flex items-center gap-1 text-gray-400 text-[10px]">
                   <p>{formatRelativeTime(String(music.createdAt))}</p>
                 </div>

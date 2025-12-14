@@ -2,6 +2,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa6";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { useAudioPlayer } from "../../context/AudioPlayerContext";
 
 // Types
 interface Music {
@@ -37,6 +38,7 @@ const MusicItem = ({
   const audioRef = useRef<HTMLAudioElement>(null);
   const [duration, setDuration] = useState<number | null>(null);
   const [showConfirm, setShowConfirm] = useState(false);
+  const { currentTrack } = useAudioPlayer();
 
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
@@ -75,7 +77,7 @@ const MusicItem = ({
           handleToggle();
         }
       }}
-      className="w-full h-[70px] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group"
+      className={`w-full h-[70px] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group`}
     >
       <audio
         ref={audioRef}
@@ -89,12 +91,16 @@ const MusicItem = ({
             {isPlaying ? (
               <DotLottieReact
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-6 group-hover:opacity-0 z-10"
-                src="https://lottie.host/81713459-6e3e-433e-b2e5-1ef0bc8e5e87/48XmKJpqK7.lottie"
+                src="https://lottie.host/5e3ce3b6-68f3-4e62-b5d9-a4e8339c2422/MP8W9BZVv4.lottie"
                 loop
                 autoplay
               />
             ) : (
-              <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 z-10">
+              <p
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 z-10 ${
+                  currentTrack?.id === music.id ? "text-green-400" : ""
+                }`}
+              >
                 {index + 1}
               </p>
             )}
@@ -115,7 +121,13 @@ const MusicItem = ({
               />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-xs sm:text-sm">{music.title}</h1>
+              <h1
+                className={`text-xs sm:text-sm ${
+                  currentTrack?.id === music.id ? "text-green-400" : ""
+                }`}
+              >
+                {music.title}
+              </h1>
               <p className="text-[10px] sm:text-xs text-gray-500">kutukalan</p>
             </div>
           </div>
