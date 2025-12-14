@@ -10,7 +10,7 @@ export interface Tech {
 
 const HomeTables = () => {
   return (
-    <div className="w-full h-2/5 overflow-hidden relative">
+    <div className="w-full h-60 md:h-80 overflow-hidden relative">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/70"></div>
         <img src={mor} alt="" className="object-cover w-full h-full" />
@@ -24,7 +24,7 @@ const HomeTables = () => {
               className="w-80 h-80 object-cover brightness-30"
             />
           </div>
-          <div className="absolute right-25 top-10 ">
+          <div className="absolute right-25 top-10 sm:flex hidden">
             <img
               src={abstract2}
               alt=""
@@ -35,7 +35,7 @@ const HomeTables = () => {
             <h1 className="text-sm sm:text-base oswald-300">
               Umut Kutukalan | Software Engineer
             </h1>
-            <h2 className="text-4xl sm:text-5xl w-80 sm:w-100 oswald-400">
+            <h2 className="text-4xl md:text-6xl xl:text-5xl w-80 md:w-120 xl:w-100 oswald-400">
               BLENDING ART, CODE AND PURPOSE
             </h2>
           </div>
@@ -53,7 +53,7 @@ const HomeTables = () => {
                       : "border-r border-white/10"
                   }`}
                 >
-                  {Icon && <Icon className={`text-xl sm:text-3xl`} />}
+                  {Icon && <Icon className={`text-xl md:text-3xl`} />}
                 </div>
               );
             })}

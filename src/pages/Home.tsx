@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <section className="flex flex-col">
-      <div className={`w-full ${ currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"} xl:h-screen p-5 flex flex-col justify-between gap-3 overflow-hidden`}>
+      <div className={`w-full ${ currentTrack ? "pb-15" : "h-screen"} xl:pb-5 p-5 flex flex-col justify-between gap-3 overflow-hidden`}>
         <HomeTables />
         <HomeVideos />
         <HomeBorder />

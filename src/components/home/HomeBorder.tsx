@@ -25,7 +25,7 @@ const HomeBorder = () => {
   };
 
   return (
-    <div className="w-full h-2/5 relative flex flex-col gap-1 oswald-300">
+    <div className="w-full h-80 relative flex flex-col gap-1 oswald-300">
       {/* <div className="w-full flex items-center justify-between">
         <h2 className="text-lg">PROJELER</h2>
         <div className="flex items-center gap-1">
@@ -33,7 +33,7 @@ const HomeBorder = () => {
           <BsChevronRight className="text-lg cursor-pointer" />
         </div>
       </div> */}
-      <div className="w-full h-full overflow-hidden shadow-2xl relative gap-2 grid sm:grid-cols-2 auto-rows-fr">
+      <div className="w-full h-full overflow-hidden shadow-2xl relative gap-2 grid md:grid-cols-2 auto-rows-fr">
         <div className="relative w-full h-full overflow-hidden grid grid-cols-2 gap-2 items-center">
           <div className="rounded-xl bg-white/10 h-full w-full relative overflow-hidden">
             {currentAbout ? (
@@ -45,7 +45,7 @@ const HomeBorder = () => {
                     alt=""
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-15 left-2">
+                  <div className="absolute top-15 sm:top-10 md:top-15 left-2 z-20">
                     <p className="2xl:text-3xl text-2xl">
                       <span className="bg-white text-black box-decoration-clone leading-snug px-2">
                         {currentAbout.paragraph}
@@ -57,7 +57,7 @@ const HomeBorder = () => {
                 <div className="absolute inset-0 p-4 w-full h-full">
                   <div className="w-full h-full flex flex-col items-start justify-between">
                     <div className="flex items-center justify-between w-full relative">
-                      <div className="flex items-center gap-2 text-xs">
+                      <div className="flex items-center gap-2 text-xs z-30">
                         <BsChevronLeft
                           className="cursor-pointer"
                           onClick={handlePrev}
@@ -82,7 +82,7 @@ const HomeBorder = () => {
                 </div>
 
                 <div className="absolute -bottom-15 left-1/2 -translate-x-1/2">
-                  <div className={`2xl:w-80 w-60`}>
+                  <div className={`2xl:w-80 md:w-60 sm:w-80 w-65`}>
                     <img
                       src={currentAbout.aboutImage}
                       alt=""
@@ -121,13 +121,13 @@ const HomeBorder = () => {
               </div>
             </div>
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-2 items-center">
-              <div className="2xl:w-40 w-35">
+              <div className="2xl:w-40 md:w-35 w-38">
                 <img src={runaley} alt="" className="w-full h-full" />
               </div>
             </div>
           </div>
         </div>
-        <div className="relative w-full h-full overflow-hidden rounded-xl oswald-400 sm:block hidden">
+        <div className="relative w-full h-full overflow-hidden rounded-xl oswald-400 md:flex hidden">
           {/* grid grid-rows-2 gap-2 */}
           <div className="w-full h-full overflow-hidden border border-white/10 text-black relative group">
             <img
