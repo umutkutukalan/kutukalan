@@ -98,7 +98,7 @@ const MusicItem = ({
             ) : (
               <p
                 className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 z-10 ${
-                  currentTrack?.id === music.id ? "text-green-400" : ""
+                  currentTrack?.id === music.id ? "text-green-500" : ""
                 }`}
               >
                 {index + 1}
@@ -123,7 +123,7 @@ const MusicItem = ({
             <div className="flex flex-col">
               <h1
                 className={`text-xs sm:text-sm ${
-                  currentTrack?.id === music.id ? "text-green-400" : ""
+                  currentTrack?.id === music.id ? "text-green-500" : ""
                 }`}
               >
                 {music.title}

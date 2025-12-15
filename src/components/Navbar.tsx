@@ -88,7 +88,7 @@ const Navbar = () => {
           />
         )}
         <div
-          className={`absolute top-0 w-48 h-[calc(100vh-3rem)] bg-black border-r border-white/20 z-50 transition-transform duration-500 ease-out ${
+          className={`absolute top-0 w-48 ${currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"} bg-black border-r border-white/20 z-50 transition-transform duration-500 ease-out ${
             show ? "translate-x-0" : "-translate-x-full"
           } left-0`}
         >

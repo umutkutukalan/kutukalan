@@ -4,7 +4,6 @@ import { RelativeTime } from "../../utils/RelativeTime";
 import { Link, useNavigate } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
-import { nikegreen } from "../../utils";
 import type { Blog } from "../../services/blog/blogServices";
 import { handleViewBlog } from "../../utils/HandleViewBlog";
 
@@ -30,9 +29,9 @@ const BlogCard = ({ blog }: BlogCardProps) => {
           </div>
           <div className="absolute w-full h-full rounded-md -left-2 -top-2 z-5 overflow-hidden">
             <div className="relative w-full h-full">
-              <div className="absolute inset-0 bg-black opacity-30"></div>
+              <div className="absolute inset-0 bg-black opacity-70"></div>
               <img
-                src={nikegreen}
+                src={blog.mainImg}
                 alt=""
                 className="w-full h-full object-cover"
               />

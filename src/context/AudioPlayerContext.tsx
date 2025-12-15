@@ -11,7 +11,7 @@ import {
 import { useMusicContext } from "../hooks/useMusicContext";
 
 // Types
-interface Music {
+export interface Music {
   id: string | number;
   title?: string;
   musicUrl?: string;

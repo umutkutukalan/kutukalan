@@ -8,8 +8,12 @@ import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
 import { MdComputer, MdOutlineLibraryMusic } from "react-icons/md";
-import { SiElectron, SiReaddotcv } from "react-icons/si";
-import { TbBrandReactNative, TbBrandThreejs, TbMusicPlus } from "react-icons/tb";
+import { SiElectron } from "react-icons/si";
+import {
+  TbBrandReactNative,
+  TbBrandThreejs,
+  TbMusicPlus,
+} from "react-icons/tb";
 import { LuFiles } from "react-icons/lu";
 import { IoIdCardOutline, IoMailOutline } from "react-icons/io5";
 import { RxText } from "react-icons/rx";
@@ -71,7 +75,6 @@ export const adminNavbarList = [
 ];
 
 export const contactList = [
-  { id: 1, title: "CV", link: "/cv", icon: SiReaddotcv },
   { id: 2, title: "About", link: "/about", icon: FiUser },
   { id: 3, title: "Contact", link: "/contact", icon: IoMailOutline },
 ];

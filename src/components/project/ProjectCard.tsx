@@ -16,7 +16,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaYoutube } from "react-icons/fa";
 import { handleViewProject } from "../../utils/HandleViewProject";
 import { IoIosArrowForward } from "react-icons/io";
-import { nikegreen } from "../../utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -40,9 +39,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </div>
           <div className="absolute w-full h-full rounded-md -left-2 -top-2 z-5 overflow-hidden">
             <div className="relative w-full h-full">
-              <div className="absolute inset-0 bg-black opacity-30"></div>
+              <div className="absolute inset-0 bg-black opacity-70"></div>
               <img
-                src={nikegreen}
+                src={project.mainImg}
                 alt=""
                 className="w-full h-full object-cover"
               />

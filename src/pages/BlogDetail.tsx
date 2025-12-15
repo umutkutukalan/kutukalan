@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { naturerun } from "../utils";
 import { useRelativeTime } from "../hooks/useRelativeTime";
 import { TbBurger } from "react-icons/tb";
 import type { Blog } from "../services/blog/blogServices";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
+import { profile } from "../utils";
 
 const BlogDetail = () => {
   const location = useLocation();
@@ -36,7 +36,7 @@ const BlogDetail = () => {
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full overflow-hidden">
                   <img
-                    src={naturerun}
+                    src={profile}
                     alt=""
                     className="w-full h-full object-cover"
                   />

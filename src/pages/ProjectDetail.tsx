@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { naturerun } from "../utils";
 import type { Project } from "../services/project/projectServices";
 import { useRelativeTime } from "../hooks/useRelativeTime";
 import {
@@ -14,6 +13,7 @@ import { DiJava, DiMysql, DiPostgresql } from "react-icons/di";
 import { SiElectron } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
+import { profile } from "../utils";
 
 const ProjectDetail = () => {
   const location = useLocation();
@@ -41,7 +41,7 @@ const ProjectDetail = () => {
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full overflow-hidden">
                   <img
-                    src={naturerun}
+                    src={profile}
                     alt=""
                     className="w-full h-full object-cover"
                   />

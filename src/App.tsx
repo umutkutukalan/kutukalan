@@ -16,10 +16,9 @@ import BlogDetail from "./pages/BlogDetail";
 import GlobalMusicBar from "./components/musics/GlobalMusicBar";
 import { useAudioPlayer } from "./context/AudioPlayerContext";
 
-function App() {
+export const App = () => {
   const { user } = useUser();
-  const { currentTrack } = useAudioPlayer();
-  const { isPlaying, pause, playTrack } = useAudioPlayer();
+  const { currentTrack, isPlaying, pause, playTrack } = useAudioPlayer();
 
   // If current path starts with the secret prefix, render only CreateUser (full page)
   const secretCreateUserPrefix = "/create-user-th&a5tg8+521&6j%25qwp";
@@ -33,11 +32,14 @@ function App() {
         className="w-full flex relative focus:outline-none focus-visible:outline-none"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.code === "Space" || e.key === " ") {
+          if (
+            (e.code === "Space" || e.key === " ") &&
+            !location.pathname.startsWith("/create")
+          ) {
             e.preventDefault();
             if (isPlaying) {
               pause();
-            } else {
+            } else if (currentTrack) {
               playTrack(currentTrack);
             }
           }
@@ -73,6 +75,6 @@ function App() {
       {currentTrack && <GlobalMusicBar />}
     </>
   );
-}
+};
 
 export default App;

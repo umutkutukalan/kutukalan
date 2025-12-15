@@ -82,7 +82,9 @@ const HomeBorder = () => {
                 </div>
 
                 <div className="absolute -bottom-15 sm:-bottom-20 md:-bottom-10 lg:-bottom-25 xl:-bottom-15 left-1/2 -translate-x-1/2">
-                  <div className={`2xl:w-80 xl:w-60 lg:w-70 md:w-50 sm:w-80 w-70`}>
+                  <div
+                    className={`2xl:w-80 xl:w-60 lg:w-70 md:w-50 sm:w-80 w-70`}
+                  >
                     <img
                       src={currentAbout.aboutImage}
                       alt=""
@@ -121,7 +123,7 @@ const HomeBorder = () => {
               </div>
             </div>
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-2 items-center">
-              <div className="2xl:w-40 lg:w-32 md:w-30 w-35">
+              <div className="2xl:w-40 lg:w-35 md:w-32 w-38">
                 <img src={runaley} alt="" className="w-full h-full" />
               </div>
             </div>
