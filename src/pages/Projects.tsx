@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from "react";
 import ProjectList from "../components/project/ProjectList";
-import { useGetProjects } from "../hooks/project/useGetProjects";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import ProjectHeader from "../components/pageheader/ProjectHeader";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
+import { useGetProjects } from "../hooks/project/useGetProjects";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Projects = () => {
   const {
@@ -31,7 +32,30 @@ const Projects = () => {
   if (isLoading) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-gray-900"></div>
+        <div className="w-full h-screen flex items-center justify-center">
+          <DotLottieReact
+            className="w-20 h-20"
+            src="https://lottie.host/c13e1dc0-f7ee-4254-835f-f023d14021b1/CsVgXfNTS6.lottie"
+            loop
+            autoplay
+          />
+        </div>
+      </div>
+    );
+  } else if (projects.length === 0) {
+    return (
+      <div
+        className={`pt-15 px-5 sm:px-10 xl:pb-5 ${currentTrack ? "pb-10" : ""}`}
+      >
+        <ProjectHeader />
+        <div className="w-full h-full flex flex-col gap-1 mt-5">
+          <h2 className="text-lg font-semibold text-gray-300">
+            Henüz proje bulunmamaktadır.
+          </h2>
+          <p className="text-gray-500 text-xs">
+            Lütfen daha sonra tekrar kontrol edin.
+          </p>
+        </div>
       </div>
     );
   }
@@ -42,7 +66,10 @@ const Projects = () => {
     >
       <div className="flex flex-col gap-5">
         <ProjectHeader />
-        <ProjectList projects={projects} />
+        <ProjectList
+          projects={projects}
+          onProjectDeleted={() => getProjects(0, false)}
+        />
       </div>
 
       {/* Veri Bittiğinde Gösterilecek Mesaj */}

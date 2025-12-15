@@ -7,6 +7,7 @@ import {
 
 export const useAbout = () => {
   const [aboutList, setAboutList] = useState<AboutData[]>([]);
+  const [aboutLoading, setAboutLoading] = useState(false);
 
   // hakkımda içeriği oluşturma
   const createAbout = async (aboutData: AboutData) => {
@@ -21,11 +22,14 @@ export const useAbout = () => {
   // hakkımda içeriğini getirme
   const getAbouts = useCallback(async () => {
     try {
+      setAboutLoading(true);
       const response = await GetAbouts();
       setAboutList(response);
       return response;
     } catch (error) {
       console.error("Error fetching about entries:", error);
+    } finally {
+      setAboutLoading(false);
     }
   }, []);
 
@@ -33,5 +37,6 @@ export const useAbout = () => {
     createAbout,
     getAbouts,
     aboutList,
+    aboutLoading,
   };
 };

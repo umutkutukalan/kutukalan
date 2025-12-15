@@ -15,15 +15,34 @@ import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import GlobalMusicBar from "./components/musics/GlobalMusicBar";
 import { useAudioPlayer } from "./context/AudioPlayerContext";
+import { useAbout } from "./hooks/useAbout";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useMusicContext } from "./hooks/useMusicContext";
 
 export const App = () => {
   const { user } = useUser();
   const { currentTrack, isPlaying, pause, playTrack } = useAudioPlayer();
 
+  const { loading } = useMusicContext();
+  const { aboutLoading } = useAbout();
+
   // If current path starts with the secret prefix, render only CreateUser (full page)
   const secretCreateUserPrefix = "/create-user-th&a5tg8+521&6j%25qwp";
   if (location.pathname.startsWith(secretCreateUserPrefix)) {
     return <CreateUser />;
+  }
+
+  if (loading || aboutLoading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <DotLottieReact
+          className="w-20 h-20"
+          src="https://lottie.host/c13e1dc0-f7ee-4254-835f-f023d14021b1/CsVgXfNTS6.lottie"
+          loop
+          autoplay
+        />
+      </div>
+    );
   }
 
   return (
