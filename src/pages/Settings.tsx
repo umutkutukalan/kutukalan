@@ -3,7 +3,7 @@ import { useUser } from "../hooks/useUserContext";
 import UserDetail from "../components/settings/UserDetail";
 import UserUpdated from "../components/settings/UserUpdated";
 import PlaylistSettings from "../components/settings/PlaylistSettings";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Settings = () => {
   const { currentTrack } = useAudioPlayer();
@@ -16,7 +16,10 @@ const Settings = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
 
-  console.log("User in Settings:", user);
+  useEffect(() => {
+    // console.log("User in Settings:", user);
+  }, [user]);
+
 
   return (
     <>

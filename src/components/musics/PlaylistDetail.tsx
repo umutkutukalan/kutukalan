@@ -13,7 +13,9 @@ const PlaylistDetail = () => {
     getPlaylistDetails(1);
   }, []);
 
-  console.log("Playlist Details:", playlist);
+  useEffect(() => {
+    // console.log("Playlist Details:", playlist);
+  }, [playlist]);
 
   return (
     <div
@@ -36,9 +38,7 @@ const PlaylistDetail = () => {
           <h1 className="text-2xl sm:text-6xl font-semibold">
             {playlist?.title}
           </h1>
-          <p className="text-xs sm:w-100">
-            {playlist?.description}
-          </p>
+          <p className="text-xs sm:w-100">{playlist?.description}</p>
         </div>
         <div className="flex items-center gap-1">
           <div className="flex items-center gap-1">

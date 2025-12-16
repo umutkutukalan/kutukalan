@@ -7,7 +7,6 @@ interface BlogListProps {
 }
 
 const BlogList = ({ blogs, onBlogDeleted }: BlogListProps) => {
-  console.log("BlogList blogs BlogList:", blogs);
   return (
     <ul className="flex flex-col gap-5">
       {blogs.map((blog) => (

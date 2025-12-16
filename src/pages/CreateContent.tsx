@@ -41,8 +41,6 @@ const CreateContent = () => {
   const { createProject } = useCreateProject();
   const { createBlog } = useCreateBlog();
 
-  console.log(user);
-
   const [contentType, setContentType] = useState<string>("");
   const [projectTechnologies, setProjectTechnologies] = useState<
     ProjectTechnologiest[]
@@ -75,7 +73,7 @@ const CreateContent = () => {
 
   useEffect(() => {
     textRefs.current = textRefs.current.slice(0, contentList.length);
-    console.log(contentList);
+    // console.log(contentList);
   }, [contentList]);
 
   const adjustAllHeights = () => {
@@ -139,11 +137,11 @@ const CreateContent = () => {
     }
   };
 
-  console.log("projectTechnologies:", projectTechnologies);
-  console.log("contentItems:", contentList);
-  console.log("githubUrl:", githubUrl);
+  // console.log("projectTechnologies:", projectTechnologies);
+  // console.log("contentItems:", contentList);
+  // console.log("githubUrl:", githubUrl);
   // console.log("liveUrl:", liveUrl);
-  console.log("title:", title);
+  // console.log("title:", title);
   return (
     <div
       className="p-20 relative"

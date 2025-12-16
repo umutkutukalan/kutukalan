@@ -7,8 +7,6 @@ import { useAboutContext } from "../../hooks/useAboutContext";
 const HomeBorder = () => {
   const { abouts } = useAboutContext();
 
-  console.log(abouts);
-
   // Carousel state for about cards
   const [currentIdx, setCurrentIdx] = useState(0);
   const length = abouts.length;

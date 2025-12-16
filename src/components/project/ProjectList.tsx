@@ -7,7 +7,6 @@ interface ProjectListProps {
 }
 
 const ProjectList = ({ projects, onProjectDeleted }: ProjectListProps) => {
-  console.log("ProjectList projects ProjectList:", projects);
   return (
     <ul className="flex flex-col gap-5">
       {projects.map((project) => (
