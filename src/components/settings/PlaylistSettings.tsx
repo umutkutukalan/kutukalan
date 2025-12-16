@@ -1,11 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
 import { CiImageOff } from "react-icons/ci";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const PlaylistSettings = () => {
-  const { playlist, getPlaylistDetails } = usePlaylistDetails();
+  const {
+    playlist,
+    getPlaylistDetails,
+    updatePlaylist,
+    getLoading,
+    updateLoading,
+  } = usePlaylistDetails();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [playlistImage, setPlaylistImage] = useState<string>("");
+  const [playlistImage, setPlaylistImage] = useState<string | null>(null);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
@@ -17,6 +24,7 @@ const PlaylistSettings = () => {
     if (playlist) {
       setTitle(playlist.title ?? "");
       setDescription(playlist.description ?? "");
+      setPlaylistImage(playlist.playlistImage ?? "");
     }
   }, [playlist]);
 
@@ -25,45 +33,41 @@ const PlaylistSettings = () => {
     description !== (playlist?.description ?? "") ||
     playlistImage !== "";
 
-  const handleUpdate = async () => {
-    if (playlist?.id) {
-      const response = await (playlist.id,
-      title,
-      description,
+  const updateData = {
+    title,
+    description,
+    playlistImage:
       playlistImage !== "" && playlistImage
         ? playlistImage
-        : playlist.playlistImage || null);
+        : playlist?.playlistImage || null,
+  };
+
+  const handleUpdate = async () => {
+    if (playlist?.id) {
+      const response = await updatePlaylist(playlist.id, updateData);
       if (response) {
         window.location.reload();
       }
     }
   };
 
+  if (updateLoading || getLoading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <DotLottieReact
+          className="w-20 h-20"
+          src="https://lottie.host/c13e1dc0-f7ee-4254-835f-f023d14021b1/CsVgXfNTS6.lottie"
+          loop
+          autoplay
+        />
+      </div>
+    );
+  }
+
   return (
     <>
-      <input
-        type="file"
-        accept="image/*"
-        ref={fileInputRef}
-        style={{ display: "none" }}
-        onChange={(e) => {
-          const file = e.target.files?.[0];
-          if (!file) return;
-
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            if (!reader.result) return;
-
-            const base64 = reader.result as string;
-            setPlaylistImage(base64); // Base64'ü state'e kaydet
-            console.log("Playlist resmi base64 olarak kaydedildi");
-          };
-          reader.readAsDataURL(file);
-          e.target.value = "";
-        }}
-      />
       <div
-        className={`w-full border-b border-white/20 pb-5 flex flex-col md:flex-row items-start md:items-end sm:justify-between md:gap-30 ${
+        className={`w-full border-b border-white/20 pb-5 flex flex-col md:flex-row items-start md:items-end sm:justify-between md:gap-20 ${
           isChanged ? "gap-5" : ""
         }`}
         onKeyDown={(e) => {
@@ -74,9 +78,32 @@ const PlaylistSettings = () => {
         }}
         tabIndex={-1}
       >
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              if (!reader.result) return;
+
+              const base64 = reader.result as string;
+              setPlaylistImage(base64); // Base64'ü state'e kaydet
+              console.log("Playlist resmi base64 olarak kaydedildi");
+            };
+            reader.readAsDataURL(file);
+            e.target.value = "";
+          }}
+        />
         <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4">
           <div
-            className="h-40 w-40 md:w-40 md:h-40 rounded-md border border-white/20 overflow-hidden flex items-center justify-center flex-shrink-0 cursor-pointer hover:opacity-80 transition-all"
+            className={`h-40 w-40 md:w-40 md:h-40 rounded-md overflow-hidden flex items-center justify-center flex-shrink-0 cursor-pointer hover:opacity-80 transition-all ${
+              playlistImage !== "" ? "border-3 border-green-500" : ""
+            }`}
             onClick={() => {
               if (fileInputRef.current) {
                 fileInputRef.current.click(); // Finder açılır
@@ -101,11 +128,11 @@ const PlaylistSettings = () => {
               value={title}
               className={`border border-white/20 rounded-lg p-2 focus:outline-none focus:ring-1 ${
                 playlist?.title !== title ? "ring-1 ring-green-500" : ""
-              } w-full bg-transparent text-white text-4xl font-semibold`}
+              } w-full bg-transparent text-white text-2xl font-semibold`}
               onChange={(e) => setTitle(e.target.value)}
             />
 
-            <p className="text-xs text-gray-400 md:w-full">
+            <p className="text-xs text-gray-400 w-full">
               Her ritim bir duygunun yankısı, her beat kendi hikayesini
               fısıldar. Müzik, kelimelerle anlatamadığım şeyleri duyurmanın
               yolu.

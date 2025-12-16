@@ -7,7 +7,7 @@ export interface PlaylistData {
   playlistImage: string | null;
 }
 
-export const putPlaylistDetailsService = async (
+export const updatePlaylistDetailsService = async (
   playlistId: number,
   playlistData: PlaylistData
 ) => {
