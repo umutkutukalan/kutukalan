@@ -18,6 +18,7 @@ import { useAudioPlayer } from "./context/AudioPlayerContext";
 import { useAbout } from "./hooks/useAbout";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useMusicContext } from "./hooks/useMusicContext";
+import Settings from "./pages/Settings";
 
 export const App = () => {
   const { user } = useUser();
@@ -85,6 +86,7 @@ export const App = () => {
                 <Route path="/create-homecard" element={<Admin />} />
                 <Route path="/create-music" element={<CreateMusic />} />
                 <Route path="/create-content" element={<CreateContent />} />
+                <Route path="/settings" element={<Settings />} />
               </>
             )}
           </Routes>

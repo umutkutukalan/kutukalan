@@ -1,0 +1,74 @@
+import { useAudioPlayer } from "../context/AudioPlayerContext";
+import { useUser } from "../hooks/useUserContext";
+import UserDetail from "../components/settings/UserDetail";
+import UserUpdated from "../components/settings/UserUpdated";
+import PlaylistSettings from "../components/settings/PlaylistSettings";
+import { useRef, useState } from "react";
+
+const Settings = () => {
+  const { currentTrack } = useAudioPlayer();
+  const { user } = useUser();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [profileImage, setProfileImage] = useState<string>("");
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+
+  console.log("User in Settings:", user);
+
+  return (
+    <>
+      <div
+        className={`pt-15 px-5 sm:px-10 xl:pb-5 ${
+          currentTrack ? "pb-10" : "pb-5"
+        }`}
+      >
+        <div className="flex flex-col gap-5 w-full">
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (!file) return;
+
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                if (!reader.result) return;
+
+                const base64 = reader.result as string;
+                setProfileImage(base64); // Base64'ü state'e kaydet
+                console.log("Profil resmi base64 olarak kaydedildi");
+              };
+              reader.readAsDataURL(file);
+              e.target.value = "";
+            }}
+          />
+          <UserDetail
+            profileImage={profileImage}
+            fileInputRef={fileInputRef}
+            user={user}
+          />
+          <UserUpdated
+            profileImage={profileImage}
+            user={user}
+            firstName={firstName}
+            setFirstName={setFirstName}
+            lastName={lastName}
+            setLastName={setLastName}
+            username={username}
+            setUsername={setUsername}
+            email={email}
+            setEmail={setEmail}
+          />
+          <PlaylistSettings />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Settings;

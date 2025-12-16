@@ -20,6 +20,7 @@ import { RxText } from "react-icons/rx";
 import { GoHome } from "react-icons/go";
 import { PiCertificate } from "react-icons/pi";
 import { AiOutlineShopping } from "react-icons/ai";
+import { LuUserCog } from "react-icons/lu";
 import { FiUser } from "react-icons/fi";
 import type { IconType } from "react-icons";
 
@@ -56,18 +57,24 @@ export const navbarList = [
 export const adminNavbarList = [
   {
     id: 7,
+    title: "Settings",
+    link: "/settings",
+    icon: LuUserCog,
+  },
+  {
+    id: 8,
     title: "Create Homecard",
     link: "/create-homecard",
     icon: IoIdCardOutline,
   },
   {
-    id: 8,
+    id: 9,
     title: "Create Music",
     link: "/create-music",
     icon: TbMusicPlus,
   },
   {
-    id: 9,
+    id: 10,
     title: "Create Content",
     link: "/create-content",
     icon: RxText,
@@ -75,8 +82,8 @@ export const adminNavbarList = [
 ];
 
 export const contactList = [
-  { id: 2, title: "About", link: "/about", icon: FiUser },
-  { id: 3, title: "Contact", link: "/contact", icon: IoMailOutline },
+  { id: 1, title: "About", link: "/about", icon: FiUser },
+  { id: 2, title: "Contact", link: "/contact", icon: IoMailOutline },
 ];
 
 export interface TechnologyForHome {
