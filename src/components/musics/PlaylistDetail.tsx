@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
 import { useMusicContext } from "../../hooks/useMusicContext";
 import { useUser } from "../../hooks/useUserContext";
 import { itstime } from "../../utils";
@@ -5,6 +7,14 @@ import { itstime } from "../../utils";
 const PlaylistDetail = () => {
   const { musics } = useMusicContext();
   const { user } = useUser();
+  const { playlist, getPlaylistDetails } = usePlaylistDetails();
+
+  useEffect(() => {
+    getPlaylistDetails(1);
+  }, []);
+
+  console.log("Playlist Details:", playlist);
+
   return (
     <div
       className={`w-full flex flex-col md:flex-row items-center sm:items-start md:items-end gap-5 px-10 sm:rounded-tr-2xl relative overflow-hidden py-5`}
@@ -24,12 +34,10 @@ const PlaylistDetail = () => {
       <div className="flex flex-col gap-3 mb-2 sm:flex hidden z-20">
         <div className="flex flex-col gap-3">
           <h1 className="text-2xl sm:text-6xl font-semibold">
-            {" "}
-            Can't Hurt Me{" "}
+            {playlist?.title}
           </h1>
           <p className="text-xs sm:w-100">
-            Her ritim bir duygunun yankısı, her beat kendi hikayesini fısıldar.
-            Müzik, kelimelerle anlatamadığım şeyleri duyurmanın yolu.
+            {playlist?.description}
           </p>
         </div>
         <div className="flex items-center gap-1">
