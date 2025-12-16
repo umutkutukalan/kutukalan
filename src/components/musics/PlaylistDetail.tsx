@@ -28,7 +28,7 @@ const PlaylistDetail = () => {
         style={{ boxShadow: "3px 5px 10px 0px rgba(0, 0, 0, 0.4)" }}
       >
         <img
-          src={itstime}
+          src={playlist?.playlistImage || itstime}
           alt=""
           className="h-full w-full object-cover brightness-80 sm:brightness-60"
         />

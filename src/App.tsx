@@ -54,7 +54,8 @@ export const App = () => {
         onKeyDown={(e) => {
           if (
             (e.code === "Space" || e.key === " ") &&
-            !location.pathname.startsWith("/create")
+            !location.pathname.startsWith("/create") &&
+            !location.pathname.startsWith("/settings")
           ) {
             e.preventDefault();
             if (isPlaying) {
