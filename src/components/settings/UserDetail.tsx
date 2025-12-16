@@ -41,7 +41,7 @@ const UserDetail = ({ profileImage, fileInputRef, user }: UserDetailProps) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <h4 className="text-[10px] text-gray-400">@{user?.username}</h4>
-            <span>·</span>
+            <span className="select-none text-gray-400">·</span>
             <h4 className="text-[10px] text-gray-400">
               {user?.role === "ADMIN" ? "Admin" : "User"}
             </h4>

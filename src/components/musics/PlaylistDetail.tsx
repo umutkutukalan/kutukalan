@@ -1,8 +1,10 @@
 import { useMusicContext } from "../../hooks/useMusicContext";
-import { itstime, profile } from "../../utils";
+import { useUser } from "../../hooks/useUserContext";
+import { itstime } from "../../utils";
 
 const PlaylistDetail = () => {
   const { musics } = useMusicContext();
+  const { user } = useUser();
   return (
     <div
       className={`w-full flex flex-col md:flex-row items-center sm:items-start md:items-end gap-5 px-10 sm:rounded-tr-2xl relative overflow-hidden py-5`}
@@ -33,9 +35,15 @@ const PlaylistDetail = () => {
         <div className="flex items-center gap-1">
           <div className="flex items-center gap-1">
             <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20">
-              <img src={profile} alt="" className="h-full w-full object-cover" />
+              <img
+                src={user?.profileImg}
+                alt=""
+                className="h-full w-full object-cover"
+              />
             </div>
-            <p className="text-xs">Umut Kütükalan</p>
+            <p className="text-xs">
+              {user?.firstName} {user?.lastName}
+            </p>
           </div>
           <span className="text-xs">•</span>
           <div className="flex items-center gap-2">
