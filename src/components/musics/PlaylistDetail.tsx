@@ -14,7 +14,7 @@ const PlaylistDetail = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Playlist Details:", playlist);
+    // console.log("Playlist Details:", playlist);
   }, [playlist]);
 
   return (

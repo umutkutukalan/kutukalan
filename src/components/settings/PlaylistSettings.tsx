@@ -12,7 +12,7 @@ const PlaylistSettings = () => {
     updateLoading,
   } = usePlaylistDetails();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [playlistImage, setPlaylistImage] = useState<string | null>(null);
+  const [playlistImage, setPlaylistImage] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
@@ -24,7 +24,6 @@ const PlaylistSettings = () => {
     if (playlist) {
       setTitle(playlist.title ?? "");
       setDescription(playlist.description ?? "");
-      setPlaylistImage(playlist.playlistImage ?? "");
     }
   }, [playlist]);
 
