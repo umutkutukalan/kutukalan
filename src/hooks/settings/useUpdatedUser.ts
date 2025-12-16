@@ -3,6 +3,7 @@ import { userUpdatedService } from "../../services/settings/userUpdatedService";
 
 export const useUpdatedUser = () => {
   const [error, setError] = useState<Error | null>(null);
+  const [updateLoading, setUpdateLoading] = useState(false);
   const updateUser = async (
     userId: number,
     firstName: string,
@@ -20,11 +21,15 @@ export const useUpdatedUser = () => {
         email,
         profileImage
       );
+      setUpdateLoading(true);
+      console.log("User updated successfully:", response);
       return response;
     } catch (error) {
       setError(error as Error);
+    } finally {
+      setUpdateLoading(false);
     }
   };
 
-  return { updateUser, error };
+  return { updateUser, error, updateLoading };
 };

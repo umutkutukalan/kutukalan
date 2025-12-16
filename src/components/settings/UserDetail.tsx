@@ -15,7 +15,7 @@ const UserDetail = ({ profileImage, fileInputRef, user }: UserDetailProps) => {
     <div className="flex items-center sm:items-end gap-2 border-b border-white/20 pb-5">
       <div
         className={`w-35 h-35 flex items-center justify-center rounded-full bg-white/40 overflow-hidden cursor-pointer hover:opacity-80 transition-all flex-shrink-0 ${
-          profileImage !== user?.profileImg ? "border-3 border-green-500" : ""
+          profileImage !== "" ? "border-3 border-green-500" : ""
         }`}
         onClick={() => {
           if (fileInputRef.current) {

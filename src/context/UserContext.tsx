@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { API_URL } from "../services/config";
 
 export interface User {
-  id: string | number;
+  id: number;
   firstName: string;
   lastName: string;
   username: string;

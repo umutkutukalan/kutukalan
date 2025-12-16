@@ -53,8 +53,8 @@ const Settings = () => {
             user={user}
           />
           <UserUpdated
-            profileImage={profileImage}
             user={user}
+            profileImage={profileImage}
             firstName={firstName}
             setFirstName={setFirstName}
             lastName={lastName}

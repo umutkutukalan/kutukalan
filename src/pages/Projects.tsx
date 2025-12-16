@@ -31,15 +31,13 @@ const Projects = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-full h-screen flex items-center justify-center">
-          <DotLottieReact
-            className="w-20 h-20"
-            src="https://lottie.host/c13e1dc0-f7ee-4254-835f-f023d14021b1/CsVgXfNTS6.lottie"
-            loop
-            autoplay
-          />
-        </div>
+      <div className="w-full h-screen flex items-center justify-center">
+        <DotLottieReact
+          className="w-20 h-20"
+          src="https://lottie.host/c13e1dc0-f7ee-4254-835f-f023d14021b1/CsVgXfNTS6.lottie"
+          loop
+          autoplay
+        />
       </div>
     );
   } else if (projects.length === 0) {
