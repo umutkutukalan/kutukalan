@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
 import { technologiesForHome } from "../../constants";
 import { abstract1, abstract2, mor } from "../../utils";
+import { useUser } from "../../hooks/useUserContext";
 
 export interface Tech {
   id: number;
@@ -9,6 +10,7 @@ export interface Tech {
 }
 
 const HomeTables = () => {
+  const { user } = useUser();
   return (
     <div className="w-full h-60 sm:h-70 xl:h-70 overflow-hidden relative">
       <div className="absolute inset-0">
@@ -33,10 +35,10 @@ const HomeTables = () => {
           </div>
           <div className="h-full w-full flex flex-col items-center justify-center gap-2 text-center z-10">
             <h1 className="text-sm sm:text-base oswald-300">
-              Umut Kutukalan | Software Engineer
+              {user?.firstName} {user?.lastName} | {user?.job}
             </h1>
             <h2 className="text-4xl md:text-5xl lg:text-5xl w-80 md:w-110 xl:w-100 oswald-400">
-              BLENDING ART, CODE AND PURPOSE
+              {user?.aboutMe}
             </h2>
           </div>
         </div>

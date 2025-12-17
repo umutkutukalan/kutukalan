@@ -10,7 +10,15 @@ export const useUpdatedUser = () => {
     lastName: string,
     username: string,
     email: string,
-    profileImage: string | null
+    profileImage: string | null,
+    job?: string,
+    phone?: string,
+    city?: string,
+    aboutMe?: string,
+    aboutMeItems?: string[],
+    linkedin?: string,
+    github?: string,
+    instagram?: string,
   ) => {
     try {
       const response = await userUpdatedService(
@@ -19,7 +27,15 @@ export const useUpdatedUser = () => {
         lastName,
         username,
         email,
-        profileImage
+        profileImage,
+        job,
+        phone,
+        city,
+        aboutMe,
+        aboutMeItems,
+        linkedin,
+        github,
+        instagram
       );
       setUpdateLoading(true);
       console.log("User updated successfully:", response);

@@ -15,16 +15,23 @@ const Settings = () => {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [job, setJob] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
+  const [aboutMeItems, setAboutMeItems] = useState<string[]>([]);
+  const [linkedin, setLinkedin] = useState("");
+  const [github, setGithub] = useState("");
+  const [instagram, setInstagram] = useState("");
 
   useEffect(() => {
     // console.log("User in Settings:", user);
   }, [user]);
 
-
   return (
     <>
       <div
-        className={`pt-15 px-5 sm:px-10 xl:pb-5 ${
+        className={`pt-10 px-5 sm:px-10 xl:pb-5 ${
           currentTrack ? "pb-10" : "pb-5"
         }`}
       >
@@ -66,6 +73,22 @@ const Settings = () => {
             setUsername={setUsername}
             email={email}
             setEmail={setEmail}
+            job={job}
+            setJob={setJob}
+            phone={phone}
+            setPhone={setPhone}
+            city={city}
+            setCity={setCity}
+            aboutMe={aboutMe}
+            setAboutMe={setAboutMe}
+            aboutMeItems={aboutMeItems}
+            setAboutMeItems={setAboutMeItems}
+            linkedin={linkedin}
+            setLinkedin={setLinkedin}
+            github={github}
+            setGithub={setGithub}
+            instagram={instagram}
+            setInstagram={setInstagram}
           />
           <PlaylistSettings />
         </div>

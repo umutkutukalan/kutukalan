@@ -14,6 +14,14 @@ export interface User {
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
+  job?: string;
+  phone?: string;
+  city?: string;
+  aboutMe?: string;
+  aboutMeItems?: string[];
+  linkedin?: string;
+  github?: string;
+  instagram?: string;
   // add other fields your API returns
 }
 

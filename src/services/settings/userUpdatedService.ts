@@ -7,7 +7,15 @@ export const userUpdatedService = async (
   lastName: string,
   username: string,
   email: string,
-  profileImage: string | null
+  profileImage: string | null,
+  job?: string,
+  phone?: string,
+  city?: string,
+  aboutMe?: string,
+  aboutMeItems?: string[],
+  linkedin?: string,
+  github?: string,
+  instagram?: string,
 ) => {
   try {
     const response = await axios.put(`${API_URL}/users/${userId}`, {
@@ -16,6 +24,14 @@ export const userUpdatedService = async (
       username,
       email,
       profileImg: profileImage,
+      job,
+      phone,
+      city,
+      aboutMe,
+      aboutMeItems,
+      linkedin,
+      github,
+      instagram,
     });
     return response.data;
   } catch (error) {

@@ -46,7 +46,6 @@ const UserDetail = ({ profileImage, fileInputRef, user }: UserDetailProps) => {
               {user?.role === "ADMIN" ? "Admin" : "User"}
             </h4>
           </div>
-          {}
         </div>
       </div>
     </div>

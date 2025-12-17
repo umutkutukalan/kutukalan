@@ -98,7 +98,7 @@ const PlaylistSettings = () => {
             e.target.value = "";
           }}
         />
-        <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4">
+        <div className="w-full flex flex-col sm:flex-row items-start sm:items-end gap-4">
           <div
             className={`h-40 w-40 md:w-40 md:h-40 rounded-md overflow-hidden flex items-center justify-center flex-shrink-0 cursor-pointer hover:opacity-80 transition-all ${
               playlistImage !== "" ? "border-3 border-green-500" : ""
@@ -121,7 +121,7 @@ const PlaylistSettings = () => {
               </div>
             )}
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="w-full flex flex-col gap-2">
             <input
               type="text"
               value={title}
@@ -131,11 +131,18 @@ const PlaylistSettings = () => {
               onChange={(e) => setTitle(e.target.value)}
             />
 
-            <p className="text-xs text-gray-400 w-full">
-              Her ritim bir duygunun yankısı, her beat kendi hikayesini
-              fısıldar. Müzik, kelimelerle anlatamadığım şeyleri duyurmanın
-              yolu.
-            </p>
+            <textarea
+              value={description}
+              className={`border border-white/20 rounded-lg p-2 focus:outline-none focus:ring-1 ${
+                playlist?.description !== description
+                  ? "ring-1 ring-green-500"
+                  : ""
+              } w-full bg-transparent text-white resize-none text-xs`}
+              rows={2}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Açıklama ekle..."
+            />
+            
           </div>
         </div>
         <div className="w-full md:w-auto flex items-end justify-end">
