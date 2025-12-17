@@ -9,6 +9,7 @@ interface About extends AboutData {
 
 interface AboutContextType {
   abouts: About[];
+  isLoading: boolean;
 }
 
 interface AboutProviderProps {
@@ -23,12 +24,16 @@ export const AboutContext = createContext<AboutContextType | undefined>(
 export const AboutProvider = ({ children }: AboutProviderProps) => {
   const { getAbouts } = useAbout();
   const [abouts, setAbouts] = useState<About[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getAbouts().then((data) => setAbouts(data));
+    getAbouts().then((data) => {
+      setAbouts(data);
+      setIsLoading(false);
+    });
   }, [getAbouts]);
 
   return (
-    <AboutContext.Provider value={{ abouts }}>{children}</AboutContext.Provider>
+    <AboutContext.Provider value={{ abouts, isLoading }}>{children}</AboutContext.Provider>
   );
 };

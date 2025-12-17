@@ -3,15 +3,20 @@ import { useMusicContext } from "../../hooks/useMusicContext";
 import MusicItem from "./MusicItem";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
 import { FormatDate } from "../../utils/FormatDate";
+import LoadingScreen from "../LoadingScreen";
 
 const MusicList = () => {
-  const { musics } = useMusicContext();
+  const { musics, loading } = useMusicContext();
   const { currentTrack, isPlaying, playTrack, pause } = useAudioPlayer();
   const { formatDate } = FormatDate();
 
   const user = {
     role: "USER", // or "USER"
   };
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className={`px-2 sm:px-0 ${currentTrack ? "pb-10" : ""} xl:pb-0`}>

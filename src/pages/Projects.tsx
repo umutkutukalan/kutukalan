@@ -5,7 +5,7 @@ import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import ProjectHeader from "../components/pageheader/ProjectHeader";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
 import { useGetProjects } from "../hooks/project/useGetProjects";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import LoadingScreen from "../components/LoadingScreen";
 
 const Projects = () => {
   const {
@@ -30,16 +30,7 @@ const Projects = () => {
   }, [getProjects]);
 
   if (isLoading) {
-    return (
-      <div className="w-full h-screen flex items-center justify-center">
-        <DotLottieReact
-          className="w-20 h-20"
-          src="https://lottie.host/c13e1dc0-f7ee-4254-835f-f023d14021b1/CsVgXfNTS6.lottie"
-          loop
-          autoplay
-        />
-      </div>
-    );
+    return <LoadingScreen />;
   } else if (projects.length === 0) {
     return (
       <div

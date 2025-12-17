@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { useMusicContext } from "../../hooks/useMusicContext";
 import { itstime } from "../../utils";
 import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
+import LoadingScreen from "../LoadingScreen";
 
 const PlaylistDetail = () => {
   const { musics } = useMusicContext();
-  const { playlist, getPlaylistDetails } = usePlaylistDetails();
+  const { playlist, getPlaylistDetails, isLoading } = usePlaylistDetails();
 
   useEffect(() => {
     getPlaylistDetails(1);
@@ -14,6 +15,13 @@ const PlaylistDetail = () => {
   useEffect(() => {
     // console.log("Playlist Details:", playlist);
   }, [playlist]);
+
+
+  if (isLoading) {
+    return (
+      <LoadingScreen />
+    )
+  }
 
   return (
     <div

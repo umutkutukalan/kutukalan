@@ -23,6 +23,7 @@ export const usePlaylistDetails = () => {
   const [playlist, setPlaylist] = useState<Playlist | null>(null);
   const [getLoading, setGetLoading] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getAllPlaylists = async () => {
     setGetLoading(true);
@@ -33,9 +34,17 @@ export const usePlaylistDetails = () => {
   };
 
   const getPlaylistDetails = async (playlistId: number) => {
-    const response = await getPlaylistDetailsByIdService(playlistId);
-    setPlaylist(response);
-    return response;
+    try {
+      setIsLoading(true);
+      const response = await getPlaylistDetailsByIdService(playlistId);
+      setPlaylist(response);
+      return response;
+    } catch (error) {
+      console.error("Error fetching playlist details:", error);
+      return null;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const updatePlaylist = async (
@@ -69,5 +78,6 @@ export const usePlaylistDetails = () => {
     updatePlaylist,
     getLoading,
     updateLoading,
+    isLoading,
   };
 };
