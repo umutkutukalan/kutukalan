@@ -10,10 +10,8 @@ import homework2 from "../assets/images/homework3.png";
 import projectbanner from "../assets/images/projectbanner.jpeg";
 import blogbanner from "../assets/images/blogbanner.jpeg";
 import kutukalan from "../assets/logo/kutukalan.png";
-import profile from "../assets/images/profile.jpeg";
 
 export { projectbanner, blogbanner };
-export { kutukalan, profile };
-
+export { kutukalan };
 export { mor, sahnesen };
 export { abstract1, abstract2, iphonechip, gray, runaley, itstime, homework2 };

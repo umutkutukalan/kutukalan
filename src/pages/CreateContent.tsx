@@ -20,7 +20,6 @@ import type { ProjectData } from "../services/project/projectServices";
 import { useCreateBlog } from "../hooks/blog/useCreateBlog";
 import type { BlogData } from "../services/blog/blogServices";
 import { v4 as uuidv4 } from "uuid";
-import { profile } from "../utils";
 
 interface ContentItem {
   id: string;
@@ -164,7 +163,7 @@ const CreateContent = () => {
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
                   <img
-                    src={profile}
+                    src={user?.profileImg}
                     alt=""
                     className="w-full h-full object-cover"
                   />

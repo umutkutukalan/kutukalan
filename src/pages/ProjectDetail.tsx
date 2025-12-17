@@ -13,10 +13,11 @@ import { DiJava, DiMysql, DiPostgresql } from "react-icons/di";
 import { SiElectron } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
-import { profile } from "../utils";
+import { useUser } from "../hooks/useUserContext";
 
 const ProjectDetail = () => {
   const location = useLocation();
+  const { user } = useUser();
   const { currentTrack } = useAudioPlayer();
 
   const { formatRelativeTime } = useRelativeTime();
@@ -30,7 +31,11 @@ const ProjectDetail = () => {
   }, []);
 
   return (
-    <div className={`w-full px-10 pt-15 sm:pt-10 xl:pb-10 flex items-center justify-center ${currentTrack ? "pb-20" : "pb-5"}`}>
+    <div
+      className={`w-full px-10 pt-15 sm:pt-10 xl:pb-10 flex items-center justify-center ${
+        currentTrack ? "pb-20" : "pb-5"
+      }`}
+    >
       <div className="xl:w-full w-full flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
           <div className="flex items-start gap-1">
@@ -41,12 +46,12 @@ const ProjectDetail = () => {
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full overflow-hidden">
                   <img
-                    src={profile}
+                    src={user?.profileImg}
                     alt=""
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-xs text-gray-300">kutukalan</p>
+                <p className="text-xs text-gray-300">{user?.username}</p>
               </div>
               <span>·</span>
               <span className="text-xs text-gray-300">
