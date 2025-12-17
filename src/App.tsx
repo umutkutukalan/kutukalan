@@ -19,6 +19,7 @@ import { useAbout } from "./hooks/useAbout";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useMusicContext } from "./hooks/useMusicContext";
 import Settings from "./pages/Settings";
+import About from "./pages/About";
 
 export const App = () => {
   const { user } = useUser();
@@ -82,6 +83,7 @@ export const App = () => {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:blogSlug" element={<BlogDetail />} />
             <Route path="/musics" element={<Musics />} />
+            <Route path="/about" element={<About />} />
             {user?.role === "ADMIN" && (
               <>
                 <Route path="/create-homecard" element={<Admin />} />
