@@ -7,6 +7,7 @@ export const useGetProjectById = () => {
     try {
       const response = await GetProjectByIdService(projectId);
       setProject(response);
+      console.log("Fetched project:", response);
       return response;
     } catch (error) {
       console.error("Error fetching project by ID:", error);

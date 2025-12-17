@@ -13,17 +13,17 @@ import { DiJava, DiMysql, DiPostgresql } from "react-icons/di";
 import { SiElectron } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
-import { useUser } from "../hooks/useUserContext";
 
 const ProjectDetail = () => {
   const location = useLocation();
-  const { user } = useUser();
   const { currentTrack } = useAudioPlayer();
 
   const { formatRelativeTime } = useRelativeTime();
 
   // handleViewProject ile gönderilen state üzerinden proje verisini al
   const project: Project = location.state?.project;
+
+  console.log("Project Detail: ", project);
 
   useEffect(() => {
     // Sayfa yüklendiğinde başa kaydır
@@ -46,12 +46,12 @@ const ProjectDetail = () => {
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full overflow-hidden">
                   <img
-                    src={user?.profileImg}
+                    src={project.user.profileImg}
                     alt=""
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-xs text-gray-300">{user?.username}</p>
+                <p className="text-xs text-gray-300">{project.user.username}</p>
               </div>
               <span>·</span>
               <span className="text-xs text-gray-300">

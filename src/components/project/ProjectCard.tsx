@@ -85,7 +85,9 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                   <span className="text-xs text-gray-400">
                     {formatRelativeTime(project.createdAt)}
                   </span>
-                  <span className="text-gray-400 select-none">·</span>
+                  {user?.role === "ADMIN" && (
+                    <span className="text-gray-400 select-none">·</span>
+                  )}
                   {user?.role === "ADMIN" && (
                     <div className="flex items-center gap-1">
                       <FaPen

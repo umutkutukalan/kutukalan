@@ -31,15 +31,21 @@ export const CreateProjectService = async (projectData: ProjectData) => {
 };
 
 export interface Project {
-  contentItems: ProjectContentItem[];
-  createdAt: string;
-  description: string;
-  githubUrl: string;
   id: number;
-  liveUrl: string;
+  user: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    profileImg: string;
+  };
   mainImg: string;
-  technologies: string[];
   title: string;
+  description: string;
+  contentItems: ProjectContentItem[];
+  githubUrl: string;
+  liveUrl: string;
+  technologies: string[];
+  createdAt: string;
   updatedAt: string;
 }
 

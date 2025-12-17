@@ -4,11 +4,9 @@ import { useRelativeTime } from "../hooks/useRelativeTime";
 import { TbBurger } from "react-icons/tb";
 import type { Blog } from "../services/blog/blogServices";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
-import { useUser } from "../hooks/useUserContext";
 
 const BlogDetail = () => {
   const location = useLocation();
-  const { user } = useUser();
   const { currentTrack } = useAudioPlayer();
   const { formatRelativeTime } = useRelativeTime();
 
@@ -36,12 +34,12 @@ const BlogDetail = () => {
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full overflow-hidden">
                   <img
-                    src={user?.profileImg}
+                    src={blog.user.profileImg}
                     alt=""
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-xs text-gray-300">{user?.username}</p>
+                <p className="text-xs text-gray-300">{blog.user.username}</p>
               </div>
               <span>·</span>
               <span className="text-xs text-gray-300">

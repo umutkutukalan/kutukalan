@@ -29,13 +29,19 @@ export const CreateBlogService = async (blogData: BlogData) => {
 };
 
 export interface Blog {
-  contentItems: BlogContentItem[];
-  createdAt: string;
-  description: string;
-  id: number;  
+  id: number;
+  user: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    profileImg: string;
+  };
   mainImg: string;
-  tags: string[];
   title: string;
+  description: string;
+  contentItems: BlogContentItem[];
+  tags: string[];
+  createdAt: string;
   updatedAt: string;
 }
 
