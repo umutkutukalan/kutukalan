@@ -1,12 +1,10 @@
 import { useEffect } from "react";
-import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
 import { useMusicContext } from "../../hooks/useMusicContext";
-import { useUser } from "../../hooks/useUserContext";
 import { itstime } from "../../utils";
+import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
 
 const PlaylistDetail = () => {
   const { musics } = useMusicContext();
-  const { user } = useUser();
   const { playlist, getPlaylistDetails } = usePlaylistDetails();
 
   useEffect(() => {
@@ -44,13 +42,13 @@ const PlaylistDetail = () => {
           <div className="flex items-center gap-1">
             <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20">
               <img
-                src={user?.profileImg}
+                src={playlist?.user.profileImg}
                 alt=""
                 className="h-full w-full object-cover"
               />
             </div>
             <p className="text-xs">
-              {user?.firstName} {user?.lastName}
+              {playlist?.user.firstName} {playlist?.user.lastName}
             </p>
           </div>
           <span className="text-xs">•</span>

@@ -7,6 +7,12 @@ import { updatePlaylistDetailsService } from "../../services/settings/updatePlay
 
 export interface Playlist {
   id: number;
+  user: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    profileImg: string;
+  };
   title: string;
   description: string;
   playlistImage?: string;

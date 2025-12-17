@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
 import { CiImageOff } from "react-icons/ci";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
 
 const PlaylistSettings = () => {
   const {
