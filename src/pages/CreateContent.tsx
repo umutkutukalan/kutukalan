@@ -25,6 +25,7 @@ interface ContentItem {
   id: string;
   type: "paragraph" | "image";
   content: string;
+  size?: "small" | "medium" | "large";
 }
 
 interface ProjectTechnologiest {
@@ -398,6 +399,7 @@ const CreateContent = () => {
                 id: uuidv4(),
                 type: "image",
                 content: base64, // base64 string kaydediyoruz
+                size: "medium",
               };
 
               newContent.splice(insertIdx + 1, 0, {
@@ -857,6 +859,9 @@ const CreateContent = () => {
                                   className="cursor-pointer"
                                   onClick={(e) => {
                                     e.preventDefault();
+                                    const newContent = [...contentList];
+                                    newContent[idx].size = "medium";
+                                    setContentList(newContent);
                                     setImageSizes((prev) => ({
                                       ...prev,
                                       [item.id]: "medium",
@@ -876,6 +881,9 @@ const CreateContent = () => {
                                   className="cursor-pointer"
                                   onClick={(e) => {
                                     e.preventDefault();
+                                    const newContent = [...contentList];
+                                    newContent[idx].size = "large";
+                                    setContentList(newContent);
                                     setImageSizes((prev) => ({
                                       ...prev,
                                       [item.id]: "large",
@@ -895,6 +903,9 @@ const CreateContent = () => {
                                   className="cursor-pointer"
                                   onClick={(e) => {
                                     e.preventDefault();
+                                    const newContent = [...contentList];
+                                    newContent[idx].size = "small";
+                                    setContentList(newContent);
                                     setImageSizes((prev) => ({
                                       ...prev,
                                       [item.id]: "small",

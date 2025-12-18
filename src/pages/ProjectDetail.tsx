@@ -100,12 +100,29 @@ const ProjectDetail = () => {
         </div>
         <ul className="flex flex-col gap-5">
           {project.contentItems.map((item, index) => (
-            <li key={index}>
+            <li
+              key={index}
+              className={`w-full ${
+                item.size === "large"
+                  ? "h-full"
+                  : item.size === "medium"
+                  ? "h-100"
+                  : item.size === "small"
+                  ? "h-80"
+                  : ""
+              } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
+            >
               {item?.type === "image" && (
                 <img
                   src={item?.content}
                   alt=""
-                  className="w-full h-auto object-cover rounded-md"
+                  className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${
+                    item.size === "large"
+                      ? "object-contain"
+                      : item.size === "medium"
+                      ? "object-cover"
+                      : "object-contain"
+                  } `}
                 />
               )}
               {item?.type === "paragraph" && (
