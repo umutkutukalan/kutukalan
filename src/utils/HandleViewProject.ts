@@ -1,19 +1,7 @@
 import type { NavigateFunction } from "react-router-dom";
 import { generateSlug } from "./GenerateSlug";
+import type { Project } from "../services/project/projectServices";
 export type { NavigateFunction } from "react-router-dom";
-
-export interface Project {
-  contentItems: unknown[];
-  createdAt: string;
-  description: string;
-  githubUrl: string;
-  id: number;
-  liveUrl: string;
-  mainImg: string;
-  technologies: string[];
-  title: string;
-  updatedAt: string;
-}
 
 export const handleViewProject = (
   project: Project,

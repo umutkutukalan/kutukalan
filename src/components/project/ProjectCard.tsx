@@ -2,7 +2,7 @@ import type { Project } from "../../services/project/projectServices";
 import { RelativeTime } from "../../utils/RelativeTime";
 
 // import { SiElectron } from 'react-icons/si';
-import { BiLogoReact } from "react-icons/bi";
+import { BiLogoReact, BiWorld } from "react-icons/bi";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { DiJava } from "react-icons/di";
 import { BiLogoJavascript } from "react-icons/bi";
@@ -31,6 +31,8 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
   const { user } = useUser();
   const navigate = useNavigate();
   const { formatRelativeTime } = RelativeTime();
+
+  console.log("ProjectCard render:", project);
 
   const { deleteProject } = useDeleteProject(onProjectDeleted);
   const [deleteShow, setDeleteShow] = useState(false);
@@ -137,21 +139,35 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
             </div>
             <div className="w-full flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Link
-                  to={project.githubUrl}
-                  className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
-                >
-                  <FaGithub title="Github Url" size={12} />
-                  <span>Github</span>
-                </Link>
-                <span>·</span>
-                <Link
-                  to={project.liveUrl}
-                  className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
-                >
-                  <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
-                  <span>YouTube</span>
-                </Link>
+                {project.githubUrl && (
+                  <Link
+                    to={project.githubUrl}
+                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                  >
+                    <FaGithub title="Github Url" size={12} />
+                    <span>Github</span>
+                  </Link>
+                )}
+                <span className={`select-none ${project.liveUrl ? "" : "hidden"}`}>·</span>
+                {project.liveUrl && (
+                  <Link
+                    to={project.liveUrl}
+                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                  >
+                    <BiWorld title="Web Url" size={12} color="#4872c2ff" />
+                    <span>Web</span>
+                  </Link>
+                )}
+                <span className={`select-none ${project.youtubeUrl ? "" : "hidden"}`}>·</span>
+                {project.youtubeUrl && (
+                  <Link
+                    to={project.youtubeUrl}
+                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                  >
+                    <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
+                    <span>YouTube</span>
+                  </Link>
+                )}
               </div>
 
               <div className="flex items-center gap-2 text-xs">

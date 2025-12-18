@@ -16,6 +16,7 @@ export interface BlogData {
   description: string;
   tags: string[];
   contentItems: BlogContentItem[];
+  youtubeUrl?: string | null;
 }
 
 export const CreateBlogService = async (blogData: BlogData) => {
@@ -41,6 +42,7 @@ export interface Blog {
   title: string;
   description: string;
   contentItems: BlogContentItem[];
+  youtubeUrl?: string | null;
   tags: string[];
   createdAt: string;
   updatedAt: string;

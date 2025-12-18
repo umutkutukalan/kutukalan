@@ -13,8 +13,9 @@ export interface ProjectData {
   mainImg: string;
   title: string;
   description: string;
-  githubUrl: string;
-  // liveUrl: string;
+  githubUrl: string | null;
+  liveUrl: string | null;
+  youtubeUrl: string | null;
   technologies: string[];
   contentItems: ProjectContentItem[];
 }
@@ -42,8 +43,9 @@ export interface Project {
   title: string;
   description: string;
   contentItems: ProjectContentItem[];
-  githubUrl: string;
-  liveUrl: string;
+  githubUrl: string | null;
+  liveUrl: string | null;
+  youtubeUrl: string | null;
   technologies: string[];
   createdAt: string;
   updatedAt: string;

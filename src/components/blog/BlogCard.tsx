@@ -32,6 +32,8 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
     }
   }, [deleteShow]);
 
+  console.log("BlogCard render:", blog);
+
   return (
     <>
       <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all p-2 sm:p-5 rounded-lg hover:border-none border-b border-white/10">
@@ -111,13 +113,15 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
             </div>
             <div className="w-full flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Link
-                  to={""}
-                  className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
-                >
-                  <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
-                  <span>YouTube</span>
-                </Link>
+                {blog.youtubeUrl && (
+                  <Link
+                    to={blog.youtubeUrl}
+                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                  >
+                    <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
+                    <span>YouTube</span>
+                  </Link>
+                )}
               </div>
 
               <div className="flex items-center gap-2 text-xs">

@@ -46,8 +46,9 @@ const CreateContent = () => {
     ProjectTechnologiest[]
   >([]);
   const [blogTags, setBlogTags] = useState<BlogTag[]>([]);
-  const [githubUrl, setGithubUrl] = useState<string>("");
-  // const [liveUrl, setLiveUrl] = useState<string>("");
+  const [githubUrl, setGithubUrl] = useState<string | null>(null);
+  const [liveUrl, setLiveUrl] = useState<string | null>(null);
+  const [youtubeUrl, setYoutubeUrl] = useState<string | null>(null);
 
   const [title, setTitle] = useState<string>("");
 
@@ -115,7 +116,8 @@ const CreateContent = () => {
     description:
       contentList.find((item) => item.type === "paragraph")?.content || "",
     githubUrl: githubUrl, // senin formundaki inputtan
-    // liveUrl: liveUrl, // yine inputtan
+    liveUrl: liveUrl, // yine inputtan
+    youtubeUrl: youtubeUrl, // yine inputtan
     technologies: projectTechnologies.map((t) => t.value),
     contentItems: contentList,
   };
@@ -128,6 +130,7 @@ const CreateContent = () => {
       contentList.find((item) => item.type === "paragraph")?.content || "",
     tags: blogTags.map((t) => t.value),
     contentItems: contentList,
+    youtubeUrl: youtubeUrl,
   };
 
   const handleCreate = async () => {
@@ -194,28 +197,34 @@ const CreateContent = () => {
                 </button>
               )}
             </div>
-            <div className="flex flex-col gap-2">
-              <div className="grid grid-cols-2 gap-2">
-                <select
-                  name="contentType"
-                  id="contentType"
-                  className="border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none"
-                  onChange={(e) => setContentType(e.target.value)}
-                  onClick={() => {
-                    if (contentType !== "project") {
-                      setProjectTechnologies([]);
-                    } else return;
-                  }}
-                >
-                  <option value="">Kategori Seçin</option>
-                  <option value="project" selected={contentType === "project"}>
-                    Proje
-                  </option>
-                  <option value="blog" selected={contentType === "blog"}>
-                    Blog
-                  </option>
-                </select>
+            <div className="flex flex-col gap-3">
+              <div className={`flex flex-col gap-2`}>
                 <div className="grid grid-cols-2 gap-2">
+                  <select
+                    name="contentType"
+                    id="contentType"
+                    className="border border-gray-700 rounded-md px-3 py-2 text-xs w-full focus:outline-none"
+                    onChange={(e) => setContentType(e.target.value)}
+                    onClick={() => {
+                      if (contentType !== "project") {
+                        setProjectTechnologies([]);
+                      } else {
+                        setBlogTags([]);
+                      }
+                    }}
+                  >
+                    <option value="">Kategori Seçin</option>
+                    <option
+                      value="project"
+                      selected={contentType === "project"}
+                    >
+                      Proje
+                    </option>
+                    <option value="blog" selected={contentType === "blog"}>
+                      Blog
+                    </option>
+                  </select>
+
                   {contentType === "project" && (
                     <>
                       <select
@@ -249,12 +258,6 @@ const CreateContent = () => {
                           </option>
                         ))}
                       </select>
-                      <input
-                        type="text"
-                        className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
-                        placeholder="Github Url"
-                        onChange={(e) => setGithubUrl(e.target.value)}
-                      />
                     </>
                   )}
                   {contentType === "blog" && (
@@ -295,6 +298,50 @@ const CreateContent = () => {
                     </>
                   )}
                 </div>
+                {contentType === "project" && (
+                  <div
+                    className={`grid grid-cols-3 gap-2 ${
+                      projectTechnologies.length > 0
+                        ? "border-b border-gray-700 pb-3"
+                        : ""
+                    }`}
+                  >
+                    <input
+                      type="text"
+                      className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
+                      placeholder="Github Url"
+                      onChange={(e) => setGithubUrl(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
+                      placeholder="Live Url"
+                      onChange={(e) => setLiveUrl(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
+                      placeholder="Youtube Url"
+                      onChange={(e) => setYoutubeUrl(e.target.value)}
+                    />
+                  </div>
+                )}
+                {contentType === "blog" && (
+                  <div
+                    className={`grid grid-cols-1 gap-2 ${
+                      blogTags.length > 0
+                        ? "border-b border-gray-700 pb-3"
+                        : ""
+                    }`}
+                  >
+                    <input
+                      type="text"
+                      className="border border-gray-700 rounded-md px-3 py-1 text-xs focus:outline-none"
+                      placeholder="Youtube Url"
+                      onChange={(e) => setYoutubeUrl(e.target.value)}
+                    />
+                  </div>
+                )}
               </div>
               {projectTechnologies.length > 0 && (
                 <div className="flex items-start gap-2">
