@@ -10,6 +10,7 @@ export interface BlogContentItem {
 }
 
 export interface BlogData {
+  userId?: number;
   mainImg: string;
   title: string;
   description: string;

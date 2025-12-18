@@ -120,6 +120,7 @@ const CreateContent = () => {
   };
 
   const blogData: BlogData = {
+    userId: user?.id,
     mainImg: contentList.find((item) => item.type === "image")?.content || "",
     title: title,
     description:
@@ -133,6 +134,7 @@ const CreateContent = () => {
       createProject(projectData);
     } else if (contentType === "blog") {
       createBlog(blogData);
+      console.log("blogData:", blogData);
     }
   };
 
