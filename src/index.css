@@ -20,6 +20,32 @@ body {
   color: white;
 }
 
+.tech-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.tech-marquee-track {
+  display: flex;
+  gap: 5rem;
+  width: max-content;
+  animation: tech-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.tech-marquee-track li {
+  list-style: none;
+}
+
+@keyframes tech-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .oswald-400 {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
