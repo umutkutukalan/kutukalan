@@ -8,11 +8,23 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
         {/* <div className="absolute inset-x-0 bottom-0 h-40 sm:h-56 md:h-120 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div> */}
 
         <div className="h-full w-full flex flex-col gap-5 z-10 px-5 pt-5">
-          <div className="flex flex-col gap-2">
-            <span className="text-2xl">kutukalan.</span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white z-20">
-              {userResponse?.aboutMe}
-            </h1>
+          <div className="w-full flex items-center justify-between border-b border-white/10 pb-5 gap-10">
+            <div className="w-52 h-52 rounded-full border border-white/70 overflow-hidden flex-shrink-0">
+              <img
+                src={userResponse?.profileImg}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-2xl">kutukalan.</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white z-20">
+                {userResponse?.aboutMe}
+              </h1>
+              <p className="text-gray-400 text-sm">
+                {userResponse?.aboutMeItems?.[0]}
+              </p>
+            </div>
           </div>
           <ul className="flex flex-col gap-5 text-gray-300">
             {userResponse?.aboutMeItems?.map((item, index) => (

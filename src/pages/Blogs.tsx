@@ -26,7 +26,7 @@ const Blogs = () => {
   useEffect(() => {
     // İlk yüklemede projeleri al
     getBlogs(0, false);
-  }, [blogs.length, getBlogs]);
+  }, [getBlogs]);
 
   if (isLoading) {
     return <LoadingScreen />;
