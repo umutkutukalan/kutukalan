@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { createMusicService } from "../services/musicServices";
+import { createMusicService, type MusicData } from "../services/musicServices";
 
 export const useMusics = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | unknown>(null);
-  const createMusic = async (musicData: FormData) => {
+  const createMusic = async (musicData: MusicData) => {
     try {
       setLoading(true);
       const response = await createMusicService(musicData);

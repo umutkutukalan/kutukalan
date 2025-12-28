@@ -7,7 +7,7 @@ export interface MusicData {
   musicImg?: string; // Base64 string veya URL
 }
 
-export const createMusicService = async (musicData: FormData) => {
+export const createMusicService = async (musicData: MusicData) => {
   try {
     const response = await axios.post(`${API_URL}/musics/upload`, musicData, {
       headers: {

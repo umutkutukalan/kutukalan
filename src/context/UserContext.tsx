@@ -41,12 +41,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const fetchUser = async () => {
       try {
         console.log("UserContext: Fetching user from cookie...");
-
+        
         // Cookie-based authentication
         const response = await axios.get(`${API_URL}/users/me`, {
           withCredentials: true, // HttpOnly cookie gönder
         });
-
+        
         console.log("UserContext: User data from cookie:", response.data);
         setUser(response.data); // ✅ User var = authenticated
       } catch (error) {
