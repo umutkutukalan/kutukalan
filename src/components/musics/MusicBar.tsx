@@ -24,6 +24,8 @@ const MusicBar = () => {
     handleRepeat,
     handleShuffle,
     setVolume: setAudioVolume,
+    playNext,
+    playPrev,
   } = useAudioPlayer();
 
   const { musics } = useMusicContext();
@@ -150,7 +152,7 @@ const MusicBar = () => {
               </button>
             </div>
             <div className="flex items-center gap-2">
-              <BiSolidLeftArrow className="text-2xl" />
+              <BiSolidLeftArrow className="text-2xl cursor-pointer" onClick={playPrev} />
               <button
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-white text-black cursor-pointer"
                 onClick={() => {
@@ -169,7 +171,7 @@ const MusicBar = () => {
                   <FaPause className="text-xl" title="Durdur" />
                 )}
               </button>
-              <BiSolidRightArrow className="text-2xl" />
+              <BiSolidRightArrow className="text-2xl cursor-pointer" onClick={playNext} />
             </div>
             <button
               className="relative flex items-center cursor-pointer h-full"

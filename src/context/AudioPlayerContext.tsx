@@ -28,6 +28,8 @@ interface AudioPlayerContextType {
   progress: { current: number; duration: number };
   playTrack: (music: Music) => void;
   pause: () => void;
+  playNext: () => void;
+  playPrev: () => void;
   handleSkipForward: () => void;
   handleSkipBackward: () => void;
   handleSeek: (newTime: number) => void;
@@ -82,6 +84,41 @@ export const AudioPlayerProvider = ({ children }: AudioPlayerProviderProps) => {
     audioRef.current.pause();
     setIsPlaying(false);
   };
+
+  // Bir sonraki şarkıya geç
+  const playNext = useCallback(() => {
+    if (!currentTrack || musics.length === 0) return;
+
+    if (isShuffle) {
+      if (musics.length === 1) return; // tek şarkıysa geçilecek başka yok
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * musics.length);
+      } while (
+        musics[nextIndex].musicUrl === currentTrack.musicUrl && musics.length > 1
+      );
+      playTrack(musics[nextIndex]);
+      return;
+    }
+
+    const currentIndex = musics.findIndex(
+      (m) => m.musicUrl === currentTrack.musicUrl
+    );
+    if (currentIndex !== -1 && currentIndex < musics.length - 1) {
+      playTrack(musics[currentIndex + 1]);
+    }
+  }, [currentTrack, isShuffle, musics, playTrack]);
+
+  // Bir önceki şarkıya dön
+  const playPrev = useCallback(() => {
+    if (!currentTrack || musics.length === 0) return;
+    const currentIndex = musics.findIndex(
+      (m) => m.musicUrl === currentTrack.musicUrl
+    );
+    if (currentIndex > 0) {
+      playTrack(musics[currentIndex - 1]);
+    }
+  }, [currentTrack, musics, playTrack]);
 
   // İleri/geri sarma
   const handleSkipForward = () => {
@@ -222,6 +259,8 @@ export const AudioPlayerProvider = ({ children }: AudioPlayerProviderProps) => {
     progress,
     playTrack,
     pause,
+    playNext,
+    playPrev,
     handleSkipForward,
     handleSkipBackward,
     handleSeek,
@@ -236,6 +275,8 @@ export const AudioPlayerProvider = ({ children }: AudioPlayerProviderProps) => {
     isPlaying,
     progress,
     playTrack,
+    playNext,
+    playPrev,
     isRepeat,
     isShuffle,
     nextTrack,

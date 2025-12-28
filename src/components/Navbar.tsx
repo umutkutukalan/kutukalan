@@ -85,7 +85,7 @@ const Navbar = () => {
       {/* Mobile Navbar */}
       <nav className="w-full h-12 bg-black text-white fixed top-0 left-0 z-50 flex items-center justify-between px-4 sm:hidden">
         <div className="flex items-center justify-between w-full">
-          <CiMenuFries onClick={() => setShow(!show)} />
+          <CiMenuFries className="cursor-pointer" onClick={() => setShow(!show)} />
         </div>
         {/* Overlay */}
         {show && (
@@ -102,7 +102,7 @@ const Navbar = () => {
           } left-0`}
         >
           <div className="flex flex-col gap-5 h-full pb-5 pt-4 px-5">
-            <CiMenuFries onClick={() => setShow(!show)} />
+            <CiMenuFries className="cursor-pointer" onClick={() => setShow(!show)} />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-col gap-1">
                 <div className="flex flex-col gap-1">

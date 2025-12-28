@@ -13,11 +13,10 @@ import {
 import { PiRepeatOnce } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
-import { useMusicContext } from "../../hooks/useMusicContext";
 import { useState } from "react";
 
 export const GlobalMusicBar = () => {
-  const { musics, playNext, playPrev } = useMusicContext();
+  // playNext/playPrev artık AudioPlayerContext'ten geliyor
   const [volume, setVolume] = useState(1); // Default volume set to 1 (max volume)
   const [showVolume, setShowVolume] = useState<boolean>(false);
   const [lastVolume, setLastVolume] = useState<number>(1);
@@ -35,7 +34,25 @@ export const GlobalMusicBar = () => {
     handleRepeat,
     handleShuffle,
     setVolume: setAudioVolume,
+    playNext,
+    playPrev,
   } = useAudioPlayer();
+
+  // Klavye kısayolları: Sağ ok -> sonraki, Sol ok -> önceki
+  // useEffect(() => {
+  //   const onKeyDown = (e: KeyboardEvent) => {
+  //     if (!currentTrack) return;
+  //     if (e.key === "ArrowRight") {
+  //       e.preventDefault();
+  //       playNext();
+  //     } else if (e.key === "ArrowLeft") {
+  //       e.preventDefault();
+  //       playPrev();
+  //     }
+  //   };
+  //   window.addEventListener("keydown", onKeyDown);
+  //   return () => window.removeEventListener("keydown", onKeyDown);
+  // }, [currentTrack, playNext, playPrev]);
 
   if (!currentTrack) return null;
 
@@ -95,7 +112,9 @@ export const GlobalMusicBar = () => {
             </button>
           </div>
         </div>
-        <span className="select-none text-gray-400 md:hidden sm:flex hidden">·</span>
+        <span className="select-none text-gray-400 md:hidden sm:flex hidden">
+          ·
+        </span>
         {/* Middle section for progress bar */}
         <div className="w-full flex items-center gap-8 sm:flex hidden">
           {/* Progress bar with current time and duration */}
