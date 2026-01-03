@@ -3,11 +3,9 @@ import { useEffect } from "react";
 import { useUsers } from "../hooks/useUsers";
 import LoadingScreen from "../components/LoadingScreen";
 import AboutHeader from "../components/aboutpage/AboutHeader";
-import AboutTechnologies from "../components/aboutpage/AboutTechnologies";
 import AboutParagraphContent from "../components/aboutpage/AboutParagraphContent";
 import type { User } from "../services/userServices";
-import AboutBox from "../components/aboutpage/AboutBox";
-import { useRef } from "react";
+// import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
@@ -24,9 +22,9 @@ const About = () => {
     getUserById(4);
   }, []);
 
-  const aboutBox1 = useRef<HTMLLIElement>(null);
-  const aboutBox2 = useRef<HTMLLIElement>(null);
-  const aboutBox3 = useRef<HTMLLIElement>(null);
+  // const aboutBox1 = useRef<HTMLLIElement>(null);
+  // const aboutBox2 = useRef<HTMLLIElement>(null);
+  // const aboutBox3 = useRef<HTMLLIElement>(null);
 
   if (getLoading) {
     return <LoadingScreen />;
@@ -39,13 +37,13 @@ const About = () => {
       } flex flex-col gap-10`}
     >
       <AboutHeader userResponse={userResponse} />
-      <AboutTechnologies />
-      <AboutBox
+      {/* <AboutTechnologies /> */}
+      {/* <AboutBox
         aboutBox1={aboutBox1}
         aboutBox2={aboutBox2}
         aboutBox3={aboutBox3}
-      />
-      <AboutParagraphContent userResponse={userResponse} />
+      /> */}
+      <AboutParagraphContent />
     </div>
   );
 };

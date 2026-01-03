@@ -12,9 +12,14 @@ import blogbanner from "../assets/images/blogbanner.jpeg";
 import kutukalan from "../assets/logo/kutukalan.png";
 import sabirotologo from "../assets/logo/sabirotologo.png";
 import aboutImage from "../assets/images/aboutImage.png";
+import dockerpostman from "../assets/images/docker&postman.png";
+import sunucu from "../assets/images/sunucu.png";
+import sabiroto from "../assets/images/sabiroto.png";
+import poppin from "../assets/images/poppin.png";
+import garanticard from "../assets/images/garanticard.png";
 
-
-export { projectbanner, blogbanner };
+export { projectbanner, blogbanner, sabiroto, poppin, garanticard };
 export { kutukalan, sabirotologo, aboutImage };
 export { mor, sahnesen };
 export { abstract1, abstract2, iphonechip, gray, runaley, itstime, homework2 };
+export { dockerpostman, sunucu };

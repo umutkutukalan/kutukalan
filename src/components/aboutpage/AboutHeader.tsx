@@ -1,45 +1,68 @@
+import { useRef } from "react";
 import type { AboutProps } from "../../pages/About";
+import { garanticard, iphonechip, poppin, sabiroto } from "../../utils";
 
 const AboutHeader = ({ userResponse }: AboutProps) => {
-  return (
-    <div className="w-full rounded-tl-2xl rounded-tr-2xl overflow-hidden">
-      <div className="w-full flex items-start justify-between relative relative">
-        {/* h-60 sm:h-80 lg:h-130 xl:h-120 */}
-        {/* <div className="absolute inset-x-0 bottom-0 h-40 sm:h-56 md:h-120 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div> */}
+  const images = [garanticard, sabiroto, iphonechip, poppin];
 
-        <div className="h-full w-full flex flex-col gap-5 z-10 px-5 pt-5">
-          <div className="w-full flex flex-col md:flex-row items-center md:items-center md:justify-between border-b border-white/10 pb-5 gap-10">
-            <div className="w-52 h-52 rounded-full border border-white/70 overflow-hidden flex-shrink-0 flex items-center justify-center">
-              <img
-                src={userResponse?.profileImg}
-                alt=""
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-2xl">kutukalan.</span>
-              <h1 className="text-3xl sm:text-3xl md:text-3xl lg:text-5xl font-bold text-white z-20">
-                {userResponse?.aboutMe}
-              </h1>
-              <p className="text-gray-400 text-xs lg:text-sm">
-                {userResponse?.aboutMeItems?.[0]}
-              </p>
-            </div>
+  const listRef = useRef<HTMLUListElement>(null);
+
+  // useGSAP(() => {
+  //   const list = listRef.current!;
+  //   const singleWidth = list.scrollWidth / 2;
+  //   const distanceY = 300;
+
+  //   gsap.to(list, {
+  //     x: `-=${singleWidth}`,
+  //     y: `+=${distanceY}`,
+  //     duration: 15,
+  //     ease: "linear",
+  //     repeat: -1,
+  //     modifiers: {
+  //       x: gsap.utils.unitize((x) => parseFloat(x) % singleWidth),
+  //       y: gsap.utils.unitize((y) => parseFloat(y) % distanceY),
+  //     },
+  //   });
+  // }, []);
+
+  return (
+    <section className="w-full h-full overflow-hidden relative">
+      <div className="relative w-full flex items-end px-10 z-20">
+        <div className="w-full flex items-end justify-between">
+          <div className="flex flex-col">
+            <h1 className="text-[80px] font-semibold bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
+              kutukalan.
+            </h1>
+            <h2 className="text-sm text-gray-400 -mt-4">
+              {userResponse?.aboutMe}
+            </h2>
           </div>
-          <ul className="flex flex-col gap-5 text-gray-300">
-            {userResponse?.aboutMeItems?.map((item, index) => (
-              <>
-                {index < 1 && (
-                  <li key={index}>
-                    <p className="text-xs sm:text-sm">{item}</p>
-                  </li>
-                )}
-              </>
+        </div>
+      </div>
+      <div className="relative h-full">
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent h-50 z-20"></div>
+        <div className="[perspective:-1000px] w-full h-140 overflow-hidden relative z-10">
+          <ul
+            ref={listRef}
+            className="flex gap-4 h-full -mt-20 [transform-style:preserve-3d] 
+    [transform:rotateX(-40deg)_rotateY(-20deg)_rotateZ(-32deg)] flex items-end justify-center"
+          >
+            {[...images].map((img, i) => (
+              <li
+                key={i}
+                className="h-90 w-80 shrink-0 rounded-xl overflow-hidden border border-gray-600"
+                style={{
+                  boxShadow: "-2px 2px 2px 2px rgba(255, 255, 255, 1)",
+                }}
+              >
+                <img src={img} className="w-full h-full object-cover" />
+              </li>
             ))}
           </ul>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-20"></div>
       </div>
-    </div>
+    </section>
   );
 };
 

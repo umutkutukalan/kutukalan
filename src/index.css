@@ -114,11 +114,14 @@ body {
   width: 100%;
   height: 100%;
   perspective: 1000px;
+  transform-style: preserve-3d;
+  margin: 0;
 }
 
 .card-inner {
   width: 100%;
   height: 100%;
+  position: relative;
   transform-style: preserve-3d;
 }
 
@@ -134,4 +137,15 @@ body {
 
 .card-face.back img {
   transform: scaleX(-1);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0)
+      rotateX(-40deg) rotateY(-20deg) rotateZ(-32deg);
+  }
+  to {
+    transform: translateX(-50%)
+      rotateX(-40deg) rotateY(-20deg) rotateZ(-32deg);
+  }
 }
