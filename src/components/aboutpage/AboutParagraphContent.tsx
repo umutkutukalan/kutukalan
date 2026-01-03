@@ -1,6 +1,6 @@
 import { dockerpostman, iphonechip, runaley, sunucu } from "../../utils";
 
-const AboutParagraphContent = () => {
+const AboutCards = () => {
   return (
     <section className="px-5 h-full">
       <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -85,7 +85,7 @@ const AboutParagraphContent = () => {
   );
 };
 
-export default AboutParagraphContent;
+export default AboutCards;
 
 // {userResponse?.aboutMeItems?.map((paragraph, index) => (
 //         <p

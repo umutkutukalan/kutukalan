@@ -77,7 +77,9 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
                   <span className="text-xs text-gray-400">
                     {formatRelativeTime(blog.createdAt)}
                   </span>
-                  <span className="text-gray-400 select-none">·</span>
+                  {user?.role === "ADMIN" && (
+                    <span className="text-gray-400 select-none">·</span>
+                  )}
                   {user?.role === "ADMIN" && (
                     <div className="flex items-center gap-1">
                       <FaPen
