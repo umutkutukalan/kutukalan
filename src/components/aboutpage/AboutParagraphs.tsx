@@ -12,7 +12,7 @@ const AboutParagraphs = ({ userResponse }: AboutProps) => {
       ".aboutMe",
       {
         opacity: 0,
-        y: 10,
+        y: 100,
       },
       {
         opacity: 1,
@@ -43,8 +43,8 @@ const AboutParagraphs = ({ userResponse }: AboutProps) => {
             <BsStar size={64} className="text-white" />
             <div className="flex flex-col gap-4">
               <h4 className="text-sm max-w-sm">
-                Kod + tasarım + hareket. <br /> Dijital ürünleri sadece çalışır
-                değil, hissettirir hale getiriyorum.
+                Dijital ürünleri sadece çalışır değil, hissettirir hale
+                getiriyorum.
               </h4>
               <div className="flex items-center gap-2">
                 <button className="p-2 text-xs rounded-2xl bg-[#5166e7] flex items-center gap-1">

@@ -33,7 +33,7 @@ const About = () => {
 
   return (
     <div
-      className={`pt-15 sm:pt-5 xl:px-5 xl:pb-5 ${
+      className={`xl:px-5 xl:pb-5 ${
         currentTrack ? "pb-20" : "pb-5"
       } flex flex-col`}
     >
