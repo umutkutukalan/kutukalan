@@ -7,7 +7,8 @@ import type { User } from "../services/userServices";
 // import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import AboutCards from "../components/aboutpage/AboutParagraphContent";
+import AboutCards from "../components/aboutpage/AboutCards";
+import AboutParagraphs from "../components/aboutpage/AboutParagraphs";
 gsap.registerPlugin(useGSAP);
 
 export interface AboutProps {
@@ -32,11 +33,12 @@ const About = () => {
 
   return (
     <div
-      className={`pt-15 sm:pt-5 px-5 sm:px-10 xl:pb-5 ${
+      className={`pt-15 sm:pt-5 xl:px-5 xl:pb-5 ${
         currentTrack ? "pb-20" : "pb-5"
-      } flex flex-col gap-10`}
+      } flex flex-col`}
     >
       <AboutHeader userResponse={userResponse} />
+      <AboutParagraphs userResponse={userResponse} />
       {/* <AboutTechnologies /> */}
       {/* <AboutBox
         aboutBox1={aboutBox1}

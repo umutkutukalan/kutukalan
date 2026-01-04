@@ -14,7 +14,7 @@ const Home = () => {
   }
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col xl:px-5">
       <div
         className={`w-full ${
           currentTrack ? "pb-15" : ""
