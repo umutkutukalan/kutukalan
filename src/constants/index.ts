@@ -25,30 +25,30 @@ import { FiUser } from "react-icons/fi";
 import type { IconType } from "react-icons";
 
 export const navbarList = [
-  { id: 1, title: "Home", link: "/", icon: GoHome },
-  { id: 2, title: "Musics", link: "/musics", icon: MdOutlineLibraryMusic },
+  { id: 1, title: "Anasayfa", link: "/", icon: GoHome },
+  { id: 2, title: "Müzikler", link: "/musics", icon: MdOutlineLibraryMusic },
   {
     id: 3,
-    title: "Projects",
+    title: "Projeler",
     link: "/projects",
     icon: MdComputer,
   },
   // { id: 4, title: "Skills", link: "/skills", icon: BsBraces },
   {
     id: 4,
-    title: "Blogs",
+    title: "Bloglar",
     link: "/blogs",
     icon: LuFiles,
   },
   {
     id: 5,
-    title: "Certificates",
+    title: "Sertifikalar",
     link: "/certificates",
     icon: PiCertificate,
   },
   {
     id: 6,
-    title: "Service Pricing",
+    title: "Hizmet Fiyatlandırması",
     link: "/service-pricing",
     icon: AiOutlineShopping,
   },
@@ -57,25 +57,25 @@ export const navbarList = [
 export const adminNavbarList = [
   {
     id: 7,
-    title: "Settings",
+    title: "Ayarlar",
     link: "/settings",
     icon: LuUserCog,
   },
   {
     id: 8,
-    title: "Create Homecard",
+    title: "Homecard Oluştur",
     link: "/create-homecard",
     icon: IoIdCardOutline,
   },
   {
     id: 9,
-    title: "Create Music",
+    title: "Müzik Oluştur",
     link: "/create-music",
     icon: TbMusicPlus,
   },
   {
     id: 10,
-    title: "Create Content",
+    title: "İçerik Oluştur",
     link: "/create-content",
     icon: RxText,
   },
@@ -83,7 +83,7 @@ export const adminNavbarList = [
 
 export const contactList = [
   { id: 1, title: "kutukalan.", link: "/about", icon: FiUser },
-  { id: 2, title: "Contact", link: "/contact", icon: IoMailOutline },
+  { id: 2, title: "İletişim", link: "/contact", icon: IoMailOutline },
 ];
 
 export interface TechnologyForHome {

@@ -30,7 +30,7 @@ const BlogDetail = () => {
         currentTrack ? "pb-20" : "pb-5"
       }`}
     >
-      <div className="w-200 flex flex-col gap-5">
+      <div className="xl:w-full w-full flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
           <div className="flex items-start gap-1">
             <h1 className="font-bold text-3xl sm:text-4xl">{blog.title}</h1>

@@ -4,7 +4,7 @@ import { useUser } from "../hooks/useUserContext";
 import { useEffect, useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
-import { logo, logo2 } from "../utils";
+import { logo2, navbarlogo } from "../utils";
 
 const Navbar = () => {
   const { user } = useUser();
@@ -25,9 +25,12 @@ const Navbar = () => {
         <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between pb-2 pt-5">
           <div className="flex flex-col gap-1">
             <div className="flex flex-col gap-1 overflow-hidden">
-              <div className="pb-5">
-                <div className="w-10 transition-all duration-300 flex group-hover:hidden items-center pl-5 pt-[2.5px]">
+              <div className="pb-4">
+                {/* <div className="w-10 transition-all duration-300 flex group-hover:hidden items-center pl-5 pt-[2.5px]">
                   <img src={logo} alt="FullLogo" className="h-full" />
+                </div> */}
+                <div className="w-45 transition-all duration-300 flex group-hover:hidden items-center px-5">
+                  <img src={navbarlogo} alt="Logo" className="h-full" />
                 </div>
                 <div className="w-45 transition-all duration-300 hidden group-hover:flex items-center px-5">
                   <img src={logo2} alt="FullLogo" className="h-full" />
