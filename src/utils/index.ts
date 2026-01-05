@@ -17,9 +17,12 @@ import sunucu from "../assets/images/sunucu.png";
 import sabiroto from "../assets/images/sabiroto.png";
 import poppin from "../assets/images/poppin.png";
 import garanticard from "../assets/images/garanticard.png";
+import logo from "../assets/logo/logo.png";
+import logo2 from "../assets/logo/logo2.png";
 
 export { projectbanner, blogbanner, sabiroto, poppin, garanticard };
 export { kutukalan, sabirotologo, aboutImage };
 export { mor, sahnesen };
 export { abstract1, abstract2, iphonechip, gray, runaley, itstime, homework2 };
 export { dockerpostman, sunucu };
+export { logo, logo2 };

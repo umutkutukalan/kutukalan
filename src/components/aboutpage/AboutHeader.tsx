@@ -1,8 +1,17 @@
 import { useRef } from "react";
 import type { AboutProps } from "../../pages/About";
-import { garanticard, iphonechip, poppin, sabiroto } from "../../utils";
+import {
+  garanticard,
+  iphonechip,
+  logo,
+  logo2,
+  poppin,
+  sabiroto,
+} from "../../utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { GiClover } from "react-icons/gi";
+import { PiFingerprint } from "react-icons/pi";
 
 const AboutHeader = ({ userResponse }: AboutProps) => {
   const images = [garanticard, sabiroto, iphonechip, poppin];
@@ -40,21 +49,49 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
       ease: "power2.out",
       stagger: 0.4,
     });
+
+    gsap.from(".banner", {
+      opacity: 0,
+      y: 20,
+      x: 0,
+      duration: 1,
+      delay: 1.8,
+      ease: "power2.out",
+    });
+
+    gsap.from(".nameJob", {
+      opacity: 0,
+      y: 20,
+      x: 0,
+      duration: 1,
+      delay: 2,
+      ease: "power2.out",
+    });
   }, []);
 
   return (
-    <section className="w-full overflow-hidden relative h-[100vh] py-15 sm:py-10">
+    <section className="w-full overflow-hidden relative h-[100vh] py-15 sm:py-15">
       <div className="relative w-full flex items-end">
-        <div className="w-full flex items-end justify-between z-30 px-5 sm:px-10">
-          <div className="flex flex-col">
-            <h1 className="text-[80px] font-semibold bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
-              kutukalan.
-            </h1>
+        <div className="w-full flex items-end justify-between z-30 px-5 sm:px-15">
+          <div className="flex flex-col banner">
+            <div className="flex items-center">
+              <div className="">
+                <img src={logo2} alt="Logo" className="w-120" />
+              </div>
+              {/* <h1 className="text-[80px] font-semibold bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
+                kutukalan.
+              </h1> */}
+            </div>
+            {/* <div className="max-w-xl">
+              <h3 className="text-sm bg-gradient-to-r from-gray-400 via-gray-400 to-gray-400 text-transparent bg-clip-text">
+                {userResponse?.aboutMeItems?.[0]}
+              </h3>
+            </div> */}
           </div>
         </div>
       </div>
       <div className="relative">
-        <div className="[perspective:-1000px] w-full h-140 relative z-10">
+        <div className="[perspective:-1000px] w-full h-155 relative z-10">
           <ul
             ref={listRef}
             className="flex gap-4 h-full -mt-20 [transform-style:preserve-3d] 
@@ -63,7 +100,7 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
             {[...images].map((img, i) => (
               <li
                 key={i}
-                className="h-90 w-80 shrink-0 rounded-xl overflow-hidden border border-white/10 bg-black"
+                className="h-110 w-100 shrink-0 rounded-xl overflow-hidden border border-white/10 bg-black"
                 style={
                   {
                     // boxShadow: "-2px 2px 2px 2px rgba(255, 255, 255, 1)",
@@ -77,13 +114,13 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
         </div>
         {/* <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e10] h-full to-transparent z-20"></div> */}
       </div>
-      <div className="absolute bottom-6 right-6 z-50 text-right max-w-sm">
+      <div className="absolute bottom-6 right-6 z-50 text-right max-w-sm nameJob">
         <div className="flex flex-col">
           <h2 className="text-sm text-gray-200">
             {userResponse?.firstName} {userResponse?.lastName}
           </h2>
-          <h3 className="text-xs text-gray-300 leading-relaxed">
-            {userResponse?.aboutMe}
+          <h3 className="text-sm text-gray-300 leading-relaxed">
+            {userResponse?.job}
           </h3>
         </div>
       </div>

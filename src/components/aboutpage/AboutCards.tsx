@@ -31,8 +31,8 @@ const AboutCards = () => {
         <div
           className="w-full h-100 rounded-2xl bg-[#0e0e10] flex flex-col p-5"
         >
-          <div className="h-4/5 w-full flex items-center justify-center overflow-hidden relative">
-            <img src={runaley} alt="" className="w-32" />
+          <div className="h-4/5 w-full flex items-start justify-center overflow-hidden relative pt-2">
+            <img src={runaley} alt="" className="w-50" />
             <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0e0e10] to-transparent"></div>
           </div>
           <div className="h-1/5 w-full flex items-start">

@@ -82,7 +82,7 @@ export const adminNavbarList = [
 ];
 
 export const contactList = [
-  { id: 1, title: "About", link: "/about", icon: FiUser },
+  { id: 1, title: "kutukalan.", link: "/about", icon: FiUser },
   { id: 2, title: "Contact", link: "/contact", icon: IoMailOutline },
 ];
 
