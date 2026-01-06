@@ -7,15 +7,7 @@ export interface RegisterUserData {
   username: string;
   email: string;
   password: string;
-  profileImg: string;
-  job?: string;
-  phone?: string;
-  city?: string;
-  aboutMe?: string;
-  aboutMeItems?: string[];
-  linkedin?: string;
-  github?: string;
-  instagram?: string;
+  profileImg: string;  
 }
 
 export const createUserService = async (userData: RegisterUserData) => {

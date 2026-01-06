@@ -1,13 +1,7 @@
 import axios from "axios";
 import { API_URL } from "./config";
 
-export interface MusicData {
-  file: File;
-  title: string;
-  musicImg?: string; // Base64 string veya URL
-}
-
-export const createMusicService = async (musicData: MusicData) => {
+export const createMusicService = async (musicData: FormData) => {
   try {
     const response = await axios.post(`${API_URL}/musics/upload`, musicData, {
       headers: {

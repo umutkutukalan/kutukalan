@@ -15,24 +15,30 @@ export const userUpdatedService = async (
   aboutMeItems?: string[],
   linkedin?: string,
   github?: string,
-  instagram?: string,
+  instagram?: string
 ) => {
   try {
-    const response = await axios.put(`${API_URL}/users/${userId}`, {
-      firstName,
-      lastName,
-      username,
-      email,
-      profileImg: profileImage,
-      job,
-      phone,
-      city,
-      aboutMe,
-      aboutMeItems,
-      linkedin,
-      github,
-      instagram,
-    });
+    const response = await axios.put(
+      `${API_URL}/users/${userId}`,
+      {
+        firstName,
+        lastName,
+        username,
+        email,
+        profileImg: profileImage,
+        job,
+        phone,
+        city,
+        aboutMe,
+        aboutMeItems,
+        linkedin,
+        github,
+        instagram,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

@@ -20,7 +20,7 @@ const Navbar = () => {
       <nav
         className={`w-15 hover:w-50 group transition-all ${
           currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"
-        } xl:h-screen text-white fixed top-0 left-0 py-5 z-50 bg-black sm:block hidden`}
+        } xl:h-screen text-white fixed top-0 left-0 py-5 z-50 bg-black lg:block hidden`}
       >
         <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between pb-2 pt-5">
           <div className="flex flex-col gap-1">
@@ -96,7 +96,7 @@ const Navbar = () => {
         </div>
       </nav>
       {/* Mobile Navbar */}
-      <nav className="w-full h-12 bg-black text-white fixed top-0 left-0 z-50 flex items-center justify-between px-4 sm:hidden">
+      <nav className="w-full h-12 bg-black text-white fixed top-0 left-0 z-50 flex items-center justify-between px-4 lg:hidden">
         <div className="flex items-center justify-between w-full">
           <CiMenuFries
             className="cursor-pointer"

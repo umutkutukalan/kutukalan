@@ -7,8 +7,9 @@ import type { User } from "../services/userServices";
 // import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import AboutCards from "../components/aboutpage/AboutCards";
 import AboutParagraphs from "../components/aboutpage/AboutParagraphs";
+import AboutFrontendCards from "../components/aboutpage/AboutFrontendCards";
+import AboutBackendCards from "../components/aboutpage/AboutBackendCards";
 gsap.registerPlugin(useGSAP);
 
 export interface AboutProps {
@@ -20,7 +21,7 @@ const About = () => {
   const { getUserById, userResponse, getLoading } = useUsers();
 
   useEffect(() => {
-    getUserById(4);
+    getUserById(1);
   }, []);
 
   // const aboutBox1 = useRef<HTMLLIElement>(null);
@@ -38,14 +39,30 @@ const About = () => {
       } flex flex-col`}
     >
       <AboutHeader userResponse={userResponse} />
-      <AboutParagraphs userResponse={userResponse} />
+      <AboutParagraphs
+        title={"Estetik ve Modern Arayüzler"}
+        description={
+          "Kullanıcı deneyimini ön planda tutan, estetik ve modern arayüzler tasarlıyor ve geliştiriyorum."
+        }
+        grayeffect={true}
+        face={"frontend"}
+      />
       {/* <AboutTechnologies /> */}
       {/* <AboutBox
         aboutBox1={aboutBox1}
         aboutBox2={aboutBox2}
         aboutBox3={aboutBox3}
       /> */}
-      <AboutCards />
+      <AboutFrontendCards />
+      <AboutParagraphs
+        title={"Disiplinli ve Dinamik Tasarım Mimarisi"}
+        description={
+          "Güvenlik, performans ve ölçeklenebilirliği ön planda tutan disiplinli ve dinamik tasarım mimarileri oluşturuyorum."
+        }
+        grayeffect={false}
+        face={"backend"}
+      />
+      <AboutBackendCards />
     </div>
   );
 };

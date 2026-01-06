@@ -4,7 +4,10 @@ import { API_URL } from "../config";
 export const getPlaylistDetailsByIdService = async (playlistId: number) => {
   try {
     const response = await axios.get(
-      `${API_URL}/playlist-details/${playlistId}`
+      `${API_URL}/playlist-details/${playlistId}`,
+      {
+        withCredentials: true,
+      }
     );
     // console.log("Playlist details by id fetched:", response.data);
     return response.data;
@@ -16,7 +19,9 @@ export const getPlaylistDetailsByIdService = async (playlistId: number) => {
 
 export const getPlaylistDetailsService = async () => {
   try {
-    const response = await axios.get(`${API_URL}/playlist-details`);
+    const response = await axios.get(`${API_URL}/playlist-details`, {
+      withCredentials: true,
+    });
     // console.log("All playlist details fetched:", response.data);
     return response.data;
   } catch (error) {

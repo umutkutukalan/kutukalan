@@ -1,19 +1,12 @@
 import { useRef } from "react";
 import type { AboutProps } from "../../pages/About";
-import {
-  garanticard,
-  iphonechip,
-  logo,
-  logo2,
-  poppin,
-  sabiroto,
-} from "../../utils";
+import { garanticard, iphonechip, logo2, poppin, sabiroto } from "../../utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { GiClover } from "react-icons/gi";
-import { PiFingerprint } from "react-icons/pi";
+import { useAudioPlayer } from "../../context/AudioPlayerContext";
 
 const AboutHeader = ({ userResponse }: AboutProps) => {
+  const { currentTrack } = useAudioPlayer();
   const images = [garanticard, sabiroto, iphonechip, poppin];
 
   const listRef = useRef<HTMLUListElement>(null);
@@ -70,28 +63,32 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
   }, []);
 
   return (
-    <section className="w-full overflow-hidden relative h-[100vh] py-15 sm:py-15">
+    <section
+      className={`w-full overflow-hidden relative xl:h-[100vh] ${
+        currentTrack ? "h-[calc(100vh-50px)]" : "h-[100vh]"
+      } py-20 sm:py-15`}
+    >
       <div className="relative w-full flex items-end">
         <div className="w-full flex items-end justify-between z-30 px-5 sm:px-15">
           <div className="flex flex-col banner">
             <div className="flex items-center">
               <div className="">
-                <img src={logo2} alt="Logo" className="w-120" />
+                <img src={logo2} alt="Logo" className="w-80 sm:w-100" />
               </div>
               {/* <h1 className="text-[80px] font-semibold bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
                 kutukalan.
               </h1> */}
             </div>
-            {/* <div className="max-w-xl">
-              <h3 className="text-sm bg-gradient-to-r from-gray-400 via-gray-400 to-gray-400 text-transparent bg-clip-text">
-                {userResponse?.aboutMeItems?.[0]}
+            <div className="max-w-xl">
+              <h3 className="text-lg sm:text-xl bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
+                işlevselliğin estetiği.
               </h3>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
       <div className="relative">
-        <div className="[perspective:-1000px] w-full h-155 relative z-10">
+        <div className="[perspective:-1000px] w-full h-120 sm:h-155 md:h-135 lg:h-130 xl:h-145 relative z-10">
           <ul
             ref={listRef}
             className="flex gap-4 h-full -mt-20 [transform-style:preserve-3d] 
@@ -100,7 +97,7 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
             {[...images].map((img, i) => (
               <li
                 key={i}
-                className="h-110 w-100 shrink-0 rounded-xl overflow-hidden border border-white/10 bg-black"
+                className="h-80 w-60 sm:h-110 sm:w-100 shrink-0 rounded-xl overflow-hidden border border-white/10 bg-black"
                 style={
                   {
                     // boxShadow: "-2px 2px 2px 2px rgba(255, 255, 255, 1)",

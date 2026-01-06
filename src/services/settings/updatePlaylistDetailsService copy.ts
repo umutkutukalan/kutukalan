@@ -14,7 +14,10 @@ export const updatePlaylistDetailsService = async (
   try {
     const response = await axios.put(
       `${API_URL}/playlist-details/${playlistId}`,
-      playlistData
+      playlistData,
+      {
+        withCredentials: true,
+      }
     );
     console.log("Playlist details updated:", response.data);
     return response.data;

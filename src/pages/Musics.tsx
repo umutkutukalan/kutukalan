@@ -3,7 +3,7 @@ import PlaylistDetail from "../components/musics/PlaylistDetail";
 
 const Musics = () => {
   return (
-    <div className="pt-10 sm:pt-5 pb-5 px-0 sm:px-10 h-screen">
+    <div className="pt-15 lg:pt-5 pb-5 px-0 sm:px-10 h-screen">
       <PlaylistDetail />
       <MusicList />
     </div>

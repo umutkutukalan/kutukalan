@@ -46,7 +46,7 @@ const HomeBorder = () => {
                   <div className="absolute top-11 sm:top-11 md:top-11 lg:top-11 xl:top-11 left-2 z-20">
                     <p className="2xl:text-3xl lg:text-2xl md:text-xl sm:text-2xl text-2xl">
                       <span className="bg-white text-black box-decoration-clone leading-snug px-2">
-                        {currentAbout.paragraph}
+                        {currentAbout?.paragraph}
                       </span>
                     </p>
                   </div>
@@ -84,7 +84,7 @@ const HomeBorder = () => {
                     className={`2xl:w-80 xl:w-60 lg:w-70 md:w-50 sm:w-80 w-70`}
                   >
                     <img
-                      src={currentAbout.aboutImage}
+                      src={currentAbout?.aboutImage}
                       alt=""
                       className="w-full h-full"
                     />

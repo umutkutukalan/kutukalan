@@ -26,7 +26,7 @@ const BlogDetail = () => {
 
   return (
     <div
-      className={`w-full px-10 pt-15 sm:pt-10 xl:pb-10 flex items-center justify-center ${
+      className={`w-full px-10 pt-15 lg:pt-10 xl:pb-10 flex items-center justify-center ${
         currentTrack ? "pb-20" : "pb-5"
       }`}
     >

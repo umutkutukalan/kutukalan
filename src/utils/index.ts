@@ -5,6 +5,7 @@ import abstract2 from "../assets/images/abstract2.png";
 import iphonechip from "../assets/images/iphonechip.jpeg";
 import gray from "../assets/images/gray.jpeg";
 import runaley from "../assets/images/runaley.png";
+import runaley2 from "../assets/images/runaley2.png";
 import itstime from "../assets/images/itstime.jpeg";
 import homework2 from "../assets/images/homework3.png";
 import projectbanner from "../assets/images/projectbanner.jpeg";
@@ -24,6 +25,15 @@ import navbarlogo from "../assets/logo/navbarlogo.png";
 export { projectbanner, blogbanner, sabiroto, poppin, garanticard };
 export { kutukalan, sabirotologo, aboutImage };
 export { mor, sahnesen };
-export { abstract1, abstract2, iphonechip, gray, runaley, itstime, homework2 };
+export {
+  abstract1,
+  abstract2,
+  iphonechip,
+  gray,
+  runaley,
+  runaley2,
+  itstime,
+  homework2,
+};
 export { dockerpostman, sunucu };
 export { logo, logo2, navbarlogo };
