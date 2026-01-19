@@ -41,7 +41,7 @@ const HomeTables = () => {
           </div>
         </div>
         <div className="w-full h-1/8 z-20 relative">
-          <div className="h-full w-full flex items-center justify-between">
+          <div className="h-full w-full flex items-center justify-between pb-1">
             {technologiesForHome.map((tech: Tech, index: number) => {
               const Icon = tech.icon;
               return (

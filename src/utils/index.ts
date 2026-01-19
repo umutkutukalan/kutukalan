@@ -21,6 +21,7 @@ import garanticard from "../assets/images/garanticard.png";
 import logo from "../assets/logo/logo.png";
 import logo2 from "../assets/logo/logo2.png";
 import navbarlogo from "../assets/logo/navbarlogo.png";
+import createMusicImg from "../assets/images/createMusicImg.jpeg";
 
 export { projectbanner, blogbanner, sabiroto, poppin, garanticard };
 export { kutukalan, sabirotologo, aboutImage };
@@ -37,3 +38,4 @@ export {
 };
 export { dockerpostman, sunucu };
 export { logo, logo2, navbarlogo };
+export { createMusicImg };

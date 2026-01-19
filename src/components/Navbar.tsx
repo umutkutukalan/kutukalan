@@ -20,9 +20,9 @@ const Navbar = () => {
       <nav
         className={`w-15 hover:w-50 group transition-all ${
           currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"
-        } xl:h-screen text-white fixed top-0 left-0 py-5 z-50 bg-black lg:block hidden`}
+        } xl:h-screen text-white fixed top-0 left-0 py-5 z-50 lg:block hidden`}
       >
-        <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between pb-2 pt-5">
+        <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between pb-2 pt-5 bg-black">
           <div className="flex flex-col gap-1">
             <div className="flex flex-col gap-1 overflow-hidden">
               <div className="pb-4">

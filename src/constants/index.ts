@@ -15,11 +15,11 @@ import {
   TbMusicPlus,
 } from "react-icons/tb";
 import { LuFiles } from "react-icons/lu";
-import { IoIdCardOutline, IoMailOutline } from "react-icons/io5";
+import { IoIdCardOutline } from "react-icons/io5";
 import { RxText } from "react-icons/rx";
 import { GoHome } from "react-icons/go";
-import { PiCertificate } from "react-icons/pi";
-import { AiOutlineShopping } from "react-icons/ai";
+// import { PiCertificate } from "react-icons/pi";
+// import { AiOutlineShopping } from "react-icons/ai";
 import { LuUserCog } from "react-icons/lu";
 import { FiUser } from "react-icons/fi";
 import type { IconType } from "react-icons";
@@ -40,18 +40,18 @@ export const navbarList = [
     link: "/blogs",
     icon: LuFiles,
   },
-  {
-    id: 5,
-    title: "Sertifikalar",
-    link: "/certificates",
-    icon: PiCertificate,
-  },
-  {
-    id: 6,
-    title: "Hizmet Fiyatlandırması",
-    link: "/service-pricing",
-    icon: AiOutlineShopping,
-  },
+  // {
+  //   id: 5,
+  //   title: "Sertifikalar",
+  //   link: "/certificates",
+  //   icon: PiCertificate,
+  // },
+  // {
+  //   id: 6,
+  //   title: "Hizmet Fiyatlandırması",
+  //   link: "/service-pricing",
+  //   icon: AiOutlineShopping,
+  // },
 ];
 
 export const adminNavbarList = [
@@ -82,8 +82,8 @@ export const adminNavbarList = [
 ];
 
 export const contactList = [
-  { id: 1, title: "kutukalan.", link: "/about", icon: FiUser },
-  { id: 2, title: "İletişim", link: "/contact", icon: IoMailOutline },
+  { id: 1, title: "Hakkında", link: "/about", icon: FiUser },
+  // { id: 2, title: "İletişim", link: "/contact", icon: IoMailOutline },
 ];
 
 export interface TechnologyForHome {

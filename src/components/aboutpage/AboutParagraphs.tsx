@@ -64,7 +64,7 @@ const AboutParagraphs = ({
   }, []);
 
   return (
-    <section className="w-full h-[40vh] bg-black p-6 relative px-5 sm:px-10">
+    <section className="w-full h-full bg-black p-6 relative px-5 sm:px-10">
       {grayeffect && (
         <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e10] to-transparent h-60 z-10"></div>
       )}
