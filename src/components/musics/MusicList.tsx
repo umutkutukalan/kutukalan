@@ -1,18 +1,20 @@
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { useMusicContext } from "../../hooks/useMusicContext";
 import MusicItem from "./MusicItem";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
 import { FormatDate } from "../../utils/FormatDate";
 import LoadingScreen from "../LoadingScreen";
+import { useUser } from "../../hooks/useUserContext";
+import { useState } from "react";
 
 const MusicList = () => {
   const { musics, loading } = useMusicContext();
   const { currentTrack, isPlaying, playTrack, pause } = useAudioPlayer();
   const { formatDate } = FormatDate();
+  const { user } = useUser();
 
-  const user = {
-    role: "USER", // or "USER"
-  };
+  const [activeContextMenuId, setActiveContextMenuId] = useState<
+    string | number | null
+  >(null);
 
   if (loading) {
     return <LoadingScreen />;
@@ -30,19 +32,10 @@ const MusicList = () => {
           </div>
         </div>
         <div
-          className={`w-full px-5 py-2 grid ${
-            user?.role == "ADMIN"
-              ? "grid-cols-[3fr_2fr_0fr]"
-              : "grid-cols-[2fr_0fr]"
-          } items-center`}
+          className={`w-full px-5 py-2 grid ${"grid-cols-[2fr_0fr]"} items-center`}
         >
           <span className="sm:block hidden">Tarih</span>
           <span className="">Süre</span>
-          {user?.role === "ADMIN" && (
-            <span className="text-left">
-              <BsThreeDotsVertical />
-            </span>
-          )}
         </div>
       </div>
       <div className="sm:px-10 w-full py-5">
@@ -52,6 +45,9 @@ const MusicList = () => {
               key={music.id}
               music={music}
               index={idx}
+              userRole={user?.role}
+              activeContextMenuId={activeContextMenuId}
+              onContextMenuOpen={setActiveContextMenuId}
               isPlaying={currentTrack?.musicUrl === music.musicUrl && isPlaying}
               onPlay={() => playTrack(music)}
               onPause={pause}

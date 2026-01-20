@@ -1,8 +1,9 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { useRef, useState } from "react";
-import { FaPause, FaPlay } from "react-icons/fa6";
+import { useRef, useState, useEffect } from "react";
+import { FaPause, FaPenToSquare, FaPlay } from "react-icons/fa6";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
+import { FaTrash } from "react-icons/fa";
 
 // Types
 interface Music {
@@ -23,6 +24,9 @@ interface MusicItemProps {
   formatDuration: (duration: number | null) => string;
   index: number;
   progress?: { current: number; duration: number };
+  userRole?: string;
+  activeContextMenuId?: string | number | null;
+  onContextMenuOpen?: (id: string | number | null) => void;
 }
 
 // Alt component: Her müzik için ayrı oynatma kontrolü
@@ -34,11 +38,36 @@ const MusicItem = ({
   formatDate,
   formatDuration,
   index,
+  userRole,
+  activeContextMenuId,
+  onContextMenuOpen,
 }: MusicItemProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [duration, setDuration] = useState<number | null>(null);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [contextMenu, setContextMenu] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
   const { currentTrack } = useAudioPlayer();
+
+  const isContextMenuOpen = activeContextMenuId === music.id;
+
+  // Context menüyü kapatma
+  useEffect(() => {
+    if (!isContextMenuOpen) {
+      setContextMenu(null);
+      return;
+    }
+
+    const handleClickOutside = () => {
+      setContextMenu(null);
+      onContextMenuOpen?.(null);
+    };
+
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, [isContextMenuOpen, onContextMenuOpen]);
 
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
@@ -67,10 +96,19 @@ const MusicItem = ({
     setShowConfirm(false);
   };
 
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (userRole === "ADMIN") {
+      setContextMenu({ x: e.clientX, y: e.clientY });
+      onContextMenuOpen?.(music.id);
+    }
+  };
+
   return (
     <li
       key={music.id}
       onDoubleClick={isPlaying ? onPause : onPlay}
+      onContextMenu={handleContextMenu}
       onClick={(e) => {
         // lg ve altında (mobil/tablet) tek tıklama ile çal
         if (window.innerWidth < 1024 && e.currentTarget === e.target) {
@@ -168,6 +206,40 @@ const MusicItem = ({
           </div>
         )}
       </div>
+
+      {/* Context Menu - Admin Only */}
+      {isContextMenuOpen && contextMenu && userRole === "ADMIN" && (
+        <div
+          className="fixed bg-[#212121] border border-white/10 rounded-xs z-50 py-3 w-50"
+          style={{
+            top: `${contextMenu.y}px`,
+            left: `${contextMenu.x}px`,
+          }}
+        >
+          <div
+            className="px-4 py-3 text-sm hover:bg-[#2c2c2c] cursor-pointer flex items-center gap-3 transition-colors"
+            onClick={() => {
+              handleDeleteClick();
+              setContextMenu(null);
+              onContextMenuOpen?.(null);
+            }}
+          >
+            <FaPenToSquare className="text-base" />
+            Güncelle
+          </div>
+          <div
+            className="px-4 py-3 text-sm hover:bg-[#2c2c2c] cursor-pointer flex items-center gap-3 transition-colors"
+            onClick={() => {
+              handleDeleteClick();
+              setContextMenu(null);
+              onContextMenuOpen?.(null);
+            }}
+          >
+            <FaTrash className="text-base" />
+            Sil
+          </div>
+        </div>
+      )}
     </li>
   );
 };
