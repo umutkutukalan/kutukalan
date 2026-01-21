@@ -19,7 +19,7 @@ const PlaylistDetail = () => {
 
   if (isLoading) {
     return (
-      <LoadingScreen />
+      <LoadingScreen key={location.pathname}/>
     )
   }
 

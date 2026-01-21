@@ -10,7 +10,7 @@ const Home = () => {
   const { isLoading } = useAboutContext();
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen key={location.pathname}/>;
   }
 
   return (

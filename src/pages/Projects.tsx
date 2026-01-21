@@ -30,7 +30,7 @@ const Projects = () => {
   }, [getProjects]);
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen key={location.pathname}/>;
   } else if (projects.length === 0) {
     return (
       <div

@@ -17,7 +17,7 @@ const MusicList = () => {
   >(null);
 
   if (loading) {
-    return <LoadingScreen />;
+    return <LoadingScreen key={location.pathname}/>;
   }
 
   return (

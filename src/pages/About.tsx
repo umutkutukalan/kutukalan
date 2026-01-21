@@ -29,7 +29,7 @@ const About = () => {
   // const aboutBox3 = useRef<HTMLLIElement>(null);
 
   if (getLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen key={location.pathname}/>;
   }
 
   return (

@@ -29,7 +29,7 @@ const Blogs = () => {
   }, [getBlogs]);
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen key={location.pathname}/>;
   } else if (blogs.length === 0) {
     return (
       <div
