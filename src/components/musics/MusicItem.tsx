@@ -11,6 +11,10 @@ interface Music {
   title?: string;
   musicUrl?: string;
   musicImg?: string;
+  producer?: string;
+  album?: string;
+  featuredArtist?: string;
+  releaseDate?: string;
   createdAt?: string;
   [key: string]: unknown;
 }
@@ -166,14 +170,17 @@ const MusicItem = ({
               >
                 {music.title}
               </h1>
-              <p className="text-[10px] sm:text-xs text-gray-500">kutukalan</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">
+                {" "}
+                {music.producer}{" "}
+              </p>
             </div>
           </div>
         </div>
       </div>
       <div className="w-full px-5 py-2 grid grid-cols-[2fr_0fr] items-center">
         <p className="text-xs text-left sm:block hidden">
-          {formatDate(music.createdAt || "")}
+          {formatDate(music.releaseDate || "")}
         </p>
         <p className="text-xs text-left">{formatDuration(duration)}</p>
       </div>
