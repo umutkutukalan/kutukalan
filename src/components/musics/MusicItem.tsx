@@ -1,13 +1,13 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useRef, useState, useEffect } from "react";
 import { FaPause, FaPenToSquare, FaPlay } from "react-icons/fa6";
-import { RiDeleteBinLine } from "react-icons/ri";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
 import { FaTrash } from "react-icons/fa";
+import { useMusicDelete } from "../../hooks/music/useMusicDelete";
 
 // Types
 interface Music {
-  id: string | number;
+  id: number;
   title?: string;
   musicUrl?: string;
   musicImg?: string;
@@ -29,8 +29,8 @@ interface MusicItemProps {
   index: number;
   progress?: { current: number; duration: number };
   userRole?: string;
-  activeContextMenuId?: string | number | null;
-  onContextMenuOpen?: (id: string | number | null) => void;
+  activeContextMenuId?: number | null;
+  onContextMenuOpen?: (id: number | null) => void;
 }
 
 // Alt component: Her müzik için ayrı oynatma kontrolü
@@ -46,6 +46,8 @@ const MusicItem = ({
   activeContextMenuId,
   onContextMenuOpen,
 }: MusicItemProps) => {
+  const { deleteMusic } = useMusicDelete();
+
   const audioRef = useRef<HTMLAudioElement>(null);
   const [duration, setDuration] = useState<number | null>(null);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -91,8 +93,9 @@ const MusicItem = ({
     setShowConfirm(true);
   };
 
-  const handleConfirmDelete = () => {
-    // deleteMusic(music.id);
+  const handleConfirmDelete = (musicId: number) => {
+    deleteMusic(musicId);
+    console.log("Deleting music with ID:", musicId);
     setShowConfirm(false);
   };
 
@@ -184,35 +187,28 @@ const MusicItem = ({
         </p>
         <p className="text-xs text-left">{formatDuration(duration)}</p>
       </div>
-      {/* Admin controls removed - should be handled by parent component */}
-      <div style={{ display: "none" }}>
-        <RiDeleteBinLine
-          className="text-xs cursor-pointer text-red-300 hover:text-red-500 transition-all duration-100"
-          onClick={handleDeleteClick}
-        />
-        {/* Onay kutusu */}
-        {showConfirm && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-xs z-50">
-            <div className="bg-black p-6 rounded-lg shadow-lg flex flex-col gap-4">
-              <span>Bu müziği silmek istediğinize emin misiniz?</span>
-              <div className="flex gap-3 justify-end">
-                <button
-                  className="px-3 py-1 bg-gray-500 rounded hover:bg-gray-300 cursor-pointer"
-                  onClick={handleCancelDelete}
-                >
-                  Vazgeç
-                </button>
-                <button
-                  className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 cursor-pointer"
-                  onClick={handleConfirmDelete}
-                >
-                  Sil
-                </button>
-              </div>
+      {/* Onay kutusu */}
+      {showConfirm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-xs z-50">
+          <div className="bg-[#2c2c2c] p-6 rounded-lg shadow-lg flex flex-col gap-4">
+            <span>Bu müziği silmek istediğinize emin misiniz?</span>
+            <div className="flex gap-3 justify-end">
+              <button
+                className="px-3 py-1 bg-gray-600 rounded hover:bg-gray-700 cursor-pointer"
+                onClick={handleCancelDelete}
+              >
+                Vazgeç
+              </button>
+              <button
+                className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 cursor-pointer"
+                onClick={() => handleConfirmDelete(music.id)}
+              >
+                Sil
+              </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Context Menu - Admin Only */}
       {isContextMenuOpen && contextMenu && userRole === "ADMIN" && (
