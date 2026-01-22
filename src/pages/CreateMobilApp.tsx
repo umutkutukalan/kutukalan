@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
 import ImageReader from "../utils/ImageReader";
+import { useCreateMobilApp } from "../hooks/mobileApp/useCreateMobilApp";
 
 const CreateMobilApp = () => {
   const { currentTrack } = useAudioPlayer();
+  const { createMobileApp, loading } = useCreateMobilApp();
   const [imagePreview, setImagePreview] = useState<string>("");
   const [logoPreview, setLogoPreview] = useState<string>("");
   const [formData, setFormData] = useState({
@@ -28,6 +30,21 @@ const CreateMobilApp = () => {
       setFormData((prev) => ({ ...prev, logo: base64 }));
       setLogoPreview(base64);
     });
+  };
+
+  const handleSubmit = async () => {
+    if (!formData.logo || !formData.mainImg || !formData.status) {
+      alert("Lütfen tüm alanları doldurun!");
+      return;
+    }
+
+    const data = {
+      logo: formData.logo,
+      mainImg: formData.mainImg,
+      status: formData.status,
+    };
+
+    await createMobileApp(data);
   };
 
   return (
@@ -171,7 +188,11 @@ const CreateMobilApp = () => {
               </form>
             </div>
           </div>
-          <button className="py-4 text-center bg-[#2c2c2c] hover:bg-[#1a1a1a] text-white text-sm transition-all w-full cursor-pointer rounded-xl">
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="py-4 text-center bg-[#2c2c2c] hover:bg-[#1a1a1a] text-white text-sm transition-all w-full cursor-pointer rounded-xl"
+          >
             Uygulamayı Oluştur
           </button>
         </div>
