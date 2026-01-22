@@ -20,6 +20,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useMusicContext } from "./hooks/useMusicContext";
 import Settings from "./pages/Settings";
 import About from "./pages/About";
+import CreateMobilApp from "./pages/CreateMobilApp";
 
 export const App = () => {
   const { user } = useUser();
@@ -87,6 +88,7 @@ export const App = () => {
             {user?.role === "ADMIN" && (
               <>
                 <Route path="/create-homecard" element={<Admin />} />
+                <Route path="/create-mobile-app" element={<CreateMobilApp />} />
                 <Route path="/create-music" element={<CreateMusic />} />
                 <Route path="/create-content" element={<CreateContent />} />
                 <Route path="/settings" element={<Settings />} />

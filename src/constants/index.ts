@@ -7,7 +7,7 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
-import { MdComputer, MdOutlineLibraryMusic } from "react-icons/md";
+import { MdComputer, MdOutlineAppShortcut, MdOutlineLibraryMusic } from "react-icons/md";
 import { SiElectron } from "react-icons/si";
 import {
   TbBrandReactNative,
@@ -69,12 +69,18 @@ export const adminNavbarList = [
   },
   {
     id: 9,
+    title: "Mobil App Oluştur",
+    link: "/create-mobile-app",
+    icon: MdOutlineAppShortcut,
+  },
+  {
+    id: 10,
     title: "Müzik Oluştur",
     link: "/create-music",
     icon: TbMusicPlus,
   },
   {
-    id: 10,
+    id: 11,
     title: "İçerik Oluştur",
     link: "/create-content",
     icon: RxText,
