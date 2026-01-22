@@ -51,7 +51,7 @@ const CreateMobilApp = () => {
     <div
       className={`xl:pb-5 pt-15 lg:pt-5 px-8 md:px-0 ${currentTrack ? "pb-20" : "pb-5"} flex items-center justify-center h-screen`}
     >
-      <div className="h-140 w-2xl flex items-center justify-center overflow-hidden p-5">
+      <div className="h-160 w-2xl flex items-center justify-center overflow-hidden p-5">
         <div className="h-full w-full flex flex-col gap-5">
           <div className="flex items-center gap-5 h-full w-full items-center">
             <div className="h-full w-110 border border-white/20 rounded-4xl overflow-hidden relative flex items-center justify-center">
