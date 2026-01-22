@@ -161,7 +161,11 @@ const HomeBorder = () => {
                 </div>
                 <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-2 items-center">
                   <div className="h-12 w-28 sm:w-32 object-contain flex items-center justify-center overflow-hidden">
-                    <img src={currentMobilApp.logo} alt="" className="md:w-24 w-30"/>
+                    <img
+                      src={currentMobilApp.logo}
+                      alt=""
+                      className="md:w-24 w-30"
+                    />
                   </div>
                   <div className="2xl:w-48 lg:w-32 md:w-30 sm:w-34 w-36 aspect-[10/20] rounded-xl overflow-hidden object-cover">
                     <img src={currentMobilApp.mainImg} alt="" className="" />
@@ -173,6 +177,13 @@ const HomeBorder = () => {
                 No items
               </div>
             )}
+            <div className="absolute bottom-2 right-2">
+              <div className="flex items-center gap-2">
+                <div
+                  className={`w-4 h-4 rounded-full ${currentMobilApp?.status === "COMPLETED" ? "bg-green-500" : currentMobilApp?.status === "IN_PROGRESS" ? "bg-yellow-400" : "bg-blue-800"}`}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="relative w-full h-full overflow-hidden rounded-xl oswald-400 md:flex hidden">
