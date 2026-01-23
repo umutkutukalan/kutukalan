@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 const HomeVideos = () => {
   return (
-    <div className="w-full h-60 sm:h-35 xl:h-35 overflow-hidden rounded-lg grid grid-cols-1 gap-2">
+    <div className="w-full h-[clamp(150px,12vw,400px)] overflow-hidden rounded-lg grid grid-cols-1 gap-2">
       <ul className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-hidden">
         <li className="w-full h-full bg-gray-200 rounded-lg overflow-hidden relative group">
           <Link to="/projects" className="absolute inset-0 z-10 flex flex-col justify-center items-center">
             <div className="flex flex-col text-[10px]">
               <div className="flex items-center">
                 <FaStarHalf className="text-blue-700" size={24} />
-                <h2 className="text-2xl oswald-400">PROJELER</h2>
+                <h2 className="text-2xl 2xl:text-3xl oswald-400">PROJELER</h2>
               </div>
             </div>
           </Link>
@@ -27,7 +27,7 @@ const HomeVideos = () => {
             <div className="flex flex-col text-[10px]">
               <div className="flex items-center">
                 <FaStarHalf className="text-green-600" size={24} />
-                <h2 className="text-2xl oswald-400">BLOGLAR</h2>
+                <h2 className="text-2xl 2xl:text-3xl oswald-400">BLOGLAR</h2>
               </div>
             </div>
           </Link>

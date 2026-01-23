@@ -46,7 +46,7 @@ const HomeBorder = () => {
   };
 
   return (
-    <div className="w-full h-80 md:h-70 lg:h-74 relative flex flex-col gap-1 oswald-300">
+    <div className="w-full h-[clamp(330px,24vw,800px)] relative flex flex-col gap-1 oswald-300">
       {/* <div className="w-full flex items-center justify-between">
         <h2 className="text-lg">PROJELER</h2>
         <div className="flex items-center gap-1">
@@ -66,8 +66,8 @@ const HomeBorder = () => {
                     alt=""
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-11 sm:top-11 md:top-11 lg:top-11 xl:top-11 left-2 z-20">
-                    <p className="2xl:text-3xl lg:text-2xl md:text-xl sm:text-2xl text-2xl">
+                  <div className="absolute top-11 sm:top-11 md:top-11 lg:top-11 xl:top-11 2xl:top-20 2xl:left-5 left-2 z-20">
+                    <p className="2xl:text-5xl lg:text-2xl md:text-xl sm:text-2xl text-2xl">
                       <span className="bg-white text-black box-decoration-clone leading-snug px-2">
                         {currentAbout?.paragraph}
                       </span>
@@ -106,7 +106,7 @@ const HomeBorder = () => {
 
                 <div className="absolute -bottom-15 sm:-bottom-20 md:-bottom-10 lg:-bottom-25 xl:-bottom-15 left-1/2 -translate-x-1/2">
                   <div
-                    className={`2xl:w-80 xl:w-60 lg:w-70 md:w-50 sm:w-80 w-70`}
+                    className={`2xl:w-120 xl:w-60 lg:w-70 md:w-50 sm:w-80 w-70`}
                   >
                     <img
                       src={currentAbout?.aboutImage}
@@ -160,14 +160,14 @@ const HomeBorder = () => {
                   </div>
                 </div>
                 <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-2 items-center">
-                  <div className="h-12 w-28 sm:w-32 object-contain flex items-center justify-center overflow-hidden">
+                  <div className="h-12 w-28 sm:w-32 2xl:w-40 2xl:h-15 object-contain flex items-center justify-center overflow-hidden">
                     <img
                       src={currentMobilApp.logo}
                       alt=""
-                      className="md:w-24 w-30"
+                      className="2xl:w-full md:w-24 w-30"
                     />
                   </div>
-                  <div className="2xl:w-48 lg:w-32 md:w-30 sm:w-34 w-36 aspect-[10/20] rounded-xl overflow-hidden object-cover">
+                  <div className="w-[clamp(120px,10vw,240px)] aspect-[10/20] rounded-xl overflow-hidden object-cover">
                     <img src={currentMobilApp.mainImg} alt="" className="" />
                   </div>
                 </div>
@@ -180,7 +180,7 @@ const HomeBorder = () => {
             <div className="absolute bottom-2 right-2">
               <div className="flex items-center gap-2">
                 <div
-                  className={`w-4 h-4 rounded-full ${currentMobilApp?.status === "COMPLETED" ? "bg-green-500" : currentMobilApp?.status === "IN_PROGRESS" ? "bg-yellow-400" : "bg-blue-800"}`}
+                  className={`2xl:w-6 2xl:h-6 w-4 h-4 rounded-full ${currentMobilApp?.status === "COMPLETED" ? "bg-green-500" : currentMobilApp?.status === "IN_PROGRESS" ? "bg-yellow-400" : "bg-blue-800"}`}
                 ></div>
               </div>
             </div>

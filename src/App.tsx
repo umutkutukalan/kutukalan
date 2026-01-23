@@ -69,7 +69,7 @@ export const App = () => {
         }}
       >
         <Navbar />
-        <div className="w-full lg:pl-15 xl:pl-10 xl:pr-95 relative">
+        <div className="w-full lg:pl-15 xl:pl-10 xl:pr-95 2xl:pr-115 relative">
           <Routes>
             <Route
               path="/"
