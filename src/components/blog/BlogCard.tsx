@@ -36,9 +36,12 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
 
   return (
     <>
-      <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all p-2 sm:p-5 rounded-lg hover:border-none border-b border-white/10">
-        <div className="w-full h-full flex gap-5">
-          <div className="sm:w-1/4 md:w-1/4 lg:w-1/5 h-full rounded-lg relative flex-shrink-0 relative sm:block hidden">
+      <div
+        className="w-full h-[clamp(220px,16vw,380px)]
+       hover:bg-white/5 hover:scale-[1.02] transition-all p-2 sm:p-5 rounded-lg hover:border-none border-b border-white/10"
+      >
+        <div className="w-full h-full flex gap-5 3xl:gap-10">
+          <div className="w-[clamp(180px,14vw,360px)] h-full rounded-lg relative flex-shrink-0 relative sm:block hidden">
             <div className="absolute inset-0 bg-black opacity-20" />
             <div className="absolute inset-0 w-full h-full overflow-hidden rounded-md z-10">
               {blog.mainImg ? (
@@ -49,7 +52,7 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
                 />
               ) : (
                 <div className="w-full h-full bg-[#111111] flex items-center justify-center text-gray-500">
-                  <CiImageOff className="text-2xl" />
+                  <CiImageOff className="text-[clamp(12px,1vw,24px)] " />
                 </div>
               )}
             </div>
@@ -64,7 +67,7 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-400 flex items-center justify-center text-gray-500">
-                    <CiImageOff />
+                    <CiImageOff className="text-[clamp(12px,1vw,24px)]" />
                   </div>
                 )}
               </div>
@@ -74,20 +77,20 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
             <div className="w-full flex flex-col gap-5">
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400">
+                  <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
                     {formatRelativeTime(blog.createdAt)}
                   </span>
                   {user?.role === "ADMIN" && (
                     <span className="text-gray-400 select-none">·</span>
                   )}
                   {user?.role === "ADMIN" && (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 4xl:gap-5">
                       <FaPen
-                        className="cursor-pointer text-[10px] hover:text-green-500 transition-all"
+                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-green-500 transition-all"
                         onClick={() => {}}
                       />
                       <LuTrash2
-                        className="cursor-pointer text-[10px] hover:text-red-500 transition-all"
+                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-red-500 transition-all"
                         onClick={() => setDeleteShow(true)}
                       />
                     </div>
@@ -97,18 +100,32 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
                   {blog.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="pointer-events-none flex items-center px-2 py-0.25 bg-blue-800 text-[10px] rounded-full"
+                      className="pointer-events-none flex items-center px-2 3xl:px-4 py-0.25 bg-blue-800 text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] rounded-full"
                     >
                       {tag}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="flex flex-col gap-1">
-                <h3 className="text-xl font-semibold line-clamp-2">
+              <div className="flex flex-col gap-[clamp(0.25rem,0.5vw,0.5rem)]">
+                <h3
+                  className="font-semibold line-clamp-2
+text-[clamp(1rem,1.6vw,2rem)]
+3xl:text-[clamp(1.5rem,1.8vw,2rem)]
+4xl:text-[3rem]
+
+  "
+                >
                   {blog.title}
                 </h3>
-                <p className="text-xs text-white/60 flex-1 overflow-hidden text-ellipsis line-clamp-2">
+
+                <p
+                  className="text-white/60 line-clamp-2
+    text-[clamp(0.75rem,1.2vw,0.75rem)]
+    3xl:text-[clamp(1rem,1.3vw,1.125rem)]
+    4xl:text-[1.5rem]
+  "
+                >
                   {blog.description}
                 </p>
               </div>
@@ -118,18 +135,22 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
                 {blog.youtubeUrl && (
                   <Link
                     to={blog.youtubeUrl}
-                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                    className="flex items-center gap-1
+                    text-[clamp(0.75rem,1.2vw,0.75rem)]
+                    3xl:text-[clamp(1rem,1.3vw,1.125rem)]
+                    4xl:text-[1.5rem]
+                    hover:text-gray-300 transition-all"
                   >
-                    <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
+                    <FaYoutube title="Youtube Url" color="#ff0034" />
                     <span>YouTube</span>
                   </Link>
                 )}
               </div>
 
-              <div className="flex items-center gap-2 text-xs">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleViewBlog(blog, navigate)}
-                  className="cursor-pointer transition-all hover:text-gray-300 flex items-center gap-1"
+                  className="cursor-pointer transition-all hover:text-gray-300 flex items-center gap-1 text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]"
                 >
                   <span>Okumaya Devam Et</span>
                   <IoIosArrowForward />

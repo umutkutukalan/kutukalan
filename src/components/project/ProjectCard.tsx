@@ -46,9 +46,9 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
 
   return (
     <>
-      <div className="w-full h-50 hover:bg-white/5 hover:scale-[1.02] transition-all py-2 p-2 sm:p-5 rounded-lg hover:border-none border-b border-white/10 ">
-        <div className="w-full h-full flex gap-5">
-          <div className="sm:w-1/4 md:w-1/4 lg:w-1/5 h-full rounded-lg relative flex-shrink-0 relative sm:block hidden">
+      <div className="w-full h-[clamp(220px,16vw,380px)] hover:bg-white/5 hover:scale-[1.02] transition-all py-2 p-2 sm:p-5 rounded-lg hover:border-none border-b border-white/10">
+        <div className="w-full h-full flex gap-5 3xl:gap-10">
+          <div className="w-[clamp(180px,14vw,360px)] h-full rounded-lg relative flex-shrink-0 relative sm:block hidden">
             <div className="absolute inset-0 bg-black opacity-20" />
             <div className="absolute inset-0 w-full h-full overflow-hidden rounded-md z-10">
               {project.mainImg ? (
@@ -59,7 +59,7 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                 />
               ) : (
                 <div className="w-full h-full bg-[#111111] flex items-center justify-center text-gray-500">
-                  <CiImageOff className="text-2xl" />
+                  <CiImageOff className="text-[clamp(12px,1vw,24px)]" />
                 </div>
               )}
             </div>
@@ -74,7 +74,7 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-400 flex items-center justify-center text-gray-500">
-                    <CiImageOff />
+                    <CiImageOff className="text-[clamp(12px,1vw,24px)]" />
                   </div>
                 )}
               </div>
@@ -84,20 +84,20 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
             <div className="w-full flex flex-col gap-5">
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400">
+                  <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
                     {formatRelativeTime(project.createdAt)}
                   </span>
                   {user?.role === "ADMIN" && (
                     <span className="text-gray-400 select-none">·</span>
                   )}
                   {user?.role === "ADMIN" && (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 3xl:gap-3">
                       <FaPen
-                        className="cursor-pointer text-[10px] hover:text-green-500 transition-all"
+                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-green-500 transition-all"
                         onClick={() => {}}
                       />
                       <LuTrash2
-                        className="cursor-pointer text-[10px] hover:text-red-500 transition-all"
+                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-red-500 transition-all"
                         onClick={() => setDeleteShow(true)}
                       />
                     </div>
@@ -109,30 +109,58 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                       key={tech}
                       className="pointer-events-none flex items-center"
                     >
-                      {tech === "TypeScript" && <BiLogoTypescript size={12} />}
-                      {tech === "JavaScript" && <BiLogoJavascript size={12} />}
-                      {tech === "ReactJS" && <BiLogoReact size={12} />}
-                      {tech === "NextJS" && <RiNextjsFill size={12} />}
-                      {tech === "Spring Boot" && <BiLogoSpringBoot size={12} />}
-                      {tech === "Java" && <DiJava size={12} />}
-                      {tech === "PostgreSQL" && <DiPostgresql size={12} />}
-                      {tech === "MySQL" && <DiMysql size={12} />}
-                      {tech === "ElectronJS" && <SiElectron size={12} />}
+                      {tech === "TypeScript" && (
+                        <BiLogoTypescript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "JavaScript" && (
+                        <BiLogoJavascript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "ReactJS" && (
+                        <BiLogoReact className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "NextJS" && (
+                        <RiNextjsFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "Spring Boot" && (
+                        <BiLogoSpringBoot className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "Java" && (
+                        <DiJava className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "PostgreSQL" && (
+                        <DiPostgresql className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "MySQL" && (
+                        <DiMysql className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tech === "ElectronJS" && (
+                        <SiElectron className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
                       {tech === "React Native" && (
-                        <TbBrandReactNative size={12} />
+                        <TbBrandReactNative className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                       )}
                       {tech === "PostGIS" && (
-                        <span className="text-xs">PGIS</span>
+                        <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]">
+                          PGIS
+                        </span>
                       )}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="flex flex-col gap-1">
-                <h3 className="text-xl font-semibold line-clamp-2">
+              <div className="flex flex-col gap-[clamp(0.25rem,0.5vw,0.5rem)]">
+                <h3
+                  className=" font-semibold line-clamp-2 text-[clamp(1rem,1.6vw,2rem)]
+3xl:text-[clamp(1.5rem,1.8vw,2rem)]
+4xl:text-[3rem]"
+                >
                   {project.title}
                 </h3>
-                <p className="text-xs text-white/60 flex-1 overflow-hidden text-ellipsis line-clamp-2">
+                <p
+                  className="text-[clamp(0.75rem,1.2vw,0.75rem)]
+    3xl:text-[clamp(1rem,1.3vw,1.125rem)]
+    4xl:text-[1.5rem] text-white/60 flex-1 overflow-hidden text-ellipsis line-clamp-2"
+                >
                   {project.description}
                 </p>
               </div>
@@ -142,29 +170,37 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                 {project.githubUrl && (
                   <Link
                     to={project.githubUrl}
-                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                    className="flex items-center gap-1 text-[clamp(12px,1vw,24px)] hover:text-gray-300 transition-all"
                   >
-                    <FaGithub title="Github Url" size={12} />
+                    <FaGithub title="Github Url" />
                     <span>Github</span>
                   </Link>
                 )}
-                <span className={`select-none ${project.liveUrl ? "" : "hidden"}`}>·</span>
+                <span
+                  className={`select-none ${project.liveUrl ? "" : "hidden"}`}
+                >
+                  ·
+                </span>
                 {project.liveUrl && (
                   <Link
                     to={project.liveUrl}
-                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                    className="flex items-center gap-1 text-[clamp(12px,1vw,24px)] hover:text-gray-300 transition-all"
                   >
-                    <BiWorld title="Web Url" size={12} color="#4872c2ff" />
+                    <BiWorld title="Web Url" color="#4872c2ff" />
                     <span>Web</span>
                   </Link>
                 )}
-                <span className={`select-none ${project.youtubeUrl ? "" : "hidden"}`}>·</span>
+                <span
+                  className={`select-none ${project.youtubeUrl ? "" : "hidden"}`}
+                >
+                  ·
+                </span>
                 {project.youtubeUrl && (
                   <Link
                     to={project.youtubeUrl}
-                    className="flex items-center gap-1 text-xs hover:text-gray-300 transition-all"
+                    className="flex items-center gap-1 text-[clamp(12px,1vw,24px)] hover:text-gray-300 transition-all"
                   >
-                    <FaYoutube title="Youtube Url" size={12} color="#ff0034" />
+                    <FaYoutube title="Youtube Url" color="#ff0034" />
                     <span>YouTube</span>
                   </Link>
                 )}
@@ -173,7 +209,7 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
               <div className="flex items-center gap-2 text-xs">
                 <button
                   onClick={() => handleViewProject(project, navigate)}
-                  className="cursor-pointer transition-all hover:text-gray-300 flex items-center gap-1"
+                  className="cursor-pointer transition-all hover:text-gray-300 flex items-center gap-1 text-[clamp(12px,1vw,24px)]"
                 >
                   <span>Projeyi İncele</span>
                   <IoIosArrowForward />

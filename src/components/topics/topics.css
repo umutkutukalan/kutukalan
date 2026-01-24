@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+}
+
 .topicsBox {
   @apply p-4 flex flex-col items-start justify-between rounded-lg w-42 h-42 cursor-pointer bg-black border border-white/10 overflow-hidden relative;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
