@@ -209,7 +209,7 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
               <div className="flex items-center gap-2 text-xs">
                 <button
                   onClick={() => handleViewProject(project, navigate)}
-                  className="cursor-pointer transition-all hover:text-gray-300 flex items-center gap-1 text-[clamp(12px,1vw,24px)]"
+                  className="cursor-pointer transition-all hover:text-gray-300 flex items-center gap-1 text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]"
                 >
                   <span>Projeyi İncele</span>
                   <IoIosArrowForward />
