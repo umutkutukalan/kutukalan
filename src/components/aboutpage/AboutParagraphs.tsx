@@ -40,7 +40,7 @@ const AboutParagraphs = ({
           start: "top 90%",
           scrub: true,
         },
-      }
+      },
     );
 
     gsap.fromTo(
@@ -59,7 +59,7 @@ const AboutParagraphs = ({
           start: "top 90%",
           scrub: true,
         },
-      }
+      },
     );
   }, []);
 
@@ -74,8 +74,8 @@ const AboutParagraphs = ({
       >
         {face === "frontend" && (
           <>
-            <div className="max-w-lg">
-              <h2 className="text-5xl sm:text-6xl bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
+            <div className="w-[clamp(350px,60%,900px)]">
+              <h2 className="text-[clamp(2.5rem,4vw,3rem)] 3xl:text-[clamp(3rem,2vw,4rem)] 4xl:text-[clamp(4rem,2vw,5rem)] bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text leading-13 3xl:leading-18">
                 {/* Crafting Interfaces <br /> That Feel Alive */}
                 {title}
               </h2>
@@ -83,10 +83,10 @@ const AboutParagraphs = ({
             <div className="w-full flex justify-end">
               <div className="flex items-center gap-5">
                 <div>
-                  <FcGallery className="w-20 sm:w-30 h-20 sm:h-30" />
+                  <FcGallery className="h-[clamp(5rem,5vw,7rem)] w-[clamp(5rem,5vw,7rem)] 3xl:h-[clamp(6rem,6vw,8rem)] 3xl:w-[clamp(6rem,6vw,8rem)] 4xl:h-[clamp(7rem,7vw,9rem)] 4xl:w-[clamp(7rem,7vw,9rem)]" />
                 </div>
                 <div className="flex flex-col gap-4">
-                  <h4 className="max-w-sm text-sm text-gray-300">
+                  <h4 className="max-w-sm 3xl:max-w-base 4xl:max-w-2xl text-[clamp(0.75rem,1.5vw,0.850rem)] 3xl:text-[clamp(0.850rem,1.5vw,1rem)] 4xl:text-[clamp(1rem,1.5vw,1.5rem)] bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
                     {description}
                   </h4>
                   {/* <div className="flex items-center gap-2 hidden sm:flex">
@@ -110,8 +110,8 @@ const AboutParagraphs = ({
         )}
         {face === "backend" && (
           <>
-            <div className="max-w-lg">
-              <h2 className="text-5xl sm:text-6xl bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
+            <div className="w-[clamp(350px,60%,900px)]">
+              <h2 className="text-[clamp(2.5rem,4vw,3rem)] 3xl:text-[clamp(3rem,2vw,4rem)] 4xl:text-[clamp(4rem,2vw,5rem)] bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text leading-13 3xl:leading-15">
                 {/* Crafting Interfaces <br /> That Feel Alive */}
                 {title}
               </h2>
@@ -119,7 +119,7 @@ const AboutParagraphs = ({
             <div className="w-full flex">
               <div className="flex items-center gap-5">
                 <div className="flex flex-col gap-5">
-                  <h4 className="max-w-lg text-base sm:text-lg bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
+                  <h4 className="max-w-lg 3xl:max-w-xl 4xl:max-w-2xl text-[clamp(0.75rem,1.5vw,0.850rem)] 3xl:text-[clamp(0.850rem,1.5vw,1rem)] 4xl:text-[clamp(1rem,1.5vw,1.5rem)] bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
                     {description}
                   </h4>
                 </div>

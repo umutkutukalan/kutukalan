@@ -66,14 +66,18 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
     <section
       className={`w-full overflow-hidden relative xl:h-[100vh] ${
         currentTrack ? "h-[calc(100vh-50px)]" : "h-[100vh]"
-      } py-20 sm:py-15`}
+      } py-[clamp(4rem,4vw,5rem)] 3xl:py-[clamp(5rem,4vw,6rem)]`}
     >
       <div className="relative w-full flex items-end">
         <div className="w-full flex items-end justify-between z-30 px-5 sm:px-15">
           <div className="flex flex-col banner">
             <div className="flex items-center">
               <div className="">
-                <img src={logo2} alt="Logo" className="w-80 sm:w-100" />
+                <img
+                  src={logo2}
+                  alt="Logo"
+                  className="w-[clamp(15rem,30vw,25rem)] 3xl:w-[clamp(20rem,30vw,30rem)] 4xl:w-[clamp(25rem,30vw,35rem)]"
+                />
               </div>
               {/* <h1 className="text-[80px] font-semibold bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-transparent bg-clip-text">
                 kutukalan.
@@ -88,7 +92,7 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
         </div>
       </div>
       <div className="relative">
-        <div className="[perspective:-1000px] w-full h-120 sm:h-155 md:h-135 lg:h-130 xl:h-145 relative z-10">
+        <div className="[perspective:-1000px] w-full h-[clamp(35rem,30vw,80rem)] 3xl:h-[clamp(40rem,30vw,90rem)] 4xl:h-[clamp(45rem,35vw,100rem)] relative z-10">
           <ul
             ref={listRef}
             className="flex gap-4 h-full -mt-20 [transform-style:preserve-3d] 
@@ -97,7 +101,7 @@ const AboutHeader = ({ userResponse }: AboutProps) => {
             {[...images].map((img, i) => (
               <li
                 key={i}
-                className="h-80 w-60 sm:h-110 sm:w-100 shrink-0 rounded-xl overflow-hidden border border-white/10 bg-black"
+                className="h-[clamp(25rem,30vw,30rem)] w-[clamp(25rem,20vw,40rem)] 3xl:h-[clamp(30rem,30vw,35rem)] 3xl:w-[clamp(30rem,20vw,40rem)] 4xl:h-[clamp(35rem,30vw,40rem)] 4xl:w-[clamp(35rem,20vw,45rem)] shrink-0 rounded-xl overflow-hidden border border-white/10 bg-black"
                 style={
                   {
                     // boxShadow: "-2px 2px 2px 2px rgba(255, 255, 255, 1)",

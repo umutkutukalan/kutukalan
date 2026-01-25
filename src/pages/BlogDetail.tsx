@@ -21,34 +21,38 @@ const BlogDetail = () => {
   console.log("Blog Detail Page - Blog Data:", blog);
   console.log(
     "Blog images sizes",
-    blog.contentItems.map((item) => item.size)
+    blog.contentItems.map((item) => item.size),
   );
 
   return (
     <div
-      className={`w-full px-10 pt-15 lg:pt-10 xl:pb-10 flex items-center justify-center ${
+      className={`w-full pt-[clamp(3.75rem,4vw,3.75rem)] lg:pt-[clamp(2.5rem,4vw,2.5rem)] 2xl:pt-[clamp(5rem,4vw,5rem)] xl:pb-[clamp(2.5rem,4vw,2.5rem)] flex items-center justify-center ${
         currentTrack ? "pb-20" : "pb-5"
       }`}
     >
-      <div className="xl:w-full w-full flex flex-col gap-5">
+      <div className="w-[clamp(300px,80vw,800px)] 3xl:w-[clamp(50rem,60vw,70rem)] flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
           <div className="flex items-start gap-1">
-            <h1 className="font-bold text-3xl sm:text-4xl">{blog.title}</h1>
+            <h1 className="font-bold text-[clamp(1.5rem,4vw,2rem)] 3xl:text-[clamp(2rem,4vw,2.5rem)] 4xl:text-[clamp(2.5rem,4vw,3rem)]">
+              {blog.title}
+            </h1>
           </div>
           <div className="w-full flex items-center justify-between text-sm">
             <div className="w-full flex items-center gap-2">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full overflow-hidden">
+                <div className="w-6 h-6 3xl:w-10 3xl:h-10 4xl:w-12 4xl:h-12 rounded-full overflow-hidden">
                   <img
                     src={blog.user.profileImg}
                     alt=""
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-xs text-gray-300">{blog.user.username}</p>
+                <p className="text-xs 3xl:text-2xl 4xl:text-2xl text-gray-300">
+                  {blog.user.username}
+                </p>
               </div>
-              <span>·</span>
-              <span className="text-xs text-gray-300">
+              <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
+              <span className="text-xs 3xl:text-2xl 4xl:text-2xl text-gray-300">
                 {formatRelativeTime(blog.createdAt)}
               </span>
             </div>
@@ -56,7 +60,7 @@ const BlogDetail = () => {
               {blog.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="text-xs pointer-events-none flex items-center"
+                  className="text-xs 3xl:text-2xl 4xl:text-2xl pointer-events-none flex items-center"
                 >
                   {tag === "Food" && (
                     <TbBurger className="text-xs sm:text-sm" />
@@ -66,7 +70,7 @@ const BlogDetail = () => {
             </ul>
           </div>
         </div>
-        <ul className="flex flex-col gap-5">
+        <ul className="flex flex-col gap-5 3xl:gap-7 4xl:gap-10">
           {blog.contentItems.map((item, index) => (
             <li
               key={index}
@@ -74,10 +78,10 @@ const BlogDetail = () => {
                 item.size === "large"
                   ? "h-full"
                   : item.size === "medium"
-                  ? "h-100"
-                  : item.size === "small"
-                  ? "h-80"
-                  : ""
+                    ? "h-[clamp(400px,40vw,500px)]"
+                    : item.size === "small"
+                      ? "h-[clamp(200px,15vw,300px)]"
+                      : ""
               } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
             >
               {item?.type === "image" && (
@@ -88,13 +92,13 @@ const BlogDetail = () => {
                     item.size === "large"
                       ? "object-contain"
                       : item.size === "medium"
-                      ? "object-cover"
-                      : "object-contain"
+                        ? "object-cover"
+                        : "object-contain"
                   } `}
                 />
               )}
               {item?.type === "paragraph" && (
-                <p className="text-sm sm:text-base leading-7 whitespace-pre-line text-gray-300">
+                <p className="text-[clamp(1rem,1.2vw,0.7rem)] 3xl:text-[clamp(1rem,1.3vw,1.5rem)] 4xl:text-[2rem] leading-7 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] whitespace-pre-line text-gray-300">
                   {item?.content}
                 </p>
               )}

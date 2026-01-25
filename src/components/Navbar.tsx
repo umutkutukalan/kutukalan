@@ -96,7 +96,7 @@ const Navbar = () => {
         </div>
       </nav>
       {/* Mobile Navbar */}
-      <nav className="w-full h-12 2xl:h-20 text-white fixed top-0 left-0 z-50 flex items-center justify-between px-4 2xl:flex lg:hidden">
+      <nav className="w-full h-12 2xl:h-20 text-white fixed top-0 left-0 z-50 flex items-center justify-between px-4 2xl:flex lg:hidden bg-black">
         <div className="flex items-center justify-between w-full">
           <CiMenuFries
             className="cursor-pointer text-2xl 2xl:text-5xl"

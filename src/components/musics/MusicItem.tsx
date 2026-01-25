@@ -182,10 +182,10 @@ const MusicItem = ({
         </div>
       </div>
       <div className="w-full px-5 py-2 grid grid-cols-[2fr_0fr] items-center">
-        <p className="text-xs text-left sm:block hidden">
+        <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-left sm:block hidden">
           {formatDate(music.releaseDate || "")}
         </p>
-        <p className="text-xs text-left">{formatDuration(duration)}</p>
+        <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-left">{formatDuration(duration)}</p>
       </div>
       {/* Onay kutusu */}
       {showConfirm && (
