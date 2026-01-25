@@ -16,6 +16,10 @@ export interface Music {
   title?: string;
   musicUrl?: string;
   musicImg?: string;
+  producer?: string;
+  album?: string;
+  featuredArtist?: string;
+  releaseDate?: string;
   createdAt?: string;
   [key: string]: unknown;
 }

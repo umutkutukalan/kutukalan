@@ -22,7 +22,7 @@ const MusicList = () => {
 
   return (
     <div className={`px-2 sm:px-0 ${currentTrack ? "pb-10" : ""} xl:pb-0`}>
-      <div className="w-full grid grid-cols-[3fr_0fr] sm:grid-cols-[3fr_2fr] py-1 sm:px-10 text-xs text-gray-300 border-b border-white/10">
+      <div className="w-full grid grid-cols-[3fr_0fr] sm:grid-cols-[3fr_2fr] py-1 sm:px-10 text-xs 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] text-gray-300 border-b border-white/10">
         <div className="flex items-center gap-5 pl-5">
           <div className="flex items-center">
             <div className="flex items-center gap-1">

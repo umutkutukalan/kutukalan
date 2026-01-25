@@ -51,9 +51,9 @@ const Projects = () => {
 
   return (
     <div
-      className={`pt-15 px-5 sm:px-10 xl:pb-5 ${currentTrack ? "pb-10" : ""}`}
+      className={`pt-15 2xl:pt-20 px-5 sm:px-10 2xl:px-25 xl:pb-5 ${currentTrack ? "pb-10" : ""}`}
     >
-      <div className="flex flex-col gap-5 3xl:px-20">
+      <div className="flex flex-col gap-5">
         <ProjectHeader />
         <ProjectList
           projects={projects}

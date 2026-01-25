@@ -122,7 +122,7 @@ const MusicItem = ({
           handleToggle();
         }
       }}
-      className={`w-full h-[70px] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group`}
+      className={`w-full h-[70px] 3xl:h-[clamp(70px,4vw,90px)] 4xl:h-[clamp(80px,8vw,120px)] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group`}
     >
       <audio
         ref={audioRef}
@@ -132,7 +132,7 @@ const MusicItem = ({
       />
       <div className="flex items-center gap-5">
         <div className="flex items-center">
-          <div className="relative px-6 flex items-center justify-center w-10 h-10">
+          <div className="relative px-6 flex items-center justify-center w-10 h-10 3xl:w-[clamp(40px,4vw,60px)] 3xl:h-[clamp(40px,4vw,60px)] 4xl:w-[clamp(50px,4vw,80px)] 4xl:h-[clamp(50px,4vw,80px)]">
             {isPlaying ? (
               <DotLottieReact
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-6 group-hover:opacity-0 z-10"
@@ -142,7 +142,7 @@ const MusicItem = ({
               />
             ) : (
               <p
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 z-10 ${
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] z-10 ${
                   currentTrack?.id === music.id ? "text-green-500" : ""
                 }`}
               >
@@ -157,8 +157,8 @@ const MusicItem = ({
               )}
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg overflow-hidden relative">
+          <div className="flex items-center gap-2 3xl:gap-4 4xl:gap-5">
+            <div className="w-10 h-10 3xl:w-[clamp(40px,4vw,60px)] 3xl:h-[clamp(40px,4vw,60px)] 4xl:w-[clamp(50px,4vw,80px)] 4xl:h-[clamp(50px,4vw,80px)] rounded-lg overflow-hidden relative">
               <img
                 src={music.musicImg}
                 alt=""
@@ -167,13 +167,13 @@ const MusicItem = ({
             </div>
             <div className="flex flex-col">
               <h1
-                className={`text-xs sm:text-sm ${
+                className={`text-[clamp(0.75rem,4vw,0.850rem)] 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] ${
                   currentTrack?.id === music.id ? "text-green-500" : ""
                 }`}
               >
                 {music.title}
               </h1>
-              <p className="text-[10px] sm:text-xs text-gray-500">
+              <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-gray-500">
                 {" "}
                 {music.producer}{" "}
               </p>

@@ -10,16 +10,16 @@ const Home = () => {
   const { isLoading } = useAboutContext();
 
   if (isLoading) {
-    return <LoadingScreen key={location.pathname}/>;
+    return <LoadingScreen key={location.pathname} />;
   }
 
   return (
     <section className="flex flex-col">
-      <div className="xl:px-5">
+      <div className="">
         <div
           className={`w-full pt-12 md:pt-5 ${
             currentTrack ? "pb-15" : ""
-          } xl:pb-5 p-5 flex flex-col justify-between gap-3 overflow-hidden`}
+          } xl:pb-5 p-4 flex flex-col justify-between gap-3 overflow-hidden`}
         >
           <HomeTables />
           <HomeVideos />

@@ -13,6 +13,10 @@ interface Music {
   title?: string;
   musicUrl?: string;
   musicImg?: string; // Base64 string veya URL
+  producer?: string;
+  album?: string;
+  featuredArtist?: string;
+  releaseDate?: string;
   createdAt?: string;
   [key: string]: unknown;
 }
@@ -35,7 +39,9 @@ interface MusicProviderProps {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const MusicContext = createContext<MusicContextType | undefined>(undefined);
+export const MusicContext = createContext<MusicContextType | undefined>(
+  undefined,
+);
 
 export const MusicProvider = ({ children }: MusicProviderProps) => {
   const [musics, setMusics] = useState<Music[]>([]);
