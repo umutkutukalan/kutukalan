@@ -12,12 +12,12 @@ const MusicList = () => {
   const { formatDate } = FormatDate();
   const { user } = useUser();
 
-  const [activeContextMenuId, setActiveContextMenuId] = useState<
-    string | number | null
-  >(null);
+  const [activeContextMenuId, setActiveContextMenuId] = useState<number | null>(
+    null,
+  );
 
   if (loading) {
-    return <LoadingScreen key={location.pathname}/>;
+    return <LoadingScreen key={location.pathname} />;
   }
 
   return (

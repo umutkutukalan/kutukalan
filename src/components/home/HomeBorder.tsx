@@ -46,7 +46,7 @@ const HomeBorder = () => {
   };
 
   return (
-    <div className="w-full h-[clamp(330px,24vw,800px)] relative flex flex-col gap-1 oswald-300">
+    <div className="w-full h-[clamp(350px,24vw,400px)] 3xl:h-[clamp(600px,24vw,700px)] 4xl:h-[clamp(600px,24vw,700px)] relative flex flex-col gap-1 oswald-300">
       {/* <div className="w-full flex items-center justify-between">
         <h2 className="text-lg">PROJELER</h2>
         <div className="flex items-center gap-1">
@@ -66,8 +66,8 @@ const HomeBorder = () => {
                     alt=""
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-11 sm:top-11 md:top-11 lg:top-11 xl:top-11 2xl:top-20 2xl:left-5 left-2 z-20">
-                    <p className="text-[clamp(1rem,4vw,1.5rem)] 3xl:text-[clamp(1.75rem,4vw,2.25rem)] 4xl:text-[clamp(1.75rem,4vw,2.5rem)] text-white leading-snug max-w-[clamp(160px,14vw,300px)]">
+                  <div className="absolute top-13 sm:top-11 md:top-13 lg:top-11 xl:top-13 2xl:top-20 2xl:left-5 left-2 z-20">
+                    <p className="text-[clamp(1.4rem,4vw,1.5rem)] 3xl:text-[clamp(1.75rem,4vw,2.25rem)] 4xl:text-[clamp(1.75rem,4vw,2.5rem)] text-white leading-snug max-w-[clamp(160px,14vw,300px)]">
                       <span className="bg-white text-black box-decoration-clone leading-snug px-2">
                         {currentAbout?.paragraph}
                       </span>
@@ -104,7 +104,7 @@ const HomeBorder = () => {
                   </div>
                 </div>
 
-                <div className="absolute -bottom-15 sm:-bottom-20 md:-bottom-10 lg:-bottom-15 xl:-bottom-5 left-1/2 -translate-x-1/2 w-full">
+                <div className="absolute -bottom-5 sm:-bottom-25 md:-bottom-5 lg:-bottom-10 xl:-bottom-5 left-1/2 -translate-x-1/2 w-full">
                   <div
                     className={`w-full`}
                   >
@@ -160,14 +160,14 @@ const HomeBorder = () => {
                   </div>
                 </div>
                 <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-2 items-center">
-                  <div className="h-12 w-28 sm:w-32 2xl:w-40 2xl:h-15 object-contain flex items-center justify-center overflow-hidden">
+                  <div className="h-[clamp(48px,4vw,80px)] w-[clamp(96px,8vw,160px)] object-contain flex items-center justify-center overflow-hidden">
                     <img
                       src={currentMobilApp.logo}
                       alt=""
                       className="2xl:w-full md:w-24 w-30"
                     />
                   </div>
-                  <div className="w-[clamp(120px,10vw,240px)] aspect-[10/20] rounded-xl overflow-hidden object-cover">
+                  <div className="w-[clamp(150px,10vw,240px)] 3xl:w-[clamp(200px,10vw,280px)] 4xl:w-[clamp(180px,10vw,260px)] aspect-[10/20] rounded-xl overflow-hidden object-cover">
                     <img src={currentMobilApp.mainImg} alt="" className="" />
                   </div>
                 </div>

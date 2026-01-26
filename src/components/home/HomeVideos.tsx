@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HomeVideos = () => {
   return (
-    <div className="w-full h-[clamp(150px,12vw,400px)] overflow-hidden rounded-lg grid grid-cols-1 gap-2">
+    <div className="w-full h-[clamp(250px,24vw,300px)] sm:h-[clamp(120px,12vw,150px)] overflow-hidden rounded-lg grid grid-cols-1 gap-2">
       <ul className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-hidden">
         <li className="w-full h-full bg-gray-200 rounded-lg overflow-hidden relative group">
           <Link to="/projects" className="absolute inset-0 z-10 flex flex-col justify-center items-center">

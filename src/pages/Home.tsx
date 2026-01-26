@@ -23,7 +23,7 @@ const Home = () => {
         >
           <HomeTables />
           <HomeVideos />
-          <HomeBorder />
+          <HomeBorder />          
         </div>
       </div>
     </section>

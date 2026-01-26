@@ -24,7 +24,7 @@ const LoadingScreen = () => {
 
   return (
     <div className="w-full h-screen flex items-center justify-center">
-      <img ref={logoRef} src={logo} alt="" className="w-20" />
+      <img ref={logoRef} src={logo} alt="" className="w-[clamp(60px,10vw,80px)] 3xl:w-[clamp(120px,14vw,160px)] 4xl:w-[clamp(140px,16vw,180px)]" />
     </div>
   );
 };

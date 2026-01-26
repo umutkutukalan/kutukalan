@@ -9,7 +9,7 @@ import { getAllMusicsService } from "../services/musicServices";
 
 // Types
 interface Music {
-  id: string | number;
+  id: number;
   title?: string;
   musicUrl?: string;
   musicImg?: string; // Base64 string veya URL
