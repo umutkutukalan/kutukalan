@@ -9,64 +9,69 @@ import { logo2, navbarlogo } from "../utils";
 const Navbar = () => {
   const { user } = useUser();
   const { currentTrack } = useAudioPlayer();
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState(false);
 
+  /* 🔒 Mobile menu açıkken body scroll kilidi */
   useEffect(() => {
-    // console.log("Navbar user:", user);
-  }, [user]);
+    document.body.style.overflow = show ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [show]);
 
   return (
     <header>
+      {/* ===== DESKTOP / TABLET SIDEBAR ===== */}
       <nav
-        className={`w-15 hover:w-50 group transition-all ${
-          currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"
-        } xl:h-screen text-white fixed top-0 left-0 py-5 z-50 2xl:hidden lg:block hidden`}
+        className={`
+          w-15 hover:w-50 group transition-all
+          fixed top-0 left-0 z-50
+          text-white py-5
+          ${currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"}
+          xl:min-h-dvh
+          2xl:hidden lg:block hidden
+        `}
       >
-        <div className="h-full border-r border-t border-b border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between pb-2 pt-5 bg-black">
-          <div className="flex flex-col gap-1">
-            <div className="flex flex-col gap-1 overflow-hidden">
-              <div className="pb-4">
-                {/* <div className="w-10 transition-all duration-300 flex group-hover:hidden items-center pl-5 pt-[2.5px]">
-                  <img src={logo} alt="FullLogo" className="h-full" />
-                </div> */}
-                <div className="w-45 transition-all duration-300 flex group-hover:hidden items-center px-5">
-                  <img src={navbarlogo} alt="Logo" className="h-full" />
-                </div>
-                <div className="w-45 transition-all duration-300 hidden group-hover:flex items-center px-5">
-                  <img src={logo2} alt="FullLogo" className="h-full" />
-                </div>
+        <div className="h-full bg-black border-r border-white/20 rounded-br-lg rounded-tr-lg flex flex-col justify-between pb-2 pt-5">
+          {/* ÜST */}
+          <div className="flex flex-col gap-1 overflow-hidden">
+            <div className="pb-4">
+              <div className="w-45 flex group-hover:hidden items-center px-5">
+                <img src={navbarlogo} alt="Logo" />
               </div>
-
-              {navbarList.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.id}
-                    className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center px-5"
-                    title={item.title}
-                    to={item.link}
-                  >
-                    <Icon className="text-lg w-5 flex-shrink-0" />
-                    <span className="text-xs transition-all duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100">
-                      {item.title}
-                    </span>
-                  </Link>
-                );
-              })}
+              <div className="w-45 hidden group-hover:flex items-center px-5">
+                <img src={logo2} alt="FullLogo" />
+              </div>
             </div>
+
+            {navbarList.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.id}
+                  to={item.link}
+                  className="w-full h-10 flex items-center gap-4 px-5 hover:bg-white/10"
+                >
+                  <Icon className="text-lg w-5 shrink-0" />
+                  <span className="text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap transition">
+                    {item.title}
+                  </span>
+                </Link>
+              );
+            })}
+
             {user?.role === "ADMIN" && (
-              <div className="flex flex-col gap-1 border-t border-white/20 pt-1">
+              <div className="border-t border-white/20 pt-1">
                 {adminNavbarList.map((item) => {
                   const Icon = item.icon;
                   return (
                     <Link
                       key={item.id}
-                      className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center px-5"
-                      title={item.title}
                       to={item.link}
+                      className="w-full h-10 flex items-center gap-4 px-5 hover:bg-white/10"
                     >
-                      <Icon className="text-lg w-5 flex-shrink-0" />
-                      <span className="text-xs transition-all duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100">
+                      <Icon className="text-lg w-5 shrink-0" />
+                      <span className="text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap transition">
                         {item.title}
                       </span>
                     </Link>
@@ -75,18 +80,19 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
+          {/* ALT */}
           <div className="flex flex-col gap-1">
             {contactList.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.id}
-                  className="w-full h-10 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center px-5"
-                  title={item.title}
                   to={item.link}
+                  className="w-full h-10 flex items-center gap-4 px-5 hover:bg-white/10"
                 >
-                  <Icon className="text-lg 3xl:text-xl 4xl:text-[30rem] w-5 flex-shrink-0" />
-                  <span className="text-xs transition-all duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100">
+                  <Icon className="text-lg w-5 shrink-0" />
+                  <span className="text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap transition">
                     {item.title}
                   </span>
                 </Link>
@@ -95,104 +101,100 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {/* Mobile Navbar */}
-      <nav className="w-full h-12 2xl:h-20 text-white fixed top-0 left-0 z-50 flex items-center justify-between px-4 2xl:flex lg:hidden bg-black">
-        <div className="flex items-center justify-between w-full">
+
+      {/* ===== MOBILE TOP BAR ===== */}
+      <nav className="fixed top-0 left-0 w-full h-12 z-50 flex items-center px-4 bg-black lg:hidden">
+        <CiMenuFries
+          className="text-2xl cursor-pointer"
+          onClick={() => setShow(true)}
+        />
+      </nav>
+
+      {/* OVERLAY */}
+      {show && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => setShow(false)}
+        />
+      )}
+
+      {/* ===== MOBILE SLIDE MENU ===== */}
+      <aside
+        className={`
+          fixed top-0 left-0 z-50 bg-black border-r border-white/20
+          w-48 2xl:w-96
+          transition-transform duration-500 ease-out
+          ${show ? "translate-x-0" : "-translate-x-full"}
+          ${currentTrack ? "min-h-[calc(100dvh-3rem)]" : "min-h-dvh"}
+          overflow-y-auto
+        `}
+      >
+        <div className="flex flex-col min-h-dvh px-5 pt-4 pb-5">
           <CiMenuFries
-            className="cursor-pointer text-2xl 2xl:text-5xl"
-            onClick={() => setShow(!show)}
-          />
-        </div>
-        {/* Overlay */}
-        {show && (
-          <div
-            className="fixed inset-0 bg-black/50 z-40"
+            className="text-2xl mb-4 cursor-pointer"
             onClick={() => setShow(false)}
           />
-        )}
-        <div
-          className={`absolute top-0 w-48 2xl:w-96 ${
-            currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"
-          } bg-black border-r border-white/20 z-50 transition-transform duration-500 ease-out ${
-            show ? "translate-x-0" : "-translate-x-full"
-          } left-0`}
-        >
-          <div className="flex flex-col gap-5 h-full pb-5 pt-4 px-5">
-            <CiMenuFries
-              className="cursor-pointer text-2xl 2xl:text-5xl"
-              onClick={() => setShow(!show)}
-            />
-            <div className="flex flex-col justify-between h-full">
-              <div className="flex flex-col gap-1">
-                <div className="flex flex-col gap-1">
-                  <div className="border-b border-white/20 pb-2 2xl:pb-4">
-                    <div className="w-30 2xl:w-70 transition-all duration-300 flex items-center">
-                      <img src={logo2} alt="FullLogo" className="h-full" />
-                    </div>
-                  </div>
-                  {navbarList.map((item) => {
+
+          <div className="flex flex-col justify-between flex-1">
+            <div className="flex flex-col gap-1">
+              <div className="border-b border-white/20 pb-2 mb-2">
+                <img src={logo2} alt="FullLogo" className="w-30" />
+              </div>
+
+              {navbarList.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.id}
+                    to={item.link}
+                    onClick={() => setShow(false)}
+                    className="h-10 flex items-center gap-4 hover:bg-white/10"
+                  >
+                    <Icon className="text-lg w-5 shrink-0" />
+                    <span className="text-xs">{item.title}</span>
+                  </Link>
+                );
+              })}
+
+              {user?.role === "ADMIN" && (
+                <div className="border-t border-white/20 pt-1">
+                  {adminNavbarList.map((item) => {
                     const Icon = item.icon;
                     return (
                       <Link
                         key={item.id}
-                        className="w-full h-10 2xl:h-20 flex gap-4 2xl:gap-6 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center"
-                        title={item.title}
                         to={item.link}
                         onClick={() => setShow(false)}
+                        className="h-10 flex items-center gap-4 hover:bg-white/10"
                       >
-                        <Icon className="text-lg w-5 2xl:text-5xl 2xl:w-12 flex-shrink-0" />
-                        <span className="text-xs 2xl:text-2xl whitespace-nowrap">
-                          {item.title}
-                        </span>
+                        <Icon className="text-lg w-5 shrink-0" />
+                        <span className="text-xs">{item.title}</span>
                       </Link>
                     );
                   })}
                 </div>
-                {user?.role === "ADMIN" && (
-                  <div className="flex flex-col gap-1 border-t border-white/20 pt-1 2xl:pt-3">
-                    {adminNavbarList.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <Link
-                          key={item.id}
-                          className="w-full h-10 2xl:h-20 flex gap-4 2xl:gap-6 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center"
-                          title={item.title}
-                          to={item.link}
-                          onClick={() => setShow(false)}
-                        >
-                          <Icon className="text-lg w-5 2xl:text-5xl 2xl:w-12 flex-shrink-0" />
-                          <span className="text-xs 2xl:text-2xl whitespace-nowrap">
-                            {item.title}
-                          </span>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-              <div className="flex flex-col gap-1">
-                {contactList.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <Link
-                      key={item.id}
-                      className="w-full h-10 2xl:h-18 flex gap-4 cursor-pointer overflow-hidden hover:bg-white/10 flex items-center"
-                      title={item.title}
-                      to={item.link}
-                      onClick={() => setShow(false)}
-                    >
-                      <Icon className="text-lg w-5 2xl:text-6xl 2xl:w-12 flex-shrink-0" />
-                      <span className="text-xs 2xl:text-2xl whitespace-nowrap">
-                        {item.title}
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-1">
+              {contactList.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.id}
+                    to={item.link}
+                    onClick={() => setShow(false)}
+                    className="h-10 flex items-center gap-4 hover:bg-white/10"
+                  >
+                    <Icon className="text-lg w-5 shrink-0" />
+                    <span className="text-xs">{item.title}</span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
-      </nav>
+      </aside>
     </header>
   );
 };
