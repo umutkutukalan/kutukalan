@@ -49,6 +49,16 @@ body {
   list-style: none;
 }
 
+/* Scrollbar'ı gizle */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes tech-marquee {
   from {
     transform: translateX(0);

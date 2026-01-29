@@ -36,7 +36,7 @@ const About = () => {
     <div
       className={` xl:px-5 xl:pb-5 ${
         currentTrack ? "pb-20" : "pb-5"
-      } flex flex-col h-full`}
+      } flex flex-col`}
     >
       <AboutHeader userResponse={userResponse} />
       <AboutParagraphs

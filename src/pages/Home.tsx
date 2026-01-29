@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <section className="flex flex-col h-full">
-      <div className="w-full h-full overflow-y-auto">
+      <div className="w-full h-full overflow-y-auto hide-scrollbar">
         <div
           className={`w-full pt-12 md:pt-5 ${
             currentTrack ? "pb-15" : ""
