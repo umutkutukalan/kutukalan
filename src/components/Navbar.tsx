@@ -128,19 +128,19 @@ const Navbar = () => {
         className={`
           fixed top-0 left-0 z-50 bg-black border-r border-white/20
           w-48 2xl:w-96
-          transition-transform duration-500 ease-out
+          transition-transform duration-500 ease-out xl:min-h-dvh
           ${show ? "translate-x-0" : "-translate-x-full"}
-          ${currentTrack ? "min-h-[calc(100dvh-3rem)]" : "min-h-dvh"}
+          ${currentTrack ? "h-[calc(100dvh-2rem)]" : "min-h-dvh"}
           overflow-y-auto
         `}
       >
-        <div className="flex flex-col min-h-dvh px-5 pt-4 pb-5">
+        <div className="flex flex-col h-full px-5 pt-4 pb-5">
           <CiMenuFries
             className="text-2xl mb-4 cursor-pointer"
             onClick={() => setShow(false)}
           />
 
-          <div className="flex flex-col justify-between flex-1">
+          <div className="h-full flex flex-col justify-between flex-1">
             <div className="flex flex-col gap-1">
               <div className="border-b border-white/20 pb-2 mb-2">
                 <img src={logo2} alt="FullLogo" className="w-30" />
