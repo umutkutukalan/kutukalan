@@ -66,7 +66,7 @@ const MusicBar = () => {
 
   return (
     <>
-      <div className="w-full h-full rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
+      <div className="w-full h-150 rounded-xl p-4 flex flex-col justify-between overflow-hidden relative">
         <div className="absolute inset-0">
           <img
             src={displayTrack?.musicImg}

@@ -16,11 +16,11 @@ import BlogDetail from "./pages/BlogDetail";
 import GlobalMusicBar from "./components/musics/GlobalMusicBar";
 import { useAudioPlayer } from "./context/AudioPlayerContext";
 import { useAbout } from "./hooks/useAbout";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useMusicContext } from "./hooks/useMusicContext";
 import Settings from "./pages/Settings";
 import About from "./pages/About";
 import CreateMobilApp from "./pages/CreateMobilApp";
+import LoadingScreen from "./components/LoadingScreen";
 
 export const App = () => {
   const { user } = useUser();
@@ -36,22 +36,13 @@ export const App = () => {
   }
 
   if (loading || aboutLoading) {
-    return (
-      <div className="w-full h-screen flex items-center justify-center">
-        <DotLottieReact
-          className="w-20 h-20"
-          src="https://lottie.host/c13e1dc0-f7ee-4254-835f-f023d14021b1/CsVgXfNTS6.lottie"
-          loop
-          autoplay
-        />
-      </div>
-    );
+    return <LoadingScreen key={location.pathname} />;
   }
 
   return (
     <>
       <div
-        className="w-full flex relative focus:outline-none focus-visible:outline-none"
+        className="w-full flex relative focus:outline-none focus-visible:outline-none h-full"
         tabIndex={0}
         onKeyDown={(e) => {
           if (
@@ -69,7 +60,7 @@ export const App = () => {
         }}
       >
         <Navbar />
-        <div className="w-full lg:pl-15 2xl:pl-0 xl:pr-[clamp(15rem,30vw,45rem)] relative">
+        <div className="w-full h-full lg:pl-15 2xl:pl-0 xl:pr-[clamp(15rem,30vw,45rem)] relative">
           <Routes>
             <Route
               path="/"

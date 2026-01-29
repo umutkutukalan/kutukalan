@@ -13,9 +13,15 @@ const Navbar = () => {
 
   /* 🔒 Mobile menu açıkken body scroll kilidi */
   useEffect(() => {
-    document.body.style.overflow = show ? "hidden" : "auto";
+    if (typeof document === "undefined") return;
+
+    const body = document.body;
+    if (!body) return;
+
+    body.style.overflow = show ? "hidden" : "";
+
     return () => {
-      document.body.style.overflow = "auto";
+      body.style.overflow = "";
     };
   }, [show]);
 
@@ -27,8 +33,7 @@ const Navbar = () => {
           w-15 hover:w-50 group transition-all
           fixed top-0 left-0 z-50
           text-white py-5
-          ${currentTrack ? "h-[calc(100vh-3rem)]" : "h-screen"}
-          xl:min-h-dvh
+          ${currentTrack ? "h-full" : "h-full"}
           2xl:hidden lg:block hidden
         `}
       >

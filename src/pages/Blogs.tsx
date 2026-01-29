@@ -33,7 +33,7 @@ const Blogs = () => {
   } else if (blogs.length === 0) {
     return (
       <div
-        className={`pt-15 px-5 sm:px-10 xl:pb-5 ${currentTrack ? "pb-10" : ""}`}
+        className={`pt-15 px-5 sm:px-10 xl:pb-5 ${currentTrack ? "pb-10" : ""} h-full`}
       >
         <BlogHeader />
         <div className="w-full h-full flex flex-col gap-1 mt-5">

@@ -29,14 +29,14 @@ const About = () => {
   // const aboutBox3 = useRef<HTMLLIElement>(null);
 
   if (getLoading) {
-    return <LoadingScreen key={location.pathname}/>;
+    return <LoadingScreen key={location.pathname} />;
   }
 
   return (
     <div
-      className={`xl:px-5 xl:pb-5 ${
+      className={` xl:px-5 xl:pb-5 ${
         currentTrack ? "pb-20" : "pb-5"
-      } flex flex-col`}
+      } flex flex-col h-full`}
     >
       <AboutHeader userResponse={userResponse} />
       <AboutParagraphs
