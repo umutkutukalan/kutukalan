@@ -26,4 +26,5 @@ jobs:
         key: ${{ secrets.VPS_SSH_KEY }}
         source: "dist/*"
         target: "/opt/kutukalancom/frontend"
+        rm: true
     
