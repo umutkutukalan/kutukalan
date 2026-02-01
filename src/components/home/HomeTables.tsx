@@ -72,7 +72,7 @@ const HomeTables = () => {
             <p className="text-sm max-w-md 2xl:max-w-lg text-white/70">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
               dolorem doloribus quidem sint nobis, placeat quia! Nemo asperiores
-              ex eaque? deneme
+              ex eaque?
             </p>
           </div>
         </div>
