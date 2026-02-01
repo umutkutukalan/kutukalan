@@ -1,4 +1,4 @@
-import "./musicList.css";
+import "./musiclist.css";
 import { useEffect, useState } from "react";
 import { useMusicContext } from "../../hooks/useMusicContext";
 import { getRandomItems } from "../../utils/getRandomItems";

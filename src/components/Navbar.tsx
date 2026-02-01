@@ -130,7 +130,7 @@ const Navbar = () => {
           w-48 2xl:w-96
           transition-transform duration-500 ease-out xl:min-h-dvh
           ${show ? "translate-x-0" : "-translate-x-full"}
-          ${currentTrack ? "h-[calc(100dvh-2rem)]" : "min-h-dvh"}
+          ${currentTrack ? "h-[calc(100dvh-2rem)]" : "h-dvh"}
           overflow-y-auto
         `}
       >
