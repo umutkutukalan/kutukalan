@@ -9,6 +9,10 @@ export interface Tech {
 }
 
 const HomeTables = () => {
+
+  console.log("Mode:" + import.meta.env.MODE);
+  console.log("API URL:" + import.meta.env.VITE_API_URL);
+
   return (
     <div
       className="w-full h-[clamp(240px,20vw,600px)]
