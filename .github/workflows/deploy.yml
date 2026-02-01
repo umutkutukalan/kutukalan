@@ -21,9 +21,9 @@ jobs:
     - name: Deploy to server via SCP
       uses: appleboy/scp-action@v0.1.7
       with:
-        username: ${{secrets.VPS_USER}}
-        server: ${{secrets.VPS_IP}}
-        ssh_private_key: ${{secrets.VPS_SSH_KEY}}
-        local_path: dist/*
-        remote_path: /opt/kutukalancom/frontend
+        host: ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        source: "dist/*"
+        target: "/opt/kutukalancom/frontend"
     
