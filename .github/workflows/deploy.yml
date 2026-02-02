@@ -20,5 +20,7 @@ jobs:
     - run: npm run build --if-present
     - name: Deploy Frontend
       run: |
+        echo "Cleaning frontend directory"
         rm -rf /opt/kutukalancom/frontend/*
-        cp -r dist/* /opt/kutukalancom/frontend
+        echo "Copying build files"
+        cp -r dist/* /opt/kutukalancom/frontend/
