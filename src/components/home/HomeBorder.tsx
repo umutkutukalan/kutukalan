@@ -44,7 +44,7 @@ const HomeBorder = () => {
   };
 
   return (
-    <div className="w-full h-[clamp(350px,24vw,400px)] 3xl:h-[clamp(600px,24vw,700px)] 4xl:h-[clamp(600px,24vw,700px)] relative flex flex-col gap-1 oswald-300">
+    <div className="w-full relative flex flex-col gap-1 oswald-300">
       {/* <div className="w-full flex items-center justify-between">
         <h2 className="text-lg">PROJELER</h2>
         <div className="flex items-center gap-1">
@@ -53,7 +53,7 @@ const HomeBorder = () => {
         </div>
       </div> */}
       <div className="w-full h-full overflow-hidden shadow-2xl relative gap-2 grid md:grid-cols-2 auto-rows-fr">
-        <div className="relative w-full h-full overflow-hidden grid grid-cols-2 gap-2 items-center">
+        <div className="relative w-full h-[clamp(350px,24vw,400px)] 3xl:h-[clamp(600px,24vw,700px)] 4xl:h-[clamp(600px,24vw,700px)] overflow-hidden grid grid-cols-2 gap-2 items-center">
           <div className="rounded-xl bg-white/10 h-full w-full relative overflow-hidden">
             {currentAbout ? (
               <div className="relative h-full w-full">
@@ -184,7 +184,7 @@ const HomeBorder = () => {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-full overflow-hidden rounded-xl oswald-400 md:flex hidden">
+        <div className="sm:h-full h-[clamp(280px,32vw,300px)] w-full overflow-hidden md:rounded-xl oswald-400 relative">
           {/* grid grid-rows-2 gap-2 */}
           <div className="w-full h-full overflow-hidden border border-white/10 text-black relative group">
             <img
