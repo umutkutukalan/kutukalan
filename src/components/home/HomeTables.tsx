@@ -24,7 +24,7 @@ const HomeTables = () => {
       </div>
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="w-full h-7/8 py-3 sm:px-5 px-3 flex flex-col gap-2 relative">
-          <div className="h-full w-full flex flex-col gap-3 text-left z-10">
+          <div className="h-full w-full flex flex-col sm:justify-start justify-center gap-3 text-left z-10">
             <div className="flex flex-col gap-3">
               <h1 className="text-sm sm:text-base 2xl:text-3xl oswald-300">
                 Umut Kütükalan | Yazılım Mühendisi
@@ -34,13 +34,13 @@ const HomeTables = () => {
                 className="
                   md:h-25
                   xl:h-26
-                  leading-10
+                  leading-8
                   md:leading-12
                   xl:leading-12
-                  text-3xl
+                  text-2xl
                   md:text-[2.5rem]
                   2xl:text-7xl
-                  max-w-[15rem]
+                  max-w-[14rem]
                   md:max-w-[25rem]
                   xl:max-w-[25rem]
                   2xl:max-w-[48rem]
@@ -52,7 +52,7 @@ const HomeTables = () => {
               </h2>
             </div>
             <p
-              className="text-xs max-w-[15rem] sm:max-w-sm 2xl:max-w-lg
+              className="text-[10px] sm:text-xs max-w-[15rem] sm:max-w-sm 2xl:max-w-lg
             bg-gradient-to-r from-white via-gray-250 to-gray-400 text-transparent bg-clip-text
             "
             >
