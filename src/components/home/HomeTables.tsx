@@ -27,7 +27,7 @@ const HomeTables = () => {
           <div className="h-full w-full flex flex-col gap-3 text-left z-10">
             <div className="flex flex-col gap-3">
               <h1 className="text-sm sm:text-base 2xl:text-3xl oswald-300">
-                Umut Kütükalan | Yazılım Mühendisii
+                Umut Kütükalan | Yazılım Mühendisi
               </h1>
 
               <h2
