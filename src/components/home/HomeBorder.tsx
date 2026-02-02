@@ -184,7 +184,7 @@ const HomeBorder = () => {
             </div>
           </div>
         </div>
-        <div className="sm:h-full h-[clamp(280px,32vw,300px)] w-full overflow-hidden md:rounded-xl oswald-400 relative">
+        <div className="sm:h-full h-[clamp(280px,32vw,300px)] w-full overflow-hidden md:rounded-xl oswald-400 relative md:flex hidden">
           {/* grid grid-rows-2 gap-2 */}
           <div className="w-full h-full overflow-hidden border border-white/10 text-black relative group">
             <img
