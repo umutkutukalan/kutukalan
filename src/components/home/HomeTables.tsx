@@ -1,6 +1,6 @@
 import type { IconType } from "react-icons";
 import { technologiesForHome } from "../../constants";
-import { gray, mor } from "../../utils";
+import { manrunning3 } from "../../utils";
 
 export interface Tech {
   id: number;
@@ -9,74 +9,55 @@ export interface Tech {
 }
 
 const HomeTables = () => {
-
-  console.log("Mode:" + import.meta.env.MODE);
-  console.log("API URL:" + import.meta.env.VITE_API_URL);
-
   return (
     <div
-      className="w-full h-[clamp(240px,20vw,600px)]
+      className="w-full h-[clamp(300px,20vw,600px)]
  overflow-hidden relative"
     >
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/70"></div>
-        <img src={mor} alt="" className="object-cover w-full h-full" />
+        <img
+          src={manrunning3}
+          alt=""
+          className="object-cover w-full h-full object-[center_35%]"
+        />
       </div>
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="w-full h-7/8 py-3 px-5 flex flex-col gap-2 relative">
-          <div className="absolute right-30 top-10">
-            <div className="w-16 h-16 rounded-full border border-white/70 overflow-hidden">
-              <img src={gray} alt="" className="w-full h-full" />
-            </div>
-          </div>
-          <div className="absolute right-50 top-30">
-            <div className="w-16 h-16 rounded-full border border-white/70 overflow-hidden">
-              <img src={gray} alt="" className="w-full h-full" />
-            </div>
-          </div>
-          <div className="absolute right-20 top-35">
-            <div className="w-16 h-16 rounded-full border border-white/70 overflow-hidden">
-              <img src={gray} alt="" className="w-full h-full" />
-            </div>
-          </div>
+          <div className="h-full w-full flex flex-col gap-2 text-left z-10">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-sm sm:text-base 2xl:text-3xl oswald-300">
+                Umut Kütükalan | Yazılım Mühendisi
+              </h1>
 
-          {/* <div className="h-full absolute left-20 top-1/2 -translate-y-1/2">
-            <img
-              src={abstract1}
-              alt=""
-              className="h-[clamp(240px,20vw,600px)] w-[clamp(240px,20vw,600px)] object-cover brightness-30"
-            />
-          </div>
-          <div className="absolute right-25 top-10">
-            <img
-              src={abstract2}
-              alt=""
-              className="h-[clamp(240px,20vw,600px)] w-[clamp(240px,20vw,600px)] object-cover brightness-30 -rotate-50"
-            />
-          </div> */}
-          <div className="h-full w-full flex flex-col items-start  gap-2 text-left z-10">
-            <h1 className="text-sm sm:text-base 2xl:text-3xl oswald-300">
-              Umut Kütükalan | Yazılım Mühendisi
-            </h1>
-
-            <h2
-              className="
+              <h2
+                className="
+                  xl:h-26
+                  leading-12
+                  md:leading-16
+                  xl:leading-12
                   text-4xl
                   md:text-5xl
+                  xl:text-[2.6rem]
                   2xl:text-7xl
                   max-w-[20rem]
-                  md:max-w-[40rem]
-                  xl:max-w-[35rem]
+                  md:max-w-[30rem]
+                  xl:max-w-[25rem]
                   2xl:max-w-[48rem]
                   oswald-400
+                  bg-gradient-to-r from-white via-gray-350 to-gray-500 text-transparent bg-clip-text
                 "
+              >
+                ÖZEN, SÜREKLİLİK VE AMAÇ ÜZERİNE...
+              </h2>
+            </div>
+            <p
+              className="text-xs max-w-[15rem] sm:max-w-sm 2xl:max-w-lg
+            bg-gradient-to-r from-white via-gray-250 to-gray-400 text-transparent bg-clip-text
+            "
             >
-              BLENDING ART, CODE AND PURPOSE
-            </h2>
-            <p className="text-sm max-w-md 2xl:max-w-lg text-white/70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-              dolorem doloribus quidem sint nobis, placeat quia! Nemo asperiores
-              ex eaque?
+              Zamanla değer kazanan, özen ve süreklilikle şekillenen işler,
+              yalnızca çalışmakla kalmayıp anlam taşıyor.
             </p>
           </div>
         </div>

@@ -48,7 +48,7 @@ const MusicQueueList = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 text-white pb-10">
+    <div className="flex flex-col gap-4 text-white">
       <div className="w-full flex items-center justify-between">
         <h2 className="text-[clamp(0.75rem,4vw,1rem)] 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)]">
           MUZIKLER
