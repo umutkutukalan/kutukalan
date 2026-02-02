@@ -9,8 +9,6 @@ const HomeBorder = () => {
   const { abouts } = useAboutContext();
   const { mobilApps } = useGetMobilApps();
 
-  console.log("Mobil Apps in HomeBorder:", mobilApps);
-
   // Carousel state for about cards
   const [aboutCurrentIdx, setAboutCurrentIdx] = useState(0);
   const [mobilCurrentIdx, setMobilCurrentIdx] = useState(0);

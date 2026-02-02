@@ -10,8 +10,7 @@ export const useCreateMobilApp = () => {
   const createMobileApp = async (appData: MobilAppData) => {
     try {
       setLoading(true);
-      const response = await CreateMobilAppService(appData);
-      console.log("Mobile app created successfully", response);
+      await CreateMobilAppService(appData);
     } catch (error) {
       console.error("Error creating mobile app:", error);
       throw error;

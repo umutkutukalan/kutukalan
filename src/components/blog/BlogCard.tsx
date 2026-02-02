@@ -32,8 +32,6 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
     }
   }, [deleteShow]);
 
-  console.log("BlogCard render:", blog);
-
   return (
     <>
       <div

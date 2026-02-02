@@ -12,9 +12,7 @@ const PlaylistDetail = () => {
     getPlaylistDetails(1);
   }, []);
 
-  useEffect(() => {
-    // console.log("Playlist Details:", playlist);
-  }, [playlist]);
+  useEffect(() => {}, [playlist]);
 
   if (isLoading) {
     return <LoadingScreen key={location.pathname} />;

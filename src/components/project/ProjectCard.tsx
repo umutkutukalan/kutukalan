@@ -32,8 +32,6 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
   const navigate = useNavigate();
   const { formatRelativeTime } = RelativeTime();
 
-  console.log("ProjectCard render:", project);
-
   const { deleteProject } = useDeleteProject(onProjectDeleted);
   const [deleteShow, setDeleteShow] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);

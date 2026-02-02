@@ -7,7 +7,6 @@ export const useMusicDelete = () => {
     try {
       setIsLoading(true);
       await MusicDeleteService(musicId);
-      console.log("Music deleted successfully");
       window.location.reload();
     } catch (error) {
       console.error("Failed to delete music:", error);

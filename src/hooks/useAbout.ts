@@ -12,8 +12,7 @@ export const useAbout = () => {
   // hakkımda içeriği oluşturma
   const createAbout = async (aboutData: AboutData) => {
     try {
-      const response = await CreateAbout(aboutData);
-      console.log("About entry created:", response);
+      await CreateAbout(aboutData);
     } catch (error) {
       console.error("Error creating about entry:", error);
     }

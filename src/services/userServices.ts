@@ -17,7 +17,7 @@ export const createUserService = async (userData: RegisterUserData) => {
     });
     return response.data;
   } catch (error) {
-    console.log("Error creating user:", error);
+    console.error("Kullanıcı oluşturulurken hata - services:", error);
     throw error;
   }
 };
@@ -44,7 +44,7 @@ export const getUserByIdService = async (userId: number) => {
     const response = await axios.get(`${API_URL}/users/${userId}`);
     return response.data;
   } catch (error) {
-    console.log("Error fetching user by ID:", error);
+    console.error("Kullanıcı ID ile getirilirken hata - services:", error);
     throw error;
   }
 };

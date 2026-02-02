@@ -7,8 +7,7 @@ export const useMusics = () => {
   const createMusic = async (musicData: FormData) => {
     try {
       setLoading(true);
-      const response = await createMusicService(musicData);
-      console.log("Music created successfully:", response.data);
+      await createMusicService(musicData);
     } catch (error) {
       console.error("Error creating music:", error);
       setError(error);

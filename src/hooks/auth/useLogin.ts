@@ -11,7 +11,6 @@ export const useLogin = () => {
   const login = async (userData: LoginUserData) => {
     try {
       const response = await loginService(userData);
-      console.log("Giriş başarılı:", response);
       setUser(response.user);
       navigate("/"); // Giriş başarılıysa ana sayfaya yönlendir;
       return response; // return the login response so callers can use it

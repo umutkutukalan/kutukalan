@@ -24,9 +24,7 @@ const Settings = () => {
   const [github, setGithub] = useState("");
   const [instagram, setInstagram] = useState("");
 
-  useEffect(() => {
-    // console.log("User in Settings:", user);
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   return (
     <>
@@ -51,7 +49,6 @@ const Settings = () => {
 
                 const base64 = reader.result as string;
                 setProfileImage(base64); // Base64'ü state'e kaydet
-                console.log("Profil resmi base64 olarak kaydedildi");
               };
               reader.readAsDataURL(file);
               e.target.value = "";

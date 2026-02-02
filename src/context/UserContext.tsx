@@ -40,21 +40,16 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        console.log("UserContext: Fetching user from cookie...");
-        
-        // Cookie-based authentication
         const response = await axios.get(`${API_URL}/users/me`, {
-          withCredentials: true, // HttpOnly cookie gönder
+          withCredentials: true,
         });
-        
-        console.log("UserContext: User data from cookie:", response.data);
-        setUser(response.data); // ✅ User var = authenticated
-      } catch (error) {
-        console.error("UserContext: Kullanıcı alınamadı:", error);
-        console.log("UserContext: Cookie authentication failed");
-        setUser(null); // ❌ User yok = not authenticated
+        setUser(response.data);
+      } catch (error: unknown) {
+        if (axios.isAxiosError(error) && error.response?.status !== 401) {
+          console.error("UserContext: Kullanıcı alınamadı:", error);
+        }
+        setUser(null); // user yok = not authenticated
       } finally {
-        console.log("UserContext: Loading finished");
         setLoading(false);
       }
     };

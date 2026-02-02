@@ -19,7 +19,6 @@ export const updatePlaylistDetailsService = async (
         withCredentials: true,
       }
     );
-    console.log("Playlist details updated:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error updating playlist details:", error);

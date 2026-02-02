@@ -92,7 +92,6 @@ const PlaylistSettings = () => {
 
               const base64 = reader.result as string;
               setPlaylistImage(base64); // Base64'ü state'e kaydet
-              console.log("Playlist resmi base64 olarak kaydedildi");
             };
             reader.readAsDataURL(file);
             e.target.value = "";
@@ -142,7 +141,6 @@ const PlaylistSettings = () => {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Açıklama ekle..."
             />
-            
           </div>
         </div>
         <div className="w-full md:w-auto flex items-end justify-end">

@@ -15,7 +15,6 @@ export const useGetMobilApps = () => {
     try {
       setIsLoading(true);
       const response = await GetMobilAppService();
-      console.log("Mobil uygulamalar alındı:", response);
       setMobilApps(response);
     } catch (error) {
       console.error("Mobil uygulamalar alınırken bir hata oluştu:", error);

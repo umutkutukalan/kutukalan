@@ -15,7 +15,6 @@ export const useUsers = () => {
     try {
       setCreateLoading(true);
       const response = await createUserService(userData);
-      console.log("User created successfully:", response);
       return response;
     } catch (error) {
       console.error("Error creating user:", error);

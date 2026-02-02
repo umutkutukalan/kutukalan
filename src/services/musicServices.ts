@@ -24,7 +24,6 @@ export const getAllMusicsService = async (page = 0, size = 5) => {
         withCredentials: true, // HttpOnly cookie gönder
       }
     );
-    // console.log("Müzikler çekildi:", response.data); // Debug için kaldırıldı
     return response;
   } catch (error) {
     console.error("müzikler çekilirken hata - services:", error);

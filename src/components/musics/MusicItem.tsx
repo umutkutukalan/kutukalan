@@ -95,7 +95,6 @@ const MusicItem = ({
 
   const handleConfirmDelete = (musicId: number) => {
     deleteMusic(musicId);
-    console.log("Deleting music with ID:", musicId);
     setShowConfirm(false);
   };
 

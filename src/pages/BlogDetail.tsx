@@ -18,12 +18,6 @@ const BlogDetail = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  console.log("Blog Detail Page - Blog Data:", blog);
-  console.log(
-    "Blog images sizes",
-    blog.contentItems.map((item) => item.size),
-  );
-
   return (
     <div
       className={`w-full pt-[clamp(3.75rem,4vw,3.75rem)] lg:pt-[clamp(2.5rem,4vw,2.5rem)] 2xl:pt-[clamp(5rem,4vw,5rem)] xl:pb-[clamp(2.5rem,4vw,2.5rem)] flex items-center justify-center ${

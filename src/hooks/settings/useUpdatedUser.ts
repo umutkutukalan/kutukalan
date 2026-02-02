@@ -38,7 +38,6 @@ export const useUpdatedUser = () => {
         instagram
       );
       setUpdateLoading(true);
-      console.log("User updated successfully:", response);
       return response;
     } catch (error) {
       setError(error as Error);

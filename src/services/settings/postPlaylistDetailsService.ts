@@ -15,7 +15,6 @@ export const postPlaylistDetailsService = async (
       `${API_URL}/playlist-details`,
       playlistData
     );
-    console.log("Playlist details posted:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error posting playlist details:", error);

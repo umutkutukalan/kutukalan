@@ -83,9 +83,7 @@ const UserUpdated = ({
 
   const { updateUser, error, updateLoading } = useUpdatedUser();
 
-  useEffect(() => {
-    console.log("UserUpdated component mounted or user changed:", user);
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   useEffect(() => {
     if (user) {
@@ -137,7 +135,7 @@ const UserUpdated = ({
         aboutMeItems,
         linkedin,
         github,
-        instagram
+        instagram,
       );
       if (response) {
         window.location.reload();

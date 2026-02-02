@@ -74,7 +74,6 @@ const CreateContent = () => {
 
   useEffect(() => {
     textRefs.current = textRefs.current.slice(0, contentList.length);
-    // console.log(contentList);
   }, [contentList]);
 
   const adjustAllHeights = () => {
@@ -138,15 +137,9 @@ const CreateContent = () => {
       createProject(projectData);
     } else if (contentType === "blog") {
       createBlog(blogData);
-      console.log("blogData:", blogData);
     }
   };
-
-  // console.log("projectTechnologies:", projectTechnologies);
-  // console.log("contentItems:", contentList);
-  // console.log("githubUrl:", githubUrl);
-  // console.log("liveUrl:", liveUrl);
-  // console.log("title:", title);
+  
   return (
     <div
       className="p-20 relative"

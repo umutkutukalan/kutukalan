@@ -23,8 +23,6 @@ const ProjectDetail = () => {
   // handleViewProject ile gönderilen state üzerinden proje verisini al
   const project: Project = location.state?.project;
 
-  console.log("Project Detail: ", project);
-
   useEffect(() => {
     // Sayfa yüklendiğinde başa kaydır
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
