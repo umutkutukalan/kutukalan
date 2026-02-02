@@ -11,7 +11,7 @@ export interface Tech {
 const HomeTables = () => {
   return (
     <div
-      className="w-full h-[clamp(250px,20vw,600px)]
+      className="w-full h-[clamp(200px,32vw,600px)]
  overflow-hidden relative"
     >
       <div className="absolute inset-0">
@@ -24,9 +24,9 @@ const HomeTables = () => {
       </div>
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="w-full h-7/8 py-3 sm:px-5 px-3 flex flex-col gap-2 relative">
-          <div className="h-full w-full flex flex-col sm:justify-start justify-center gap-3 text-left z-10">
-            <div className="flex flex-col gap-3">
-              <h1 className="text-sm sm:text-base 2xl:text-3xl oswald-300">
+          <div className="h-full w-full flex flex-col gap-2 text-left z-10">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-xs sm:text-base 2xl:text-3xl oswald-300">
                 Umut Kütükalan | Yazılım Mühendisi
               </h1>
 
