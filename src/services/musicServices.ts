@@ -4,9 +4,6 @@ import { API_URL } from "./config";
 export const createMusicService = async (musicData: FormData) => {
   try {
     const response = await axios.post(`${API_URL}/musics/upload`, musicData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
       withCredentials: true, // HttpOnly cookie gönder
     });
     return response;
@@ -22,7 +19,7 @@ export const getAllMusicsService = async (page = 0, size = 5) => {
       `${API_URL}/musics?page=${page}&size=${size}&sort=createdAt,desc`,
       {
         withCredentials: true, // HttpOnly cookie gönder
-      }
+      },
     );
     return response;
   } catch (error) {

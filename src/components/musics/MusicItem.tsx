@@ -13,7 +13,7 @@ interface Music {
   musicImg?: string;
   producer?: string;
   album?: string;
-  featuredArtist?: string;
+  featuredArtists?: string[];
   releaseDate?: string;
   createdAt?: string;
   [key: string]: unknown;
@@ -58,6 +58,8 @@ const MusicItem = ({
   const { currentTrack } = useAudioPlayer();
 
   const isContextMenuOpen = activeContextMenuId === music.id;
+
+  console.log("music: " , music);
 
   // Context menüyü kapatma
   useEffect(() => {
@@ -166,15 +168,15 @@ const MusicItem = ({
             </div>
             <div className="flex flex-col">
               <h1
-                className={`text-[clamp(0.75rem,4vw,0.850rem)] 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] ${
+                className={`text-[clamp(0.75rem,4vw,0.9rem)] 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] ${
                   currentTrack?.id === music.id ? "text-green-500" : ""
                 }`}
               >
                 {music.title}
               </h1>
-              <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-gray-500">
+              <p className="text-[clamp(0.5rem,4vw,0.8rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-gray-500">
                 {" "}
-                {music.producer}{" "}
+                {music.producer}{music.featuredArtists && music.featuredArtists.length > 0 && `, ${music.featuredArtists.join(", ")}`}
               </p>
             </div>
           </div>

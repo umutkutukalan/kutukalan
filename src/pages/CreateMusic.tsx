@@ -13,7 +13,7 @@ const CreateMusic = () => {
     musicImg: "",
     producer: "",
     album: "",
-    featuredArtist: "",
+    featuredArtists: "",
     releaseDate: "",
   });
   const [musicFile, setMusicFile] = useState<File | null>(null);
@@ -21,9 +21,9 @@ const CreateMusic = () => {
   const [featuredArtistList, setFeaturedArtistList] = useState<string[]>([]);
 
   const handleAddFeaturedArtist = () => {
-    if (!formData.featuredArtist.trim()) return;
-    setFeaturedArtistList((prev) => [...prev, formData.featuredArtist.trim()]);
-    setFormData((prev) => ({ ...prev, featuredArtist: "" }));
+    if (!formData.featuredArtists.trim()) return;
+    setFeaturedArtistList((prev) => [...prev, formData.featuredArtists.trim()]);
+    setFormData((prev) => ({ ...prev, featuredArtists: "" }));
   };
 
   const handleRemoveFeaturedArtist = (index: number) => {
@@ -36,6 +36,7 @@ const CreateMusic = () => {
       ...prev,
       [name]: value,
     }));
+    console.log("formData: ", formData);
   };
 
   const handleMusicFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,7 +65,9 @@ const CreateMusic = () => {
     data.append("musicImg", formData.musicImg); // Base64 image
     data.append("producer", formData.producer); // Producer
     data.append("album", formData.album); // Album
-    data.append("featuredArtist", featuredArtistList.join(", ")); // Featured artists
+    featuredArtistList.forEach((artist) => {
+      data.append("featuredArtists", artist); // Featured artists as multiple entries
+    });
     data.append("releaseDate", formData.releaseDate); // Release date
 
     await createMusic(data);
@@ -112,12 +115,12 @@ const CreateMusic = () => {
             <div className="flex flex-col gap-2 w-full">
               <div className="relative">
                 <input
-                  id="featuredArtist"
-                  name="featuredArtist"
+                  id="featuredArtists"
+                  name="featuredArtists"
                   type="text"
-                  value={formData.featuredArtist}
+                  value={formData.featuredArtists}
                   onChange={handleChange}
-                  placeholder="Featured Artist"
+                  placeholder="Featured Artists"
                   className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 />
                 <div className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-white/70 hover:text-white">
