@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { createMusicService } from "../services/musicServices";
+import { createMusicService, updateMusicService } from "../services/musicServices";
+import type { UpdateMusicPayload } from "../components/musics/MusicForm";
 
 export const useMusics = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | unknown>(null);
+
   const createMusic = async (musicData: FormData) => {
     try {
       setLoading(true);
@@ -16,5 +18,17 @@ export const useMusics = () => {
     }
   };
 
-  return { createMusic, loading, error };
+  const updateMusic = async (musicData: UpdateMusicPayload, musicId: number) => {
+    try {
+      setLoading(true);
+      await updateMusicService(musicData, musicId);
+    } catch (error) {
+      console.error("Error updating music:", error);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { createMusic, updateMusic, loading, error };
 };

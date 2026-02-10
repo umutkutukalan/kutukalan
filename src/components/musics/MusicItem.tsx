@@ -4,6 +4,7 @@ import { FaPause, FaPenToSquare, FaPlay } from "react-icons/fa6";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
 import { FaTrash } from "react-icons/fa";
 import { useMusicDelete } from "../../hooks/music/useMusicDelete";
+import { useNavigate } from "react-router-dom";
 
 // Types
 interface Music {
@@ -56,10 +57,11 @@ const MusicItem = ({
     y: number;
   } | null>(null);
   const { currentTrack } = useAudioPlayer();
+  const navigate = useNavigate();
 
   const isContextMenuOpen = activeContextMenuId === music.id;
 
-  console.log("music: " , music);
+  console.log("music: ", music);
 
   // Context menüyü kapatma
   useEffect(() => {
@@ -176,7 +178,10 @@ const MusicItem = ({
               </h1>
               <p className="text-[clamp(0.5rem,4vw,0.8rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-gray-500">
                 {" "}
-                {music.producer}{music.featuredArtists && music.featuredArtists.length > 0 && `, ${music.featuredArtists.join(", ")}`}
+                {music.producer}
+                {music.featuredArtists &&
+                  music.featuredArtists.length > 0 &&
+                  `, ${music.featuredArtists.join(", ")}`}
               </p>
             </div>
           </div>
@@ -186,7 +191,9 @@ const MusicItem = ({
         <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-left sm:block hidden">
           {formatDate(music.releaseDate || "")}
         </p>
-        <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-left">{formatDuration(duration)}</p>
+        <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-left">
+          {formatDuration(duration)}
+        </p>
       </div>
       {/* Onay kutusu */}
       {showConfirm && (
@@ -223,7 +230,7 @@ const MusicItem = ({
           <div
             className="px-4 py-3 text-sm hover:bg-[#2c2c2c] cursor-pointer flex items-center gap-3 transition-colors"
             onClick={() => {
-              handleDeleteClick();
+              navigate(`/update-music/${music.id}`);
               setContextMenu(null);
               onContextMenuOpen?.(null);
             }}

@@ -18,7 +18,7 @@ export interface Music {
   musicImg?: string;
   producer?: string;
   album?: string;
-  featuredArtist?: string;
+  featuredArtists?: string[];
   releaseDate?: string;
   createdAt?: string;
   [key: string]: unknown;

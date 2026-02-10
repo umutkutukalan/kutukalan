@@ -21,6 +21,7 @@ import Settings from "./pages/Settings";
 import About from "./pages/About";
 import CreateMobilApp from "./pages/CreateMobilApp";
 import LoadingScreen from "./components/LoadingScreen";
+import { UpdateMusic } from "./pages/UpdateMusic";
 
 export const App = () => {
   const { user } = useUser();
@@ -81,6 +82,7 @@ export const App = () => {
                 <Route path="/create-homecard" element={<Admin />} />
                 <Route path="/create-mobile-app" element={<CreateMobilApp />} />
                 <Route path="/create-music" element={<CreateMusic />} />
+                <Route path="/update-music/:id" element={<UpdateMusic />} />
                 <Route path="/create-content" element={<CreateContent />} />
                 <Route path="/settings" element={<Settings />} />
               </>
