@@ -15,7 +15,7 @@ interface Music {
   musicImg?: string; // Base64 string veya URL
   producer?: string;
   album?: string;
-  featuredArtist?: string;
+  featuredArtists?: string[];
   releaseDate?: string;
   createdAt?: string;
   [key: string]: unknown;

@@ -88,6 +88,9 @@ const MusicBar = () => {
             </h2>
             <p className="text-[clamp(0.5rem,4vw,0.850rem)] 3xl:text-[clamp(1rem,4vw,1.25rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] text-white/40">
               {displayTrack?.producer}
+              {displayTrack?.featuredArtists &&
+                displayTrack.featuredArtists.length > 0 &&
+                `, ${displayTrack.featuredArtists.join(", ")}`}
             </p>
           </div>
         </div>

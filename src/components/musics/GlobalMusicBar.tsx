@@ -251,7 +251,12 @@ export const GlobalMusicBar = () => {
                   fontSize: "0.65rem",
                 }}
               >
-                kutukalan
+                <p className="text-white/40">
+                  {currentTrack.producer}
+                  {currentTrack.featuredArtists &&
+                    currentTrack.featuredArtists.length > 0 &&
+                    `, ${currentTrack.featuredArtists.join(", ")}`}
+                </p>
               </div>
             </div>
           </div>
