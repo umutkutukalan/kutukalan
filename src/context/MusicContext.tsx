@@ -61,7 +61,7 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
     setError(null);
 
     try {
-      const response = await getAllMusicsService(page, 6); // Sayfa başına 6 müzik çek
+      const response = await getAllMusicsService(page, 10); // Sayfa başına 6 müzik çek
 
       if (isLoadMore) {
         setMusics((prev) => [
