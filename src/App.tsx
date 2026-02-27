@@ -16,9 +16,8 @@ import BlogDetail from "./pages/BlogDetail";
 import GlobalMusicBar from "./components/musics/GlobalMusicBar";
 import { useAudioPlayer } from "./context/AudioPlayerContext";
 import { useAbout } from "./hooks/useAbout";
-import { useMusicContext } from "./hooks/useMusicContext";
 import Settings from "./pages/Settings";
-import About from "./pages/About";
+import Competencies from "./pages/Competencies";
 import CreateMobilApp from "./pages/CreateMobilApp";
 import LoadingScreen from "./components/LoadingScreen";
 import { UpdateMusic } from "./pages/UpdateMusic";
@@ -27,7 +26,6 @@ export const App = () => {
   const { user } = useUser();
   const { currentTrack, isPlaying, pause, playTrack } = useAudioPlayer();
 
-  const { loading } = useMusicContext();
   const { aboutLoading } = useAbout();
 
   // If current path starts with the secret prefix, render only CreateUser (full page)
@@ -36,7 +34,7 @@ export const App = () => {
     return <CreateUser />;
   }
 
-  if (loading || aboutLoading) {
+  if (aboutLoading) {
     return <LoadingScreen key={location.pathname} />;
   }
 
@@ -76,7 +74,7 @@ export const App = () => {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:blogSlug" element={<BlogDetail />} />
             <Route path="/musics" element={<Musics />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/competencies" element={<Competencies />} />
             {user?.role === "ADMIN" && (
               <>
                 <Route path="/create-homecard" element={<Admin />} />

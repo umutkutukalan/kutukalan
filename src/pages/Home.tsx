@@ -1,3 +1,4 @@
+import Footer from "../components/footer/Footer";
 import HomeBorder from "../components/home/HomeBorder";
 import HomeTables from "../components/home/HomeTables";
 import HomeVideos from "../components/home/HomeVideos";
@@ -24,6 +25,7 @@ const Home = () => {
           <HomeTables />
           <HomeVideos />
           <HomeBorder />
+          <Footer />
           {/* <div
             className="xl:h-140 lg:h-120 sm:h-100 h-60 w-full overflow-hidden
           "

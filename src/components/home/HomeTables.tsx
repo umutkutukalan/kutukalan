@@ -62,7 +62,7 @@ const HomeTables = () => {
                   bg-gradient-to-r from-white via-gray-350 to-gray-500 text-transparent bg-clip-text
                 "
               >
-                ÖZEN, SÜREKLİLİK VE AMAÇ ÜZERİNE...
+                ÖZEN, SÜREKLİLİK VE AMAÇ ÜZERİNE
               </h2>
             </div>
             <p

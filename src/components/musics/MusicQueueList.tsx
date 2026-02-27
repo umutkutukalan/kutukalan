@@ -1,19 +1,21 @@
 import "./musiclist.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMusicContext } from "../../hooks/useMusicContext";
 import { getRandomItems } from "../../utils/getRandomItems";
 import { IoMdPause, IoMdPlay } from "react-icons/io";
 import { LuRefreshCw } from "react-icons/lu";
-import { useAudioPlayer } from "../../context/AudioPlayerContext";
+import { useAudioPlayerControls } from "../../context/AudioPlayerContext";
 
 const MusicQueueList = () => {
   const { musics } = useMusicContext();
-  const { currentTrack, isPlaying, playTrack, pause } = useAudioPlayer();
+  const { currentTrack, isPlaying, playTrack, pause } =
+    useAudioPlayerControls();
 
   type MusicItem = {
     id: string | number;
     title?: string;
     producer?: string;
+    featuredArtists?: string[];
     musicUrl?: string;
     musicImg?: string;
     createdAt?: string;
@@ -21,10 +23,15 @@ const MusicQueueList = () => {
   };
 
   const [selected, setSelected] = useState<typeof musics | null>(null);
+  const hasInitializedSelection = useRef(false);
 
   useEffect(() => {
+    if (hasInitializedSelection.current) return;
+    if (musics.length === 0) return;
+
     const picked = getRandomItems(musics, 4);
     setSelected(picked);
+    hasInitializedSelection.current = true;
   }, [musics]);
 
   const handleShowRandom = () => {
@@ -85,9 +92,12 @@ const MusicQueueList = () => {
                 >
                   {music.title}
                 </h3>
-                <div className="flex items-center gap-1 text-gray-400 text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)]">
-                  <p>{music.producer} </p>
-                </div>
+                <p className="flex items-center gap-1 text-gray-400 text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)]">
+                  {music.producer}
+                  {music?.featuredArtists &&
+                    music.featuredArtists.length > 0 &&
+                    `, ${music.featuredArtists.join(", ")}`}
+                </p>
               </div>
             </div>
             <button

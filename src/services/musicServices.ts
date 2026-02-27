@@ -42,7 +42,7 @@ export const getMusicByIdService = async (musicId: number) => {
   });
 };
 
-export const getAllMusicsService = async (page = 0, size = 5) => {
+export const getAllMusicsService = async (page = 0, size = 6) => {
   try {
     const response = await axios.get(
       `${API_URL}/musics?page=${page}&size=${size}&sort=createdAt,desc`,

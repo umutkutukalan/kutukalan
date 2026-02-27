@@ -1,7 +1,7 @@
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
-import { useState, useEffect, type MouseEvent } from "react";
+import { useState, useEffect, type MouseEvent, useRef } from "react";
 import { PiRepeatOnce } from "react-icons/pi";
 import { IoIosShuffle } from "react-icons/io";
 import {
@@ -29,10 +29,21 @@ const MusicBar = () => {
   } = useAudioPlayer();
 
   const { musics } = useMusicContext();
+  const [randomIndex, setRandomIndex] = useState<number | null>(null);
 
-  const randomIndex = Math.floor(Math.random() * musics.length);
+  const hasInitializedRandomIndex = useRef(false);
 
-  const displayTrack = currentTrack || musics[randomIndex];
+  useEffect(() => {
+    if (hasInitializedRandomIndex.current) return;
+    if (musics.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * musics.length);
+    setRandomIndex(randomIndex);
+    hasInitializedRandomIndex.current = true;
+  }, [musics.length]);
+
+  const displayTrack =
+    currentTrack || (randomIndex !== null ? musics[randomIndex] : null);
 
   // Placeholder için sahte progress (müzik çalmıyorsa)
   const [placeholderProgress, setPlaceholderProgress] = useState({

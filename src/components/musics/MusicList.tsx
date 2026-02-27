@@ -31,10 +31,7 @@ const MusicList = () => {
             </div>
           </div>
         </div>
-        <div
-          className={`w-full px-5 py-2 grid ${"grid-cols-[2fr_0fr]"} items-center`}
-        >
-          <span className="sm:block hidden">Tarih</span>
+        <div className={`w-full px-5 py-2 grid items-center justify-end`}>
           <span className="">Süre</span>
         </div>
       </div>

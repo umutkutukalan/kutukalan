@@ -40,7 +40,6 @@ const MusicItem = ({
   isPlaying,
   onPlay,
   onPause,
-  formatDate,
   formatDuration,
   index,
   userRole,
@@ -60,8 +59,6 @@ const MusicItem = ({
   const navigate = useNavigate();
 
   const isContextMenuOpen = activeContextMenuId === music.id;
-
-  console.log("music: ", music);
 
   // Context menüyü kapatma
   useEffect(() => {
@@ -187,11 +184,8 @@ const MusicItem = ({
           </div>
         </div>
       </div>
-      <div className="w-full px-5 py-2 grid grid-cols-[2fr_0fr] items-center">
-        <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-left sm:block hidden">
-          {formatDate(music.releaseDate || "")}
-        </p>
-        <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)] text-left">
+      <div className="w-full px-5 py-2 flex items-center justify-end">
+        <p className="text-[clamp(0.5rem,4vw,0.7rem)] 3xl:text-[clamp(0.75rem,4vw,0.875rem)] 4xl:text-[clamp(0.75rem,4vw,1.25rem)]">
           {formatDuration(duration)}
         </p>
       </div>

@@ -7,7 +7,11 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
-import { MdComputer, MdOutlineAppShortcut, MdOutlineLibraryMusic } from "react-icons/md";
+import {
+  MdComputer,
+  MdOutlineAppShortcut,
+  MdOutlineLibraryMusic,
+} from "react-icons/md";
 import { SiElectron } from "react-icons/si";
 import {
   TbBrandReactNative,
@@ -21,7 +25,7 @@ import { GoHome } from "react-icons/go";
 // import { PiCertificate } from "react-icons/pi";
 // import { AiOutlineShopping } from "react-icons/ai";
 import { LuUserCog } from "react-icons/lu";
-import { FiUser } from "react-icons/fi";
+import { BiBookBookmark } from "react-icons/bi";
 import type { IconType } from "react-icons";
 
 export const navbarList = [
@@ -88,7 +92,8 @@ export const adminNavbarList = [
 ];
 
 export const contactList = [
-  { id: 1, title: "Hakkında", link: "/about", icon: FiUser },
+  { id: 1, title: "Yetkinlikler", link: "/competencies", icon: BiBookBookmark },
+  // { id: 2, title: "Hakkımda", link: "/about", icon: FiUser },
   // { id: 2, title: "İletişim", link: "/contact", icon: IoMailOutline },
 ];
 

@@ -45,17 +45,62 @@ interface AudioPlayerContextType {
   setVolume: (volume: number) => void;
 }
 
+interface AudioPlayerCoreContextType {
+  setCurrentTrack: React.Dispatch<React.SetStateAction<Music | null>>;
+  currentTrack: Music | null;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  isPlaying: boolean;
+  playTrack: (music: Music) => void;
+  pause: () => void;
+  playNext: () => void;
+  playPrev: () => void;
+  handleSkipForward: () => void;
+  handleSkipBackward: () => void;
+  handleSeek: (newTime: number) => void;
+  isRepeat: boolean;
+  isShuffle: boolean;
+  nextTrack: Music | null;
+  handleRepeat: () => void;
+  handleShuffle: () => void;
+  setVolume: (volume: number) => void;
+}
+
+interface AudioPlayerProgressContextType {
+  progress: { current: number; duration: number };
+}
+
 interface AudioPlayerProviderProps {
   children: ReactNode;
 }
 
-const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(undefined);
+const AudioPlayerCoreContext =
+  createContext<AudioPlayerCoreContextType | undefined>(undefined);
+const AudioPlayerProgressContext =
+  createContext<AudioPlayerProgressContextType | undefined>(undefined);
 
+// Backward-compatible combined hook
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAudioPlayer = () => {
-  const context = useContext(AudioPlayerContext);
-  if (!context) {
+  const coreContext = useContext(AudioPlayerCoreContext);
+  const progressContext = useContext(AudioPlayerProgressContext);
+
+  if (!coreContext || !progressContext) {
     throw new Error("useAudioPlayer must be used within AudioPlayerProvider");
+  }
+
+  return {
+    ...coreContext,
+    ...progressContext,
+  } as AudioPlayerContextType;
+};
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useAudioPlayerControls = () => {
+  const context = useContext(AudioPlayerCoreContext);
+  if (!context) {
+    throw new Error(
+      "useAudioPlayerControls must be used within AudioPlayerProvider",
+    );
   }
   return context;
 };
@@ -255,12 +300,11 @@ export const AudioPlayerProvider = ({ children }: AudioPlayerProviderProps) => {
     };
   }, [isRepeat, isShuffle, musics, currentTrack, nextTrack, playTrack]);
 
-  const contextValue = useMemo(() => ({
+  const coreContextValue = useMemo(() => ({
     setCurrentTrack,
     currentTrack,
     setIsPlaying,
     isPlaying,
-    progress,
     playTrack,
     pause,
     playNext,
@@ -277,7 +321,6 @@ export const AudioPlayerProvider = ({ children }: AudioPlayerProviderProps) => {
   }), [
     currentTrack,
     isPlaying,
-    progress,
     playTrack,
     playNext,
     playPrev,
@@ -286,9 +329,18 @@ export const AudioPlayerProvider = ({ children }: AudioPlayerProviderProps) => {
     nextTrack,
   ]);
 
+  const progressContextValue = useMemo(
+    () => ({
+      progress,
+    }),
+    [progress],
+  );
+
   return (
-    <AudioPlayerContext.Provider value={contextValue}>
-      {children}
-    </AudioPlayerContext.Provider>
+    <AudioPlayerCoreContext.Provider value={coreContextValue}>
+      <AudioPlayerProgressContext.Provider value={progressContextValue}>
+        {children}
+      </AudioPlayerProgressContext.Provider>
+    </AudioPlayerCoreContext.Provider>
   );
 };
