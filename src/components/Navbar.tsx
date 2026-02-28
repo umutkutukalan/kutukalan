@@ -31,7 +31,7 @@ const Navbar = () => {
       <nav
         className={`
           w-15 hover:w-50 group transition-all
-          fixed top-0 left-0 z-50
+          fixed top-0 left-0 z-100
           text-white py-5 xl:py-5 
           ${currentTrack ? "h-full lg:pb-15" : "h-full"}
           2xl:hidden lg:block hidden

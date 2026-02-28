@@ -29,7 +29,7 @@ const WebSites = () => {
   return (
     <div className="w-full h-full overflow-hidden text-black relative group">
       <div className="absolute inset-0 left-0 top-0 bg-gradient-to-br from-black via-black/20 to-transparent z-50"></div>
-      <div className="absolute inset-0 left-5 top-5 z-100">
+      <div className="absolute inset-0 left-5 top-5 z-70">
         <div className="flex items-center gap-5 w-full relative">
           <div className="flex items-center gap-2 text-[clamp(0.5rem,4vw,0.75rem)] 3xl:text-[clamp(1rem,4vw,1.25rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)]">
             <BsChevronLeft
