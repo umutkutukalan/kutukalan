@@ -8,7 +8,7 @@ import { IoMailOutline } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="w-full h-full flex flex-col px-10 bg-gradient-to-r from-black via-white/10 to-black mt-5">
+    <footer className="w-full h-full flex flex-col px-10 bg-gradient-to-r from-black via-white/10 to-black">
       <div className="w-full h-full pt-8 pb-4 flex justify-between">
         <div className="flex flex-col gap-1">
           <img src={logo2} alt="" className="w-40" />

@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useMusicContext } from "../../hooks/useMusicContext";
-import { itstime } from "../../utils";
 import { usePlaylistDetails } from "../../hooks/settings/usePlaylistDetails";
 import LoadingScreen from "../LoadingScreen";
 
 const PlaylistDetail = () => {
-  const { musics } = useMusicContext();
+  const { totalMusics } = useMusicContext();
   const { playlist, getPlaylistDetails, isLoading } = usePlaylistDetails();
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const PlaylistDetail = () => {
         style={{ boxShadow: "3px 5px 10px 0px rgba(0, 0, 0, 0.4)" }}
       >
         <img
-          src={playlist?.playlistImage || itstime}
+          src={playlist?.playlistImage}
           alt=""
           className="h-full w-full object-cover brightness-80 sm:brightness-60"
         />
@@ -59,7 +58,7 @@ const PlaylistDetail = () => {
           <span className="text-xs 3xl:text-2xl 4xl:text-2xl">•</span>
           <div className="flex items-center gap-2">
             <p className="text-xs 3xl:text-2xl 4xl:text-2xl">
-              {musics.length} müzik
+              {totalMusics} müzik
             </p>
           </div>
         </div>

@@ -25,6 +25,28 @@ import notlybanner from "../assets/images/notlybanner.webp";
 export { notlybanner };
 import notlybanner2 from "../assets/images/notlybanner2.webp";
 export { notlybanner2 };
+import notlybanner3 from "../assets/images/notlybanner3.webp";
+export { notlybanner3 };
+
+import sahnesen2 from "../assets/images/websiteImages/sahnesen2.webp";
+import sahnesen3 from "../assets/images/websiteImages/sahnesen3.webp";
+export { sahnesen2, sahnesen3 };
+import sabirozelservis from "../assets/images/websiteImages/sabirozelservis.webp";
+import sabirozelservis3 from "../assets/images/websiteImages/sabirozelservis3.webp";
+export { sabirozelservis, sabirozelservis3 };
+import pure from "../assets/images/websiteImages/pure.webp";
+export { pure };
+import pure2 from "../assets/images/websiteImages/pure2.webp";
+export { pure2 };
+import fgaranticard from "../assets/images/websiteImages/fgaranticard.webp";
+export { fgaranticard };
+import fgaranticard2 from "../assets/images/websiteImages/fgaranticard2.webp";
+export { fgaranticard2 };
+import poppinweb from "../assets/images/websiteImages/poppinweb.webp";
+export { poppinweb };
+import iphoneweb from "../assets/images/websiteImages/iphoneweb.webp";
+import iphoneweb2 from "../assets/images/websiteImages/iphoneweb2.webp";
+export { iphoneweb, iphoneweb2 };
 
 export { projectbanner, blogbanner, sabiroto, poppin, garanticard };
 export { kutukalan, sabirotologo };

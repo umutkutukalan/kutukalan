@@ -23,6 +23,7 @@ interface Music {
 
 interface MusicContextType {
   musics: Music[];
+  totalMusics: number;
   setMusics: React.Dispatch<React.SetStateAction<Music[]>>;
   fetchMusics: (page?: number, isLoadMore?: boolean) => Promise<void>;
   loading: boolean;
@@ -45,6 +46,7 @@ export const MusicContext = createContext<MusicContextType | undefined>(
 
 export const MusicProvider = ({ children }: MusicProviderProps) => {
   const [musics, setMusics] = useState<Music[]>([]);
+  const [totalMusics, setTotalMusics] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -63,13 +65,12 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
     try {
       const response = await getAllMusicsService(page, 10); // Sayfa başına 6 müzik çek
 
+      setTotalMusics(response.data.totalMusics);
+
       if (isLoadMore) {
-        setMusics((prev) => [
-          ...prev,
-          ...(response.data.content || response.data),
-        ]);
+        setMusics((prev) => [...prev, ...response.data.musics]);
       } else {
-        setMusics(response.data.content || response.data);
+        setMusics(response.data.musics);
       }
 
       // Spring Boot pagination bilgilerini kullan
@@ -79,8 +80,8 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
         setHasMore(response.data.number + 1 < response.data.totalPages);
       } else {
         // Fallback
-        const contentLength = response.data.content
-          ? response.data.content.length
+        const contentLength = response.data.musics
+          ? response.data.musics.length
           : response.data.length;
         setHasMore(contentLength > 0);
         setCurrentPage(page);
@@ -109,6 +110,7 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
     <MusicContext.Provider
       value={{
         musics,
+        totalMusics,
         setMusics,
         fetchMusics,
         loading,

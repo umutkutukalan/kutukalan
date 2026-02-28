@@ -27,6 +27,22 @@ import { GoHome } from "react-icons/go";
 import { LuUserCog } from "react-icons/lu";
 import { BiBookBookmark } from "react-icons/bi";
 import type { IconType } from "react-icons";
+import {
+  fgaranticard,
+  fgaranticard2,
+  iphonechip,
+  iphoneweb,
+  iphoneweb2,
+  poppin,
+  poppinweb,
+  pure,
+  pure2,
+  sabirozelservis,
+  sabirozelservis3,
+  sahnesen,
+  sahnesen2,
+  sahnesen3,
+} from "../utils";
 
 export const navbarList = [
   { id: 1, title: "Anasayfa", link: "/", icon: GoHome },
@@ -147,4 +163,126 @@ export const tagsForCreateContent = [
   { id: 7, title: "Health" },
   { id: 8, title: "Finance" },
   { id: 9, title: "Software" },
+];
+
+export const websites = [
+  {
+    id: 1,
+    content: [
+      {
+        id: 1,
+        title: "Sahnesen",
+        link: "https://kutukalan-react.vercel.app/",
+        websiteImg: sahnesen,
+      },
+      {
+        id: 2,
+        title: "Sahnesen 2",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: sahnesen2,
+      },
+      {
+        id: 3,
+        title: "Sahnesen 3",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: sahnesen3,
+      },
+    ],
+  },
+
+  {
+    id: 2,
+    content: [
+      {
+        id: 1,
+        title: "Sabır Otomotiv",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: sabirozelservis,
+      },
+      {
+        id: 2,
+        title: "Sabır Otomotiv 2",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: sabirozelservis3,
+      },
+    ],
+  },
+
+  {
+    id: 3,
+    content: [
+      {
+        id: 1,
+        title: "Poppin",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: poppinweb,
+      },
+      {
+        id: 2,
+        title: "Poppin",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: poppin,
+      },
+    ],
+  },
+
+  {
+    id: 4,
+    content: [
+      {
+        id: 1,
+        title: "Pure",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: pure,
+      },
+      {
+        id: 2,
+        title: "Pure",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: pure2,
+      },
+    ],
+  },
+
+  {
+    id: 5,
+    content: [
+      {
+        id: 1,
+        title: "iPhone 16 Pro Tanıtım",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: iphonechip,
+      },
+      {
+        id: 2,
+        title: "iPhone Web",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: iphoneweb,
+      },
+      {
+        id: 3,
+        title: "iPhone Web 2",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: iphoneweb2,
+      },
+    ],
+  },
+
+  {
+    id: 6,
+    content: [
+      {
+        id: 1,
+        title: "Garanti Card",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: fgaranticard,
+      },
+      {
+        id: 2,
+        title: "Garanti Card 2",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        websiteImg: fgaranticard2,
+      },
+    ],
+  },
 ];
