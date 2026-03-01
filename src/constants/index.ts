@@ -7,6 +7,7 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { DiPostgresql } from "react-icons/di";
 import { DiMysql } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
+import { BiLogoRedux } from "react-icons/bi";
 import {
   MdComputer,
   MdOutlineAppShortcut,
@@ -131,10 +132,10 @@ export const technologiesForHome: TechnologyForHome[] = [
   { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
   { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
   { id: 5, icon: BiLogoReact, title: "ReactJS" },
+  { id: 6, icon: RiNextjsFill, title: "NextJS" },
   { id: 7, icon: SiElectron, title: "ElectronJS" },
-  { id: 8, icon: RiNextjsFill, title: "NextJS" },
-  { id: 9, icon: DiMysql, title: "MySQL" },
-  { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
+  { id: 8, icon: DiMysql, title: "MySQL" },
+  { id: 9, icon: DiPostgresql, title: "PostgreSQL" },
 ];
 
 export const technologiesForCreateContent: TechnologyForCreateContent[] = [
@@ -143,14 +144,15 @@ export const technologiesForCreateContent: TechnologyForCreateContent[] = [
   { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
   { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
   { id: 5, icon: BiLogoReact, title: "ReactJS" },
-  { id: 7, icon: SiElectron, title: "ElectronJS" },
-  { id: 8, icon: RiNextjsFill, title: "NextJS" },
-  { id: 9, icon: TbBrandReactNative, title: "React Native" },
-  { id: 10, icon: DiMysql, title: "MySQL" },
-  { id: 11, icon: DiPostgresql, title: "PostgreSQL" },
-  { id: 12, icon: null, title: "PostGIS" },
-  { id: 13, icon: TbBrandThreejs, title: "ThreeJS" },
-  { id: 14, icon: null, title: "GSAP" },
+  { id: 6, icon: SiElectron, title: "ElectronJS" },
+  { id: 7, icon: RiNextjsFill, title: "NextJS" },
+  { id: 8, icon: TbBrandReactNative, title: "React Native" },
+  { id: 9, icon: DiMysql, title: "MySQL" },
+  { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
+  { id: 11, icon: null, title: "PostGIS" },
+  { id: 12, icon: TbBrandThreejs, title: "ThreeJS" },
+  { id: 13, icon: null, title: "GSAP" },
+  { id: 14, icon: BiLogoRedux, title: "Redux" },
 ];
 
 export const tagsForCreateContent = [

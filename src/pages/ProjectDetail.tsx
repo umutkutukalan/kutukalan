@@ -5,13 +5,14 @@ import { useRelativeTime } from "../hooks/useRelativeTime";
 import {
   BiLogoJavascript,
   BiLogoReact,
+  BiLogoRedux,
   BiLogoSpringBoot,
   BiLogoTypescript,
 } from "react-icons/bi";
 import { RiNextjsFill } from "react-icons/ri";
 import { DiJava, DiMysql, DiPostgresql } from "react-icons/di";
 import { SiElectron } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
+import { TbBrandReactNative, TbBrandThreejs } from "react-icons/tb";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
 
 const ProjectDetail = () => {
@@ -100,6 +101,17 @@ const ProjectDetail = () => {
                     <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]">
                       PGIS
                     </span>
+                  )}
+                  {tech === "ThreeJS" && (
+                    <TbBrandThreejs className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                  )}
+                  {tech === "GSAP" && (
+                    <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]">
+                      GSAP
+                    </span>
+                  )}
+                  {tech === "Redux" && (
+                    <BiLogoRedux className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                 </li>
               ))}
