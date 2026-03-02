@@ -22,7 +22,7 @@ const HomeBorder = () => {
           </div>
         </div>
 
-        <div className="w-full h-full overflow-hidden shadow-2xl relative gap-2">
+        <div className="w-full h-full overflow-hidden shadow-2xl relative gap-2 md:rounded-xl">
           <div className="h-[clamp(550px,32vw,700px)] 3xl:h-[clamp(600px,32vw,700px)] 4xl:h-[clamp(700px,32vw,800px)] w-full overflow-hidden md:rounded-xl oswald-400 relative md:flex hidden">
             <WebSites />
           </div>
@@ -41,10 +41,10 @@ const HomeBorder = () => {
         </div>
 
         <div className="w-full h-full overflow-hidden shadow-2xl relative gap-3 grid grid-cols-1">
-          <div className="h-[clamp(260px,60vw,360px)] w-full overflow-hidden oswald-400 relative">
+          <div className="h-[clamp(260px,60vw,360px)] w-full rounded-lg overflow-hidden oswald-400 relative">
             <DesktopApp />
           </div>
-          <div className="h-[clamp(260px,60vw,360px)] w-full overflow-hidden oswald-400 relative">
+          <div className="h-[clamp(260px,60vw,360px)] w-full rounded-lg overflow-hidden oswald-400 relative">
             <WebSites />
           </div>
         </div>

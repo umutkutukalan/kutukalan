@@ -9,7 +9,7 @@ const WebSites = () => {
     website.content.map((content) => ({
       websiteIdx,
       content,
-    }))
+    })),
   );
 
   const totalSlides = slideMap.length;
@@ -54,7 +54,10 @@ const WebSites = () => {
         </div>
       </div>
       {slideMap.map((slide, i) => (
-        <div key={`${slide.websiteIdx}-${slide.content.id}`} className="absolute inset-0 w-full z-0">
+        <div
+          key={`${slide.websiteIdx}-${slide.content.id}`}
+          className="absolute inset-0 w-full z-0"
+        >
           <img
             src={slide.content.websiteImg}
             alt=""
