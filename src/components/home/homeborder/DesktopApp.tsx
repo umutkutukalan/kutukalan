@@ -2,14 +2,16 @@ import { useState } from "react";
 import { desktopApps } from "../../../constants";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const DesktopApp = () => {
-  const [currentSlideIdx, setCurrentSlideIdx] = useState(0);
+  const [currentSlideIdx, setCurrentSlideIdx] = useState(0);  
 
   const slideMap = desktopApps.flatMap((desktopApp, desktopAppIdx) =>
     desktopApp.content.map((content) => ({
       desktopAppIdx,
       content,
+      githubLink: desktopApp.githubLink,
     })),
   );
 
@@ -65,10 +67,9 @@ const DesktopApp = () => {
           </div>
 
           <div className="absolute bottom-2 left-2 z-80">
-            <FaGithub
-              className="text-white cursor-pointer"
-              // onClick={() => window.open(slide.content.githubLink, "_blank")}
-            />
+            <Link to={slide.githubLink} target="_blank">
+              <FaGithub className="text-white" />
+            </Link>
           </div>
 
           <div className="absolute inset-0 w-full z-0">

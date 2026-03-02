@@ -295,6 +295,7 @@ export const websites = [
 export const desktopApps = [
   {
     id: 1,
+    githubLink: "https://github.com/umutkutukalan/notly-editorapp",
     content: [
       {
         id: 1,
