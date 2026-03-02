@@ -1,6 +1,9 @@
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { websites } from "../../../constants";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { BiWorld } from "react-icons/bi";
+import { FaGithub } from "react-icons/fa";
 
 const WebSites = () => {
   const [currentSlideIdx, setCurrentSlideIdx] = useState(0);
@@ -8,6 +11,8 @@ const WebSites = () => {
   const slideMap = websites.flatMap((website, websiteIdx) =>
     website.content.map((content) => ({
       websiteIdx,
+      githubLink: website.githubLink,
+      live: website.live,
       content,
     })),
   );
@@ -54,17 +59,29 @@ const WebSites = () => {
         </div>
       </div>
       {slideMap.map((slide, i) => (
-        <div
-          key={`${slide.websiteIdx}-${slide.content.id}`}
-          className="absolute inset-0 w-full z-0"
-        >
-          <img
-            src={slide.content.websiteImg}
-            alt=""
-            className={`w-full h-full object-cover brightness-75 transition-opacity duration-500 ${
-              i === currentSlideIdx ? "opacity-100" : "opacity-0"
-            }`}
-          />
+        <div key={`${slide.websiteIdx}-${slide.content.id}`}>
+          <div className="absolute bottom-2 left-2 z-80">
+            {slide.live && i === currentSlideIdx && (
+              <Link to={slide.live} target="_blank">
+                <BiWorld className="text-white text-xl" />
+              </Link>
+            )}
+            {slide.githubLink && i === currentSlideIdx && (
+              <Link to={slide.githubLink} target="_blank">
+                <FaGithub className="text-white text-xl" />
+              </Link>
+            )}
+
+          </div>
+          <div className="absolute inset-0 w-full z-0">
+            <img
+              src={slide.content.websiteImg}
+              alt=""
+              className={`w-full h-full object-cover brightness-75 transition-opacity duration-500 ${
+                i === currentSlideIdx ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </div>
         </div>
       ))}
     </div>

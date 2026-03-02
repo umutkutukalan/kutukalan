@@ -173,23 +173,22 @@ export const tagsForCreateContent = [
 export const websites = [
   {
     id: 1,
+    githubLink: null,
+    live: null,
     content: [
       {
         id: 1,
         title: "Sahnesen",
-        link: "https://kutukalan-react.vercel.app/",
         websiteImg: sahnesen,
       },
       {
         id: 2,
-        title: "Sahnesen 2",
-        link: "https://kutukalan-spring-boot.vercel.app/",
+        title: "Sahnesen",
         websiteImg: sahnesen2,
       },
       {
         id: 3,
-        title: "Sahnesen 3",
-        link: "https://kutukalan-spring-boot.vercel.app/",
+        title: "Sahnesen",
         websiteImg: sahnesen3,
       },
     ],
@@ -197,17 +196,17 @@ export const websites = [
 
   {
     id: 2,
+    githubLink: null,
+    live: "https://sabirozelservis.com/",
     content: [
       {
         id: 1,
         title: "Sabır Otomotiv",
-        link: "https://kutukalan-spring-boot.vercel.app/",
         websiteImg: sabirozelservis,
       },
       {
         id: 2,
-        title: "Sabır Otomotiv 2",
-        link: "https://kutukalan-spring-boot.vercel.app/",
+        title: "Sabır Otomotiv",
         websiteImg: sabirozelservis3,
       },
     ],
@@ -215,17 +214,17 @@ export const websites = [
 
   {
     id: 3,
+    githubLink: null,
+    live: "https://poppin-full.vercel.app/",
     content: [
       {
         id: 1,
         title: "Poppin",
-        link: "https://kutukalan-spring-boot.vercel.app/",
         websiteImg: poppinweb,
       },
       {
         id: 2,
         title: "Poppin",
-        link: "https://kutukalan-spring-boot.vercel.app/",
         websiteImg: poppin,
       },
     ],
@@ -233,17 +232,17 @@ export const websites = [
 
   {
     id: 4,
+    githubLink: "https://github.com/umutkutukalan/pure-flashlight",
+    live: null,
     content: [
       {
         id: 1,
         title: "Pure",
-        link: "https://kutukalan-spring-boot.vercel.app/",
         websiteImg: pure,
       },
       {
         id: 2,
         title: "Pure",
-        link: "https://kutukalan-spring-boot.vercel.app/",
         websiteImg: pure2,
       },
     ],
@@ -251,23 +250,22 @@ export const websites = [
 
   {
     id: 5,
+    githubLink: "https://github.com/umutkutukalan/iPhone15Pro-w-react",
+    live: null,
     content: [
       {
         id: 1,
-        title: "iPhone 16 Pro Tanıtım",
-        link: "https://kutukalan-spring-boot.vercel.app/",
+        title: "iPhone15 Pro - Clone Website",
         websiteImg: iphonechip,
       },
       {
         id: 2,
-        title: "iPhone Web",
-        link: "https://kutukalan-spring-boot.vercel.app/",
+        title: "iPhone15 Pro - Clone Website",
         websiteImg: iphoneweb,
       },
       {
         id: 3,
-        title: "iPhone Web 2",
-        link: "https://kutukalan-spring-boot.vercel.app/",
+        title: "iPhone15 Pro - Clone Website",
         websiteImg: iphoneweb2,
       },
     ],
@@ -275,17 +273,17 @@ export const websites = [
 
   {
     id: 6,
+    githubLink: null,
+    live: null,
     content: [
       {
         id: 1,
         title: "Garanti Card",
-        link: "https://kutukalan-spring-boot.vercel.app/",
         websiteImg: fgaranticard,
       },
       {
         id: 2,
-        title: "Garanti Card 2",
-        link: "https://kutukalan-spring-boot.vercel.app/",
+        title: "Garanti Card",
         websiteImg: fgaranticard2,
       },
     ],
