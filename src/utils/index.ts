@@ -21,12 +21,10 @@ import createMusicImg from "../assets/images/createMusicImg.webp";
 import manrunning3 from "../assets/images/manrunning3.webp";
 export { manrunning3 };
 
-import notlybanner from "../assets/images/notlybanner.webp";
-export { notlybanner };
-import notlybanner2 from "../assets/images/notlybanner2.webp";
-export { notlybanner2 };
+import notly2 from "../assets/images/desktopappImages/notly2.webp";
+import notly3 from "../assets/images/desktopappImages/notly3.webp";
 import notlybanner3 from "../assets/images/notlybanner3.webp";
-export { notlybanner3 };
+export { notly2, notly3, notlybanner3 };
 
 import sahnesen2 from "../assets/images/websiteImages/sahnesen2.webp";
 import sahnesen3 from "../assets/images/websiteImages/sahnesen3.webp";

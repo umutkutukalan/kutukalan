@@ -34,6 +34,9 @@ import {
   iphonechip,
   iphoneweb,
   iphoneweb2,
+  notly2,
+  notly3,
+  notlybanner3,
   poppin,
   poppinweb,
   pure,
@@ -284,6 +287,32 @@ export const websites = [
         title: "Garanti Card 2",
         link: "https://kutukalan-spring-boot.vercel.app/",
         websiteImg: fgaranticard2,
+      },
+    ],
+  },
+];
+
+export const desktopApps = [
+  {
+    id: 1,
+    content: [
+      {
+        id: 1,
+        title: "Notly",
+        link: "https://kutukalan-react.vercel.app/",
+        desktopAppsImg: notlybanner3,
+      },
+      {
+        id: 2,
+        title: "Notly",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        desktopAppsImg: notly2,
+      },
+      {
+        id: 3,
+        title: "Notly",
+        link: "https://kutukalan-spring-boot.vercel.app/",
+        desktopAppsImg: notly3,
       },
     ],
   },
