@@ -1,14 +1,23 @@
-Kutukalan API
+# Kutukalan Web
 
-Backend service for kutukalan.com.
+Frontend application for my personal platform **[kutukalan.com](https://kutukalan.com)**.
 
-Tech Stack
-- Spring Boot
-- MySQL
-- REST API
-- VPS Deployment
+This project serves as the user interface of my personal website where I share my projects, writings and ongoing work.
 
-Features
-- Blog system
+## Tech Stack
+
+- React
+- TypeScript
+- TailwindCSS
+- GSAP
+
+## Features
+
+- Personal portfolio interface
 - Project showcase
-- Content management
+- Blog pages
+- Smooth UI animations with GSAP
+
+## Live
+
+https://kutukalan.com
