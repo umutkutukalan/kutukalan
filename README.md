@@ -1,8 +1,8 @@
 # Kutukalan Web
 
-Frontend application for my personal platform **[kutukalan.com](https://kutukalan.com)**.
+Frontend application powering my personal platform **kutukalan.com**.
 
-This project serves as the user interface of my personal website where I share my projects, writings and ongoing work.
+This project represents the user interface of my personal website where I showcase projects, share writings and present ongoing work.
 
 ## Tech Stack
 
@@ -16,8 +16,12 @@ This project serves as the user interface of my personal website where I share m
 - Personal portfolio interface
 - Project showcase
 - Blog pages
-- Smooth UI animations with GSAP
+- Smooth UI animations
+
+## Deployment
+
+The application is deployed on a Linux VPS using Nginx as a reverse proxy.
 
 ## Live
 
-https://kutukalan.com
+🌐 https://kutukalan.com
