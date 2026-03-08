@@ -10,17 +10,17 @@ export interface RegisterUserData {
   profileImg: string;  
 }
 
-export const createUserService = async (userData: RegisterUserData) => {
-  try {
-    const response = await axios.post(`${API_URL}/users/register`, userData, {
-      withCredentials: true,
-    });
-    return response.data;
-  } catch (error) {
-    console.error("Kullanıcı oluşturulurken hata - services:", error);
-    throw error;
-  }
-};
+// export const createUserService = async (userData: RegisterUserData) => {
+//   try {
+//     const response = await axios.post(`${API_URL}/users/register`, userData, {
+//       withCredentials: true,
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error("Kullanıcı oluşturulurken hata - services:", error);
+//     throw error;
+//   }
+// };
 
 export interface User {
   id: string;
