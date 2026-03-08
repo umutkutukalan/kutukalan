@@ -4,11 +4,10 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdComputer, MdOutlineLibraryMusic } from "react-icons/md";
 import { GoHome } from "react-icons/go";
 import { LuFiles } from "react-icons/lu";
-import { IoMailOutline } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="w-full h-full flex flex-col sm:px-10 border-t border-white/10 bg-gradient-to-r from-black via-black to-black">
+    <footer className="w-full h-full flex flex-col sm:px-10 px-5 border-t border-white/10 bg-gradient-to-r from-black via-black to-black">
       <div className="w-full h-full pt-8 pb-4 flex justify-between">
         <div className="flex flex-col gap-1">
           <img src={logo2} alt="" className="w-40" />
@@ -28,7 +27,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex gap-2">
-          <div className="flex flex-col gap-2 text-xs">
+          <div className="flex flex-col gap-2 sm:text-xs text-[8px]">
             <ul className="flex flex-col gap-2">
               <Link to="/" className="flex items-center gap-1">
                 <GoHome />
@@ -61,7 +60,6 @@ const Footer = () => {
       <div className="w-full flex sm:flex-row flex-col items-center justify-between border-t border-white/10 py-4">
         <p className="sm:text-xs text-[10px]">© 2026 Kutukalan</p>
         <div className="flex items-center gap-1">
-          <IoMailOutline />
           <p className="sm:text-xs text-[10px]">kutukalanumut@gmail.com</p>
         </div>
       </div>
