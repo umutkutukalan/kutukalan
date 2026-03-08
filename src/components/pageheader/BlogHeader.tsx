@@ -2,7 +2,7 @@ import { blogbanner } from "../../utils";
 
 const BlogHeader = () => {
   return (
-    <div className="w-full flex items-center justify-between pb-2 relative h-[clamp(5rem,10vw,8rem)] overflow-hidden mb-5 rounded-lg">
+    <div className="w-full flex items-center justify-between pb-2 relative h-[clamp(5rem,10vw,8rem)] overflow-hidden mb-5 rounded-md">
       <div className="absolute inset-0 overflow-hidden">
         <img
           src={blogbanner}
