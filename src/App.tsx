@@ -29,7 +29,7 @@ export const App = () => {
   const { aboutLoading } = useAbout();
 
   // If current path starts with the secret prefix, render only CreateUser (full page)
-  const secretCreateUserPrefix = "/create-user-th&a5tg8+521&6j%25qwp";
+  const secretCreateUserPrefix = "/kutukalan-login";
   if (location.pathname.startsWith(secretCreateUserPrefix)) {
     return <CreateUser />;
   }
