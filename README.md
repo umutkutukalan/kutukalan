@@ -43,6 +43,11 @@ Altyapı tarafında Linux VPS üzerinde çalışan bir yapı bulunmaktadır. Ngi
 - REST API
 - JWT Authentication
 
+### Database
+- MySQL
+- Spring Data JPA
+- Hibernate
+
 ### Infrastructure
 - Linux VPS
 - Nginx
@@ -164,6 +169,11 @@ The infrastructure runs on a Linux VPS environment, where Nginx handles HTTPS, r
 - Spring Boot
 - REST API
 - JWT Authentication
+
+### Database
+- MySQL
+- Spring Data JPA
+- Hibernate
 
 ### Infrastructure
 - Linux VPS
