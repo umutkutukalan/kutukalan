@@ -1,4 +1,4 @@
-# **Kutukalan Portfolio Website** 
+# **Kutukalan Portfolio Website**
 ![React](https://img.shields.io/badge/React-18-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-blue)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC)
@@ -6,11 +6,18 @@
 ![Nginx](https://img.shields.io/badge/Nginx-reverse--proxy-brightgreen)
 ![VPS](https://img.shields.io/badge/Deployment-Linux%20VPS-orange)
 
-🌐 **Live:**  https://kutukalan.com
-
+## **Project Preview**  
 <img src="src/assets/images/readmeImg.webp" width="800">
 
-## **Proje Hakkında** | 🇹🇷 Türkçe
+> Not: Ekran görüntüsünde yer alan bazı menü öğeleri yalnızca admin rolü için görünürdür.
+> Note: Some menu items visible in the screenshot are only available for the admin role.
+
+🌐 **Live:** https://kutukalan.com
+
+🇹🇷 Türkçe | 🇬🇧 English
+
+## 🇹🇷 Türkçe
+##  **Proje Hakkında** 
 React, TypeScript ve TailwindCSS kullanılarak geliştirilmiş modern bir kişisel portföy web sitesidir.  
 Proje Linux VPS üzerinde Spring Boot backend ve Nginx reverse proxy mimarisi ile yayınlanmaktadır.
 
@@ -70,30 +77,33 @@ Backend tarafında kullanılan yapı:
 - Ortam değişkenleri ile secret yönetimi
 
 ## **Project Structure** 
+```
+project-root
+│
+├── frontend
+│   ├── context
+│   ├── components
+│   ├── pages
+│   ├── services
+│   ├── hooks
+│   ├── utils
+│   ├── constants
+│   └── assets
+│
+└── backend (private)
+    ├── entities
+    ├── enums
+    ├── repositories
+    ├── controllers
+    ├── services
+    ├── responses
+    ├── requests
+    ├── config
+    ├── security
+    └── configuration
+```
 
-frontend
- ├─ context
- ├─ components
- ├─ pages
- ├─ services
- ├─ hooks
- ├─ utils
- ├─ constants
- └─ assets
-
-backend 
- ├─ entities
- ├─ enums
- ├─ repositories
- ├─ controllers
- ├─ services
- ├─ responses
- ├─ requests
- ├─ config
- ├─ security
- └─ configuration
-
-## System Architecture
+## **System Architecture**  
 
 ```mermaid
 flowchart TD
@@ -127,3 +137,125 @@ Uygulama Linux VPS üzerinde aşağıdaki yapı kullanılarak yayınlanmaktadır
 - Arka planda çalışan Spring Boot servisi
 - Ortam değişkenleri ile secret yönetimi
 - Let's Encrypt ile otomatik HTTPS
+
+---
+## 🇬🇧 English
+## **About the Project** 
+This is a modern personal portfolio website built using React, TypeScript, and TailwindCSS.
+The project is deployed on a Linux VPS using a Spring Boot backend and Nginx reverse proxy architecture.
+
+This project is a full-stack portfolio platform developed to showcase my projects, music productions, and personal information in a modern and interactive way.
+
+The frontend is developed using React and TypeScript, while the backend is implemented with a Spring Boot REST API architecture.
+
+The infrastructure runs on a Linux VPS environment, where Nginx handles HTTPS, reverse proxy operations, security headers, and rate limiting.
+
+## **Tech Stack**  
+
+### Frontend
+- React.js
+- TypeScript
+- TailwindCSS
+- GSAP (animations)
+
+### Backend
+- Spring Boot
+- REST API
+- JWT Authentication
+
+### Infrastructure
+- Linux VPS
+- Nginx
+- HTTPS (Let's Encrypt)
+- Reverse Proxy
+
+##  **Features**  
+
+* ⚡ Modern frontend architecture built with React and TypeScript
+* 🎨 Responsive and modern UI using TailwindCSS
+* 🎬 Smooth and interactive animations with GSAP
+* 🔐 JWT-based authentication system
+* 🛡️ Security headers and bot scanning protection
+* 🚀 Production deployment on Linux VPS with Nginx
+
+### **Platform & Content Features**  
+
+- 📝 Blog posts and project content
+- 💼 Dedicated project showcase pages
+- 🎵 Music library and integrated music player for my productions
+- 👨‍💻 Personal introduction, experience, and technical skills
+- 📱 Mobile application development projects
+- 🖥️ Desktop application development projects
+- 🌐 Portfolio section containing my web development projects
+
+## **Backend**  
+The backend repository is kept private because it contains security configurations, server infrastructure details, and environment variables.
+The backend includes the following architecture:
+
+- Spring Boot REST API
+- JWT authentication with HttpOnly cookies
+- Role-based authorization
+- Secure API endpoints
+- Environment-based secret management
+
+## **Project Structure** 
+```
+project-root
+│
+├── frontend
+│   ├── context
+│   ├── components
+│   ├── pages
+│   ├── services
+│   ├── hooks
+│   ├── utils
+│   ├── constants
+│   └── assets
+│
+└── backend (private)
+    ├── entities
+    ├── enums
+    ├── repositories
+    ├── controllers
+    ├── services
+    ├── responses
+    ├── requests
+    ├── config
+    ├── security
+    └── configuration
+```
+
+## **System Architecture**  
+
+```mermaid
+flowchart TD
+
+User[User Browser]
+Nginx[Nginx Reverse Proxy]
+API[Spring Boot API]
+Auth[JWT Authentication]
+App[Application Logic]
+
+User --> Nginx
+Nginx --> API
+API --> Auth
+Auth --> App
+```
+
+## **Security**  
+Several production-level security measures are implemented on the server side:
+
+* HTTPS enforcement (HSTS)
+* Content Security Policy
+* Permissions Policy
+* X-Frame protection
+* Bot scanning protection
+* Login request rate limiting
+
+## **Deployment**  
+The application is deployed on a Linux VPS using the following setup:
+
+- Nginx reverse proxy
+- Spring Boot running as a background service
+- Environment variable based secret management
+- Automatic HTTPS with Let's Encrypt
