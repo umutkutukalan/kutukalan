@@ -17,6 +17,7 @@ import logo from "../assets/logo/logo.png";
 import logo2 from "../assets/logo/logo2.png";
 import navbarlogo from "../assets/logo/navbarlogo.png";
 import createMusicImg from "../assets/images/createMusicImg.webp";
+import readmeImg from "../assets/images/readmeImg.webp";
 
 import manrunning3 from "../assets/images/manrunning3.webp";
 export { manrunning3 };
@@ -53,3 +54,4 @@ export { iphonechip, gray, runaley2, itstime, homework2 };
 export { dockerpostman, sunucu };
 export { logo, logo2, navbarlogo };
 export { createMusicImg };
+export { readmeImg };
