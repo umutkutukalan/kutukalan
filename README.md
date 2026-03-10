@@ -6,15 +6,17 @@
 ![Nginx](https://img.shields.io/badge/Nginx-reverse--proxy-brightgreen)
 ![VPS](https://img.shields.io/badge/Deployment-Linux%20VPS-orange)
 
+[🇬🇧 English](#-english) | [🇹🇷 Türkçe](#-türkçe)
+
 ## **Project Preview**  
 <img src="src/assets/images/readmeImg.webp" width="800">
 
 > Not: Ekran görüntüsünde yer alan bazı menü öğeleri yalnızca admin rolü için görünürdür.
+
 > Note: Some menu items visible in the screenshot are only available for the admin role.
 
 🌐 **Live:** https://kutukalan.com
 
-🇹🇷 Türkçe | 🇬🇧 English
 
 ## 🇹🇷 Türkçe
 ##  **Proje Hakkında** 
