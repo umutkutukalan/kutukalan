@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    if: github.repository == 'umutkutukalan/kutukalan.com'
+    if: github.repository == 'umutkutukalan/kutukalan-web'
     runs-on: self-hosted
 
     steps:
