@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-
+    if: github.repository == 'umutkutukalan/kutukalan.com'
     runs-on: self-hosted
 
     steps:
@@ -26,7 +26,14 @@ jobs:
     
     - name: Deploy Frontend
       run: |
-        echo "Cleaning frontend directory"
-        rm -rf /opt/kutukalancom/frontend/*
-        echo "Copying build files"
-        cp -r dist/* /opt/kutukalancom/frontend/
+          set -e
+          echo "Preparing frontend directory"
+          mkdir -p /opt/kutukalancom/frontend
+
+          echo "Cleaning old build"
+          rm -rf /opt/kutukalancom/frontend/*
+
+          echo "Copying new build files"
+          cp -r dist/* /opt/kutukalancom/frontend/
+
+          echo "Deployment completed"
