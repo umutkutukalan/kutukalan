@@ -24,7 +24,7 @@ const AboutItem = () => {
   };
 
   return (
-    <div className="rounded-xl bg-white/10 h-full w-full relative overflow-hidden">
+    <div className="rounded-xl bg-white/10 h-full w-full relative overflow-hidden select-none">
       {currentAbout ? (
         <div className="relative h-full w-full">
           <div className="relative w-full h-full">

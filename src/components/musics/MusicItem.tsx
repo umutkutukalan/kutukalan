@@ -122,7 +122,7 @@ const MusicItem = ({
           handleToggle();
         }
       }}
-      className={`w-full h-[70px] 3xl:h-[clamp(70px,4vw,90px)] 4xl:h-[clamp(80px,8vw,120px)] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group`}
+      className={`w-full h-[70px] 3xl:h-[clamp(70px,4vw,90px)] 4xl:h-[clamp(80px,8vw,120px)] rounded-md grid grid-cols-[2fr_0fr] sm:grid-cols-[3fr_2fr] hover:bg-[#424242b3] items-center group select-none`}
     >
       <audio
         ref={audioRef}
@@ -142,9 +142,8 @@ const MusicItem = ({
               />
             ) : (
               <p
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] z-10 ${
-                  currentTrack?.id === music.id ? "text-green-500" : ""
-                }`}
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] z-10 ${currentTrack?.id === music.id ? "text-green-500" : ""
+                  }`}
               >
                 {index + 1}
               </p>
@@ -167,9 +166,8 @@ const MusicItem = ({
             </div>
             <div className="flex flex-col">
               <h1
-                className={`text-[clamp(0.75rem,4vw,0.9rem)] 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] ${
-                  currentTrack?.id === music.id ? "text-green-500" : ""
-                }`}
+                className={`text-[clamp(0.75rem,4vw,0.9rem)] 3xl:text-[clamp(1rem,4vw,1.2rem)] 4xl:text-[clamp(1.25rem,4vw,1.5rem)] ${currentTrack?.id === music.id ? "text-green-500" : ""
+                  }`}
               >
                 {music.title}
               </h1>
