@@ -136,7 +136,7 @@ const MusicItem = ({
             {isPlaying ? (
               <DotLottieReact
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-6 group-hover:opacity-0 z-10"
-                src="https://lottie.host/5e3ce3b6-68f3-4e62-b5d9-a4e8339c2422/MP8W9BZVv4.lottie"
+                src="/public/lottie/music.lottie"
                 loop
                 autoplay
               />
