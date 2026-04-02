@@ -9,7 +9,9 @@ export interface AboutData {
 
 export const CreateAbout = async (aboutData: AboutData) => {
   try {
-    const response = await axios.post(`${API_URL}/about`, aboutData);
+    const response = await axios.post(`${API_URL}/about`, aboutData, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     console.error("Error creating about entry:", error);
