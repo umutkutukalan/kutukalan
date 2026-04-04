@@ -66,7 +66,7 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                 <div className="absolute inset-0 bg-black opacity-70"></div>
                 {project.mainImg ? (
                   <img
-                    src={project.mainImg}
+                    src={project.contentItems.filter((item) => item.type === "image")[1]?.content || project.mainImg}
                     alt=""
                     className="w-full h-full object-cover"
                   />

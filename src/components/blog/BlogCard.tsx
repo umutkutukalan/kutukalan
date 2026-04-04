@@ -62,7 +62,7 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
                 <div className="absolute inset-0 bg-black opacity-70"></div>
                 {blog.mainImg ? (
                   <img
-                    src={blog.mainImg}
+                    src={blog.contentItems.filter((item) => item.type === "image")[1]?.content || blog.mainImg}
                     alt=""
                     className="w-full h-full object-cover"
                   />
