@@ -82,69 +82,69 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
             <div className="w-full flex flex-col gap-5">
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-2">
+                  <ul className="flex flex-wrap items-center gap-2">
+                    {project.technologies.map((tech) => (
+                      <li
+                        key={tech}
+                        className="pointer-events-none flex items-center"
+                      >
+                        {tech === "TypeScript" && (
+                          <BiLogoTypescript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "JavaScript" && (
+                          <BiLogoJavascript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "ReactJS" && (
+                          <BiLogoReact className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "NextJS" && (
+                          <RiNextjsFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "Spring Boot" && (
+                          <BiLogoSpringBoot className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "Java" && (
+                          <DiJava className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "PostgreSQL" && (
+                          <DiPostgresql className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "MySQL" && (
+                          <DiMysql className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "ElectronJS" && (
+                          <SiElectron className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "React Native" && (
+                          <TbBrandReactNative className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                        )}
+                        {tech === "PostGIS" && (
+                          <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]">
+                            PGIS
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                   {/* <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
                     {formatRelativeTime(project.createdAt)}
                   </span> */}
-                  {user?.role === "ADMIN" && (
-                    <span className="text-gray-400 select-none">·</span>
-                  )}
-                  {user?.role === "ADMIN" && (
-                    <div className="flex items-center gap-1 3xl:gap-3">
-                      <FaPen
-                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-green-500 transition-all"
-                        onClick={() => {}}
-                      />
-                      <LuTrash2
-                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-red-500 transition-all"
-                        onClick={() => setDeleteShow(true)}
-                      />
-                    </div>
-                  )}
                 </div>
-                <ul className="flex flex-wrap items-center gap-2">
-                  {project.technologies.map((tech) => (
-                    <li
-                      key={tech}
-                      className="pointer-events-none flex items-center"
-                    >
-                      {tech === "TypeScript" && (
-                        <BiLogoTypescript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "JavaScript" && (
-                        <BiLogoJavascript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "ReactJS" && (
-                        <BiLogoReact className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "NextJS" && (
-                        <RiNextjsFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "Spring Boot" && (
-                        <BiLogoSpringBoot className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "Java" && (
-                        <DiJava className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "PostgreSQL" && (
-                        <DiPostgresql className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "MySQL" && (
-                        <DiMysql className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "ElectronJS" && (
-                        <SiElectron className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "React Native" && (
-                        <TbBrandReactNative className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
-                      )}
-                      {tech === "PostGIS" && (
-                        <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]">
-                          PGIS
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                {user?.role === "ADMIN" && (
+                  <span className="text-gray-400 select-none">·</span>
+                )}
+                {user?.role === "ADMIN" && (
+                  <div className="flex items-center gap-1 3xl:gap-3">
+                    <FaPen
+                      className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-green-500 transition-all"
+                      onClick={() => { }}
+                    />
+                    <LuTrash2
+                      className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-red-500 transition-all"
+                      onClick={() => setDeleteShow(true)}
+                    />
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-[clamp(0.25rem,0.5vw,0.5rem)]">
                 <h3
