@@ -2,7 +2,7 @@
 
 // import { SiElectron } from 'react-icons/si';
 import { Link, useNavigate } from "react-router-dom";
-import { FaPen, FaYoutube } from "react-icons/fa";
+import { FaBookOpen, FaPen, FaYoutube } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import type { Blog } from "../../services/blog/blogServices";
 import { handleViewBlog } from "../../utils/HandleViewBlog";
@@ -11,6 +11,9 @@ import { LuTrash2 } from "react-icons/lu";
 import { useEffect, useRef, useState } from "react";
 import { useDeleteBlog } from "../../hooks/blog/useDeleteBlog";
 import { CiImageOff } from "react-icons/ci";
+import { BiCodeCurly } from "react-icons/bi";
+import { BsFileMusicFill, BsPersonVcardFill } from "react-icons/bs";
+import { FaPersonWalkingLuggage } from "react-icons/fa6";
 
 interface BlogCardProps {
   blog: Blog;
@@ -74,36 +77,50 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
           <div className="w-full flex flex-col justify-between">
             <div className="w-full flex flex-col gap-5">
               <div className="w-full flex items-center justify-between">
+                <ul className="flex flex-wrap items-center gap-2">
+                  {blog.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="pointer-events-none flex items-center"
+                    >
+                      {tag === "Teknoloji" && (
+                        <BiCodeCurly className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tag === "Sosyal" && (
+                        <FaPersonWalkingLuggage className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tag === "Müzik" && (
+                        <BsFileMusicFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tag === "Kişisel" && (
+                        <BsPersonVcardFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                      {tag === "Okuma/Paylaşım" && (
+                        <FaBookOpen className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                      )}
+                    </li>
+                  ))}
+                </ul>
                 <div className="flex items-center gap-2">
-                  <ul className="flex flex-wrap items-center gap-2">
-                    {blog.tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className="pointer-events-none flex items-center px-2 3xl:px-4 py-0.25 bg-blue-800 text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] rounded-full"
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
                   {/* <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
                     {formatRelativeTime(blog.createdAt)}
                   </span> */}
+                  {user?.role === "ADMIN" && (
+                    <span className="text-gray-400 select-none">·</span>
+                  )}
+                  {user?.role === "ADMIN" && (
+                    <div className="flex items-center gap-1 4xl:gap-5">
+                      <FaPen
+                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-green-500 transition-all"
+                        onClick={() => { }}
+                      />
+                      <LuTrash2
+                        className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-red-500 transition-all"
+                        onClick={() => setDeleteShow(true)}
+                      />
+                    </div>
+                  )}
                 </div>
-                {user?.role === "ADMIN" && (
-                  <span className="text-gray-400 select-none">·</span>
-                )}
-                {user?.role === "ADMIN" && (
-                  <div className="flex items-center gap-1 4xl:gap-5">
-                    <FaPen
-                      className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-green-500 transition-all"
-                      onClick={() => { }}
-                    />
-                    <LuTrash2
-                      className="cursor-pointer text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] hover:text-red-500 transition-all"
-                      onClick={() => setDeleteShow(true)}
-                    />
-                  </div>
-                )}
               </div>
               <div className="flex flex-col gap-[clamp(0.25rem,0.5vw,0.5rem)]">
                 <h3

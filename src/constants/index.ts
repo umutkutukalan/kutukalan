@@ -1,5 +1,5 @@
 // import { SiElectron } from 'react-icons/si';
-import { BiLogoReact } from "react-icons/bi";
+import { BiCodeCurly, BiLogoReact } from "react-icons/bi";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { DiJava } from "react-icons/di";
 import { BiLogoJavascript } from "react-icons/bi";
@@ -47,6 +47,9 @@ import {
   sahnesen2,
   sahnesen3,
 } from "../utils";
+import { BsFileMusicFill, BsPersonVcardFill } from "react-icons/bs";
+import { FaBookOpen } from "react-icons/fa";
+import { FaPersonWalkingLuggage } from "react-icons/fa6";
 
 export const navbarList = [
   { id: 1, title: "Anasayfa", link: "/", icon: GoHome },
@@ -159,23 +162,11 @@ export const technologiesForCreateContent: TechnologyForCreateContent[] = [
 ];
 
 export const tagsForCreateContent: TechnologyForCreateContent[] = [
-  { id: 1, icon: DiJava, title: "Java" },
-  { id: 2, icon: BiLogoSpringBoot, title: "Spring Boot" },
-  { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
-  { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
-  { id: 5, icon: BiLogoReact, title: "ReactJS" },
-  { id: 6, icon: SiElectron, title: "ElectronJS" },
-  { id: 7, icon: RiNextjsFill, title: "NextJS" },
-  { id: 8, icon: TbBrandReactNative, title: "React Native" },
-  { id: 9, icon: DiMysql, title: "MySQL" },
-  { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
-  { id: 11, icon: null, title: "PostGIS" },
-  { id: 12, icon: TbBrandThreejs, title: "ThreeJS" },
-  { id: 13, icon: null, title: "GSAP" },
-  { id: 14, icon: BiLogoRedux, title: "Redux" },
-  { id: 15, icon: null, title: "Sosyal" },
-  { id: 16, icon: null, title: "Müzik" },
-  { id: 17, icon: null, title: "Okuma/Paylaşım" },
+  { id: 1, icon: BiCodeCurly, title: "Teknoloji" },
+  { id: 2, icon: FaPersonWalkingLuggage, title: "Sosyal" },
+  { id: 3, icon: BsFileMusicFill, title: "Müzik" },
+  { id: 4, icon: BsPersonVcardFill, title: "Kişisel" },
+  { id: 5, icon: FaBookOpen, title: "Okuma/Paylaşım" },
 ];
 
 // export const tagsForCreateContent = [
