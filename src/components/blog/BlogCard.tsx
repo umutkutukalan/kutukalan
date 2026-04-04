@@ -1,4 +1,4 @@
-// import { RelativeTime } from "../../utils/RelativeTime";
+import { RelativeTime } from "../../utils/RelativeTime";
 
 // import { SiElectron } from 'react-icons/si';
 import { Link, useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ interface BlogCardProps {
 const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
   const { user } = useUser();
   const navigate = useNavigate();
-  // const { formatRelativeTime } = RelativeTime();
+  const { formatRelativeTime } = RelativeTime();
 
   const { deleteBlog } = useDeleteBlog(onBlogDeleted);
   const [deleteShow, setDeleteShow] = useState(false);
@@ -102,9 +102,9 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
                   ))}
                 </ul>
                 <div className="flex items-center gap-2">
-                  {/* <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
+                  <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
                     {formatRelativeTime(blog.createdAt)}
-                  </span> */}
+                  </span>
                   {user?.role === "ADMIN" && (
                     <span className="text-gray-400 select-none">·</span>
                   )}
@@ -150,11 +150,7 @@ text-[clamp(1rem,1.6vw,2rem)]
                 {blog.youtubeUrl && (
                   <Link
                     to={blog.youtubeUrl}
-                    className="flex items-center gap-1
-                    text-[clamp(0.75rem,1.2vw,0.75rem)]
-                    3xl:text-[clamp(1rem,1.3vw,1.125rem)]
-                    4xl:text-[1.5rem]
-                    hover:text-gray-300 transition-all"
+                    className="flex items-center gap-1 text-[clamp(0.75rem,1.2vw,0.75rem)] hover:text-gray-300 transition-all"
                   >
                     <FaYoutube title="Youtube Url" color="#ff0034" />
                     <span>YouTube</span>

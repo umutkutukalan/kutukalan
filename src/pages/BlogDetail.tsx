@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-// import { useRelativeTime } from "../hooks/useRelativeTime";
+import { useRelativeTime } from "../hooks/useRelativeTime";
 import type { Blog } from "../services/blog/blogServices";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
 import { BiCodeCurly } from "react-icons/bi";
@@ -11,7 +11,7 @@ import { FaBookOpen } from "react-icons/fa";
 const BlogDetail = () => {
   const location = useLocation();
   const { currentTrack } = useAudioPlayer();
-  // const { formatRelativeTime } = useRelativeTime();
+  const { formatRelativeTime } = useRelativeTime();
 
   // handleViewProject ile gönderilen state üzerinden proje verisini al
   const blog: Blog = location.state?.blog;
@@ -47,10 +47,10 @@ const BlogDetail = () => {
                   {blog.user.username}
                 </p>
               </div>
-              {/* <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
+              <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
               <span className="text-xs 3xl:text-2xl 4xl:text-2xl text-gray-300">
                 {formatRelativeTime(blog.createdAt)}
-              </span> */}
+              </span>
             </div>
             <ul className="flex items-center gap-2">
               {blog.tags.map((tag) => (

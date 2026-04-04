@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import type { Project } from "../services/project/projectServices";
-// import { useRelativeTime } from "../hooks/useRelativeTime";
+import { useRelativeTime } from "../hooks/useRelativeTime";
 import {
   BiLogoJavascript,
   BiLogoReact,
@@ -19,7 +19,7 @@ const ProjectDetail = () => {
   const location = useLocation();
   const { currentTrack } = useAudioPlayer();
 
-  // const { formatRelativeTime } = useRelativeTime();
+  const { formatRelativeTime } = useRelativeTime();
 
   // handleViewProject ile gönderilen state üzerinden proje verisini al
   const project: Project = location.state?.project;
@@ -55,10 +55,10 @@ const ProjectDetail = () => {
                   {project.user.username}
                 </p>
               </div>
-              {/* <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
+              <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
               <span className="text-xs 3xl:text-2xl 4xl:text-2xl text-gray-300">
                 {formatRelativeTime(project.createdAt)}
-              </span> */}
+              </span>
             </div>
             <ul className="flex items-center gap-2">
               {project.technologies.map((tech) => (
@@ -122,12 +122,12 @@ const ProjectDetail = () => {
             <li
               key={index}
               className={`w-full ${item.size === "large"
-                  ? "h-full"
-                  : item.size === "medium"
-                    ? "h-[clamp(400px,30vw,600px)]"
-                    : item.size === "small"
-                      ? "h-[clamp(200px,15vw,300px)]"
-                      : ""
+                ? "h-full"
+                : item.size === "medium"
+                  ? "h-[clamp(400px,30vw,600px)]"
+                  : item.size === "small"
+                    ? "h-[clamp(200px,15vw,300px)]"
+                    : ""
                 } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
             >
               {item?.type === "image" && (
@@ -135,10 +135,10 @@ const ProjectDetail = () => {
                   src={item?.content}
                   alt=""
                   className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${item.size === "large"
-                      ? "object-contain"
-                      : item.size === "medium"
-                        ? "object-cover"
-                        : "object-contain"
+                    ? "object-contain"
+                    : item.size === "medium"
+                      ? "object-cover"
+                      : "object-contain"
                     } `}
                 />
               )}
