@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { logo2 } from "../../utils";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { MdComputer, MdOutlineLibraryMusic } from "react-icons/md";
-import { GoHome } from "react-icons/go";
-import { LuFiles } from "react-icons/lu";
+// import { MdComputer, MdOutlineLibraryMusic } from "react-icons/md";
+// import { GoHome } from "react-icons/go";
+// import { LuFiles } from "react-icons/lu";
 
 const Footer = () => {
   return (
-    <footer className="w-full h-full flex flex-col sm:px-10 px-5 border-t border-white/10 bg-gradient-to-r from-black via-black to-black">
+    <footer className="w-full h-full flex flex-col sm:px-5 px-5 border-t border-white/10 bg-gradient-to-r from-black via-black to-black">
       <div className="w-full h-full pt-8 pb-4 flex justify-between">
         <div className="flex flex-col gap-1">
           <img src={logo2} alt="" className="w-40" />
@@ -26,7 +26,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           <div className="flex flex-col gap-2 sm:text-xs text-[8px]">
             <ul className="flex flex-col gap-2">
               <Link to="/" className="flex items-center gap-1">
@@ -55,7 +55,7 @@ const Footer = () => {
             <h4></h4>
             <ul></ul>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="w-full flex sm:flex-row flex-col items-center justify-between border-t border-white/10 py-4">
         <p className="sm:text-xs text-[10px]">© 2026 Kutukalan</p>
