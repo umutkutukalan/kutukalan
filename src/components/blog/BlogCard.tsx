@@ -1,4 +1,4 @@
-import { RelativeTime } from "../../utils/RelativeTime";
+// import { RelativeTime } from "../../utils/RelativeTime";
 
 // import { SiElectron } from 'react-icons/si';
 import { Link, useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ interface BlogCardProps {
 const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
   const { user } = useUser();
   const navigate = useNavigate();
-  const { formatRelativeTime } = RelativeTime();
+  // const { formatRelativeTime } = RelativeTime();
 
   const { deleteBlog } = useDeleteBlog(onBlogDeleted);
   const [deleteShow, setDeleteShow] = useState(false);

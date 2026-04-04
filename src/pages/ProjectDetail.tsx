@@ -31,9 +31,8 @@ const ProjectDetail = () => {
 
   return (
     <div
-      className={`w-full px-[clamp(1rem,4vw,2rem)] pt-[clamp(3.75rem,4vw,3.75rem)] lg:pt-[clamp(2.5rem,4vw,2.5rem)] 2xl:pt-[clamp(5rem,4vw,5rem)] xl:pb-[clamp(2.5rem,4vw,2.5rem)] flex items-center justify-center ${
-        currentTrack ? "pb-20" : "pb-5"
-      }`}
+      className={`w-full px-[clamp(1rem,4vw,2rem)] pt-[clamp(3.75rem,4vw,3.75rem)] lg:pt-[clamp(2.5rem,4vw,2.5rem)] 2xl:pt-[clamp(5rem,4vw,5rem)] xl:pb-[clamp(2.5rem,4vw,2.5rem)] flex items-center justify-center ${currentTrack ? "pb-20" : "pb-5"
+        }`}
     >
       <div className="w-[clamp(300px,80vw,800px)] 3xl:w-[clamp(50rem,60vw,70rem)] flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
@@ -122,27 +121,25 @@ const ProjectDetail = () => {
           {project.contentItems.map((item, index) => (
             <li
               key={index}
-              className={`w-full ${
-                item.size === "large"
+              className={`w-full ${item.size === "large"
                   ? "h-full"
                   : item.size === "medium"
                     ? "h-[clamp(400px,30vw,600px)]"
                     : item.size === "small"
                       ? "h-[clamp(200px,15vw,300px)]"
                       : ""
-              } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
+                } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
             >
               {item?.type === "image" && (
                 <img
                   src={item?.content}
                   alt=""
-                  className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${
-                    item.size === "large"
+                  className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${item.size === "large"
                       ? "object-contain"
                       : item.size === "medium"
                         ? "object-cover"
                         : "object-contain"
-                  } `}
+                    } `}
                 />
               )}
               {item?.type === "paragraph" && (
