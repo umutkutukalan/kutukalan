@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import type { Project } from "../services/project/projectServices";
-import { useRelativeTime } from "../hooks/useRelativeTime";
+// import { useRelativeTime } from "../hooks/useRelativeTime";
 import {
   BiLogoJavascript,
   BiLogoReact,
@@ -19,7 +19,7 @@ const ProjectDetail = () => {
   const location = useLocation();
   const { currentTrack } = useAudioPlayer();
 
-  const { formatRelativeTime } = useRelativeTime();
+  // const { formatRelativeTime } = useRelativeTime();
 
   // handleViewProject ile gönderilen state üzerinden proje verisini al
   const project: Project = location.state?.project;

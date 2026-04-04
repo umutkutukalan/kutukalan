@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useRelativeTime } from "../hooks/useRelativeTime";
+// import { useRelativeTime } from "../hooks/useRelativeTime";
 import { TbBurger } from "react-icons/tb";
 import type { Blog } from "../services/blog/blogServices";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
@@ -8,7 +8,7 @@ import { useAudioPlayer } from "../context/AudioPlayerContext";
 const BlogDetail = () => {
   const location = useLocation();
   const { currentTrack } = useAudioPlayer();
-  const { formatRelativeTime } = useRelativeTime();
+  // const { formatRelativeTime } = useRelativeTime();
 
   // handleViewProject ile gönderilen state üzerinden proje verisini al
   const blog: Blog = location.state?.blog;
