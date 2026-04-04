@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 // import { useRelativeTime } from "../hooks/useRelativeTime";
-import { TbBurger } from "react-icons/tb";
 import type { Blog } from "../services/blog/blogServices";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
+import { BiCodeCurly } from "react-icons/bi";
+import { FaPersonWalkingLuggage } from "react-icons/fa6";
+import { BsFileMusicFill, BsPersonVcardFill } from "react-icons/bs";
+import { FaBookOpen } from "react-icons/fa";
 
 const BlogDetail = () => {
   const location = useLocation();
@@ -20,9 +23,8 @@ const BlogDetail = () => {
 
   return (
     <div
-      className={`w-full pt-[clamp(3.75rem,4vw,3.75rem)] lg:pt-[clamp(2.5rem,4vw,2.5rem)] 2xl:pt-[clamp(5rem,4vw,5rem)] xl:pb-[clamp(2.5rem,4vw,2.5rem)] flex items-center justify-center ${
-        currentTrack ? "pb-20" : "pb-5"
-      }`}
+      className={`w-full pt-[clamp(3.75rem,4vw,3.75rem)] lg:pt-[clamp(2.5rem,4vw,2.5rem)] 2xl:pt-[clamp(5rem,4vw,5rem)] xl:pb-[clamp(2.5rem,4vw,2.5rem)] flex items-center justify-center ${currentTrack ? "pb-20" : "pb-5"
+        }`}
     >
       <div className="w-[clamp(300px,80vw,800px)] 3xl:w-[clamp(50rem,60vw,70rem)] flex flex-col gap-5">
         <div className="w-full border-b border-gray-300 flex flex-col pb-5 gap-5">
@@ -54,12 +56,25 @@ const BlogDetail = () => {
               {blog.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="text-xs 3xl:text-2xl 4xl:text-2xl pointer-events-none flex items-center"
+                  className="pointer-events-none flex items-center"
                 >
-                  {tag === "Food" && (
-                    <TbBurger className="text-xs sm:text-sm" />
+                  {tag === "Teknoloji" && (
+                    <BiCodeCurly className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                  )}
+                  {tag === "Sosyal" && (
+                    <FaPersonWalkingLuggage className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                  )}
+                  {tag === "Müzik" && (
+                    <BsFileMusicFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                  )}
+                  {tag === "Kişisel" && (
+                    <BsPersonVcardFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                  )}
+                  {tag === "Okuma/Paylaşım" && (
+                    <FaBookOpen className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                 </li>
+
               ))}
             </ul>
           </div>
@@ -68,27 +83,25 @@ const BlogDetail = () => {
           {blog.contentItems.map((item, index) => (
             <li
               key={index}
-              className={`w-full ${
-                item.size === "large"
+              className={`w-full ${item.size === "large"
                   ? "h-full"
                   : item.size === "medium"
                     ? "h-[clamp(400px,40vw,500px)]"
                     : item.size === "small"
                       ? "h-[clamp(200px,15vw,300px)]"
                       : ""
-              } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
+                } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
             >
               {item?.type === "image" && (
                 <img
                   src={item?.content}
                   alt=""
-                  className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${
-                    item.size === "large"
+                  className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${item.size === "large"
                       ? "object-contain"
                       : item.size === "medium"
                         ? "object-cover"
                         : "object-contain"
-                  } `}
+                    } `}
                 />
               )}
               {item?.type === "paragraph" && (
