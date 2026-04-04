@@ -45,10 +45,10 @@ const BlogDetail = () => {
                   {blog.user.username}
                 </p>
               </div>
-              <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
+              {/* <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
               <span className="text-xs 3xl:text-2xl 4xl:text-2xl text-gray-300">
                 {formatRelativeTime(blog.createdAt)}
-              </span>
+              </span> */}
             </div>
             <ul className="flex items-center gap-2">
               {blog.tags.map((tag) => (

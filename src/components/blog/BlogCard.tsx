@@ -75,9 +75,9 @@ const BlogCard = ({ blog, onBlogDeleted }: BlogCardProps) => {
             <div className="w-full flex flex-col gap-5">
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
+                  {/* <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem] text-gray-400">
                     {formatRelativeTime(blog.createdAt)}
-                  </span>
+                  </span> */}
                   {user?.role === "ADMIN" && (
                     <span className="text-gray-400 select-none">·</span>
                   )}

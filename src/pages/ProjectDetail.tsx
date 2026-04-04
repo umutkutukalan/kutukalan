@@ -56,10 +56,10 @@ const ProjectDetail = () => {
                   {project.user.username}
                 </p>
               </div>
-              <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
+              {/* <span className="text-xs 3xl:text-2xl 4xl:text-2xl">·</span>
               <span className="text-xs 3xl:text-2xl 4xl:text-2xl text-gray-300">
                 {formatRelativeTime(project.createdAt)}
-              </span>
+              </span> */}
             </div>
             <ul className="flex items-center gap-2">
               {project.technologies.map((tech) => (
