@@ -158,17 +158,37 @@ export const technologiesForCreateContent: TechnologyForCreateContent[] = [
   { id: 14, icon: BiLogoRedux, title: "Redux" },
 ];
 
-export const tagsForCreateContent = [
-  { id: 1, title: "Technology" },
-  { id: 2, title: "Music" },
-  { id: 3, title: "Travel" },
-  { id: 4, title: "Food" },
-  { id: 5, title: "Lifestyle" },
-  { id: 6, title: "Education" },
-  { id: 7, title: "Health" },
-  { id: 8, title: "Finance" },
-  { id: 9, title: "Software" },
+export const tagsForCreateContent: TechnologyForCreateContent[] = [
+  { id: 1, icon: DiJava, title: "Java" },
+  { id: 2, icon: BiLogoSpringBoot, title: "Spring Boot" },
+  { id: 3, icon: BiLogoJavascript, title: "JavaScript" },
+  { id: 4, icon: BiLogoTypescript, title: "TypeScript" },
+  { id: 5, icon: BiLogoReact, title: "ReactJS" },
+  { id: 6, icon: SiElectron, title: "ElectronJS" },
+  { id: 7, icon: RiNextjsFill, title: "NextJS" },
+  { id: 8, icon: TbBrandReactNative, title: "React Native" },
+  { id: 9, icon: DiMysql, title: "MySQL" },
+  { id: 10, icon: DiPostgresql, title: "PostgreSQL" },
+  { id: 11, icon: null, title: "PostGIS" },
+  { id: 12, icon: TbBrandThreejs, title: "ThreeJS" },
+  { id: 13, icon: null, title: "GSAP" },
+  { id: 14, icon: BiLogoRedux, title: "Redux" },
+  { id: 15, icon: null, title: "Sosyal" },
+  { id: 16, icon: null, title: "Müzik" },
+  { id: 17, icon: null, title: "Okuma/Paylaşım" },
 ];
+
+// export const tagsForCreateContent = [
+//   { id: 1, title: "Technology" },
+//   { id: 2, title: "Music" },
+//   { id: 3, title: "Travel" },
+//   { id: 4, title: "Food" },
+//   { id: 5, title: "Lifestyle" },
+//   { id: 6, title: "Education" },
+//   { id: 7, title: "Health" },
+//   { id: 8, title: "Finance" },
+//   { id: 9, title: "Software" },
+// ];
 
 export const websites = [
   {
