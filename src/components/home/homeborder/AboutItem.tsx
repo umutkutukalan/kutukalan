@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useAboutContext } from "../../../hooks/useAboutContext";
-import { gray } from "../../../utils";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const AboutItem = () => {
