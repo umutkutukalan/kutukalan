@@ -60,7 +60,7 @@ const HomeTables = () => {
                   2xl:max-w-[48rem]
                   oswald-400
                 "
-                // bg-gradient-to-r from-white via-gray-350 to-gray-500 text-transparent bg-clip-text
+              // bg-gradient-to-r from-white via-gray-350 to-gray-500 text-transparent bg-clip-text
               >
                 ÖZEN, SÜREKLİLİK VE AMAÇ ÜZERİNE
               </h2>
@@ -81,12 +81,12 @@ const HomeTables = () => {
               const Icon = tech.icon;
               return (
                 <div
+                  title={tech.title}
                   key={tech.id}
-                  className={`w-full h-full flex items-center justify-center ${
-                    index === technologiesForHome.length - 1
+                  className={`w-full h-full flex items-center justify-center ${index === technologiesForHome.length - 1
                       ? ""
                       : "border-r border-white/10"
-                  }`}
+                    }`}
                 >
                   {Icon && (
                     <Icon

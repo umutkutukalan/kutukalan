@@ -63,8 +63,9 @@ const ProjectDetail = () => {
             <ul className="flex items-center gap-2">
               {project.technologies.map((tech) => (
                 <li
+                  title={tech}
                   key={tech}
-                  className="text-xs pointer-events-none flex items-center"
+                  className="flex items-center"
                 >
                   {tech === "TypeScript" && (
                     <BiLogoTypescript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
@@ -97,7 +98,7 @@ const ProjectDetail = () => {
                     <TbBrandReactNative className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tech === "PostGIS" && (
-                    <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]">
+                    <span className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" title="PostGIS">
                       PGIS
                     </span>
                   )}

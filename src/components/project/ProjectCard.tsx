@@ -84,8 +84,9 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                 <ul className="flex flex-wrap items-center gap-2">
                   {project.technologies.map((tech) => (
                     <li
+                      title={tech}
                       key={tech}
-                      className="pointer-events-none flex items-center"
+                      className="flex items-center"
                     >
                       {tech === "TypeScript" && (
                         <BiLogoTypescript className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
@@ -170,7 +171,7 @@ const ProjectCard = ({ project, onProjectDeleted }: ProjectCardProps) => {
                     to={project.githubUrl}
                     className="flex items-center gap-1 text-[clamp(0.75rem,1.2vw,0.75rem)] hover:text-gray-300 transition-all"
                   >
-                    <FaGithub title="Github Url"/>
+                    <FaGithub title="Github Url" />
                     <span>Github</span>
                   </Link>
                 )}

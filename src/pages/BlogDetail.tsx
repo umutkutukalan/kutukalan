@@ -61,32 +61,26 @@ const BlogDetail = () => {
                 >
                   {tag === "Yazılım" && (
                     <BiCodeCurly
-                      title="Yazılım"
                       className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Yapay Zeka" && (
                     <BsRobot
-                      title="Yapay Zeka"
                       className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Sosyal" && (
                     <FaPersonWalkingLuggage
-                      title="Sosyal"
                       className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Müzik" && (
                     <BsFileMusicFill
-                      title="Müzik"
                       className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Kişisel" && (
                     <BsPersonVcardFill
-                      title="Kişisel"
                       className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Okuma/Paylaşım" && (
                     <FaBookOpen
-                      title="Okuma/Paylaşım"
                       className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                 </li>
