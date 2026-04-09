@@ -27,7 +27,7 @@ const AboutItem = () => {
       {currentAbout ? (
         <div className="relative h-full w-full">
           <div className="relative w-full h-full">
-            <div className="absolute inset-0 top-0 left-0 bg-gradient-to-b from-black via-transparent to-transparent z-5"></div>
+            <div className="absolute inset-0 top-0 left-0 bg-gradient-to-b from-black/80 via-transparent to-transparent z-5"></div>
             <img src={currentAbout?.aboutImage} alt="" className="w-full h-full object-cover" />
             <div className="absolute top-13 sm:top-11 md:top-13 lg:top-11 xl:top-13 2xl:top-20 2xl:left-5 left-2 z-20">
               <p className="text-[clamp(1.4rem,4vw,1.5rem)] 3xl:text-[clamp(1.75rem,4vw,2.25rem)] 4xl:text-[clamp(1.75rem,4vw,2.5rem)] text-white leading-snug max-w-[clamp(160px,14vw,300px)]">
@@ -55,7 +55,7 @@ const AboutItem = () => {
                   {Array.from({ length: aboutLength }).map((_, i) => (
                     <li
                       key={i}
-                      className={`w-3 h-3 3xl:w-4 3xl:h-4 4xl:w-5 4xl:h-5 rounded-full overflow-hidden ${i === aboutCurrentIdx ? "bg-gray-600" : "bg-white/80"
+                      className={`w-3 h-3 3xl:w-4 3xl:h-4 4xl:w-5 4xl:h-5 rounded-full overflow-hidden ${i === aboutCurrentIdx ? "bg-gray-500" : "bg-white/80"
                         }`}
                     ></li>
                   ))}

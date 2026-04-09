@@ -1,6 +1,6 @@
 import type { IconType } from "react-icons";
 import { technologiesForHome } from "../../constants";
-import { manrunning3 } from "../../utils";
+import { runpist } from "../../utils";
 
 export interface Tech {
   id: number;
@@ -15,11 +15,11 @@ const HomeTables = () => {
  overflow-hidden relative"
     >
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-5"></div>
         <img
-          src={manrunning3}
+          src={runpist}
           alt=""
-          className="object-cover w-full h-full object-[center_35%]"
+          className="object-cover w-full h-full object-[center_35%] select-none"
         />
       </div>
       <div className="absolute top-0 left-0 w-full h-full">
@@ -59,8 +59,8 @@ const HomeTables = () => {
                   xl:max-w-[25rem]
                   2xl:max-w-[48rem]
                   oswald-400
-                  bg-gradient-to-r from-white via-gray-350 to-gray-500 text-transparent bg-clip-text
                 "
+                // bg-gradient-to-r from-white via-gray-350 to-gray-500 text-transparent bg-clip-text
               >
                 ÖZEN, SÜREKLİLİK VE AMAÇ ÜZERİNE
               </h2>

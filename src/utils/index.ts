@@ -20,7 +20,8 @@ import createMusicImg from "../assets/images/createMusicImg.webp";
 import readmeImg from "../assets/images/readmeImg.webp";
 
 import manrunning3 from "../assets/images/manrunning3.webp";
-export { manrunning3 };
+import runpist from "../assets/images/runpist.jpeg";
+export { manrunning3, runpist };
 
 import notly2 from "../assets/images/desktopappImages/notly2.webp";
 import notly3 from "../assets/images/desktopappImages/notly3.webp";
