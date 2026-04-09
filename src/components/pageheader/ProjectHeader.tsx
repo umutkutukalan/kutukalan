@@ -7,7 +7,7 @@ const ProjectHeader = () => {
         <img
           src={projectbanner}
           alt=""
-          className="h-full w-full object-cover object-[center_50%] brightness-40"
+          className="h-full w-full object-cover object-[center_50%] brightness-60"
         />
       </div>
 

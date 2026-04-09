@@ -15,7 +15,7 @@ const HomeVideos = () => {
               </div>
             </div>
           </Link>
-          <div className="absolute inset-0 bg-black/60 z-5"></div>
+          <div className="absolute inset-0 bg-black/40 z-5"></div>
           <img
             src={projectbanner}
             alt=""
@@ -31,7 +31,7 @@ const HomeVideos = () => {
               </div>
             </div>
           </Link>
-          <div className="absolute inset-0 bg-black/60 z-5"></div>
+          <div className="absolute inset-0 bg-black/40 z-5"></div>
           <img
             src={blogbanner}
             alt=""
