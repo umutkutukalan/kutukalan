@@ -47,7 +47,7 @@ import {
   sahnesen2,
   sahnesen3,
 } from "../utils";
-import { BsFileMusicFill, BsPersonVcardFill } from "react-icons/bs";
+import { BsFileMusicFill, BsPersonVcardFill, BsRobot } from "react-icons/bs";
 import { FaBookOpen } from "react-icons/fa";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
 
@@ -162,11 +162,12 @@ export const technologiesForCreateContent: TechnologyForCreateContent[] = [
 ];
 
 export const tagsForCreateContent: TechnologyForCreateContent[] = [
-  { id: 1, icon: BiCodeCurly, title: "Teknoloji" },
-  { id: 2, icon: FaPersonWalkingLuggage, title: "Sosyal" },
-  { id: 3, icon: BsFileMusicFill, title: "Müzik" },
-  { id: 4, icon: BsPersonVcardFill, title: "Kişisel" },
-  { id: 5, icon: FaBookOpen, title: "Okuma/Paylaşım" },
+  { id: 1, icon: BiCodeCurly, title: "Yazılım" },
+  { id: 2, icon: BsRobot, title: "Yapay Zeka" },
+  { id: 3, icon: FaPersonWalkingLuggage, title: "Sosyal" },
+  { id: 4, icon: BsFileMusicFill, title: "Müzik" },
+  { id: 5, icon: BsPersonVcardFill, title: "Kişisel" },
+  { id: 6, icon: FaBookOpen, title: "Okuma/Paylaşım" },
 ];
 
 // export const tagsForCreateContent = [

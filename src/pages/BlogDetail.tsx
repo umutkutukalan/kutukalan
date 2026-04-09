@@ -5,7 +5,7 @@ import type { Blog } from "../services/blog/blogServices";
 import { useAudioPlayer } from "../context/AudioPlayerContext";
 import { BiCodeCurly } from "react-icons/bi";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
-import { BsFileMusicFill, BsPersonVcardFill } from "react-icons/bs";
+import { BsFileMusicFill, BsPersonVcardFill, BsRobot } from "react-icons/bs";
 import { FaBookOpen } from "react-icons/fa";
 
 const BlogDetail = () => {
@@ -55,23 +55,39 @@ const BlogDetail = () => {
             <ul className="flex items-center gap-2">
               {blog.tags.map((tag) => (
                 <li
+                  title={tag}
                   key={tag}
-                  className="pointer-events-none flex items-center"
+                  className="flex items-center"
                 >
-                  {tag === "Teknoloji" && (
-                    <BiCodeCurly className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                  {tag === "Yazılım" && (
+                    <BiCodeCurly
+                      title="Yazılım"
+                      className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                  )}
+                  {tag === "Yapay Zeka" && (
+                    <BsRobot
+                      title="Yapay Zeka"
+                      className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Sosyal" && (
-                    <FaPersonWalkingLuggage className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                    <FaPersonWalkingLuggage
+                      title="Sosyal"
+                      className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Müzik" && (
-                    <BsFileMusicFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                    <BsFileMusicFill
+                      title="Müzik"
+                      className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Kişisel" && (
-                    <BsPersonVcardFill className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                    <BsPersonVcardFill
+                      title="Kişisel"
+                      className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                   {tag === "Okuma/Paylaşım" && (
-                    <FaBookOpen className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
+                    <FaBookOpen
+                      title="Okuma/Paylaşım"
+                      className="text-[clamp(0.75rem,1.2vw,0.75rem)] 3xl:text-[clamp(1rem,1.3vw,1.125rem)] 4xl:text-[1.5rem]" />
                   )}
                 </li>
 
@@ -84,12 +100,12 @@ const BlogDetail = () => {
             <li
               key={index}
               className={`w-full ${item.size === "large"
-                  ? "h-full"
-                  : item.size === "medium"
-                    ? "h-[clamp(400px,40vw,500px)]"
-                    : item.size === "small"
-                      ? "h-[clamp(200px,15vw,300px)]"
-                      : ""
+                ? "h-full"
+                : item.size === "medium"
+                  ? "h-[clamp(400px,40vw,500px)]"
+                  : item.size === "small"
+                    ? "h-[clamp(200px,15vw,300px)]"
+                    : ""
                 } flex relative focus:outline-none focus-visible:outline-none focus:ring-0 focus:border-none`}
             >
               {item?.type === "image" && (
@@ -97,10 +113,10 @@ const BlogDetail = () => {
                   src={item?.content}
                   alt=""
                   className={`w-full h-full rounded-lg pointer-events-none focus:outline-none ${item.size === "large"
-                      ? "object-contain"
-                      : item.size === "medium"
-                        ? "object-cover"
-                        : "object-contain"
+                    ? "object-contain"
+                    : item.size === "medium"
+                      ? "object-cover"
+                      : "object-contain"
                     } `}
                 />
               )}
